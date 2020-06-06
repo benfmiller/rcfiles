@@ -1,5 +1,9 @@
 alias cdcp="cd /mnt/c/users/benfm/OneDrive/CProjects"
 alias sshbpi="ssh pi@66.171.23.9"
+alias pushzshrc="cd ; cp .zshrc ~/rcfiles/.zshrc; cd rcfiles; git add .; git commit -m "update to zshrc"; git push; cd "
+alias updatezshrc="cd ~/rcfiles; git pull; cd ; cp ~/rcfiles/.zshrc ~/.zshrc"
+alias pushvimrc="cd ; cp .vimrc ~/rcfiles/.vimrc; cd rcfiles; git add .; git commit -m "update to vimrc"; git push; cd "
+alias updatevimrc="cd ~/rcfiles; git pull; cd ; cp ~/rcfiles/.vimrc ~/.vimrc"
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
