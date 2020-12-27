@@ -1,20 +1,21 @@
 alias cdcp="cd /mnt/c/users/benfm/OneDrive/CProjects"
-alias sshbpi="ssh pi@66.171.23.9"
-alias pushzshrc="cd ; cp .zshrc ~/rcfiles/.zshrc; cd rcfiles; git add .; git commit -m 'update to zshrc'; git push; cd "
+alias cdcpcw="cdcp && cd ClassWork"
+alias pushzshrc="cd ; cp ~/.zshrc ~/rcfiles/.zshrc; cd rcfiles; git add .; git commit -m 'update to zshrc'; git push; cd "
 alias updatezshrc="cd ~/rcfiles; git pull; cd ; cp ~/rcfiles/.zshrc ~/.zshrc"
 alias pushvimrc="cd ; cp .vimrc ~/rcfiles/.vimrc; cd rcfiles; git add .; git commit -m 'update to vimrc'; git push; cd "
 alias updatevimrc="cd ~/rcfiles; git pull; cd ; cp ~/rcfiles/.vimrc ~/.vimrc"
+alias tupdate="sudo apt update && sudo apt upgrade -y"
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 # Path to your oh-my-zsh installation.
-export ZSH="/home/ben/.oh-my-zsh"
+export ZSH="/home/kaliben/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="obraun"
+ZSH_THEME="linuxonly"
 #fishy
 #obraun
 
@@ -35,7 +36,7 @@ ZSH_THEME="obraun"
 # DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to automatically update without prompting.
-# DISABLE_UPDATE_PROMPT="true"
+DISABLE_UPDATE_PROMPT="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
 # export UPDATE_ZSH_DAYS=13
