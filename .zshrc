@@ -9,6 +9,7 @@ alias tupdate="sudo apt update && sudo apt upgrade -y"
 alias t="tmux"
 alias tl="tmux ls"
 alias ta="tmux attach"
+alias tat="tmux attach -t"
 alias vim="nvim"
 
 # If you come from bash you might have to change your $PATH.
