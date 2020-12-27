@@ -6,6 +6,11 @@ alias pushvimrc="cd ; cp .vimrc ~/rcfiles/.vimrc; cd rcfiles; git add .; git com
 alias updatevimrc="cd ~/rcfiles; git pull; cd ; cp ~/rcfiles/.vimrc ~/.vimrc"
 alias tupdate="sudo apt update && sudo apt upgrade -y"
 
+alias t="tmux"
+alias tl="tmux ls"
+alias ta="tmux attach"
+alias vim="nvim"
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 # Path to your oh-my-zsh installation.
