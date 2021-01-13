@@ -12,6 +12,7 @@ set laststatus=2  " always display the status line
 autocmd InsertEnter,InsertLeave * set cul!
 set showmatch           "highlight matching brackets [{()}]
 syntax enable
+set scrolloff=8
 "}}
 " Hlsearches{{
 set incsearch       "Search as characters are entered

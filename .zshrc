@@ -1,10 +1,11 @@
-alias cdcp="cd /mnt/c/users/benfm/OneDrive/CProjects"
+alias cdcp="cd /mnt/c/users/admin/OneDrive/CProjects"
 alias cdcpcw="cdcp && cd ClassWork"
 alias pushzshrc="cd ; cp ~/.zshrc ~/rcfiles/.zshrc; cd rcfiles; git add .; git commit -m 'update to zshrc'; git push; cd "
 alias updatezshrc="cd ~/rcfiles; git pull; cd ; cp ~/rcfiles/.zshrc ~/.zshrc"
 alias pushvimrc="cd ; cp .vimrc ~/rcfiles/.vimrc; cd rcfiles; git add .; git commit -m 'update to vimrc'; git push; cd "
 alias updatevimrc="cd ~/rcfiles; git pull; cd ; cp ~/rcfiles/.vimrc ~/.vimrc"
 alias tupdate="sudo apt update && sudo apt upgrade -y"
+alias sinstal="sudo apt install"
 
 alias t="tmux"
 alias tl="tmux ls"
