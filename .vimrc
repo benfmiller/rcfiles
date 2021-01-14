@@ -64,6 +64,9 @@ nnoremap <leader>u :GundoToggle<CR>
 " expand current directory with %%
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
+" Moves up line visually
+nnoremap j gj
+nnoremap k gk
 
 " save session, open with vim -S
 nnoremap <leader>s :mksession<CR>
