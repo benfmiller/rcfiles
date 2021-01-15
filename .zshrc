@@ -1,11 +1,11 @@
-alias cdcp="cd /mnt/c/users/benfm/OneDrive/CProjects"
-alias cdki="cd /mnt/c/users/benfm/OneDrive/CProjects/kalideas"
+alias cdcp="cd /mnt/c/users/admin/OneDrive/CProjects"
+alias cdki="cd /mnt/c/users/admin/OneDrive/CProjects/kalideas"
 alias cdcpcw="cdcp && cd ClassWork"
-alias pushzshrc="cd ; cp ~/.zshrc ~/rcfiles/.zshrc; cd rcfiles; git add .; git commit -m 'update to zshrc'; git push; cd "
+alias pushzshrc="cd ;cd rcfiles; git pull; cd ; cp ~/.zshrc ~/rcfiles/.zshrc; cd rcfiles; git add .; git commit -m 'update to zshrc'; git push; cd "
 alias updatezshrc="cd ~/rcfiles; git pull; cd ; cp ~/rcfiles/.zshrc ~/.zshrc"
-alias pushvimrc="cd ; cp .vimrc ~/rcfiles/.vimrc; cd rcfiles; git add .; git commit -m 'update to vimrc'; git push; cd "
+alias pushvimrc="cd ;cd rcfiles; git pull; cd ; cp .vimrc ~/rcfiles/.vimrc; cd rcfiles; git add .; git commit -m 'update to vimrc'; git push; cd "
 alias updatevimrc="cd ~/rcfiles; git pull; cd ; cp ~/rcfiles/.vimrc ~/.vimrc"
-alias pushtmux="cd ; cp .tmux.conf ~/rcfiles/; cd rcfiles; git add .; git commit -m 'update to tmux conf'; git push; cd "
+alias pushtmux="cd ;cd rcfiles; git pull; cd ; cp .tmux.conf ~/rcfiles/; cd rcfiles; git add .; git commit -m 'update to tmux conf'; git push; cd "
 alias updatetmux="cd ~/rcfiles; git pull; cd ; cp ~/rcfiles/.tmux.conf ~/"
 
 alias tupdate="sudo apt update && sudo apt upgrade -y"
@@ -16,7 +16,11 @@ alias tl="tmux ls"
 alias ta="tmux attach"
 alias tat="tmux attach -t"
 alias l="ls -al"
+alias p="pwd"
 alias vim="nvim"
+
+# cs12 then file on server to get, then place here to place
+cs12 () { sudo scp -i /home/kaliben/.ssh/csci_112 k12t783@csci112.cs.montana.edu:$1 $2;}
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
