@@ -1,32 +1,47 @@
+#Moving Aliases{{
 alias cdcp="cd /mnt/c/users/admin/OneDrive/CProjects"
 alias cdki="cd /mnt/c/users/admin/OneDrive/CProjects/kalideas"
 alias cdcpcw="cdcp && cd ClassWork"
+#}}
+#rcfiles Aliases{{
 alias pushzshrc="cd ;cd rcfiles; git pull; cd ; cp ~/.zshrc ~/rcfiles/.zshrc; cd rcfiles; git add .; git commit -m 'update to zshrc'; git push; cd "
 alias updatezshrc="cd ~/rcfiles; git pull; cd ; cp ~/rcfiles/.zshrc ~/.zshrc"
 alias pushvimrc="cd ;cd rcfiles; git pull; cd ; cp .vimrc ~/rcfiles/.vimrc; cd rcfiles; git add .; git commit -m 'update to vimrc'; git push; cd "
 alias updatevimrc="cd ~/rcfiles; git pull; cd ; cp ~/rcfiles/.vimrc ~/.vimrc"
 alias pushtmux="cd ;cd rcfiles; git pull; cd ; cp .tmux.conf ~/rcfiles/; cd rcfiles; git add .; git commit -m 'update to tmux conf'; git push; cd "
 alias updatetmux="cd ~/rcfiles; git pull; cd ; cp ~/rcfiles/.tmux.conf ~/"
-
+cpnviminit () {
+    cd ; mkdir .config/nvim; cp rcfiles/init.vim .config/nvim/;
+}
+#}}
+#System{{
 alias tupdate="sudo apt update && sudo apt upgrade -y"
 alias sinstal="sudo apt install"
-
+#}}
+#Tmux{{
 alias t="tmux"
 alias tl="tmux ls"
 alias ta="tmux attach"
 alias tat="tmux attach -t"
-alias l="ls -al"
-alias p="pwd"
-alias vim="nvim"
+#}}
+#Installers{{
+install_oh_my_zsh () {sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"}
 
+install_vim_vim_plug () {curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim}
+install_neovim_vim_plug () { sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'}
+#}}
+#Var Functions{{
 # cs12 then file on server to get, then place here to place
 cs12 () { sudo scp -i /home/kaliben/.ssh/csci_112 k12t783@csci112.cs.montana.edu:$1 $2;}
-
+#}}
+#Path{{
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 # Path to your oh-my-zsh installation.
 export ZSH="/home/kaliben/.oh-my-zsh"
-
+export PATH=~/.local/bin:$PATH
+#}}
+# Theme{{
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -40,7 +55,21 @@ ZSH_THEME="linuxonly"
 # a theme from this variable instead of looking in $ZSH/themes/
 # If set to an empty array, this variable will have no effect.
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
-
+#}}
+# ZSH Plugins{{
+# Which plugins would you like to load?
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(git)
+#}}
+# More Aliases{{
+alias l="ls -al"
+alias p="pwd"
+alias vim="nvim"
+#}}
+# ZSH Options{{
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -88,13 +117,6 @@ COMPLETION_WAITING_DOTS="true"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
-# Which plugins would you like to load?
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
-
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -122,3 +144,5 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+#}}
