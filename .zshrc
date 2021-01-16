@@ -29,6 +29,9 @@ install_oh_my_zsh () {sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh
 
 install_vim_vim_plug () {curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim}
 install_neovim_vim_plug () { sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'}
+# ycm requires install.py
+# nvim in .local/share/nvim/plugged/YouCompleteMe
+# vim in .vim/plugged/YouCompleteMe
 #}}
 #Var Functions{{
 # cs12 then file on server to get, then place here to place
@@ -38,7 +41,7 @@ cs12 () { sudo scp -i /home/kaliben/.ssh/csci_112 k12t783@csci112.cs.montana.edu
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 # Path to your oh-my-zsh installation.
-export ZSH="/home/kaliben/.oh-my-zsh"
+export ZSH="/home/benf/.oh-my-zsh"
 export PATH=~/.local/bin:$PATH
 #}}
 # Theme{{
@@ -46,7 +49,7 @@ export PATH=~/.local/bin:$PATH
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="linuxonly"
+ZSH_THEME="obraun"
 #fishy
 #obraun
 
