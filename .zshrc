@@ -41,7 +41,7 @@ cs12 () { sudo scp -i /home/kaliben/.ssh/csci_112 k12t783@csci112.cs.montana.edu
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 # Path to your oh-my-zsh installation.
-export ZSH="~/.oh-my-zsh"
+export ZSH=$HOME/.oh-my-zsh
 export PATH=~/.local/bin:$PATH
 #}}
 # Theme{{
