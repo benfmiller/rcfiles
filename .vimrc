@@ -1,4 +1,4 @@
-" Leader and mapleader{{
+" Mapleader{{
 inoremap jk <ESC>
 let mapleader = " "
 "}}
@@ -8,11 +8,33 @@ set relativenumber
 color elflord
 set showcmd             " show command in bottom bar
 set wildmenu            "visual autocomplete for command menu
-set laststatus=2  " always display the status line
 autocmd InsertEnter,InsertLeave * set cul!
 set showmatch           "highlight matching brackets [{()}]
 syntax enable
 set scrolloff=8
+"}}
+" Statusline{{
+set laststatus=2  " always display the status line
+
+function! GitBranch()
+    return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
+endfunction
+
+function! StatuslineGit()
+    let l:branchname = GitBranch()
+    return strlen(l:branchname) > 0?'  '.l:branchname.' ':''
+endfunction
+
+set statusline=
+set statusline+=%<
+set statusline+=%{StatuslineGit()}
+set statusline+=%F
+set statusline+=%h
+set statusline+=%m
+set statusline+=%r
+set statusline+=%=char-val\ %b\ 0x%B
+set statusline+=\ \ line:%l\ col:%c%V
+set statusline+=\ %p%%
 "}}
 " Hlsearches{{
 set incsearch       "Search as characters are entered
@@ -26,11 +48,17 @@ set softtabstop=4   " number of spaces in tab when editing
 set shiftwidth=4    " for >
 set expandtab       " tabs are spaces
 "}}
-" traversing the buffer list{{
+" traversing the lists{{
+" Buffer list
 nnoremap <silent> [b : bprevious<CR>
 nnoremap <silent> ]b : bnext<CR>
 nnoremap <silent> [B : bfirst<CR>
 nnoremap <silent> ]B : blast<CR>
+
+" Argument List
+nnoremap <silent> [a : bprevious<CR>
+nnoremap <silent> ]a : bnext<CR>
+
 "}}
 " Move to beginning/end of line{{
 nnoremap B ^
@@ -132,13 +160,36 @@ nnoremap <leader>S :mksession<CR>
 nnoremap <leader>s :w<CR>
 " nnoremap <leader>x :x<CR>
 nnoremap <leader>qq :q<CR>
+
+" gs sorts paragraph
+nnoremap gs gsip
+
+" Alternates spellchecking
+" Jump around with [s ]s, suggestions z=, zg add to spell file, zw remove from
+" spell file, zug undo zw or zg
+nnoremap <leader>k :set spell!<CR>
+
+" & runs previous substitution with previous flags, used when ammending sub
+" command
+nnoremap & :&&<CR>
+xnoremap & :&&<CR>
+
+"Visual selection the X to search for that selection. Doesn't work with . and
+"*
+vmap X y/<C-R>"<CR>
 " }}
 " Various{{
+let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
 set lazyredraw          "only redraws screen when we have to
 filetype indent on " load filetype specific indent files
-let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
 filetype plugin indent on
+filetype plugin on
 set encoding=utf-8
 set nocompatible
+set smartcase
 
+" For pasting from system clipboard
+set pastetoggle=<f4>
+"
+" fill search field with last search with <C-r>/
 "}}
