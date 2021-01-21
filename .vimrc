@@ -55,10 +55,17 @@ nnoremap <silent> ]b : bnext<CR>
 nnoremap <silent> [B : bfirst<CR>
 nnoremap <silent> ]B : blast<CR>
 
-" Argument List
-nnoremap <silent> [a : bprevious<CR>
-nnoremap <silent> ]a : bnext<CR>
-
+"" Argument List
+"nnoremap <silent> [a : bprevious<CR>
+"nnoremap <silent> ]a : bnext<CR>
+"
+"" Location List
+"nnoremap <silent> [l : lprev<CR>
+"nnoremap <silent> ]l : lnext<CR>
+"
+"" Quickfix List
+"nnoremap <silent> [q : cprev<CR>
+"nnoremap <silent> ]q : cnext<CR>
 "}}
 " Move to beginning/end of line{{
 nnoremap B ^
@@ -91,7 +98,10 @@ Plug 'junegunn/vim-easy-align'
 
 Plug 'ycm-core/YouCompleteMe'
 Plug 'vim-syntastic/syntastic'
+" Plug 'git@github.com:ackyshake/VimeCompletesMe.git'
 " Plug 'ackyshake/VimeCompletesMe'
+"
+Plug 'tpope/vim-unimpaired'
 
 Plug 'sjl/gundo.vim'
 
@@ -192,4 +202,7 @@ set smartcase
 set pastetoggle=<f4>
 "
 " fill search field with last search with <C-r>/
+
+" let g:ycm_server_keep_logfiles = 1
+" let g:ycm_server_log_level = 'debug'
 "}}
