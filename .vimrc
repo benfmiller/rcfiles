@@ -313,6 +313,11 @@ nnoremap gs gsip
 " for incrementing numbers
 nnoremap <leader>i <C-a>
 
+" insert brackets niftily
+inoremap { {<CR>}<Esc>O
+inoremap ( ()<Esc>i
+inoremap [ []<Esc>i
+
 " & runs previous substitution with previous flags, used when ammending sub
 " command
 nnoremap & :&&<CR>
