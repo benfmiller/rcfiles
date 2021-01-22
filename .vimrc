@@ -243,7 +243,6 @@ nmap <leader>gK 9999<leader>gk
 " highlight SignifySignChange ctermfg=black ctermbg=yellow guifg=#000000
 " guibg=#ffff00
 "}}
-" }}
 " Easy Align{{
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
@@ -253,16 +252,6 @@ nmap ga <Plug>(EasyAlign)
 
 " Try gaip= or vipga=
 " }}
-" Noremaps{{
-
-" folding text{{
-set foldenable
-set foldlevelstart=0   " open most folds by default
-set foldnestmax=10      " 10 nested fold max
-nnoremap <leader>z za
-set foldmethod=marker
-set foldmarker={{,}}
-"}}
 " Plugin Maps{{
 " toggle undotree
 nnoremap <leader>u :UndotreeToggle<CR>
@@ -281,6 +270,17 @@ nnoremap <leader>t :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
+"}}
+" }}
+" Noremaps{{
+
+" folding text{{
+set foldenable
+set foldlevelstart=0   " open most folds by default
+set foldnestmax=10      " 10 nested fold max
+nnoremap <leader>z za
+set foldmethod=marker
+set foldmarker={{,}}
 "}}
 
 " highlight last inserted text
