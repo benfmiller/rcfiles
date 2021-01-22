@@ -71,14 +71,6 @@ nnoremap <silent> ]B : blast<CR>
 nnoremap B ^
 nnoremap E $
 "}}
-" folding text{{
-set foldenable
-set foldlevelstart=0   " open most folds by default
-set foldnestmax=10      " 10 nested fold max
-nnoremap <leader>z za
-set foldmethod=marker
-set foldmarker={{,}}
-"}}
 " edit vimrc/zshrc and load vimrc bindings{{
 nnoremap <leader>ev :vsp $MYVIMRC<CR>
 nnoremap <leader>ez :vsp ~/.zshrc<CR>
@@ -97,16 +89,38 @@ call plug#begin(stdpath('data') . '/plugged')
 Plug 'junegunn/vim-easy-align'
 
 Plug 'ycm-core/YouCompleteMe'
-Plug 'vim-syntastic/syntastic'
 " Plug 'git@github.com:ackyshake/VimeCompletesMe.git'
 " Plug 'ackyshake/VimeCompletesMe'
 "
+" Synchronous
+" Plug 'vim-syntastic/syntastic'
+"
+" "Asynchronous, requires makeprg
+" Plug 'neomake/neomake'
+"
+" Better linter
+ Plug 'dense-analysis/ale'
+
+Plug 'mbbill/undotree'
 Plug 'tpope/vim-unimpaired'
+" docs at ~/.local/share/nvim/plugged/vim-unimpaired/doc/unimpaired.txt
 
-Plug 'sjl/gundo.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'preservim/nerdtree'
 
+" git plugins
+" https://www.chrisatmachine.com/Neovim/12-git-integration/ Got this from this
+Plug 'mhinz/vim-signify'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
+Plug 'junegunn/gv.vim'
+""
+" Never seemed to work
+" Plug 'junegunn/vim-github-dashboard'
 " Any valid git URL is allowed
-Plug 'https://github.com/junegunn/vim-github-dashboard.git'
+" Plug 'https://github.com/junegunn/vim-github-dashboard.git'
+
+" Plug 'sjl/gundo.vim' Couldn't get it to work
 
 " Multiple Plug commands can be written in a single line using | separators
 " Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
@@ -132,27 +146,142 @@ Plug 'https://github.com/junegunn/vim-github-dashboard.git'
 " Initialize plugin system
 call plug#end()
 "}}
-" Syntastic Settings{{
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" Plugin Settings{{
+" Syntastic{{
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
 
-let g:ycm_show_diagnostics_ui = 0 
+let g:ycm_show_diagnostics_ui = 0
 " let g:syntastic_c_checkers = ['gcc', 'make']
 " let g:syntastic_python_checkers = ['pylint']
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
+" }}
+" Ale {{
+" ctrl e move to next error
+nmap <silent> <C-e> <Plug>(ale_next_wrap)
+nmap <silent> <C-l> <Plug>(ale_previous_wrap)
+
+" Adds number of errors to status line
+function! LinterStatus() abort
+    let l:counts = ale#statusline#Count(bufnr(''))
+    let l:all_errors = l:counts.error + l:counts.style_error
+    let l:all_non_errors = l:counts.total - l:all_errors
+    return l:counts.total == 0 ? 'OK' : printf(
+        \   '%d⨉ %d⚠ ',
+        \   all_non_errors,
+        \   all_errors
+        \)
+endfunction
+set statusline+=%=
+set statusline+=\ %{LinterStatus()}
+
+let g:ale_completion_enabled = 1
+
+" ALE Lint on text changed
+let g:ale_lint_on_text_changed = 1
+let g:ale_lint_on_enter = 0
+let g:ale_fix_on_save = 1
+
+let g:ale_sign_error = '●'
+let g:ale_sign_warning = '.'
+
+" ALE Lint should delay a bit?
+let g:ale_lint_delay = 2000
+
+" Let ALE know to what Linter to use for various programming languages
+let g:ale_linters = {'javascript': ['eslint'],
+\ 'java': ['javac']
+\ }
+" 'python':['pylint']
+
+"Path to Eclipse LSP for ALE
+" let g:ale_java_eclipselsp_path = '/usr/share/java/jdtls'
+" let g:ale_java_eclipselsp_executable = '/usr/bin/jdtls'
+" let g:ale_java_eclipselsp_config_path = '$HOME/.jdtls'
+
+" Use Quickfix List instead of LocList
+let g:ale_set_loclist = 0
+let g:ale_set_quickfix = 1
+let g:ale_open_list = 1
+let g:ale_keep_list_window_open = 1
+let g:ale_list_window_size = 5
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace', 'uncrustify'],
+\   'javascript': ['eslint'],
+\   'python': ['pylint'],
+\}
+" }}
+" Signify {{
+" Change these if you want
+let g:signify_sign_add               = '+'
+let g:signify_sign_delete            = '_'
+let g:signify_sign_delete_first_line = '‾'
+let g:signify_sign_change            = '~'
+
+" I find the numbers disctracting
+let g:signify_sign_show_count = 0
+let g:signify_sign_show_text = 1
+
+
+" Jump though hunks
+nmap <leader>gj <plug>(signify-next-hunk)
+nmap <leader>gk <plug>(signify-prev-hunk)
+nmap <leader>gJ 9999<leader>gJ
+nmap <leader>gK 9999<leader>gk
+
+
+" If you like colors instead
+" highlight SignifySignAdd                  ctermbg=green
+" guibg=#00ff00
+" highlight SignifySignDelete ctermfg=black ctermbg=red    guifg=#ffffff
+" guibg=#ff0000
+" highlight SignifySignChange ctermfg=black ctermbg=yellow guifg=#000000
+" guibg=#ffff00
+"}}
+" }}
+" Easy Align{{
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
+" Try gaip= or vipga=
 " }}
 " Noremaps{{
 
-" toggle gundo
-nnoremap <leader>u :GundoToggle<CR>
+" folding text{{
+set foldenable
+set foldlevelstart=0   " open most folds by default
+set foldnestmax=10      " 10 nested fold max
+nnoremap <leader>z za
+set foldmethod=marker
+set foldmarker={{,}}
+"}}
+" Plugin Maps{{
+" toggle undotree
+nnoremap <leader>u :UndotreeToggle<CR>
 
 " Syntastic Check
-nnoremap <leader>c :SyntasticCheck<CR>
+" nnoremap <leader>c :SyntasticCheck<CR>
+"
+" Syntastic toggle
+" nnoremap <leader>s :SyntasticToggleMode<CR>
+
+" open unimpaired vim info
+nnoremap <leader>ou :e ~/.local/share/nvim/plugged/vim-unimpaired/doc/unimpaired.txt<CR>
+
+" NERDtree
+nnoremap <leader>t :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
+"}}
 
 " highlight last inserted text
 nnoremap gV `[v`]
@@ -167,9 +296,10 @@ nnoremap k gk
 " save session, open with vim -S
 nnoremap <leader>S :mksession<CR>
 " save file
-nnoremap <leader>s :w<CR>
+nnoremap <leader>w :w<CR>
 " nnoremap <leader>x :x<CR>
 nnoremap <leader>qq :q<CR>
+nnoremap <leader>Q :q!<CR>
 
 " gs sorts paragraph
 nnoremap gs gsip
@@ -177,16 +307,30 @@ nnoremap gs gsip
 " Alternates spellchecking
 " Jump around with [s ]s, suggestions z=, zg add to spell file, zw remove from
 " spell file, zug undo zw or zg
-nnoremap <leader>k :set spell!<CR>
+" nnoremap <leader>k :set spell!<CR>
+" I used the unimpaired vim plugin, [os or ]os
+
+" for incrementing numbers
+nnoremap <leader>i <C-a>
 
 " & runs previous substitution with previous flags, used when ammending sub
 " command
 nnoremap & :&&<CR>
 xnoremap & :&&<CR>
 
-"Visual selection the X to search for that selection. Doesn't work with . and
-"*
+"Visual selection the X to search for that selection. not work with . and *
 vmap X y/<C-R>"<CR>
+
+"centers screen when moving during search
+noremap <Leader>n nzz
+noremap <Leader>N Nzz
+
+" resize windows proportionally
+nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
+nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
+nnoremap <silent> <Leader>> :exe "resize " . (winwidth(0) * 3/2)<CR>
+nnoremap <silent> <Leader>< :exe "resize " . (winwidth(0) * 2/3)<CR>
+
 " }}
 " Various{{
 let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
@@ -196,7 +340,7 @@ filetype plugin indent on
 filetype plugin on
 set encoding=utf-8
 set nocompatible
-set smartcase
+set ignorecase
 
 " For pasting from system clipboard
 set pastetoggle=<f4>
@@ -206,3 +350,10 @@ set pastetoggle=<f4>
 " let g:ycm_server_keep_logfiles = 1
 " let g:ycm_server_log_level = 'debug'
 "}}
+" Filetype setters{{
+
+" au filetype python setlocal mp=python3\ %
+" au filetype java setlocal mp=javac\ %
+" au filetype c setlocal mp=gcc\ -Werror\ -Wextra\ -Wall\ -ansi\ -pedantic-errors\ -g\ -lm\ %
+" au filetype cpp setlocal mp=gcc\ -Werror\ -Wextra\ -Wall\ -ansi\ -pedantic-errors\ -g\ -lm\ %
+" }}

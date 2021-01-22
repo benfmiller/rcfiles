@@ -1,7 +1,7 @@
 #Moving Aliases{{
 alias cdcp="cd /mnt/c/users/admin/OneDrive/CProjects"
 alias cdki="cd /mnt/c/users/admin/OneDrive/CProjects/kalideas"
-alias cdcpcw="cdcp && cd ClassWork"
+alias cdcw="cdcp && cd ClassWork"
 #}}
 #rcfiles Aliases{{
 alias pushzshrc="cd ;cd rcfiles; git pull; cd ; cp ~/.zshrc ~/rcfiles/.zshrc; cd rcfiles; git add .; git commit -m 'update to zshrc'; git push; cd "
@@ -35,7 +35,7 @@ install_neovim_vim_plug () { sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/sha
 #}}
 #Var Functions{{
 # cs12 then file on server to get, then place here to place
-cs12 () { sudo scp -i /home/kaliben/.ssh/csci_112 k12t783@csci112.cs.montana.edu:$1 $2;}
+cs12 () { sudo scp -r -i /home/kaliben/.ssh/csci_112 k12t783@csci112.cs.montana.edu:$1 $2;}
 #}}
 #Path{{
 # If you come from bash you might have to change your $PATH.
@@ -49,7 +49,7 @@ export PATH=~/.local/bin:$PATH
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="obraun"
+ZSH_THEME="linuxonly"
 #fishy
 #obraun
 
@@ -65,12 +65,21 @@ ZSH_THEME="obraun"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git python vi-mode tmux sudo zsh-interactive-cd fzf) 
 #}}
 # More Aliases{{
+# for esc to edit line in vim normal mode
+bindkey -v
+
+# export KEYTIMEOUT=1
+
+if type nvim > /dev/null 2>&1; then
+    alias vim='nvim'
+fi
+
 alias l="ls -al"
 alias p="pwd"
-alias vim="nvim"
+alias c="cd"
 #}}
 # ZSH Options{{
 # Uncomment the following line to use case-sensitive completion.
