@@ -4,12 +4,10 @@ alias cdki="cd /mnt/c/users/admin/OneDrive/CProjects/kalideas"
 alias cw="cdcp && cd ClassWork"
 #}}
 #rcfiles Aliases{{
-alias pushzshrc="cd ;cd rcfiles; git pull; cd ; cp ~/.zshrc ~/rcfiles/.zshrc; cd rcfiles; git add .; git commit -m 'update to zshrc'; git push; cd "
-alias updatezshrc="cd ~/rcfiles; git pull; cd ; cp ~/rcfiles/.zshrc ~/.zshrc"
-alias pushvimrc="cd ;cd rcfiles; git pull; cd ; cp .vimrc ~/rcfiles/.vimrc; cd rcfiles; git add .; git commit -m 'update to vimrc'; git push; cd "
-alias updatevimrc="cd ~/rcfiles; git pull; cd ; cp ~/rcfiles/.vimrc ~/.vimrc"
-alias pushtmux="cd ;cd rcfiles; git pull; cd ; cp .tmux.conf ~/rcfiles/; cd rcfiles; git add .; git commit -m 'update to tmux conf'; git push; cd "
-alias updatetmux="cd ~/rcfiles; git pull; cd ; cp ~/rcfiles/.tmux.conf ~/"
+alias pullrcs="cd ;cd rcfiles; git pull; cd ;"
+alias pushrcs="cd ;cd rcfiles; git push; cd ;"
+alias pushtmux="cd ;cd rcfiles; git pull; cd ; cp .tmux.conf ~/rcfiles/; cd rcfiles; git add .tmux.conf; git commit -m 'update to tmux conf'; git push; cd "
+alias pulltmux="cd ~/rcfiles; git pull; cd ; cp ~/rcfiles/.tmux.conf ~/"
 cpnviminit () {
     cd ; mkdir .config/nvim; cp rcfiles/init.vim .config/nvim/;
 }
@@ -58,14 +56,6 @@ ZSH_THEME="linuxonly"
 # a theme from this variable instead of looking in $ZSH/themes/
 # If set to an empty array, this variable will have no effect.
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
-#}}
-# Plugins{{
-# Which plugins would you like to load?
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(git python vi-mode tmux sudo zsh-interactive-cd fzf)
 #}}
 # More Aliases{{
 # for esc to edit line in vim normal mode
