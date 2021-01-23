@@ -1,1 +1,2 @@
-learn some zsh/bash scripting!
+TODO Go through other config folders
+TODO revamp tmux from book
