@@ -1,4 +1,3 @@
-Find a ycm alternative that doesn't require an install
 make vimrc and zshrc source from rcfiles
 separate plugin files
 learn some zsh/bash scripting!
