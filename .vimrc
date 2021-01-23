@@ -83,11 +83,12 @@ nnoremap <leader>rv :source $MYVIMRC<CR>
 " - Avoid using standard Vim directory names like 'plugin'
 call plug#begin(stdpath('data') . '/plugged')
 
-" Make sure you use single quotes
-
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
 Plug 'junegunn/vim-easy-align'
 
+" These require installation
+Plug 'BurntSushi/ripgrep'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'ycm-core/YouCompleteMe'
 " Plug 'git@github.com:ackyshake/VimeCompletesMe.git'
 " Plug 'ackyshake/VimeCompletesMe'
@@ -105,7 +106,6 @@ Plug 'mbbill/undotree'
 Plug 'tpope/vim-unimpaired'
 " docs at ~/.local/share/nvim/plugged/vim-unimpaired/doc/unimpaired.txt
 
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'preservim/nerdtree'
 
 " git plugins

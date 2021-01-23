@@ -1,7 +1,7 @@
 #Moving Aliases{{
 alias cdcp="cd /mnt/c/users/admin/OneDrive/CProjects"
 alias cdki="cd /mnt/c/users/admin/OneDrive/CProjects/kalideas"
-alias cdcw="cdcp && cd ClassWork"
+alias cw="cdcp && cd ClassWork"
 #}}
 #rcfiles Aliases{{
 alias pushzshrc="cd ;cd rcfiles; git pull; cd ; cp ~/.zshrc ~/rcfiles/.zshrc; cd rcfiles; git add .; git commit -m 'update to zshrc'; git push; cd "
@@ -59,13 +59,13 @@ ZSH_THEME="linuxonly"
 # If set to an empty array, this variable will have no effect.
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 #}}
-# ZSH Plugins{{
+# Plugins{{
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git python vi-mode tmux sudo zsh-interactive-cd fzf) 
+plugins=(git python vi-mode tmux sudo zsh-interactive-cd fzf)
 #}}
 # More Aliases{{
 # for esc to edit line in vim normal mode
