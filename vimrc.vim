@@ -27,8 +27,9 @@ endfunction
 
 set statusline=
 set statusline+=%<
-set statusline+=%{StatuslineGit()}
-set statusline+=%F
+set statusline+=%{StatuslineGit()}\ \|
+set statusline+=\ %f\ \|
+set statusline+=\ %F
 set statusline+=%h
 set statusline+=%m
 set statusline+=%r
@@ -105,6 +106,9 @@ nnoremap <leader>w :w<CR>
 nnoremap <leader>qq :q<CR>
 nnoremap <leader>Q :q!<CR>
 
+" opens current window in new tab
+nnoremap <leader>ot :tabedit %<CR>
+
 " gs sorts paragraph
 nnoremap gs gsip
 
@@ -121,6 +125,7 @@ nnoremap <leader>i <C-a>
 inoremap { {<CR>}<Esc>O
 inoremap ( ()<Esc>i
 inoremap [ []<Esc>i
+nnoremap <leader>{ a{<Esc>ylp
 
 " & runs previous substitution with previous flags, used when ammending sub
 " command
@@ -142,7 +147,6 @@ nnoremap <silent> <Leader>< :exe "resize " . (winwidth(0) * 2/3)<CR>
 
 " }}
 " Various{{
-let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
 set lazyredraw          "only redraws screen when we have to
 filetype indent on " load filetype specific indent files
 filetype plugin indent on
@@ -157,8 +161,6 @@ set pastetoggle=<f4>
 "
 " fill search field with last search with <C-r>/
 
-" let g:ycm_server_keep_logfiles = 1
-" let g:ycm_server_log_level = 'debug'
 "}}
 " Filetype setters{{
 
