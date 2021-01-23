@@ -1,3 +1,1 @@
-make vimrc and zshrc source from rcfiles
-separate plugin files
 learn some zsh/bash scripting!
