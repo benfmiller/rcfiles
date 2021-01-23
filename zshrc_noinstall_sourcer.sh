@@ -5,7 +5,7 @@ source ~/rcfiles/zsh_zsh.sh
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git python vi-mode tmux sudo zsh-interactive-cd fzf)
+plugins=(git python vi-mode tmux zsh-interactive-cd)
 #}}
 source $ZSH/oh-my-zsh.sh
 source ~/rcfiles/zsh_user.sh
