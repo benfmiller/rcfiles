@@ -13,11 +13,11 @@ alias sinstal="sudo apt install"
 #}}
 #Tmux{{
 # This requires a name for session
-alias t="tmux new-session -s"
+alias t="tmux -2 new-session -s"
 
-alias tl="tmux ls"
-alias ta="tmux attach"
-alias tat="tmux attach -t"
+alias tl="tmux -2 ls"
+alias ta="tmux -2 attach"
+alias tat="tmux -2 attach -t"
 #}}
 #Installers{{
 install_oh_my_zsh () {
@@ -63,6 +63,11 @@ cs12 () {
 }
 cptocs12 () {
     sudo scp -r -i /home/kaliben/.ssh/csci_112 $1 k12t783@csci112.cs.montana.edu:$2
+}
+print_colors () {
+for i in {0..255} ; do
+    printf "\x1b[38;5;${i}m${i} "
+done
 }
 #}}
 # Zsh Suggested User configuration? {{
