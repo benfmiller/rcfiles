@@ -128,4 +128,11 @@ fi
 
 unset env
 #}}
+# Git branch main updater{{
+
+# git branch -m master main
+# git fetch origin
+# git branch -u origin/main main
+
+#}}
 #}}
