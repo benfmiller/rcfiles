@@ -92,13 +92,17 @@ cs12 () { sudo scp -r -i /home/kaliben/.ssh/csci_112 k12t783@csci112.cs.montana.
 # SetupKeys{{
 setup_github_ssh () {
     ssh-keygen -t rsa -b 4096 -C ben.f.miller24@gmail.com
-    ssh-add ~/.ssh/id_rsa
+    mv ~/.ssh/id_rsa ~/.ssh/id_rsa_github
+    ssh-add ~/.ssh/id_rsa_github
     echo "\nCopy this\n"
-    cat ~/.ssh/id_rsa.pub
+    mv ~/.ssh/id_rsa.pub ~/.ssh/id_rsa_github.pub
+    cat ~/.ssh/id_rsa_github.pub
     echo "\n"
     ssh -T git@github.com
     echo "Make sure gits are ssh connected"
 }
+# If already have key, just add to ssh-agent and check if connected to github
+# Start agent in background with "eval `ssh-agent -s`"
 #}}
 # Start ssh-agent{{
 env=~/.ssh/agent.env
