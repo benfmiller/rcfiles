@@ -1,15 +1,10 @@
 #Moving Aliases{{
-alias cdcp="cd /mnt/c/users/benfm/OneDrive/CProjects"
-alias cdki="cd /mnt/c/users/benfm/OneDrive/CProjects/kalideas"
-alias cw="cdcp && cd ClassWork"
 #}}
 #rcfiles {{
 alias pullrcs="cd ;cd rcfiles; git pull; cd ;"
 alias pushrcs="cd ;cd rcfiles; git push; cd ;"
-alias pushtmux="cd ;cd rcfiles; git pull; cd ; cp .tmux.conf ~/rcfiles/; cd rcfiles; git add .tmux.conf; git commit -m 'update to tmux conf'; git push; cd "
-alias pulltmux="cd ~/rcfiles; git pull; cd ; cp ~/rcfiles/.tmux.conf ~/"
 cpnviminit () {
-    cd ; mkdir .config/nvim; cp rcfiles/init.vim .config/nvim/;
+    cd ; mkdir .config/nvim; cp rcfiles/vim/init.vim .config/nvim/;
 }
 #}}
 #System{{
@@ -18,7 +13,7 @@ alias sinstal="sudo apt install"
 #}}
 #Tmux{{
 # This requires a name for session
-alias t="tmux new -s"
+alias t="tmux new-session -s"
 
 alias tl="tmux ls"
 alias ta="tmux attach"
@@ -63,7 +58,12 @@ alias c="cd"
 #}}
 #Var Functions{{
 # cs12 then file on server to get, then place here to place
-cs12 () { sudo scp -r -i /home/kaliben/.ssh/csci_112 k12t783@csci112.cs.montana.edu:$1 $2}
+cs12 () {
+    sudo scp -r -i /home/kaliben/.ssh/csci_112 k12t783@csci112.cs.montana.edu:$1 $2
+}
+cptocs12 () {
+    sudo scp -r -i /home/kaliben/.ssh/csci_112 $1 k12t783@csci112.cs.montana.edu:$2
+}
 #}}
 # Zsh Suggested User configuration? {{
 

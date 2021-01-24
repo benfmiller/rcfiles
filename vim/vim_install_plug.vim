@@ -62,4 +62,4 @@ let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
 " let g:ycm_server_log_level = 'debug'
 "}}
 "}}
-source ~/rcfiles/vim_all_plug.vim
+source ~/rcfiles/vim/vim_all_plug.vim

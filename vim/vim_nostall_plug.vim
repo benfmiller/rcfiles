@@ -50,4 +50,4 @@ Plug 'junegunn/gv.vim'
 " Initialize plugin system
 call plug#end()
 "}}
-source ~/rcfiles/vim_all_plug.vim
+source ~/rcfiles/vim/vim_all_plug.vim
