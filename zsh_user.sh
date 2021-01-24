@@ -42,16 +42,21 @@ install_neovim_vim_plug () {
 export PATH=~/.local/bin:$PATH
 
 #}}
+# Editor {{
+export EDITOR='vim'
+
+if type nvim > /dev/null 2>&1; then
+    alias vim='nvim'
+    export EDITOR='nvim'
+fi
+#}}
 # More Aliases{{
 # for esc to edit line in vim normal mode
 bindkey -v
 
 # export KEYTIMEOUT=1
 
-if type nvim > /dev/null 2>&1; then
-    alias vim='nvim'
-fi
-
+alias gs="git status"
 alias l="ls -al"
 alias p="pwd"
 alias c="cd"
@@ -135,4 +140,5 @@ unset env
 # git branch -u origin/main main
 
 #}}
+# Add passphrase with ssh-keygen -p -f filename
 #}}
