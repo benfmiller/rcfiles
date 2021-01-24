@@ -1,6 +1,6 @@
 #Moving Aliases{{
-alias cdcp="cd /mnt/c/users/admin/OneDrive/CProjects"
-alias cdki="cd /mnt/c/users/admin/OneDrive/CProjects/kalideas"
+alias cdcp="cd /mnt/c/users/benfm/OneDrive/CProjects"
+alias cdki="cd /mnt/c/users/benfm/OneDrive/CProjects/kalideas"
 alias cw="cdcp && cd ClassWork"
 #}}
 #rcfiles {{
@@ -25,10 +25,15 @@ alias ta="tmux attach"
 alias tat="tmux attach -t"
 #}}
 #Installers{{
-install_oh_my_zsh () {sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"}
-
-install_vim_vim_plug () {curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim}
-install_neovim_vim_plug () { sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'}
+install_oh_my_zsh () {
+    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+}
+install_vim_vim_plug () {
+    curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+}
+install_neovim_vim_plug () {
+    sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+}
 # ycm requires install.py
 # nvim in .local/share/nvim/plugged/YouCompleteMe
 # vim in .vim/plugged/YouCompleteMe
@@ -53,7 +58,7 @@ alias c="cd"
 #}}
 #Var Functions{{
 # cs12 then file on server to get, then place here to place
-cs12 () { sudo scp -r -i /home/kaliben/.ssh/csci_112 k12t783@csci112.cs.montana.edu:$1 $2;}
+cs12 () { sudo scp -r -i /home/kaliben/.ssh/csci_112 k12t783@csci112.cs.montana.edu:$1 $2}
 #}}
 # Zsh Suggested User configuration? {{
 
@@ -83,7 +88,19 @@ cs12 () { sudo scp -r -i /home/kaliben/.ssh/csci_112 k12t783@csci112.cs.montana.
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 #}}
-# Start ssh-agent {{
+# Github {{
+# SetupKeys{{
+setup_github_ssh () {
+    ssh-keygen -t rsa -b 4096 -C ben.f.miller24@gmail.com
+    ssh-add ~/.ssh/id_rsa
+    echo "\nCopy this\n"
+    cat ~/.ssh/id_rsa.pub
+    echo "\n"
+    ssh -T git@github.com
+    echo "Make sure gits are ssh connected"
+}
+#}}
+# Start ssh-agent{{
 env=~/.ssh/agent.env
 
 agent_load_env () { test -f "$env" && . "$env" >| /dev/null ; }
@@ -105,4 +122,5 @@ elif [ "$SSH_AUTH_SOCK" ] && [ $agent_run_state = 1 ]; then
 fi
 
 unset env
+#}}
 #}}
