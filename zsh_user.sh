@@ -103,6 +103,7 @@ setup_github_ssh () {
 }
 # If already have key, just add to ssh-agent and check if connected to github
 # Start agent in background with "eval `ssh-agent -s`"
+# If error persists, do it with the shell that added it in the first place
 #}}
 # Start ssh-agent{{
 env=~/.ssh/agent.env
