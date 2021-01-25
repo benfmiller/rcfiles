@@ -1,8 +1,11 @@
 #!/bin/sh
 
 
-if [ `whoami` == 'root' ]
+if [ `whoami` = 'root' ]
   then
+    echo "Don't use sudo!"
+    return 1
+
     echo "Moving old config files to ~/.config/old_config"
     mkdir /home/$SUDO_USER/.config/old_config
     if test -f "/home/$SUDO_USER/.vimrc"; then

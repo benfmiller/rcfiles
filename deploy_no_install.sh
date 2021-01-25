@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [ `whoami` == 'root' ]
+if [ `whoami` = 'root' ]
   then
     echo "Don't use as root!"
     return 1
