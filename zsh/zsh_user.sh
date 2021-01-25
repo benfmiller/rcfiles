@@ -142,10 +142,12 @@ unset env
 #}}
 # Git branch main updater{{
 
-# git branch -m master main
-# git fetch origin
-# git branch -u origin/main main
+chmastermain () {
+    git branch -m master main
+    git fetch origin
+    git branch -u origin/main main
+}
 
 #}}
-# Add passphrase with ssh-keygen -p -f filename
+# Add passphrase with "ssh-keygen -p -f filename"
 #}}
