@@ -103,8 +103,8 @@ nnoremap <leader>S :mksession<CR>
 " save file
 nnoremap <leader>w :w<CR>
 " nnoremap <leader>x :x<CR>
-nnoremap <leader>qq :q<CR>
-nnoremap <leader>Q :q!<CR>
+nnoremap <leader>qb :bd<CR>
+nnoremap <leader>qq :q!<CR>
 
 " opens current window in new tab
 nnoremap <leader>ot :tabedit %<CR>
