@@ -55,6 +55,11 @@ alias gs="git status"
 alias l="ls -al"
 alias p="pwd"
 alias c="cd"
+
+alias aets="deactivate &> ~/null; source ~/venvs/tradesuite/Scripts/activate"
+alias aead="deactivate &> ~/null; source ~/venvs/audalign/Scripts/activate"
+alias aebk="deactivate &> ~/null; source ~/venvs/braspkeys/Scripts/activate"
+alias de="deactivate"
 #}}
 #Var Functions{{
 # cs12 then file on server to get, then place here to place
