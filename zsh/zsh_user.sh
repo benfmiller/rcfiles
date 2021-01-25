@@ -47,7 +47,10 @@ fi
 #}}
 # More Aliases{{
 # for esc to edit line in vim normal mode
-bindkey -v
+if test -f "~/.zshrc"; then
+    bindkey -v
+    echo "Worked"
+fi
 
 # export KEYTIMEOUT=1
 
