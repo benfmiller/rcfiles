@@ -111,8 +111,8 @@ nnoremap <leader>qq :q!<CR>
 nnoremap <leader>ot :tabedit %<CR>
 
 " Switch tab with lead m
-nnoremap <leader>m gt<CR>
-nnoremap <leader>M gT<CR>
+nnoremap <leader>m gt
+nnoremap <leader>M gT
 
 " gs sorts paragraph
 nnoremap gs gsip
