@@ -54,7 +54,6 @@ fi
 
 # export KEYTIMEOUT=1
 
-alias gs="git status"
 alias l="ls -al"
 alias p="pwd"
 alias c="cd"
@@ -106,6 +105,7 @@ done
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 #}}
+# Git {{
 # Github {{
 # SetupKeys{{
 setup_github_ssh () {
@@ -159,3 +159,14 @@ chmastermain () {
 #}}
 # Add passphrase with "ssh-keygen -p -f filename"
 #}}
+# Aliases{{
+
+alias gs="git status"
+alias gp="git push"
+alias gl="git pull"
+alias ga="git add"
+alias gc="git commit"
+alias gh="git checkout"
+
+# }}
+# }}
