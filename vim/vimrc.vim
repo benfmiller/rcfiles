@@ -12,7 +12,13 @@ autocmd InsertEnter,InsertLeave * set cul!
 set showmatch           "highlight matching brackets [{()}]
 syntax enable
 set scrolloff=8
-"}}
+
+" TabLine     tab pages line, not active tab page label gui=NONE guibg=#3e4452 guifg=#abb2bf
+" TabLineFill tab pages line, where there are no labels
+" TabLineSel  tab pages line, active tab page label      gui=NONE guibg=#1D6E02 guifg=#ffffff
+
+hi TabLineSel cterm=NONE term=NONE ctermfg=232 ctermbg=154
+hi TabLine        cterm=NONE term=NONE ctermfg=cyan ctermbg=black
 " Statusline{{
 set laststatus=2  " always display the status line
 
@@ -37,6 +43,7 @@ set statusline+=%r
 set statusline+=\ %=char-val\ %b\ 0x%B
 set statusline+=\ \ line:%l\ col:%c%V
 set statusline+=\ %p%%
+"}}
 "}}
 " Hlsearches{{
 set incsearch       "Search as characters are entered
