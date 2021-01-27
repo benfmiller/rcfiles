@@ -156,6 +156,8 @@ chmastermain () {
     git branch -u origin/main main
 }
 
+# set git ssh with "git remote set-url origin git@Github.com:benfmiller/....git"
+
 #}}
 # Add passphrase with "ssh-keygen -p -f filename"
 #}}
