@@ -25,15 +25,16 @@ function! StatuslineGit()
     return strlen(l:branchname) > 0?'  '.l:branchname.' ':''
 endfunction
 
+" pathshorten()
 set statusline=
-set statusline+=%<
 set statusline+=%{StatuslineGit()}\ \|
 set statusline+=\ %f\ \|
-set statusline+=\ %F
+set statusline+=\ %<
+set statusline+=%F
 set statusline+=%h
 set statusline+=%m
 set statusline+=%r
-set statusline+=%=char-val\ %b\ 0x%B
+set statusline+=\ %=char-val\ %b\ 0x%B
 set statusline+=\ \ line:%l\ col:%c%V
 set statusline+=\ %p%%
 "}}
@@ -103,11 +104,15 @@ nnoremap <leader>S :mksession<CR>
 " save file
 nnoremap <leader>w :w<CR>
 " nnoremap <leader>x :x<CR>
-nnoremap <leader>qq :q<CR>
-nnoremap <leader>Q :q!<CR>
+nnoremap <leader>qb :bd<CR>
+nnoremap <leader>qq :q!<CR>
 
 " opens current window in new tab
 nnoremap <leader>ot :tabedit %<CR>
+
+" Switch tab with lead m
+nnoremap <leader>m gt<CR>
+nnoremap <leader>M gT<CR>
 
 " gs sorts paragraph
 nnoremap gs gsip
