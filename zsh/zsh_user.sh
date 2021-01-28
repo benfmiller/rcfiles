@@ -172,3 +172,12 @@ alias gh="git checkout"
 
 # }}
 # }}
+# Python {{
+# Twine {{
+# python setup.py sdist bdist_wheel         # build wheels and tar's
+# tar tzf realpython-reader-1.0.0.tar.gz   # look at the package list
+# twine check dist/*    # make sure it all works
+# twine upload --repository-url https://test.pypi.org/legacy/ dist/*        # to testpypi
+# twine upload dist/*     # to pypi
+#}}
+#}}
