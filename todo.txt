@@ -1,2 +1,3 @@
 TODO Go through other config folders
-TODO revamp tmux from book
+TODO vimspector
+TODO move paste toggle

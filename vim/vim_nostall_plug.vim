@@ -9,6 +9,9 @@ call plug#begin('~/.vim/plugged')
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
 Plug 'junegunn/vim-easy-align'
 
+Plug 'puremourning/vimspector'
+Plug 'szw/vim-maximizer'
+
 "
 " Better linter
 Plug 'dense-analysis/ale'
