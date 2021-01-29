@@ -92,9 +92,14 @@ nmap ga <Plug>(EasyAlign)
 
 " Try gaip= or vipga=
 " }}
+" VimSpector {{
+let g:vimspector_enable_mappings = 'HUMAN'
+" }}
 " Plugin Maps{{
 " toggle undotree
 nnoremap <leader>tu :UndotreeToggle<CR>
+
+nnoremap <leader>tm :MaximizerToggle<CR>
 
 " open unimpaired vim info
 nnoremap <leader>ou :e ~/.local/share/nvim/plugged/vim-unimpaired/doc/unimpaired.txt<CR>

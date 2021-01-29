@@ -107,10 +107,9 @@ nnoremap j gj
 nnoremap k gk
 
 " save session, open with vim -S
-nnoremap <leader>S :mksession<CR>
+nnoremap <leader>S :mksession!<CR>
 " save file
 nnoremap <leader>w :w<CR>
-" nnoremap <leader>x :x<CR>
 nnoremap <leader>qb :bd<CR>
 nnoremap <leader>qq :q!<CR>
 
@@ -169,7 +168,7 @@ set ignorecase
 set hidden
 
 " For pasting from system clipboard
-set pastetoggle=<f4>
+set pastetoggle=<leader>tp
 "
 " fill search field with last search with <C-r>/
 
