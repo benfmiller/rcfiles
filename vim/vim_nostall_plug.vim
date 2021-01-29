@@ -51,3 +51,4 @@ Plug 'junegunn/gv.vim'
 call plug#end()
 "}}
 source ~/rcfiles/vim/vim_all_plug.vim
+let g:ale_completion_enabled = 1
