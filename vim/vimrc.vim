@@ -120,6 +120,9 @@ nnoremap <leader>ot :tabedit %<CR>
 nnoremap <leader>m gt
 nnoremap <leader>M gT
 
+" List buffers
+nnoremap <leader>l :ls<CR>
+
 " gs sorts paragraph
 nnoremap gs gsip
 
