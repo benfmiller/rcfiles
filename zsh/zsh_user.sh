@@ -119,6 +119,19 @@ setup_github_ssh () {
     ssh -T git@github.com
     echo "Make sure gits are ssh connected"
 }
+
+print_setup_github_ssh (){
+    echo ssh-keygen -t rsa -b 4096 -C ben.f.miller24@gmail.com
+    echo mv ~/.ssh/id_rsa ~/.ssh/id_rsa_github
+    echo ssh-add ~/.ssh/id_rsa_github
+    echo "\nCopy this\n"
+    echo mv ~/.ssh/id_rsa.pub ~/.ssh/id_rsa_github.pub
+    echo cat ~/.ssh/id_rsa_github.pub
+    echo echo "\n"
+    echo ssh -T git@github.com
+    echo "Make sure gits are ssh connected"
+
+}
 # If already have key, just add to ssh-agent and check if connected to github
 # Start agent in background with "eval `ssh-agent -s`"
 # If error persists, do it with the shell that added it in the first place
@@ -155,11 +168,16 @@ chmastermain () {
     git fetch origin
     git branch -u origin/main main
 }
+print_change_master_branch () {
+    echo git branch -m master main
+    echo git fetch origin
+    echo git branch -u origin/main main
+}
 
 # set git ssh with "git remote set-url origin git@Github.com:benfmiller/....git"
 
 #}}
-# Add passphrase with "ssh-keygen -p -f filename"
+alias print_add_ssh_passphrase="echo Add passphrase with \"ssh-keygen -p -f filename\""
 #}}
 # Aliases{{
 
@@ -174,10 +192,13 @@ alias gh="git checkout"
 # }}
 # Python {{
 # Twine {{
-# python setup.py sdist bdist_wheel         # build wheels and tar's
-# tar tzf realpython-reader-1.0.0.tar.gz   # look at the package list
-# twine check dist/*    # make sure it all works
-# twine upload --repository-url https://test.pypi.org/legacy/ dist/*        # to testpypi
-# twine upload dist/*     # to pypi
+
+print_python_push_pypi (){
+    echo python setup.py sdist bdist_wheel   \# build wheels and tar\'s
+    echo tar tzf realpython-reader-1.0.0.tar.gz   \# look at the package list
+    echo twine check dist/*    \# make sure it all works
+    echo twine upload --repository-url https://test.pypi.org/legacy/ dist/*     \# to testpypi
+    echo twine upload dist/*     \# to pypi
+}
 #}}
 #}}
