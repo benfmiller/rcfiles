@@ -189,6 +189,11 @@ alias gc="git commit"
 alias gh="git checkout"
 
 # }}
+print_git_tag (){
+    echo git tag v*.*.*
+    echo git push origin v*.*.*
+    echo or git push origin --tags
+}
 # }}
 # Python {{
 # Twine {{
