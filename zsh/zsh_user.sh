@@ -29,6 +29,10 @@ install_vim_vim_plug () {
 install_neovim_vim_plug () {
     sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 }
+
+install_tmux_plugin_manager (){
+	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+}
 # ycm requires install.py
 # nvim in .local/share/nvim/plugged/YouCompleteMe
 # vim in .vim/plugged/YouCompleteMe
@@ -234,6 +238,7 @@ print_all_custom_funcs() {
     echo install_oh_my_zsh
     echo install_vim_vim_plug
     echo install_neovim_vim_plug
+    echo install_tmux_plugin_manager
     echo cpviminit
 
     echo look at print completion for others

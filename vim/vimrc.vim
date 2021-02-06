@@ -43,6 +43,7 @@ set statusline+=%r
 set statusline+=\ %=char-val\ %b\ 0x%B
 set statusline+=\ \ line:%l\ col:%c%V
 set statusline+=\ %p%%
+set statusline+=\ %{ObsessionStatus(\"ObAct\",\"ObPaus\")}
 "}}
 "}}
 " Hlsearches{{

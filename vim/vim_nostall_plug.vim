@@ -12,13 +12,17 @@ Plug 'junegunn/vim-easy-align'
 Plug 'puremourning/vimspector'
 Plug 'szw/vim-maximizer'
 
+Plug 'tpope/vim-unimpaired'
+" docs at ~/.local/share/nvim/plugged/vim-unimpaired/doc/unimpaired.txt
+Plug 'tpope/vim-obsession'
+" https://github.com/tpope/vim-obsession
+" Run :Obsess o start recording to file
+
 "
 " Better linter
 Plug 'dense-analysis/ale'
 
 Plug 'mbbill/undotree'
-Plug 'tpope/vim-unimpaired'
-" docs at ~/.local/share/nvim/plugged/vim-unimpaired/doc/unimpaired.txt
 
 Plug 'preservim/nerdtree'
 
