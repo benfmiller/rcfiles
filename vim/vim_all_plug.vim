@@ -101,7 +101,7 @@ nnoremap <leader>tu :UndotreeToggle<CR>
 
 nnoremap <leader>tm :MaximizerToggle<CR>
 
-nnoremap <leader>f :FZF<CR>
+nnoremap <leader>to :Obsess!<CR>
 
 " open unimpaired vim info
 nnoremap <leader>ou :e ~/.local/share/nvim/plugged/vim-unimpaired/doc/unimpaired.txt<CR>

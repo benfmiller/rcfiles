@@ -6,6 +6,7 @@
 call plug#begin(stdpath('data') . '/plugged')
 "
 " Require Installation{{
+" Consider telescope???
 Plug 'jremmen/vim-ripgrep', { 'do': { -> ripgrep#install() } }
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'ycm-core/YouCompleteMe', { 'do': './install.py' }
@@ -67,5 +68,6 @@ let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
 " let g:ycm_server_keep_logfiles = 1
 " let g:ycm_server_log_level = 'debug'
 "}}
+nnoremap <leader>f :FZF<CR>
 "}}
 source ~/rcfiles/vim/vim_all_plug.vim

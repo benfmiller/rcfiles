@@ -6,6 +6,9 @@
 call plug#begin('~/.vim/plugged')
 "
 
+" https://github.com/kien/ctrlp.vim
+Plug 'kien/ctrlp.vim'
+
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
 Plug 'junegunn/vim-easy-align'
 
@@ -57,5 +60,9 @@ Plug 'junegunn/gv.vim'
 " Initialize plugin system
 call plug#end()
 "}}
+
+nnoremap <leader>f :CtrlP<CR>
+
+"
 source ~/rcfiles/vim/vim_all_plug.vim
 let g:ale_completion_enabled = 1
