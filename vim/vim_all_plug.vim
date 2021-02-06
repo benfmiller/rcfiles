@@ -111,6 +111,8 @@ nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
 
+" Git Stuff {{
+" This comes from vim fugitive
 nnoremap <leader>gs :Git status<CR>
 nnoremap <leader>ga :Git add
 nnoremap <leader>gc :Git commit -m
@@ -119,4 +121,10 @@ nnoremap <leader>gl :Git pull<CR>
 nnoremap <leader>gm :Git merge
 nnoremap <leader>gols :Git log --stat<CR>
 nnoremap <leader>golo :Git log --oneline<CR>
+
+nnoremap <leader>gd :SignifyDiff<CR>
+
+nnoremap <leader>gv :GV<CR>
+nnoremap <leader>gtc :GV!<CR>
+"}}
 "}}
