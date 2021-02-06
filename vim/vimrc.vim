@@ -83,7 +83,7 @@ nnoremap E $
 " edit vimrc/zshrc and load vimrc bindings{{
 nnoremap <leader>ev :vsp $MYVIMRC<CR>
 nnoremap <leader>ez :vsp ~/.zshrc<CR>
-nnoremap <leader>rv :source $MYVIMRC<CR>
+nnoremap <leader>sv :source $MYVIMRC<CR>
 "}}
 " Noremaps{{
 
