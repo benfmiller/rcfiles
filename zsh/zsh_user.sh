@@ -187,12 +187,30 @@ alias gl="git pull"
 alias ga="git add"
 alias gc="git commit"
 alias gh="git checkout"
+alias glo="git log --online"
+alias gls="git log --stat"
+alias gm="git merge"
+
+print_git_aliases (){
+    echo gs=\"git status\"
+    echo gp=\"git push\"
+    echo gl=\"git pull\"
+    echo ga=\"git add\"
+    echo gc=\"git commit\"
+    echo gh=\"git checkout\"
+    echo glo=\"git log --online\"
+    echo gls=\"git log --stat\"
+    echo gm=\"git merge\"
+}
 
 # }}
 print_git_tag (){
     echo git tag v*.*.*
     echo git push origin v*.*.*
     echo or git push origin --tags
+}
+print_ch_git_to_ssh () {
+    echo git remote set-url origin git@github.com:name/repo.git
 }
 # }}
 # Python {{
@@ -207,3 +225,18 @@ print_python_push_pypi (){
 }
 #}}
 #}}
+# Print Alls {{
+print_all_custom_funcs() {
+    echo chmastermain
+    echo setup_github_ssh
+    echo cs12
+    echo cptocs12
+    echo install_oh_my_zsh
+    echo install_vim_vim_plug
+    echo install_neovim_vim_plug
+    echo cpviminit
+
+    echo look at print completion for others
+}
+
+# }}
