@@ -125,6 +125,6 @@ nnoremap <leader>golo :Git log --oneline<CR>
 nnoremap <leader>gd :SignifyDiff<CR>
 
 nnoremap <leader>gv :GV<CR>
-nnoremap <leader>gtc :GV!<CR>
+nnoremap <leader>gtv :GV!<CR>
 "}}
 "}}
