@@ -110,4 +110,13 @@ nnoremap <leader>ou :e ~/.local/share/nvim/plugged/vim-unimpaired/doc/unimpaired
 nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
+
+nnoremap <leader>gs :Git status<CR>
+nnoremap <leader>ga :Git add
+nnoremap <leader>gc :Git commit -m
+nnoremap <leader>gp :Git push<CR>
+nnoremap <leader>gl :Git pull<CR>
+nnoremap <leader>gm :Git merge
+nnoremap <leader>gols :Git log --stat<CR>
+nnoremap <leader>golo :Git log --oneline<CR>
 "}}

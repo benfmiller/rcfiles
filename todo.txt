@@ -1,3 +1,1 @@
-TODO Go through other config folders
 TODO vimspector
-TODO move paste toggle
