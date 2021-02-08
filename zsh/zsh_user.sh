@@ -82,14 +82,14 @@ done
 }
 
 svim () {
-if test -f "~/Session.vim"; then
+if test -f "./Session.vim"; then
     vim -S Session.vim
 else
     vim
 fi
 }
 cvim () {
-if test -f "~/Session.vim"; then
+if test -f "./Session.vim"; then
     echo Session.vim found
 else
     echo Session.vim NOT found
