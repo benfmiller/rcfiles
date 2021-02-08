@@ -207,7 +207,7 @@ alias gl="git pull"
 alias ga="git add"
 alias gc="git commit"
 alias gh="git checkout"
-alias glo="git log --online"
+alias glo="git log --oneline"
 alias gls="git log --stat"
 alias gm="git merge"
 

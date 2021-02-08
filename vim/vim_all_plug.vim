@@ -119,8 +119,8 @@ nnoremap <leader>gc :Git commit -m "
 nnoremap <leader>gp :Git push<CR>
 nnoremap <leader>gl :Git pull<CR>
 nnoremap <leader>gm :Git merge
-nnoremap <leader>gols :Git log --stat<CR>
-nnoremap <leader>golo :Git log --oneline<CR>
+nnoremap <leader>gos :Git log --stat<CR>
+nnoremap <leader>goo :Git log --oneline<CR>
 
 nnoremap <leader>gD :SignifyDiff<CR>
 nnoremap <leader>gd :SignifyHunkDiff<CR>
