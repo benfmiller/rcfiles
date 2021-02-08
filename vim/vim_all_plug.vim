@@ -103,6 +103,9 @@ nnoremap <leader>tm :MaximizerToggle<CR>
 
 nnoremap <leader>to :Obsess!<CR>
 
+vmap <C-b> :'<,'>Commentary<CR>
+nnoremap <C-b> :Commentary<CR>
+
 " open unimpaired vim info
 nnoremap <leader>ou :e ~/.local/share/nvim/plugged/vim-unimpaired/doc/unimpaired.txt<CR>
 

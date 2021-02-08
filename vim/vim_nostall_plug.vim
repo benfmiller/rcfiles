@@ -18,6 +18,7 @@ Plug 'puremourning/vimspector'
 Plug 'jiangmiao/auto-pairs'
 Plug 'szw/vim-maximizer'
 
+Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-unimpaired'
 " docs at ~/.local/share/nvim/plugged/vim-unimpaired/doc/unimpaired.txt
 Plug 'tpope/vim-obsession'
