@@ -80,6 +80,21 @@ for i in {0..255} ; do
     printf "\x1b[38;5;${i}m${i} "
 done
 }
+
+svim () {
+if test -f "~/Session.vim"; then
+    vim -S Session.vim
+else
+    vim
+fi
+}
+cvim () {
+if test -f "~/Session.vim"; then
+    echo Session.vim found
+else
+    echo Session.vim NOT found
+fi
+}
 #}}
 # Zsh Suggested User configuration? {{
 
@@ -240,7 +255,10 @@ print_all_custom_funcs() {
     echo install_neovim_vim_plug
     echo install_tmux_plugin_manager
     echo cpviminit
+    echo cvim \(check if vim session is present\)
+    echo svim \(open session.vim if found else open empty\)
 
+    echo
     echo look at print completion for others
 }
 
