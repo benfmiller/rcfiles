@@ -122,7 +122,8 @@ nnoremap <leader>gm :Git merge
 nnoremap <leader>gols :Git log --stat<CR>
 nnoremap <leader>golo :Git log --oneline<CR>
 
-nnoremap <leader>gd :SignifyDiff<CR>
+nnoremap <leader>gD :SignifyDiff<CR>
+nnoremap <leader>gd :SignifyHunkDiff<CR>
 
 nnoremap <leader>gv :GV<CR>
 nnoremap <leader>gtv :GV!<CR>

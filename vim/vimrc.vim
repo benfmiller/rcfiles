@@ -37,6 +37,7 @@ set statusline=
 set statusline+=%1*%{StatuslineGit()}\|%*
 set statusline+=%2*\ %f\ \|%*
 set statusline+=\ %<
+" set statusline+=%{pathshorten(\"%F\")}
 set statusline+=%-0.30F
 set statusline+=%h
 set statusline+=%3*%m
@@ -131,6 +132,7 @@ nnoremap <leader>S :mksession!<CR>
 nnoremap <leader>w :w<CR>
 nnoremap <leader>qb :bd<CR>
 nnoremap <leader>qq :qa!<CR>
+nnoremap <leader>qt :tabc<CR>
 
 " opens current window in new tab
 nnoremap <leader>ot :tabedit %<CR>
