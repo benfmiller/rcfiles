@@ -19,6 +19,7 @@ set scrolloff=8
 
 hi TabLineSel cterm=NONE term=NONE ctermfg=232 ctermbg=154
 hi TabLine        cterm=NONE term=NONE ctermfg=cyan ctermbg=black
+"
 " Statusline{{
 set laststatus=2  " always display the status line
 
@@ -30,20 +31,37 @@ function! StatuslineGit()
     let l:branchname = GitBranch()
     return strlen(l:branchname) > 0?'  '.l:branchname.' ':''
 endfunction
-
+" %-0{minwid}.{maxwid}{item}
 " pathshorten()
 set statusline=
-set statusline+=%{StatuslineGit()}\ \|
-set statusline+=\ %f\ \|
+set statusline+=%1*%{StatuslineGit()}\|%*
+set statusline+=%2*\ %f\ \|%*
 set statusline+=\ %<
-set statusline+=%F
+set statusline+=%-0.30F
 set statusline+=%h
-set statusline+=%m
-set statusline+=%r
-set statusline+=\ %=char-val\ %b\ 0x%B
-set statusline+=\ \ line:%l\ col:%c%V
+set statusline+=%3*%m
+set statusline+=%r%*
+set statusline+=\ \|%5*\ Buff[%n]
+set statusline+=\ %*%=[char\ %b\ 0x%B]\ \|
+set statusline+=\ line:%l\ col:%c%V
 set statusline+=\ %p%%
-set statusline+=\ %{ObsessionStatus(\"ObAct\",\"ObPaus\")}
+set statusline+=\ \|\ %4*%{ObsessionStatus(\"ObAct\",\"ObPaus\")}%*
+
+
+
+hi Statusline cterm=NONE term=NONE ctermfg=232 ctermbg=191
+" Not Current
+hi StatuslineNC cterm=NONE term=NONE ctermfg=232 ctermbg=248
+"Git
+hi User1 cterm=None term=None ctermfg=232 ctermbg=202
+"short name
+hi User2 cterm=None term=None ctermfg=232 ctermbg=178
+"modified flag
+hi User3 cterm=None term=None ctermfg=white ctermbg=235
+" Obsess
+hi User4 cterm=None term=None ctermfg=232 ctermbg=6
+" BuffNum
+hi User5 cterm=None term=None ctermfg=232 ctermbg=106
 "}}
 "}}
 " Hlsearches{{
