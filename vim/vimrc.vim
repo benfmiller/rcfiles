@@ -157,10 +157,10 @@ nnoremap gs gsip
 nnoremap <leader>i <C-a>
 
 " insert brackets niftily
-inoremap { {<CR>}<Esc>O
-inoremap ( ()<Esc>i
-inoremap [ []<Esc>i
-nnoremap <leader>{ a{<Esc>ylp
+" inoremap { {<CR>}<Esc>O
+" inoremap ( ()<Esc>i
+" inoremap [ []<Esc>i
+" nnoremap <leader>{ a{<Esc>ylp
 
 " & runs previous substitution with previous flags, used when ammending sub
 " command

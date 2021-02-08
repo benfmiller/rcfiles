@@ -15,7 +15,10 @@ Plug 'ycm-core/YouCompleteMe', { 'do': './install.py' }
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
 Plug 'junegunn/vim-easy-align'
 
+" Debugger
 Plug 'puremourning/vimspector'
+
+Plug 'jiangmiao/auto-pairs'
 Plug 'szw/vim-maximizer'
 
 Plug 'tpope/vim-unimpaired'
