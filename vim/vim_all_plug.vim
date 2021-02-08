@@ -115,7 +115,7 @@ nnoremap <C-f> :NERDTreeFind<CR>
 " This comes from vim fugitive
 nnoremap <leader>gs :Git status<CR>
 nnoremap <leader>ga :Git add
-nnoremap <leader>gc :Git commit -m
+nnoremap <leader>gc :Git commit -m "
 nnoremap <leader>gp :Git push<CR>
 nnoremap <leader>gl :Git pull<CR>
 nnoremap <leader>gm :Git merge
