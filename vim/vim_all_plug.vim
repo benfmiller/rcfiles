@@ -1,3 +1,8 @@
+" Obsess {{
+set statusline+=\ \|\ %4*%{ObsessionStatus(\"ObAct\",\"ObPaus\")}%*
+" Obsess, moved to all plug
+hi User4 cterm=None term=None ctermfg=232 ctermbg=6
+" }}
 " Ale {{
 " Ale Maps{{
 " ctrl e move to next error
@@ -18,7 +23,9 @@ function! LinterStatus() abort
         \)
 endfunction
 set statusline+=%=
-set statusline+=\ %{LinterStatus()}
+set statusline+=\ %6*%{LinterStatus()}%*
+" Ale color
+hi User6 cterm=None term=None ctermfg=255 ctermbg=202
 
 let g:ale_completion_enabled = 1
 
