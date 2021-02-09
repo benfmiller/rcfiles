@@ -10,6 +10,8 @@ call plug#begin(stdpath('data') . '/plugged')
 Plug 'jremmen/vim-ripgrep', { 'do': { -> ripgrep#install() } }
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'ycm-core/YouCompleteMe', { 'do': './install.py' }
+" Requires nvim to be too new!
+" Plug 'nvim-treesitter/nvim-treesitter', {'do': 'TSUpdate'}
 "}}
 
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
