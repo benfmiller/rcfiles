@@ -134,8 +134,11 @@ nnoremap <leader>qb :bd<CR>
 nnoremap <leader>qq :qa!<CR>
 nnoremap <leader>qt :tabc<CR>
 
+" Moving buffer and tabs {{
+
 " opens current window in new tab
 nnoremap <leader>ot :tabedit %<CR>
+nnoremap <leader>ob :ls<CR>:b
 
 " Switch tab with lead m
 nnoremap <leader>m gt
@@ -143,6 +146,11 @@ nnoremap <leader>M gT
 
 " List buffers
 nnoremap <leader>l :ls<CR>
+
+nnoremap <leader>bm :bm<CR>
+nnoremap <leader>bb :b#<CR>
+
+" }}
 
 " gs sorts paragraph
 nnoremap gs gsip
@@ -156,19 +164,13 @@ nnoremap gs gsip
 " for incrementing numbers
 nnoremap <leader>i <C-a>
 
-" insert brackets niftily
-" inoremap { {<CR>}<Esc>O
-" inoremap ( ()<Esc>i
-" inoremap [ []<Esc>i
-" nnoremap <leader>{ a{<Esc>ylp
-
 " & runs previous substitution with previous flags, used when ammending sub
 " command
 nnoremap & :&&<CR>
 xnoremap & :&&<CR>
 
 "Visual selection the X to search for that selection. not work with . and *
-vmap X y/<C-R>"<CR>
+vmap / y/<C-R>"<CR>
 
 "centers screen when moving during search
 noremap <Leader>n nzz
@@ -196,7 +198,15 @@ set pastetoggle=<leader>tp
 "
 " fill search field with last search with <C-r>/
 
-"}}
+" redirect ex output to buffer? {{
+" :redir @a    redirect output of following commands to register a
+" :let         list every current option and its value
+" G<CR>        go straight to the end of the listing and make it disappear
+" :redir END   stop redirection
+" :tabnew      open a new buffer in a new window in a new tab page
+" ap          put from register a
+" }}
+" }}
 " Filetype setters{{
 
 " au filetype python setlocal mp=python3\ %
