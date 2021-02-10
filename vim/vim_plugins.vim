@@ -1,3 +1,100 @@
+" Plugins{{
+" Specify a directory for plugins
+" - For Neovim: stdpath('data') . '/plugged'
+" - For Vim : '~/.vim/plugged'
+" - Avoid using standard Vim directory names like 'plugin'
+call plug#begin(stdpath('data') . '/plugged')
+"
+" Require Installation{{
+" Consider telescope???
+if (g:use_ycm == 1)
+    Plug 'ycm-core/YouCompleteMe', { 'do': './install.py' }
+endif
+
+if (g:use_fzf == 1)
+    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+else
+    " https://github.com/kien/ctrlp.vim
+    Plug 'kien/ctrlp.vim'
+endif
+
+if (g:use_rg == 1)
+    Plug 'jremmen/vim-ripgrep', { 'do': { -> ripgrep#install() } }
+endif
+
+" Requires nvim to be too new!
+" Plug 'nvim-treesitter/nvim-treesitter', {'do': 'TSUpdate'}
+"}}
+
+" Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
+Plug 'junegunn/vim-easy-align'
+
+" Debugger
+Plug 'puremourning/vimspector'
+
+Plug 'jiangmiao/auto-pairs'
+Plug 'szw/vim-maximizer'
+
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-unimpaired'
+" docs at ~/.local/share/nvim/plugged/vim-unimpaired/doc/unimpaired.txt
+Plug 'tpope/vim-obsession'
+" https://github.com/tpope/vim-obsession
+" Run :Obsess o start recording to file
+
+" Better linter
+Plug 'dense-analysis/ale'
+
+Plug 'mbbill/undotree'
+
+Plug 'preservim/nerdtree'
+
+" git plugins
+" https://www.chrisatmachine.com/Neovim/12-git-integration/ Got this from this
+Plug 'mhinz/vim-signify'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
+Plug 'junegunn/gv.vim'
+"
+" Multiple Plug commands can be written in a single line using | separators
+" Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+
+" On-demand loading
+" Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+" Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
+
+" Using a non-default branch
+" Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
+
+" Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
+" Plug 'fatih/vim-go', { 'tag': '*' }
+
+" Plugin options
+" Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
+
+" Plugin outside ~/.vim/plugged with post-update hook
+" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+
+" Umanaged plugin (manually installed and updated)
+" Plug '~/my-prototype-plugin'
+" Initialize plugin system
+call plug#end()
+"}}
+" Plugin settings and maps {{
+" Install Plugins stuff{{
+" YCM {{
+if (g:use_ycm == 1)
+    let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
+    " let g:ycm_server_keep_logfiles = 1
+    " let g:ycm_server_log_level = 'debug'
+endif
+"}}
+if (g:use_fzf == 1)
+    nnoremap <leader>f :FZF<CR>
+else
+    nnoremap <leader>f :CtrlP<CR>
+endif
+"}}
 " Obsess {{
 set statusline+=\ \|\ %4*%{ObsessionStatus(\"ObAct\",\"ObPaus\")}%*
 " Obsess, moved to all plug
@@ -27,7 +124,6 @@ set statusline+=\ %6*%{LinterStatus()}%*
 " Ale color
 hi User6 cterm=None term=None ctermfg=255 ctermbg=202
 
-let g:ale_completion_enabled = 1
 
 " ALE Lint on text changed
 let g:ale_lint_on_text_changed = 1
@@ -139,3 +235,4 @@ nnoremap <leader>gv :GV<CR>
 nnoremap <leader>gtv :GV!<CR>
 "}}
 "}}
+" }}
