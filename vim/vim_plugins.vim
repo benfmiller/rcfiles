@@ -3,7 +3,11 @@
 " - For Neovim: stdpath('data') . '/plugged'
 " - For Vim : '~/.vim/plugged'
 " - Avoid using standard Vim directory names like 'plugin'
-call plug#begin(stdpath('data') . '/plugged')
+if (g:use_neovim == 1)
+    call plug#begin(stdpath('data') . '/plugged')
+else
+    call plug#begin('~/.vim/plugged')
+endif
 "
 " Require Installation{{
 " Consider telescope???
