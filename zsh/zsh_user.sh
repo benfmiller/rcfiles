@@ -96,6 +96,13 @@ else
     echo Session.vim NOT found
 fi
 }
+
+ginit () {
+    git init
+    git branch main
+    git checkout main
+    git branch -d master
+}
 #}}
 # Zsh Suggested User configuration? {{
 
@@ -258,6 +265,7 @@ print_all_custom_funcs() {
     echo cpviminit
     echo cvim \(check if vim session is present\)
     echo svim \(open session.vim if found else open empty\)
+    echo ginit
 
     echo
     echo look at print completion for others
