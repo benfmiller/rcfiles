@@ -92,9 +92,15 @@ call plug#end()
 " Plugin settings and maps {{
 " FZF {{
 if (g:use_fzf == 1)
-    nnoremap <leader>f :FZF<CR>
+    nnoremap <leader>ff :FZF<CR>
 else
-    nnoremap <leader>f :CtrlP<CR>
+    nnoremap <leader>ff :CtrlP<CR>
+endif
+
+if (g:use_rg == 1)
+    nnoremap <leader>fg :Rg
+else
+    nnoremap <leader>fg :vimgrep
 endif
 "}}
 " YCM {{
@@ -191,8 +197,10 @@ if (g:use_coc == 1)
     nmap <leader>rn <Plug>(coc-rename)
 
     " Formatting selected code.
-    xmap <leader>f  <Plug>(coc-format-selected)
-    nmap <leader>f  <Plug>(coc-format-selected)
+    " xmap <leader>f  <Plug>(coc-format-selected)
+    " nmap <leader>f  <Plug>(coc-format-selected)
+    xmap <leader>fm  <Plug>(coc-format-selected)
+    nmap <leader>fm  <Plug>(coc-format-selected)
 
     augroup mygroup
       autocmd!
@@ -384,8 +392,8 @@ nnoremap <leader>tm :MaximizerToggle<CR>
 
 nnoremap <leader>to :Obsess!<CR>
 
-vmap <C-b> :'<,'>Commentary<CR>
-nnoremap <C-b> :Commentary<CR>
+vmap <C-m> :'<,'>Commentary<CR>
+nnoremap <C-m> :Commentary<CR>
 
 " open unimpaired vim info
 nnoremap <leader>ou :e ~/.local/share/nvim/plugged/vim-unimpaired/doc/unimpaired.txt<CR>
