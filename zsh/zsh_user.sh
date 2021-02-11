@@ -39,7 +39,7 @@ install_tmux_plugin_manager (){
 #}}
 # Path{{
 export PATH=~/.local/bin:$PATH
-
+export TMPDIR="/tmp"
 #}}
 # Editor {{
 export EDITOR='vim'

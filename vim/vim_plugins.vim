@@ -277,8 +277,11 @@ if (g:use_coc == 1)
     nnoremap <silent><nowait> <space>K  :<C-u>CocPrev<CR>
     " Resume latest coc list.
     nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
-endif
 
+
+    nnoremap <leader>tce :CocEnable<CR>
+    nnoremap <leader>tcd :CocDisable<CR>
+endif
 " }}
 " }}
 " Obsess {{
