@@ -268,13 +268,13 @@ if (g:use_coc == 1)
     " Show commands.
     nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
     " Find symbol of current document.
-    nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
+    nnoremap <silent><nowait> <space>od  :<C-u>CocList outline<cr>
     " Search workspace symbols.
-    nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
+    nnoremap <silent><nowait> <space>ss  :<C-u>CocList -I symbols<cr>
     " Do default action for next item.
-    nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
+    nnoremap <silent><nowait> <space>J  :<C-u>CocNext<CR>
     " Do default action for previous item.
-    nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
+    nnoremap <silent><nowait> <space>K  :<C-u>CocPrev<CR>
     " Resume latest coc list.
     nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 endif
@@ -360,8 +360,8 @@ let g:signify_sign_show_text = 1
 " Jump though hunks
 nmap <leader>j <plug>(signify-next-hunk)
 nmap <leader>k <plug>(signify-prev-hunk)
-nmap <leader>J 9999<leader>gJ
-nmap <leader>K 9999<leader>gk
+" nmap <leader>J 9999<leader>gJ
+" nmap <leader>K 9999<leader>gk
 
 
 " If you like colors instead
@@ -401,7 +401,7 @@ nnoremap <leader>ou :e ~/.local/share/nvim/plugged/vim-unimpaired/doc/unimpaired
 " NERDtree
 nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
-nnoremap <C-f> :NERDTreeFind<CR>
+" nnoremap <C-f> :NERDTreeFind<CR>
 
 " Git Stuff {{
 " This comes from vim fugitive

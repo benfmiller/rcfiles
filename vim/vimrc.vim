@@ -97,10 +97,11 @@ nnoremap <silent> ]B : blast<CR>
 nnoremap B ^
 nnoremap E $
 "}}
-" edit vimrc/zshrc and load vimrc bindings{{
-nnoremap <leader>ev :vsp $MYVIMRC<CR>
-nnoremap <leader>ez :vsp ~/.zshrc<CR>
-nnoremap <leader>sv :source $MYVIMRC<CR>
+" load vimrc bindings{{
+" nnoremap <leader>ev :vsp $MYVIMRC<CR>
+" nnoremap <leader>ez :vsp ~/.zshrc<CR>
+" nnoremap <leader>sv :source $MYVIMRC<CR>
+nnoremap <leader>sv :source ~/.vimrc<CR>
 "}}
 " Noremaps{{
 
