@@ -4,14 +4,13 @@
 pullrcs (){
     cd ~/rcfiles
     git pull
-    if uname != "Linux"; then
+    if uname | grep -qv 'Linux'; then
         cp ~/rcfiles/vim/vimrc.vim ~/.vimrc
         cat ~/rcfiles/vim/windows_addon.vim >> ~/.vimrc
         echo vim copied for windows
     fi
     cd
 }
-alias pullrcs="cd ;cd rcfiles; git pull; cd ;"
 alias pushrcs="cd ;cd rcfiles; git push; cd ;"
 cpnviminit () {
     cd ; mkdir .config/nvim; cp rcfiles/vim/init.vim .config/nvim/;
