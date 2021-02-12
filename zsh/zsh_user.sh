@@ -4,7 +4,7 @@
 pullrcs (){
     cd ~/rcfiles
     git pull
-    if uname != 'Linux'; then
+    if uname != "Linux"; then
         cp ~/rcfiles/vim/vimrc.vim ~/.vimrc
         cat ~/rcfiles/vim/windows_addon.vim >> ~/.vimrc
         echo vim copied for windows
