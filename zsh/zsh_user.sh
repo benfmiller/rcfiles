@@ -1,6 +1,15 @@
 #Moving Aliases{{
 #}}
 #rcfiles {{
+pullrcs (){
+    cd ~/rcfiles
+    git pull
+    if uname != 'Linux'; then
+        cp ~/rcfiles/vim/vimrc.vim ~/.vimrc
+        cat ~/rcfiles/vim/windows_addon.vim >> ~/.vimrc
+    fi
+    cd
+}
 alias pullrcs="cd ;cd rcfiles; git pull; cd ;"
 alias pushrcs="cd ;cd rcfiles; git push; cd ;"
 cpnviminit () {
