@@ -1,1 +1,5 @@
 TODO vimspector
+TODO figure out coc better
+TODO pullrcs based on system name
+TODO copy old configs to directory when deploying
+TODO check out those other repos I found for dotfiles
