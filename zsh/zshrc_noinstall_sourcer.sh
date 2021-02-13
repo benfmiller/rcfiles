@@ -3,6 +3,7 @@ source ~/rcfiles/zsh/zsh_zsh.sh
 alias cdcp="cd /mnt/c/users/benfm/OneDrive/CProjects"
 alias cdki="cd /mnt/c/users/benfm/OneDrive/CProjects/kalideas"
 alias cw="cdcp && cd ClassWork"
+alias ch="cd /mnt/c/users/benfm"
 #}}
 # Theme{{
 # Set name of the theme to load --- if set to "random", it will
@@ -25,7 +26,7 @@ ZSH_THEME="linuxonly"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git python vi-mode tmux zsh-interactive-cd)
+plugins=(git python vi-mode tmux jump z)
 #}}
 source $ZSH/oh-my-zsh.sh
 source ~/rcfiles/zsh/zsh_user.sh
