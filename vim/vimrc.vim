@@ -190,6 +190,7 @@ set encoding=utf-8
 set nocompatible
 set ignorecase
 set hidden
+set autoread
 
 " For pasting from system clipboard
 set pastetoggle=<leader>tp
