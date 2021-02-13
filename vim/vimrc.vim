@@ -137,6 +137,7 @@ nnoremap <leader>qt :tabc<CR>
 " opens current window in new tab
 nnoremap <leader>ot :tabedit %<CR>
 nnoremap <leader>ob :ls<CR>:b
+nnoremap <leader>on :tabnew<CR>
 
 " Switch tab with lead m
 nnoremap <leader>m gt
