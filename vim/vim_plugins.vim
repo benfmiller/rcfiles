@@ -386,6 +386,8 @@ nmap ga <Plug>(EasyAlign)
 " }}
 " VimSpector {{
 let g:vimspector_enable_mappings = 'HUMAN'
+let g:vimspector_base_dir=expand( '$HOME/.vim/vimspector-config' )
+nnoremap <leader>qv :VimspectorReset<CR>
 " }}
 " Plugin Maps{{
 " toggle undotree
