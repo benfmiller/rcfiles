@@ -8,13 +8,13 @@ else
     echo "Moving old config files to ~/.config/old_config"
     mkdir ~/.config/old_config
     if test -f "~/.vimrc"; then
-        mv ~/.vimrc ~/.config/old_config/
+        mv ~/.vimrc ~/.config/old_config/.vimrc
     fi
     if test -f "~/.zshrc"; then
-        mv ~/.zshrc ~/.config/old_config/
+        mv ~/.zshrc ~/.config/old_config/.zshrc
     fi
     if test -f "~/.tmux.conf"; then
-        mv ~/.tmux.conf ~/.config/old_config/
+        mv ~/.tmux.conf ~/.config/old_config/.tmux_conf
     fi
 
     echo "copying config"
