@@ -327,9 +327,9 @@ let g:ale_lint_delay = 2000
 
 " Let ALE know to what Linter to use for various programming languages
 let g:ale_linters = {'javascript': ['eslint'],
-\ 'java': ['javac']
+\ 'java': ['javac'],
+\ 'python3':['pylint']
 \ }
-" 'python':['pylint']
 
 "Path to Eclipse LSP for ALE
 " let g:ale_java_eclipselsp_path = '/usr/share/java/jdtls'
@@ -345,7 +345,7 @@ let g:ale_list_window_size = 4
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace', 'uncrustify'],
 \   'javascript': ['eslint'],
-\   'python': ['pylint'],
+\   'python3': ['black', 'autoimport'],
 \}
 " }}
 " Signify {{
