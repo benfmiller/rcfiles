@@ -1,14 +1,22 @@
 #!/bin/sh
 
-NEW_HOME= find /home -maxdepth 2 -type d -name rcfiles
-echo $NEW_HOME\b/../
-return 1
+# NEW_HOME= find /home -maxdepth 2 -type d -name rcfiles
+# echo $NEW_HOME #\b/../
+# echo $ORG_USER
+# echo $ORG_HOME/../
+# echo "$(dirname "$0")" ; echo "$(basename "$0")"
+NEW_PATH= realpath "$(dirname "$0")"
+NEW_PATH="$NEW_PATH/../../"
 
 if [ `whoami` = 'root' ]
   then
+    ls $NEW_PATH
+    return 1
 
     echo "Moving old config files to ~/.config/old_config"
-    mkdir /home/$USER/.config/old_config
+    # ls $0/../../.config/old_config
+    ls "$0/../"
+    return 1
     if test -f "/home/$USER/.vimrc"; then
         mv /home/$USER/.vimrc /home/$USER/.config/old_config/
     fi
@@ -31,7 +39,3 @@ else
     echo "Must use sudo"
     return 1
 fi
-
-# tmux source-file ~/.tmux.conf
-# echo "All Good!"
-# zsh
