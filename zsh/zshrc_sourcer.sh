@@ -1,7 +1,7 @@
 source ~/rcfiles/zsh/zsh_zsh.sh
 # wsl Moving Aliases {{
 alias cdcp="cd /mnt/c/users/benfm/OneDrive/CProjects"
-alias cdki="cd /mnt/c/users/benfm/OneDrive/CProjects/kalideas"
+alias ck="cd /mnt/c/users/benfm/OneDrive/CProjects/kalideas"
 alias cw="cdcp && cd ClassWork"
 alias ch="cd /mnt/c/users/benfm"
 #}}
