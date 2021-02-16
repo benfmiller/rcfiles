@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+"""
+Transfers files for starting dnsmasq
+"""
 from __future__ import print_function
 from __future__ import division
 from __future__ import unicode_literals
@@ -8,7 +11,8 @@ import os
 import os.path as p
 import subprocess
 import sys
-import glob
+import shutil
+# import glob
 
 
 if os.geteuid()==0:
@@ -28,29 +32,46 @@ HOME_DIR = "/".join(DIR_OF_THIS_SCRIPT.split("/")[:3])
 # DIR_OF_OLD_LIBS = p.join( DIR_OF_THIS_SCRIPT, 'python' )
 
 
-def CheckCall( args, **kwargs ):
+def check_call( args, **kwargs ):
+    """
+    calls to python process
+    """
     try:
         subprocess.check_call( args, **kwargs )
     except subprocess.CalledProcessError as error:
         sys.exit( error.returncode )
 
 
-def Main():
-    os.rename
+def main():
+    """
+    Kabaam!!!
+    """
+    old_conf_dir = HOME_DIR + "/.config/last_wslvpn"
+    if not os.path.exists(old_conf_dir):
+        os.mkdir(old_conf_dir)
+        print(f"{old_conf_dir} created")
+    print("moving conf files")
+    os.rename("/etc/resolv.conf", old_conf_dir + "resolv.conf")
+    os.rename("/etc/dnsmasq.conf", old_conf_dir + "dnsmasq.conf")
 
-    build_file = p.join( DIR_OF_THIS_SCRIPT, 'third_party', 'ycmd', 'build.py' )
+    print("copying rcfiles versions to etc")
+    shutil.copy(old_conf_dir + "resolv.conf", "/etc/resolv.conf")
+    shutil.copy(old_conf_dir + "dnsmasq.conf", "/etc/dnsmasq.conf")
+    os.system('dnsmasq')
 
-    if not p.isfile( build_file ):
-        sys.exit(
-          'File {0} does not exist; you probably forgot to run:\n'
-          '\tgit submodule update --init --recursive\n'.format( build_file ) )
+#     build_file = p.join( DIR_OF_THIS_SCRIPT, 'third_party', 'ycmd', 'build.py' )
 
-    CheckCall( [ sys.executable, build_file ] + sys.argv[ 1: ] )
+#     if not p.isfile( build_file ):
+#         sys.exit(
+#           'File {0} does not exist; you probably forgot to run:\n'
+#           '\tgit submodule update --init --recursive\n'.format( build_file ) )
 
-    # Remove old YCM libs if present so that YCM can start.
-    # old_libs = (
-    #     glob.glob( p.join( DIR_OF_OLD_LIBS, '*ycm_core.*' ) ) +
-    #     glob.glob( p.join( DIR_OF_OLD_LIBS, '*ycm_client_support.*' ) ) +
+#     check_call( [ sys.executable, build_file ] + sys.argv[ 1: ] )
+
+#     # Remove old YCM libs if present so that YCM can start.
+#     # old_libs = (
+#     #     glob.glob( p.join( DIR_OF_OLD_LIBS, '*ycm_core.*' ) ) +
+#     #     glob.glob( p.join( DIR_OF_OLD_LIBS, '*ycm_client_support.*' ) ) +
     #     glob.glob( p.join( DIR_OF_OLD_LIBS, '*clang*.*' ) ) )
     # for lib in old_libs:
     #     os.remove( lib )
@@ -58,4 +79,4 @@ def Main():
 
 if __name__ == "__main__":
     # print(HOME_DIR)
-    Main()
+    main()
