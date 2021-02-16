@@ -3,13 +3,17 @@
 " - For Neovim: stdpath('data') . '/plugged'
 " - For Vim : '~/.vim/plugged'
 " - Avoid using standard Vim directory names like 'plugin'
-if (g:use_neovim == 1)
-    call plug#begin(stdpath('data') . '/plugged')
+if (g:on_windows == 0)
+    if (g:use_neovim == 1)
+        call plug#begin(stdpath('data') . '/plugged')
+    else
+        call plug#begin('~/.vim/plugged')
+    endif
 else
-    call plug#begin('~/.vim/plugged')
+    call plug#begin('~/vimfiles/plugged')
 endif
 "
-" Require Installation{{
+" Check vimrc variables{{
 " Consider telescope???
 if (g:use_ycm == 1)
     Plug 'ycm-core/YouCompleteMe', { 'do': './install.py' }
@@ -29,6 +33,10 @@ endif
 
 if (g:use_rg == 1)
     Plug 'jremmen/vim-ripgrep', { 'do': { -> ripgrep#install() } }
+endif
+
+if (g:use_md_viewer == 1)
+    Plug 'iamcco/markdown-preview.vim'
 endif
 
 " Requires nvim to be too new!
