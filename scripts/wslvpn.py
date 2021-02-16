@@ -51,12 +51,14 @@ def main():
         os.mkdir(old_conf_dir)
         print(f"{old_conf_dir} created")
     print("moving conf files")
-    os.rename("/etc/resolv.conf", old_conf_dir + "resolv.conf")
-    os.rename("/etc/dnsmasq.conf", old_conf_dir + "dnsmasq.conf")
+    if os.path.exists("/etc/resolv.conf"):
+        os.rename("/etc/resolv.conf", old_conf_dir + "/resolv.conf")
+    if os.path.exists("/etc/dnsmasq.conf"):
+        os.rename("/etc/dnsmasq.conf", old_conf_dir + "/dnsmasq.conf")
 
     print("copying rcfiles versions to etc")
-    shutil.copy(old_conf_dir + "resolv.conf", "/etc/resolv.conf")
-    shutil.copy(old_conf_dir + "dnsmasq.conf", "/etc/dnsmasq.conf")
+    shutil.copy(HOME_DIR + "/rcfiles/texts/wslvpn/resolv.conf", "/etc/resolv.conf")
+    shutil.copy(HOME_DIR + "/rcfiles/texts/wslvpn/dnsmasq.conf", "/etc/dnsmasq.conf")
     os.system('dnsmasq')
 
 #     build_file = p.join( DIR_OF_THIS_SCRIPT, 'third_party', 'ycmd', 'build.py' )
