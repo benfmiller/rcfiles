@@ -3,15 +3,29 @@
 " - For Neovim: stdpath('data') . '/plugged'
 " - For Vim : '~/.vim/plugged'
 " - Avoid using standard Vim directory names like 'plugin'
+"
+" " Install vim-plug if not found
+" if empty(glob('~/.vim/autoload/plug.vim'))
+"   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+"     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+" endif
+
+" Run PlugInstall if there are missing plugins
+autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+  \| PlugInstall --sync | source $MYVIMRC
+\| endif
+
 if (g:on_windows == 0)
     if (g:use_neovim == 1)
-        call plug#begin(stdpath('data') . '/plugged')
+        let g:plug_path=stdpath('data') . '/plugged'
     else
-        call plug#begin('~/.vim/plugged')
+        let g:plug_path='~/.vim/plugged'
     endif
 else
-    call plug#begin('~/vimfiles/plugged')
+    let g:plug_path='~/vimfiles/plugged'
 endif
+
+call plug#begin(g:plug_path)
 "
 " Check vimrc variables{{
 " Consider telescope???
