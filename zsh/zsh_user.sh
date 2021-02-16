@@ -278,6 +278,7 @@ print_all_custom_funcs() {
 
     echo
     echo look at print completion for others
+    echo look in rcfiles/scripts
 }
 
 # }}
