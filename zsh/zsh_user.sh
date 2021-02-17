@@ -1,5 +1,5 @@
 #Moving Aliases{{
-alias gotoscripts="cd ~/rcfiles/scripts"
+alias cdscripts="cd ~/rcfiles/scripts"
 alias lscripts="ls ~/rcfiles/scripts"
 #}}
 #rcfiles {{
