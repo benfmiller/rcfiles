@@ -23,18 +23,20 @@ hi TabLine        cterm=NONE term=NONE ctermfg=cyan ctermbg=black
 " Statusline{{
 set laststatus=2  " always display the status line
 
-function! GitBranch()
-    return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
-endfunction
+" function! GitBranch()
+"     return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
+" endfunction
 
-function! StatuslineGit()
-    let l:branchname = GitBranch()
-    return strlen(l:branchname) > 0?'  '.l:branchname.' ':''
-endfunction
+" function! StatuslineGit()
+"     let l:branchname = GitBranch()
+"     return strlen(l:branchname) > 0?'  '.l:branchname.' ':''
+" endfunction
 " %-0{minwid}.{maxwid}{item}
 " pathshorten()
+"
 set statusline=
 " set statusline+=%1*%{StatuslineGit()}\|%*
+set statusline+=%1*\ %{gitbranch#name()}\ \|%*
 set statusline+=%2*\ %f\ \|%*
 set statusline+=\ %<
 " set statusline+=%{pathshorten(\"%F\")}
