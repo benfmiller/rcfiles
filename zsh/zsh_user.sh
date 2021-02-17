@@ -108,6 +108,11 @@ else
 fi
 }
 
+cmdir () {
+    mkdir $1
+    cd $1
+}
+
 ginit () {
     git init
     git branch main
@@ -277,6 +282,8 @@ print_all_custom_funcs() {
     echo cvim \(check if vim session is present\)
     echo svim \(open session.vim if found else open empty\)
     echo ginit
+    echo cmdir
+    echo lscripts and cdscripts
 
     echo
     echo look at print completion for others
