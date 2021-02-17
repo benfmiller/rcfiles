@@ -35,9 +35,6 @@ install_oh_my_zsh () {
 install_vim_vim_plug () {
     curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 }
-install_vim_vim_plug_windows () {
-    curl -fLo ~/vimfiles/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-}
 install_neovim_vim_plug () {
     sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 }
@@ -272,7 +269,6 @@ print_all_custom_funcs() {
     echo cptocs12
     echo install_oh_my_zsh
     echo install_vim_vim_plug
-    echo install_vim_vim_plug_windows
     echo install_neovim_vim_plug
     echo install_tmux_plugin_manager
     echo cpviminit
