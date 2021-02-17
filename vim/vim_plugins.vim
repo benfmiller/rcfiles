@@ -433,6 +433,7 @@ nnoremap <C-t> :NERDTreeToggle<CR>
 
 " Git Stuff {{
 " This comes from vim fugitive
+nnoremap <leader>gg :G<CR>
 nnoremap <leader>gs :Git status<CR>
 nnoremap <leader>ga :Git add
 nnoremap <leader>gc :Git commit -m "
