@@ -2,14 +2,33 @@
 " Specify a directory for plugins
 " - For Neovim: stdpath('data') . '/plugged'
 " - For Vim : '~/.vim/plugged'
+" - For Windows: use same as unix vim for vim plug and vimfiles for plugins
 " - Avoid using standard Vim directory names like 'plugin'
-if (g:use_neovim == 1)
-    call plug#begin(stdpath('data') . '/plugged')
-else
-    call plug#begin('~/.vim/plugged')
-endif
 "
-" Require Installation{{
+
+" Run PlugInstall if there are missing plugins
+autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+  \| PlugInstall --sync | source $MYVIMRC
+\| endif
+
+if (g:on_windows == 0)
+    if (g:use_neovim == 1)
+        let g:plug_path=stdpath('data')
+    else
+        let g:plug_path='~/.vim'
+    endif
+    " Install vim-plug if not found
+    if empty(glob(g:plug_path . '/autoload/plug.vim'))
+      silent !curl -fLo (g:plug_path . '/autoload/plug.vim') --create-dirs
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    endif
+else
+    let g:plug_path='~/vimfiles'
+endif
+
+call plug#begin(g:plug_path . '/plugged')
+"
+" Check vimrc variables{{
 " Consider telescope???
 if (g:use_ycm == 1)
     Plug 'ycm-core/YouCompleteMe', { 'do': './install.py' }
@@ -29,6 +48,10 @@ endif
 
 if (g:use_rg == 1)
     Plug 'jremmen/vim-ripgrep', { 'do': { -> ripgrep#install() } }
+endif
+
+if (g:use_md_viewer == 1)
+    Plug 'iamcco/markdown-preview.vim'
 endif
 
 " Requires nvim to be too new!
@@ -410,9 +433,10 @@ nnoremap <C-t> :NERDTreeToggle<CR>
 
 " Git Stuff {{
 " This comes from vim fugitive
+nnoremap <leader>gg :G<CR>
 nnoremap <leader>gs :Git status<CR>
 nnoremap <leader>ga :Git add
-nnoremap <leader>gc :Git commit -m "
+nnoremap <leader>gc :Gcommit<CR>
 nnoremap <leader>gp :Git push<CR>
 nnoremap <leader>gl :Git pull<CR>
 nnoremap <leader>gm :Git merge

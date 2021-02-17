@@ -34,7 +34,7 @@ endfunction
 " %-0{minwid}.{maxwid}{item}
 " pathshorten()
 set statusline=
-set statusline+=%1*%{StatuslineGit()}\|%*
+" set statusline+=%1*%{StatuslineGit()}\|%*
 set statusline+=%2*\ %f\ \|%*
 set statusline+=\ %<
 " set statusline+=%{pathshorten(\"%F\")}
