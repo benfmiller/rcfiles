@@ -5,6 +5,9 @@
 export ZSH=$HOME/.oh-my-zsh
 #}}
 # ZSH Options{{
+#
+# TERM=xterm-color
+#
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 

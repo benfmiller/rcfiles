@@ -41,6 +41,8 @@ endif
 
 if (g:use_fzf == 1)
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+    Plug 'junegunn/fzf.vim'
+    Plug 'stsewd/fzf-checkout.vim'
 else
     " https://github.com/kien/ctrlp.vim
     Plug 'kien/ctrlp.vim'
@@ -60,6 +62,15 @@ endif
 
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
 Plug 'junegunn/vim-easy-align'
+
+" TODO
+" github.com/SirVer/ultisnips
+" Consider this for code snipppets
+" Plug 'SirVer/ultisnips'
+"
+" And this?
+" https://github.com/honza/vim-snippets
+"
 
 " Debugger
 Plug 'puremourning/vimspector'
@@ -114,19 +125,6 @@ Plug 'itchyny/vim-gitbranch'
 call plug#end()
 "}}
 " Plugin settings and maps {{
-" FZF {{
-if (g:use_fzf == 1)
-    nnoremap <leader>ff :FZF<CR>
-else
-    nnoremap <leader>ff :CtrlP<CR>
-endif
-
-if (g:use_rg == 1)
-    nnoremap <leader>fg :Rg
-else
-    nnoremap <leader>fg :vimgrep
-endif
-"}}
 " YCM {{
 if (g:use_ycm == 1)
     let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
@@ -450,5 +448,37 @@ nnoremap <leader>gd :SignifyHunkDiff<CR>
 nnoremap <leader>gv :GV<CR>
 nnoremap <leader>gtv :GV!<CR>
 "}}
+"}}
+" FZF {{
+if (g:use_fzf == 1)
+    nnoremap <leader>ff :Files<CR>
+    nnoremap <leader>fbb :Buffers<CR>
+    nnoremap <leader>fo :Colors<CR>
+    nnoremap <leader>fc :Commands<CR>
+    nnoremap <leader>fmm :Maps<CR>
+    nnoremap <leader>fma :Marks<CR>
+    nnoremap <leader>fw :Windows<CR>
+    nnoremap <leader>ft :Helptags<CR>
+    nnoremap <leader>fhc :History:<CR>
+    nnoremap <leader>fhf :History<CR>
+    nnoremap <leader>fhs :History/<CR>
+    nnoremap <leader>flb :BLines<CR>
+    nnoremap <leader>fll :Lines<CR>
+
+    nnoremap <leader>fgf :GFiles<CR>
+    nnoremap <leader>fgc :Commits<CR>
+    nnoremap <leader>fgb :BCommits<CR>
+
+    nnoremap <leader>fgs :GFiles?<CR>
+    nnoremap <leader>gb :GBranches<CR>
+else
+    nnoremap <leader>ff :CtrlP<CR>
+endif
+
+if (g:use_rg == 1)
+    nnoremap <leader>fg :Rg
+else
+    nnoremap <leader>fg :vimgrep
+endif
 "}}
 " }}

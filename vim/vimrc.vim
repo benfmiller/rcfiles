@@ -5,6 +5,7 @@ let mapleader = " "
 " Visuals{{
 set number
 set relativenumber
+" set termguicolors!
 color elflord
 set showcmd             " show command in bottom bar
 set wildmenu            "visual autocomplete for command menu
