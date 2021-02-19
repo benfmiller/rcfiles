@@ -32,11 +32,13 @@ call plug#begin(g:plug_path . '/plugged')
 " Consider telescope???
 if (g:use_ycm == 1)
     Plug 'ycm-core/YouCompleteMe', { 'do': './install.py' }
+    Plug 'SirVer/ultisnips'
 endif
 
 if (g:use_coc == 1)
     " Use release branch (recommend)
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    Plug 'SirVer/ultisnips'
 endif
 
 if (g:use_fzf == 1)
