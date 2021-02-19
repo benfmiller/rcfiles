@@ -80,6 +80,7 @@ Plug 'puremourning/vimspector'
 
 Plug 'jiangmiao/auto-pairs'
 Plug 'szw/vim-maximizer'
+Plug 'christoomey/vim-tmux-navigator'
 
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-unimpaired'
@@ -335,7 +336,7 @@ hi User4 cterm=None term=None ctermfg=232 ctermbg=6
 " Ale Maps{{
 " ctrl e move to next error
 nmap <silent> <C-e> <Plug>(ale_next_wrap)
-nmap <silent> <C-l> <Plug>(ale_previous_wrap)
+nmap <silent> <C-p> <Plug>(ale_previous_wrap)
 nnoremap <leader>ta :ALEToggle<CR>
 " }}
 
