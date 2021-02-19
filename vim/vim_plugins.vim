@@ -62,6 +62,7 @@ endif
 
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
 Plug 'junegunn/vim-easy-align'
+Plug 'morhetz/gruvbox'
 
 " TODO
 " github.com/SirVer/ultisnips
@@ -124,6 +125,22 @@ Plug 'itchyny/vim-gitbranch'
 " Initialize plugin system
 call plug#end()
 "}}
+" Setting Gruvbox {{
+color gruvbox
+"
+" hi Statusline cterm=NONE term=NONE ctermfg=232 ctermbg=191
+" " Not Current
+" hi StatuslineNC cterm=NONE term=NONE ctermfg=232 ctermbg=248
+"Git
+hi User1 cterm=None term=None ctermfg=232 ctermbg=202
+"short name
+hi User2 cterm=None term=None ctermfg=232 ctermbg=178
+"modified flag
+hi User3 cterm=None term=None ctermfg=white ctermbg=235
+" BuffNum
+hi User5 cterm=None term=None ctermfg=232 ctermbg=106
+" user 4 and 6 are in all plug for ale and obsess
+" }}
 " Plugin settings and maps {{
 " YCM {{
 if (g:use_ycm == 1)
@@ -409,7 +426,24 @@ nmap ga <Plug>(EasyAlign)
 " VimSpector {{
 let g:vimspector_enable_mappings = 'HUMAN'
 let g:vimspector_base_dir=expand( '$HOME/.vim/vimspector-config' )
-nnoremap <leader>qv :VimspectorReset<CR>
+nnoremap <leader>qd :VimspectorReset<CR>
+nnoremap <leader>dd :call vimspector#Continue()<CR>
+nnoremap <leader>dc :call GotoWindow(g:vimspector_session_windows.code)<CR>
+nnoremap <leader>dt :call GotoWindow(g:vimspector_session_windows.tagpage)<CR>
+nnoremap <leader>dv :call GotoWindow(g:vimspector_session_windows.variables)<CR>
+nnoremap <leader>dw :call GotoWindow(g:vimspector_session_windows.watches)<CR>
+nnoremap <leader>ds :call GotoWindow(g:vimspector_session_windows.stack_trace)<CR>
+nnoremap <leader>do :call GotoWindow(g:vimspector_session_windows.output)<CR>
+
+nnoremap <leader>dl <Plug>VimspectorStepInto
+nnoremap <leader>dj <Plug>VimspectorStepOver
+nnoremap <leader>dk <Plug>VimspectorStepOut
+nnoremap <leader>dR <Plug>VimspectorRestart
+
+nnoremap <leader>drc <Plug>VimspectorRunToCursor
+nmap <C-b> <Plug>VimspectorToggleBreakpoint
+nnoremap <leader>dcbp <Plug>VimspectorToggleConditionalBreakpoint
+
 " }}
 " Plugin Maps{{
 " toggle undotree
@@ -455,8 +489,8 @@ if (g:use_fzf == 1)
     nnoremap <leader>fbb :Buffers<CR>
     nnoremap <leader>fo :Colors<CR>
     nnoremap <leader>fc :Commands<CR>
-    nnoremap <leader>fmm :Maps<CR>
-    nnoremap <leader>fma :Marks<CR>
+    nnoremap <leader>fm :Maps<CR>
+    nnoremap <leader>fa :Marks<CR>
     nnoremap <leader>fw :Windows<CR>
     nnoremap <leader>ft :Helptags<CR>
     nnoremap <leader>fhc :History:<CR>
