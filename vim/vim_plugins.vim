@@ -127,6 +127,7 @@ call plug#end()
 "}}
 " Setting Gruvbox {{
 color gruvbox
+set bg=dark
 "
 " hi Statusline cterm=NONE term=NONE ctermfg=232 ctermbg=191
 " " Not Current
