@@ -510,9 +510,9 @@ else
 endif
 
 if (g:use_rg == 1)
-    nnoremap <leader>fg :Rg
+    nnoremap <leader>r :Rg
 else
-    nnoremap <leader>fg :vimgrep
+    nnoremap <leader>r :vimgrep
 endif
 "}}
 " }}
