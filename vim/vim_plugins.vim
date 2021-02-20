@@ -526,4 +526,15 @@ else
     nnoremap <leader>r :vimgrep
 endif
 "}}
+" {{ UltiSnips
+
+let g:UltiSnipsExpandTrigger = '<nop>'
+let g:UltiSnipsJumpForwardTrigger = '<c-i>'
+let g:UltiSnipsJumpBackwardTrigger = '<c-o>'
+let g:UltiSnipsRemoveSelectModeMappings = 0
+let g:UltiSnipsSnippetDirectories = ["~/rcfiles/UltiSnips"]
+
+nnoremap <leader>es :UltiSnipsEdit!<cr>
+
+" }}
 " }}

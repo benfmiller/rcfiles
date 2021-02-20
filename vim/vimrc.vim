@@ -127,6 +127,8 @@ cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 nnoremap j gj
 nnoremap k gk
 
+nnoremap Y y$
+
 " save session, open with vim -S
 nnoremap <leader>S :mksession!<CR>
 " save file
