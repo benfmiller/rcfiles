@@ -105,7 +105,8 @@ Plug 'mbbill/undotree'
 Plug 'preservim/nerdtree'
 
 " git plugins
-" https://www.chrisatmachine.com/Neovim/12-git-integration/ Got this from this
+" https://www.chrisatmachine.com/Neovim/12-git-integration/ Got some of this from this
+Plug 'rhysd/git-messenger.vim'
 Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
@@ -165,6 +166,11 @@ endif
 " Github Config {{
 
 if (g:use_coc == 1)
+
+    " TODO lints at end of line
+    let g:Coc_virtualText = 1
+
+
     " TextEdit might fail if hidden is not set.
     set hidden
 
@@ -477,18 +483,22 @@ nnoremap <C-t> :NERDTreeToggle<CR>
 
 " Git Stuff {{
 " This comes from vim fugitive
+let g:git_messenger_no_default_mappings = 1
+
 nnoremap <leader>gg :G<CR>
 nnoremap <leader>gs :Git status<CR>
 nnoremap <leader>ga :Git add
 nnoremap <leader>gc :Gcommit<CR>
 nnoremap <leader>gp :Git push<CR>
 nnoremap <leader>gl :Git pull<CR>
-nnoremap <leader>gm :Git merge
+nnoremap <leader>gr :Git merge
 nnoremap <leader>gos :Git log --stat<CR>
 nnoremap <leader>goo :Git log --oneline<CR>
 
 nnoremap <leader>gD :SignifyDiff<CR>
 nnoremap <leader>gd :SignifyHunkDiff<CR>
+
+nnoremap <leader>gm :GitMessenger<CR>
 
 nnoremap <leader>gv :GV<CR>
 nnoremap <leader>gtv :GV!<CR>
