@@ -67,6 +67,13 @@ Plug 'junegunn/vim-easy-align'
 Plug 'morhetz/gruvbox'
 
 " TODO
+" This might be fun at some time, requires google api key
+" https://github.com/itchyny/calendar.vim
+"
+" shows hex colors, requries golang
+" Plug 'RRethy/vim-hexokinase', {'do': 'make hexokinase'}
+"
+" This should be mostly implemented
 " github.com/SirVer/ultisnips
 " Consider this for code snipppets
 " Plug 'SirVer/ultisnips'
@@ -82,6 +89,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'szw/vim-maximizer'
 Plug 'christoomey/vim-tmux-navigator'
 
+Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-unimpaired'
 " docs at ~/.local/share/nvim/plugged/vim-unimpaired/doc/unimpaired.txt
@@ -452,9 +460,8 @@ nnoremap <leader>dcbp <Plug>VimspectorToggleConditionalBreakpoint
 " Plugin Maps{{
 " toggle undotree
 nnoremap <leader>tu :UndotreeToggle<CR>
-
 nnoremap <leader>tm :MaximizerToggle<CR>
-
+nnoremap <leader>th :HexokinaseToggle<CR>
 nnoremap <leader>to :Obsess!<CR>
 
 vmap <C-m> :'<,'>Commentary<CR>
