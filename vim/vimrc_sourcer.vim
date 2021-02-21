@@ -1,5 +1,6 @@
 let g:use_coc=0
 let g:use_ycm=1
+let g:use_vimspector=1
 "if zero, uses ctrlp instead
 let g:use_fzf=1
 let g:use_rg=1

@@ -41,6 +41,11 @@ if (g:use_coc == 1)
     Plug 'SirVer/ultisnips'
 endif
 
+if (g:use_vimspector == 1)
+    " Debugger
+    Plug 'puremourning/vimspector'
+endif
+
 if (g:use_fzf == 1)
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
@@ -81,9 +86,6 @@ Plug 'morhetz/gruvbox'
 " And this?
 " https://github.com/honza/vim-snippets
 "
-
-" Debugger
-Plug 'puremourning/vimspector'
 
 Plug 'jiangmiao/auto-pairs'
 Plug 'szw/vim-maximizer'
@@ -442,26 +444,27 @@ nmap ga <Plug>(EasyAlign)
 " Try gaip= or vipga=
 " }}
 " VimSpector {{
-let g:vimspector_enable_mappings = 'HUMAN'
-let g:vimspector_base_dir=expand( '$HOME/.vim/vimspector-config' )
-nnoremap <leader>qd :VimspectorReset<CR>
-nnoremap <leader>dd :call vimspector#Continue()<CR>
-nnoremap <leader>dc :call GotoWindow(g:vimspector_session_windows.code)<CR>
-nnoremap <leader>dt :call GotoWindow(g:vimspector_session_windows.tagpage)<CR>
-nnoremap <leader>dv :call GotoWindow(g:vimspector_session_windows.variables)<CR>
-nnoremap <leader>dw :call GotoWindow(g:vimspector_session_windows.watches)<CR>
-nnoremap <leader>ds :call GotoWindow(g:vimspector_session_windows.stack_trace)<CR>
-nnoremap <leader>do :call GotoWindow(g:vimspector_session_windows.output)<CR>
+if (g:use_vimspector == 1)
+    let g:vimspector_enable_mappings = 'HUMAN'
+    let g:vimspector_base_dir=expand( '$HOME/.vim/vimspector-config' )
+    nnoremap <leader>qd :VimspectorReset<CR>
+    nnoremap <leader>dd :call vimspector#Continue()<CR>
+    nnoremap <leader>dc :call GotoWindow(g:vimspector_session_windows.code)<CR>
+    nnoremap <leader>dt :call GotoWindow(g:vimspector_session_windows.tagpage)<CR>
+    nnoremap <leader>dv :call GotoWindow(g:vimspector_session_windows.variables)<CR>
+    nnoremap <leader>dw :call GotoWindow(g:vimspector_session_windows.watches)<CR>
+    nnoremap <leader>ds :call GotoWindow(g:vimspector_session_windows.stack_trace)<CR>
+    nnoremap <leader>do :call GotoWindow(g:vimspector_session_windows.output)<CR>
 
-nnoremap <leader>dl <Plug>VimspectorStepInto
-nnoremap <leader>dj <Plug>VimspectorStepOver
-nnoremap <leader>dk <Plug>VimspectorStepOut
-nnoremap <leader>dR <Plug>VimspectorRestart
+    nnoremap <leader>dl <Plug>VimspectorStepInto
+    nnoremap <leader>dj <Plug>VimspectorStepOver
+    nnoremap <leader>dk <Plug>VimspectorStepOut
+    nnoremap <leader>dR <Plug>VimspectorRestart
 
-nnoremap <leader>drc <Plug>VimspectorRunToCursor
-nmap <C-b> <Plug>VimspectorToggleBreakpoint
-nnoremap <leader>dcbp <Plug>VimspectorToggleConditionalBreakpoint
-
+    nnoremap <leader>drc <Plug>VimspectorRunToCursor
+    nmap <C-b> <Plug>VimspectorToggleBreakpoint
+    nnoremap <leader>dcbp <Plug>VimspectorToggleConditionalBreakpoint
+endif
 " }}
 " Plugin Maps{{
 " toggle undotree
