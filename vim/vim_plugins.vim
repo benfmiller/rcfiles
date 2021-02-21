@@ -66,7 +66,7 @@ endif
 Plug 'junegunn/vim-easy-align'
 Plug 'morhetz/gruvbox'
 
-" TODO
+" TODO More plugins to look into some time
 " This might be fun at some time, requires google api key
 " https://github.com/itchyny/calendar.vim
 "
