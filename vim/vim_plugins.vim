@@ -456,14 +456,14 @@ if (g:use_vimspector == 1)
     nnoremap <leader>ds :call GotoWindow(g:vimspector_session_windows.stack_trace)<CR>
     nnoremap <leader>do :call GotoWindow(g:vimspector_session_windows.output)<CR>
 
-    nnoremap <leader>dl <Plug>VimspectorStepInto
-    nnoremap <leader>dj <Plug>VimspectorStepOver
-    nnoremap <leader>dk <Plug>VimspectorStepOut
-    nnoremap <leader>dR <Plug>VimspectorRestart
+    nmap <leader>dl <Plug>VimspectorStepInto
+    nmap <leader>dj <Plug>VimspectorStepOver
+    nmap <leader>dk <Plug>VimspectorStepOut
+    nmap <leader>dR <Plug>VimspectorRestart
 
-    nnoremap <leader>drc <Plug>VimspectorRunToCursor
+    nmap <leader>drc <Plug>VimspectorRunToCursor
     nmap <C-b> <Plug>VimspectorToggleBreakpoint
-    nnoremap <leader>dcbp <Plug>VimspectorToggleConditionalBreakpoint
+    nmap <leader>db <Plug>VimspectorToggleConditionalBreakpoint
 endif
 " }}
 " Plugin Maps{{
