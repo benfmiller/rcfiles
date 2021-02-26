@@ -138,6 +138,10 @@ nnoremap <leader>qb :bd<CR>
 nnoremap <leader>qq :qa!<CR>
 nnoremap <leader>qt :tabc<CR>
 
+" edits
+nnoremap <leader>et :e %<CR>
+nnoremap <leader>ea :bufdo e<CR>
+
 " Moving buffer and tabs {{
 
 " opens current window in new tab
