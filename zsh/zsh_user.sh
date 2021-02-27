@@ -108,6 +108,11 @@ else
 fi
 }
 
+ecn () {
+    ck;
+    svim
+}
+
 cmdir () {
     mkdir $1
     cd $1
