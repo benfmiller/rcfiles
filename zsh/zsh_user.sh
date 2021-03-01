@@ -120,9 +120,7 @@ cmdir () {
 
 ginit () {
     git init
-    git branch main
-    git checkout main
-    git branch -d master
+    git checkout -b main
 }
 #}}
 # Zsh Suggested User configuration? {{
