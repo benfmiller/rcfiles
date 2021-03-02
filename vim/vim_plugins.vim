@@ -460,6 +460,8 @@ if (g:use_vimspector == 1)
     nmap <leader>dj <Plug>VimspectorStepOver
     nmap <leader>dk <Plug>VimspectorStepOut
     nmap <leader>dR <Plug>VimspectorRestart
+    nmap <leader>daw <Plug>VimspectorAddWatch
+    nmap <leader>dew <Plug>VimspectorDeleteWatch
 
     nmap <leader>drc <Plug>VimspectorRunToCursor
     nmap <C-b> <Plug>VimspectorToggleBreakpoint
