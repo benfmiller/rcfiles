@@ -378,17 +378,18 @@ let g:ale_lint_on_text_changed = 1
 let g:ale_lint_on_enter = 0
 let g:ale_fix_on_save = 1
 
-let g:ale_sign_error = '●'
-let g:ale_sign_warning = '.'
-
+let g:ale_sign_error = '⛔'
+let g:ale_sign_warning = '⚠'
+"'●⊗⊕⌛⌦⌼☕⛔✍'
 " ALE Lint should delay a bit?
-let g:ale_lint_delay = 2000
+" let g:ale_lint_delay = 2000
 
 " Let ALE know to what Linter to use for various programming languages
-let g:ale_linters = {'javascript': ['eslint'],
-\ 'java': ['javac'],
-\ 'python3':['pylint']
-\ }
+" uses all available if not specified
+" let g:ale_linters = {'javascript': ['eslint'],
+" \ 'java': ['javac'],
+" \ }
+" \ 'python3':['pylint']
 
 "Path to Eclipse LSP for ALE
 " let g:ale_java_eclipselsp_path = '/usr/share/java/jdtls'
@@ -404,7 +405,7 @@ let g:ale_list_window_size = 4
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace', 'uncrustify'],
 \   'javascript': ['eslint'],
-\   'python3': ['black', 'autoimport'],
+\   'python': ['black', 'autoimport'],
 \}
 " }}
 " Signify {{
