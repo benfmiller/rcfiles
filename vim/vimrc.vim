@@ -6,6 +6,7 @@ let mapleader = " "
 " Visuals{{
 set number
 set relativenumber
+" nnoremap <leader>nn :set number!<CR>:set relativenumber!<CR>
 " set termguicolors!
 " color elflord
 set showcmd             " show command in bottom bar
