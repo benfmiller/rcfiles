@@ -405,7 +405,7 @@ let g:ale_list_window_size = 4
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace', 'uncrustify'],
 \   'javascript': ['eslint'],
-\   'python': ['black', 'autoimport'],
+\   'python': ['black', 'autoimport', 'isort', 'autoimport'],
 \}
 " }}
 " Signify {{
