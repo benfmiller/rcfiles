@@ -69,7 +69,7 @@ fi
 
 # export KEYTIMEOUT=1
 
-alias l="ls -al"
+alias l="ls -alh"
 alias p="pwd"
 alias c="cd"
 alias dt="du -shc ./*"
