@@ -49,7 +49,7 @@ install_tmux_plugin_manager (){
 # vim in .vim/plugged/YouCompleteMe
 #}}
 # Path{{
-export PATH=~/.local/bin:$PATH
+export PATH=~/.local/bin:$PATH:~/rcfiles/scripts
 export TMPDIR="/tmp"
 #}}
 # Editor {{
