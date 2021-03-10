@@ -16,6 +16,8 @@ set showmatch           "highlight matching brackets [{()}]
 syntax enable
 set scrolloff=8
 
+set cmdheight=2
+
 " TabLine     tab pages line, not active tab page label gui=NONE guibg=#3e4452 guifg=#abb2bf
 " TabLineFill tab pages line, where there are no labels
 " TabLineSel  tab pages line, active tab page label      gui=NONE guibg=#1D6E02 guifg=#ffffff
