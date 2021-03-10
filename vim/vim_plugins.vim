@@ -162,6 +162,12 @@ if (g:use_ycm == 1)
     let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
     " let g:ycm_server_keep_logfiles = 1
     " let g:ycm_server_log_level = 'debug'
+    "
+    nnoremap <leader>yd :YcmCompleter GetDoc<CR>
+    nnoremap <leader>yt :YcmCompleter GetType<CR>
+    nnoremap <leader>yg :YcmCompleter GoTo
+    nnoremap <leader>yr :YcmCompleter RefactorRename
+
 endif
 "}}
 " COC {{
