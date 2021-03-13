@@ -19,7 +19,7 @@ cpnviminit () {
 }
 #}}
 #System{{
-alias tupdate="sudo apt update && sudo apt upgrade -y"
+alias tupdate="sudo apt update && sudo apt upgrade -y && pullrcs"
 alias sinstal="sudo apt install"
 #}}
 #Tmux{{
