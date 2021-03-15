@@ -19,7 +19,7 @@ cpnviminit () {
 }
 #}}
 #System{{
-alias tupdate="sudo apt update && sudo apt upgrade -y ; echo ; echo "PullingRcs" ; pullrcs"
+alias tupdate="sudo apt update && sudo apt upgrade -y ; echo ; echo \"PullingRcs\" ; pullrcs ; zsh"
 alias sinstal="sudo apt install"
 #}}
 #Tmux{{
