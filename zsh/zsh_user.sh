@@ -44,6 +44,10 @@ install_neovim_vim_plug () {
 install_tmux_plugin_manager (){
 	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 }
+
+install_rust(){
+    $ curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh
+}
 # ycm requires install.py
 # nvim in .local/share/nvim/plugged/YouCompleteMe
 # vim in .vim/plugged/YouCompleteMe
