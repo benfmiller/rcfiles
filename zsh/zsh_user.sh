@@ -286,16 +286,14 @@ print_all_custom_funcs() {
     echo setup_github_ssh
     echo cs12
     echo cptocs12
-    echo install_oh_my_zsh
-    echo install_vim_vim_plug
-    echo install_neovim_vim_plug
-    echo install_tmux_plugin_manager
     echo cpviminit
     echo cvim \(check if vim session is present\)
     echo svim \(open session.vim if found else open empty\)
     echo ginit
     echo cmdir
     echo lscripts and cdscripts
+    echo
+    echo install_ tab completion
 
     echo
     echo look at print completion for others
