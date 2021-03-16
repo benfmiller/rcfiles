@@ -412,7 +412,14 @@ let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace', 'uncrustify'],
 \   'javascript': ['eslint'],
 \   'python': ['black', 'autoimport', 'isort', 'autoimport'],
+\   'rust': ['rustfmt'],
 \}
+if ale#path#FindNearestFile(0, 'Cargo.toml') is# ''
+  let g:ale_linters = {'rust': ['rustc']}
+endif
+" let g:ale_linters = {
+" \   'rust': ['cargo', 'rls', 'rustc', 'analyzer'],
+" \}
 " }}
 " Signify {{
 " Change these if you want

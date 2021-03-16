@@ -46,7 +46,9 @@ install_tmux_plugin_manager (){
 }
 
 install_rust(){
-    curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh
+    curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh;
+    rustup install nightly;
+    rustup default nightly;
 }
 # ycm requires install.py
 # nvim in .local/share/nvim/plugged/YouCompleteMe
