@@ -116,7 +116,8 @@ Plug 'itchyny/vim-gitbranch'
 
 " On-demand loading
 " au filetype python Plug 'timonv/vim-cargo'
-Plug 'timonv/vim-cargo', {'for': 'rust'}
+" Plug 'timonv/vim-cargo', {'for': 'rust'}
+Plug 'rust-lang/rust.vim', {'for': 'rust'}
 Plug 'mbbill/undotree', {'on': 'UndotreeToggle'}
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 " Plug 'tpope/vim-fireplace', { 'for': 'clojure' }

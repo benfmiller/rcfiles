@@ -139,9 +139,13 @@ nnoremap Y y$
 nnoremap <leader>S :mksession!<CR>
 " save file
 nnoremap <leader>w :w<CR>
-nnoremap <leader>qb :bd<CR>
+nnoremap <leader>qb :bd!<CR>
 nnoremap <leader>qq :qa!<CR>
 nnoremap <leader>qt :tabc<CR>
+nnoremap <leader>qw <C-w>c
+
+nnoremap <leader>= <C-w>s
+nnoremap <leader>\ <C-w>v
 
 " edits
 nnoremap <leader>et :e %<CR>
