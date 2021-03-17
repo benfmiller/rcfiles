@@ -151,6 +151,10 @@ nnoremap <leader>\ <C-w>v
 nnoremap <leader>et :e %<CR>
 nnoremap <leader>ea :bufdo e<CR>
 
+nnoremap <leader>ccr :Cargo run<CR>
+nnoremap <leader>ccb :Cargo build<CR>
+nnoremap <leader>cm :make<CR>
+
 " Moving buffer and tabs {{
 
 " opens current window in new tab
