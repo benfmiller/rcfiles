@@ -88,7 +88,7 @@ Plug 'morhetz/gruvbox'
 "
 
 Plug 'jiangmiao/auto-pairs'
-Plug 'szw/vim-maximizer', {'on','MaximizerToggle'}
+Plug 'szw/vim-maximizer', {'on':'MaximizerToggle'}
 Plug 'christoomey/vim-tmux-navigator'
 
 Plug 'tpope/vim-surround'
