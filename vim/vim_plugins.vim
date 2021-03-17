@@ -82,17 +82,17 @@ Plug 'morhetz/gruvbox'
 " github.com/SirVer/ultisnips
 " Consider this for code snipppets
 " Plug 'SirVer/ultisnips'
-"
+
 " And this?
 " https://github.com/honza/vim-snippets
 "
 
 Plug 'jiangmiao/auto-pairs'
-Plug 'szw/vim-maximizer'
+Plug 'szw/vim-maximizer', {'on','MaximizerToggle'}
 Plug 'christoomey/vim-tmux-navigator'
 
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-commentary', {'on': 'Commentary'}
 Plug 'tpope/vim-unimpaired'
 " docs at ~/.local/share/nvim/plugged/vim-unimpaired/doc/unimpaired.txt
 Plug 'tpope/vim-obsession'
@@ -101,10 +101,6 @@ Plug 'tpope/vim-obsession'
 
 " Better linter
 Plug 'dense-analysis/ale'
-
-Plug 'mbbill/undotree'
-
-Plug 'preservim/nerdtree'
 
 " git plugins
 " https://www.chrisatmachine.com/Neovim/12-git-integration/ Got some of this from this
@@ -119,7 +115,10 @@ Plug 'itchyny/vim-gitbranch'
 " Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
 " On-demand loading
-" Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+" au filetype python Plug 'timonv/vim-cargo'
+Plug 'timonv/vim-cargo', {'for': 'rust'}
+Plug 'mbbill/undotree', {'on': 'UndotreeToggle'}
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 " Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 
 " Using a non-default branch
