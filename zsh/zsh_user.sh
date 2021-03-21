@@ -84,6 +84,9 @@ alias aets="deactivate &> ~/null; source ~/venvs/tradesuite/Scripts/activate"
 alias aead="deactivate &> ~/null; source ~/venvs/audalign/Scripts/activate"
 alias aebk="deactivate &> ~/null; source ~/venvs/braspkeys/Scripts/activate"
 alias de="deactivate"
+
+alias ccr="cargo run"
+alias ccb="cargo build"
 #}}
 #Var Functions{{
 # cs12 then file on server to get, then place here to place
