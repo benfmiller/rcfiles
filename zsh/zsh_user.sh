@@ -131,6 +131,16 @@ ginit () {
     git init
     git checkout -b main
 }
+
+wordtotext () {
+
+filename=$(basename -- "$1")
+# extension="${1##*.}"
+extension="${1##*/}"
+filename="${1%.*}"
+
+unzip -p $filename.docx word/document.xml | sed -e 's/<\/w:p>/\n/g; s/<[^>]\{1,\}>//g; s/[^[:print:]\n]\{1,\}//g' > $filename.txt;
+}
 #}}
 # Zsh Suggested User configuration? {{
 
@@ -297,6 +307,7 @@ print_all_custom_funcs() {
     echo ginit
     echo cmdir
     echo lscripts and cdscripts
+    echo wordtotext
     echo
     echo install_ tab completion
 
