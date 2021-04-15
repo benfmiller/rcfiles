@@ -72,15 +72,15 @@ function MyTabLine()
                                 let m += 1
                         endif
                         " no final ' ' added...formatting looks better done later
-                        if bc > 1 && nameCounter < 1
-                                let n .= ' '
-                        endif
-                        if nameCounter == 1
-                            let n .= '...'
-                        endif
                         let nameCounter += 1
                         let bc -= 1
                 endfor
+                if nameCounter > 1
+                    let n .= ' {' . (nameCounter) .'}'
+                endif
+                " if bc > 1 && nameCounter < 1
+                "         let n .= ' '
+                " endif
                 " add modified label [n+] where n pages in tab are modified
                 if m > 0
                         let s .= '[' . m . '+]'
