@@ -89,13 +89,6 @@ alias ccr="cargo run"
 alias ccb="cargo build"
 #}}
 #Var Functions{{
-# cs12 then file on server to get, then place here to place
-cs12 () {
-    sudo scp -r -i /home/kaliben/.ssh/csci_112 k12t783@csci112.cs.montana.edu:$1 $2
-}
-cptocs12 () {
-    sudo scp -r -i /home/kaliben/.ssh/csci_112 $1 k12t783@csci112.cs.montana.edu:$2
-}
 print_colors () {
 for i in {0..255} ; do
     printf "\x1b[38;5;${i}m${i} "
@@ -185,7 +178,7 @@ setup_github_ssh () {
     echo "Make sure gits are ssh connected"
 }
 
-print_setup_github_ssh (){
+print_git_setup_github_ssh (){
     echo ssh-keygen -t rsa -b 4096 -C ben.f.miller24@gmail.com
     echo mv ~/.ssh/id_rsa ~/.ssh/id_rsa_github
     echo ssh-add ~/.ssh/id_rsa_github
@@ -228,15 +221,17 @@ unset env
 #}}
 # Git branch main updater{{
 
-chmastermain () {
+git_chmastermain () {
     git branch -m master main
     git fetch origin
     git branch -u origin/main main
 }
-print_change_master_branch () {
+print_git_change_master_branch () {
     echo git branch -m master main
     echo git fetch origin
     echo git branch -u origin/main main
+    echo
+    echo "run git_chmastermain to do above code"
 }
 
 # set git ssh with "git remote set-url origin git@Github.com:benfmiller/....git"
@@ -279,8 +274,45 @@ print_git_tag (){
     echo git push origin v*.*.*
     echo or git push origin --tags
 }
-print_ch_git_to_ssh () {
+print_git_ch_to_ssh () {
     echo git remote set-url origin git@github.com:name/repo.git
+}
+print_git_submodule () {
+    echo
+    echo -e "\033[1;32mgit submodule add git@github.com:name/repo.git"
+    echo git diff --cached --submodule
+    echo git push origin main
+    echo
+    echo git log -p --submodule
+    echo "  //logs of submodules"
+    echo
+    echo git submodule update --remote
+    echo
+    echo git submodule update --init --recursive
+    echo "  //sets up new ones if they're added at origin"
+    echo
+    echo git submodule sync --recursive
+    echo "  //needed if url is changed"
+    echo
+    echo git push --recurse-submodules=check
+    echo "  //only pushes superproject if subprojects are also pushed"
+    echo
+    echo git clone --recurse-submodules git@github.com:name/repo.git
+    echo "  //or regular clone it then run: git submodule init\; git submodule update"
+    echo -e "\033[0m"
+    echo git config status.submodulesummary 1
+    echo "  //shows changes to submodules in git status"
+    echo git config submodule.recurse true
+    echo "  //always recurses submodules"
+    echo git config --global diff.submodule log
+    echo "  //shows git diffs with commits of submodule"
+    echo git config -f .gitmodules submodule.{submoduleName}.branch {branchName}
+    echo "  //sets which branch to use"
+    echo
+    echo config aliases maybe wanted
+    echo git config alias.sdiff '!'"git diff && git submodule foreach 'git diff'"
+    echo git config alias.spush 'push --recurse-submodules=on-demand'
+    echo git config alias.supdate 'submodule update --remote --merge'
 }
 # }}
 # Python {{
