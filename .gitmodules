@@ -1,0 +1,3 @@
+[submodule "games/hangman-rust"]
+	path = games/hangman-rust
+	url = git@github.com:benfmiller/hangman-rust.git
