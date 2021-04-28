@@ -86,6 +86,7 @@ Plug 'morhetz/gruvbox'
 " And this?
 " https://github.com/honza/vim-snippets
 "
+Plug 'dbeniamine/cheat.sh-vim'
 
 Plug 'jiangmiao/auto-pairs'
 Plug 'szw/vim-maximizer', {'on':'MaximizerToggle'}

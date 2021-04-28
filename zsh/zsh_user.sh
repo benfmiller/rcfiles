@@ -50,6 +50,18 @@ install_rust(){
     rustup install nightly;
     rustup default nightly;
 }
+
+install_chtsh_user(){ # requires rlwrap
+    PATH_DIR="$HOME/.local/bin"  # or another directory on your $PATH
+    mkdir -p "$PATH_DIR"
+    curl https://cht.sh/:cht.sh > "$PATH_DIR/cht.sh"
+    chmod +x "$PATH_DIR/cht.sh"
+}
+install_chtsh_glob(){ # requires rlwrap
+    curl https://cht.sh/:cht.sh | sudo tee /usr/local/bin/cht.sh
+    chmod +x /usr/local/bin/cht.sh
+}
+
 # ycm requires install.py
 # nvim in .local/share/nvim/plugged/YouCompleteMe
 # vim in .vim/plugged/YouCompleteMe
