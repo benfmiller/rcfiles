@@ -402,6 +402,12 @@ let g:ale_sign_warning = '⛅'
 " let g:ale_java_eclipselsp_path = '/usr/share/java/jdtls'
 " let g:ale_java_eclipselsp_executable = '/usr/bin/jdtls'
 " let g:ale_java_eclipselsp_config_path = '$HOME/.jdtls'
+"
+" Mappings in the style of unimpaired-next
+nmap <silent> [W <Plug>(ale_first)
+nmap <silent> [w <Plug>(ale_previous)
+nmap <silent> ]w <Plug>(ale_next)
+nmap <silent> ]W <Plug>(ale_last)
 
 " Use Quickfix List instead of LocList
 let g:ale_set_loclist = 0
