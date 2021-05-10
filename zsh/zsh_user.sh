@@ -350,6 +350,9 @@ print_python_push_pypi (){
     echo twine upload dist/*     \# to pypi
 }
 #}}
+pytestc () {
+    pytest --cov=$1 --cov-report=html
+}
 #}}
 # Print Alls {{
 print_all_custom_funcs() {
