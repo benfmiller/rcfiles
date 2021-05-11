@@ -252,25 +252,6 @@ print_git_change_master_branch () {
 alias print_add_ssh_passphrase="echo Add passphrase with \"ssh-keygen -p -f filename\""
 #}}
 # Aliases{{
-
-git_largest_files() {
-    git rev-list --objects --all |
-    git cat-file --batch-check='%(objecttype) %(objectname) %(objectsize) %(rest)' |
-    sed -n 's/^blob //p' |
-    sort --numeric-sort --key=2 |
-    cut -c 1-12,41- |
-    $(command -v gnumfmt || echo numfmt) --field=2 --to=iec-i --suffix=B --padding=7 --round=nearest
-}
-git_largest_files_no_head() {
-    git rev-list --objects --all |
-    git cat-file --batch-check='%(objecttype) %(objectname) %(objectsize) %(rest)' |
-    sed -n 's/^blob //p' |
-    grep -vF --file=<(git ls-tree -r HEAD | awk '{print $3}') |
-    sort --numeric-sort --key=2 |
-    cut -c 1-12,41- |
-    $(command -v gnumfmt || echo numfmt) --field=2 --to=iec-i --suffix=B --padding=7 --round=nearest
-}
-
 alias gs="git status"
 alias gss="git status -s"
 alias gp="git push"
@@ -284,6 +265,7 @@ alias gls="git log --stat"
 alias gm="git merge"
 alias gbd="git branch -d"
 alias gbl="git blame -b -w"
+alias gb="git branch"
 alias gd="git diff"
 alias gw="git worktree"
 alias gwa="git worktree add"
@@ -309,6 +291,25 @@ print_git_aliases (){
     echo gwr=\"git worktree remove\"
     echo gwl=\"git worktree list\"
 }
+
+git_largest_files() {
+    git rev-list --objects --all |
+    git cat-file --batch-check='%(objecttype) %(objectname) %(objectsize) %(rest)' |
+    sed -n 's/^blob //p' |
+    sort --numeric-sort --key=2 |
+    cut -c 1-12,41- |
+    $(command -v gnumfmt || echo numfmt) --field=2 --to=iec-i --suffix=B --padding=7 --round=nearest
+}
+git_largest_files_no_head() {
+    git rev-list --objects --all |
+    git cat-file --batch-check='%(objecttype) %(objectname) %(objectsize) %(rest)' |
+    sed -n 's/^blob //p' |
+    grep -vF --file=<(git ls-tree -r HEAD | awk '{print $3}') |
+    sort --numeric-sort --key=2 |
+    cut -c 1-12,41- |
+    $(command -v gnumfmt || echo numfmt) --field=2 --to=iec-i --suffix=B --padding=7 --round=nearest
+}
+
 
 # }}
 print_git_tag (){
@@ -376,6 +377,8 @@ pytestc () {
 print_all_custom_funcs() {
     echo chmastermain
     echo setup_github_ssh
+    echo git_largest_files
+    echo git_largest_files_no_head
     echo cs12
     echo cptocs12
     echo cpviminit
