@@ -132,9 +132,12 @@ cmdir () {
     cd $1
 }
 
-ginit () {
-    git init
-    git checkout -b main
+generate_guid () {
+    if uname | grep -qv 'Linux'; then
+        python -c 'import uuid; print(str(uuid.uuid4()))'
+    else
+        python3 -c 'import uuid; print(str(uuid.uuid4()))'
+    fi
 }
 
 wordtotext () {
@@ -292,6 +295,11 @@ print_git_aliases (){
     echo gwl=\"git worktree list\"
 }
 
+ginit () {
+    git init
+    git checkout -b main
+}
+
 git_largest_files() {
     git rev-list --objects --all |
     git cat-file --batch-check='%(objecttype) %(objectname) %(objectsize) %(rest)' |
@@ -379,6 +387,7 @@ print_all_custom_funcs() {
     echo setup_github_ssh
     echo git_largest_files
     echo git_largest_files_no_head
+    echo generate_guid
     echo cs12
     echo cptocs12
     echo cpviminit
