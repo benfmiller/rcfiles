@@ -87,7 +87,7 @@ fi
 
 # export KEYTIMEOUT=1
 
-alias swinbash="/mnt/c/Program\ Files/Git/usr/bin/bash.exe -i -l"
+alias winbash="/mnt/c/Program\ Files/Git/usr/bin/bash.exe -i -l"
 
 alias l="ls -alh"
 alias p="pwd"
