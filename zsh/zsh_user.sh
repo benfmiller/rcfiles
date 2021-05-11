@@ -253,6 +253,24 @@ alias print_add_ssh_passphrase="echo Add passphrase with \"ssh-keygen -p -f file
 #}}
 # Aliases{{
 
+git_largest_files() {
+    git rev-list --objects --all |
+    git cat-file --batch-check='%(objecttype) %(objectname) %(objectsize) %(rest)' |
+    sed -n 's/^blob //p' |
+    sort --numeric-sort --key=2 |
+    cut -c 1-12,41- |
+    $(command -v gnumfmt || echo numfmt) --field=2 --to=iec-i --suffix=B --padding=7 --round=nearest
+}
+git_largest_files_no_head() {
+    git rev-list --objects --all |
+    git cat-file --batch-check='%(objecttype) %(objectname) %(objectsize) %(rest)' |
+    sed -n 's/^blob //p' |
+    grep -vF --file=<(git ls-tree -r HEAD | awk '{print $3}') |
+    sort --numeric-sort --key=2 |
+    cut -c 1-12,41- |
+    $(command -v gnumfmt || echo numfmt) --field=2 --to=iec-i --suffix=B --padding=7 --round=nearest
+}
+
 alias gs="git status"
 alias gss="git status -s"
 alias gp="git push"
