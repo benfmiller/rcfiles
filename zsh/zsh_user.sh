@@ -87,6 +87,8 @@ fi
 
 # export KEYTIMEOUT=1
 
+alias swinbash="/mnt/c/Program\ Files/Git/usr/bin/bash.exe -i -l"
+
 alias l="ls -alh"
 alias p="pwd"
 alias c="cd"
@@ -141,13 +143,11 @@ generate_guid () {
 }
 
 wordtotext () {
-
-filename=$(basename -- "$1")
-# extension="${1##*.}"
-extension="${1##*/}"
-filename="${1%.*}"
-
-unzip -p $filename.docx word/document.xml | sed -e 's/<\/w:p>/\n/g; s/<[^>]\{1,\}>//g; s/[^[:print:]\n]\{1,\}//g' > $filename.txt;
+    filename=$(basename -- "$1")
+    # extension="${1##*.}"
+    extension="${1##*/}"
+    filename="${1%.*}"
+    unzip -p $filename.docx word/document.xml | sed -e 's/<\/w:p>/\n/g; s/<[^>]\{1,\}>//g; s/[^[:print:]\n]\{1,\}//g' > $filename.txt;
 }
 #}}
 # Zsh Suggested User configuration? {{
