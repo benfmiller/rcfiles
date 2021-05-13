@@ -111,7 +111,7 @@ done
 
 svim () {
 if test -f "./Session.vim"; then
-    vim -S Session.vim
+    vim -S $1
 else
     vim
 fi
