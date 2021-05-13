@@ -1,0 +1,42 @@
+#!/usr/bin/bash
+
+############################### FOLDER ICONS ###################################
+
+folder="$(pwd)"
+
+# Construct the path for the folder icon
+FOLDER_ICON_PATH="$folder/.icon"
+
+if [ -f $FOLDER_ICON_PATH ]; then
+    folder_icon="$(cat $FOLDER_ICON_PATH)"
+else
+    echo "Could not find an .icon file in $folder, using the default icon ️️️️️️🖥️"
+    folder_icon="🖥️"
+fi
+
+# Strip the path and leave the folder name
+folder_name="$(basename $folder)"
+
+# Construct the session name
+SESSION="$folder_icon  $folder_name"
+
+# Attach to Tmux
+
+if [ -z "$TMUX" ]; then
+    # We're not inside Tmux
+    echo "Attaching to $SESSION"
+    tmux attach-session -L vscode -d -t "$SESSION" || tmux new-session -s "$SESSION"
+else
+    # We're inside Tmux
+    if [ -z "$(tmux ls | grep $SESSION)" ]; then
+        # Create a new dettached session
+        tmux new -L vscode -s "$SESSION" -d
+    fi
+
+    # Switch to the session
+    tmux switch-client -L vscode -t "$SESSION"
+
+
+fi
+
+tmux bind c new-window -c "#{pane_current_path}"
