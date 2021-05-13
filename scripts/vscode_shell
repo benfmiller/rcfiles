@@ -22,21 +22,22 @@ SESSION="$folder_icon $folder_name"
 
 # Attach to Tmux
 
+tmux bind c new-window -c "#{pane_current_path}"
 if [ -z "$TMUX" ]; then
     # We're not inside Tmux
     echo "Attaching to $SESSION"
-    tmux attach-session -L vscode -d -t "$SESSION" || tmux new-session -s "$SESSION"
+    # tmux -t "$SESSION" bind c new-window -c $1
+    tmux attach-session -d -t "$SESSION" || tmux new-session -s "$SESSION"
+     # -L vscode
 else
     # We're inside Tmux
     if [ -z "$(tmux ls | grep $SESSION)" ]; then
         # Create a new dettached session
-        tmux new -L vscode -s "$SESSION" -d
+        tmux new -s "$SESSION" -d
+        # -L vscode
     fi
 
     # Switch to the session
-    tmux switch-client -L vscode -t "$SESSION"
-
-
+    tmux switch-client -t "$SESSION"
+    # -L vscode
 fi
-
-tmux bind c new-window -c "#{pane_current_path}"
