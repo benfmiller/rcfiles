@@ -18,7 +18,7 @@ fi
 folder_name="$(basename $folder)"
 
 # Construct the session name
-SESSION="$folder_icon  $folder_name"
+SESSION="$folder_icon $folder_name"
 
 # Attach to Tmux
 
