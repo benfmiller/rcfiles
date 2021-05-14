@@ -82,11 +82,17 @@ if type nvim > /dev/null 2>&1; then
     if [ -n "$NVIM_LISTEN_ADDRESS"  ]; then
         if [ -x "$(command -v nvr)"  ]; then
             alias vim=nvr
+            export EDITOR='nvim'
         else
             alias vim='echo "No nesting!"'
         fi
     fi
 fi
+
+# opens command line in vim
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey '^x^e' edit-command-line
 #}}
 # More Aliases{{
 # for esc to edit line in vim normal mode
