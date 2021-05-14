@@ -85,6 +85,7 @@ Plug 'morhetz/gruvbox'
 Plug 'dbeniamine/cheat.sh-vim'
 Plug 'mhinz/vim-grepper'
 Plug 'vim-test/vim-test'
+Plug 'tpope/vim-dispatch'
 
 Plug 'jiangmiao/auto-pairs'
 Plug 'szw/vim-maximizer', {'on':'MaximizerToggle'}
