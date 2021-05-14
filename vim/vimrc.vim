@@ -309,6 +309,19 @@ set ignorecase
 set hidden
 set autoread
 
+set undofile
+set undodir=$VIMDATA/undo
+
+if !has('nvim')
+    set undodir=~/.vim/undo
+endif
+augroup vimrc
+    autocmd!
+    autocmd BufWritePre /tmp/* setlocal noundofile
+augroup END
+" Might need to do this if it doesn't exist
+" :call mkdir(&undodir, 'p')
+
 " For pasting from system clipboard
 set pastetoggle=<leader>tp
 "
@@ -322,6 +335,11 @@ set pastetoggle=<leader>tp
 " :tabnew      open a new buffer in a new window in a new tab page
 " ap          put from register a
 " }}
+
+" prefers current vim session if opening in the nvim terminal (command line/ commit message editting)
+if has('nvim') && executable('nvr')
+    let $VISUAL="nvr -cc split --remote-wait +'set bufhidden=wipe'"
+endif
 " }}
 " Filetype setters{{
 
