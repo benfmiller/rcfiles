@@ -228,6 +228,16 @@ nnoremap <leader>qq :qa!<CR>
 nnoremap <leader>qt :tabc<CR>
 nnoremap <leader>qw <C-w>c
 
+nnoremap <leader>t1 1gt
+nnoremap <leader>t2 2gt
+nnoremap <leader>t3 3gt
+nnoremap <leader>t4 4gt
+nnoremap <leader>t5 5gt
+nnoremap <leader>t6 6gt
+nnoremap <leader>t7 7gt
+nnoremap <leader>t8 8gt
+nnoremap <leader>t9 9gt
+
 nnoremap <leader>= <C-w>s
 nnoremap <leader>\ <C-w>v
 
@@ -257,9 +267,8 @@ nnoremap <leader>bm :bm<CR>
 nnoremap <leader>bb :b#<CR>
 
 " }}
-
-" gs sorts paragraph
-nnoremap gs gsip
+" " gs sorts paragraph
+" nnoremap gs gsip
 
 " Alternates spellchecking
 " Jump around with [s ]s, suggestions z=, zg add to spell file, zw remove from
