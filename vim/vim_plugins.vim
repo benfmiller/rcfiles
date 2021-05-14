@@ -84,6 +84,7 @@ Plug 'morhetz/gruvbox'
 "
 Plug 'dbeniamine/cheat.sh-vim'
 Plug 'mhinz/vim-grepper'
+Plug 'vim-test/vim-test'
 
 Plug 'jiangmiao/auto-pairs'
 Plug 'szw/vim-maximizer', {'on':'MaximizerToggle'}
@@ -596,5 +597,17 @@ let g:UltiSnipsSnippetDirectories = ["~/rcfiles/UltiSnips"]
 
 nnoremap <leader>es :UltiSnipsEdit!<cr>
 
+" }}
+" Vim-Test {{
+" these "Ctrl mappings" work well when Caps Lock is mapped to Ctrl
+nmap <silent> t<C-n> :TestNearest<CR>
+nmap <silent> t<C-f> :TestFile<CR>
+nmap <silent> t<C-s> :TestSuite<CR>
+nmap <silent> t<C-l> :TestLast<CR>
+nmap <silent> t<C-g> :TestVisit<CR>
+
+let test#strategy = "dispatch"
+
+" let test#python#runner = 'pytest'
 " }}
 " }}
