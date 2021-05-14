@@ -55,10 +55,6 @@ else
     Plug 'kien/ctrlp.vim'
 endif
 
-if (g:use_rg == 1)
-    Plug 'jremmen/vim-ripgrep', { 'do': { -> ripgrep#install() } }
-endif
-
 if (g:use_md_viewer == 1)
     Plug 'iamcco/markdown-preview.vim'
 endif
@@ -87,6 +83,7 @@ Plug 'morhetz/gruvbox'
 " https://github.com/honza/vim-snippets
 "
 Plug 'dbeniamine/cheat.sh-vim'
+Plug 'mhinz/vim-grepper'
 
 Plug 'jiangmiao/auto-pairs'
 Plug 'szw/vim-maximizer', {'on':'MaximizerToggle'}
@@ -555,13 +552,40 @@ if (g:use_fzf == 1)
 else
     nnoremap <leader>ff :CtrlP<CR>
 endif
+"}}
+" Grepper {{
+
+nnoremap <leader>rr :GrepperGrep
+nnoremap <leader>rg :Grepper<CR>
+
+" Search for current word
+nnoremap <Leader>* :Grepper -cword -noprompt<CR>
+"
+" Search for the current selection
+nmap <leader>/ <plug>(GrepperOperator)
+xmap <leader>/ <plug>(GrepperOperator)
 
 if (g:use_rg == 1)
-    nnoremap <leader>r :Rg
+    let g:grepper = {}
+    let g:grepper.tools = ['grep', 'git', 'rg']
+
+    set grepprg=rg\ -H\ --no-heading\ --vimgrep
+    set grepformat=$f:$l:%c:%m
+
 else
-    nnoremap <leader>r :vimgrep
+    let g:grepper = {}
+    let g:grepper.tools = ['grep', 'git']
 endif
-"}}
+
+" expands grep to GrepperGrep in command line
+function! SetupCommandAlias(input, output)
+    exec 'cabbrev <expr> '.a:input .' ((getcmdtype() is# ":" && getcmdline() is# "'.a:input.'")' .'? ("'.a:output.'") : ("'.a:input.'"))'
+endfunction
+call SetupCommandAlias("grep", "GrepperGrep")
+
+" If you really want to run the :grep command, use <C-v><Space> to prevent the expansion.
+
+" }}
 " {{ UltiSnips
 
 let g:UltiSnipsExpandTrigger = '<nop>'
