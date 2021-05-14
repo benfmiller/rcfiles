@@ -76,6 +76,16 @@ export EDITOR='vim'
 if type nvim > /dev/null 2>&1; then
     alias vim='nvim'
     export EDITOR='nvim'
+
+    # Uses nvr if inside nvim instance
+    # requires pip3 install neovim-remote
+    if [ -n "$NVIM_LISTEN_ADDRESS"  ]; then
+        if [ -x "$(command -v nvr)"  ]; then
+            alias vim=nvr
+        else
+            alias vim='echo "No nesting!"'
+        fi
+    fi
 fi
 #}}
 # More Aliases{{
