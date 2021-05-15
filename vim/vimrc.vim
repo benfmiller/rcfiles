@@ -310,7 +310,7 @@ set hidden
 set autoread
 
 set undofile
-set undodir=$VIMDATA/undo
+set undodir="$VIMDATA/undo"
 
 if !has('nvim')
     set undodir=~/.vim/undo
