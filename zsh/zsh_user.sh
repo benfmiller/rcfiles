@@ -4,6 +4,7 @@ alias lscripts="ls ~/rcfiles/scripts"
 #}}
 #rcfiles {{
 pullrcs (){
+    temp_dir=$(pwd)
     cd ~/rcfiles
     git pull
     if uname | grep -qv 'Linux'; then
@@ -11,7 +12,7 @@ pullrcs (){
         cat ~/rcfiles/vim/windows_addon.vim >> ~/.vimrc
         echo vim copied for windows
     fi
-    cd
+    cd $temp_dir
 }
 alias pushrcs="cd ;cd rcfiles; git push; cd ;"
 cpnviminit () {
