@@ -292,6 +292,16 @@ alias gwa="git worktree add"
 alias gwr="git worktree remove"
 alias gwl="git worktree list"
 
+glt () {
+    # 2013-11-22
+    git log --after="$1 00:00:00" --before="$1 23:59:59"
+}
+
+gltr () {
+    # 2013-11-22
+    git log --after="$1 00:00:00" --before="$2 23:59:59"
+}
+
 print_git_aliases (){
     echo gs=\"git status\"
     echo gp=\"git push\"
