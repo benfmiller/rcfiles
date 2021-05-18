@@ -348,9 +348,9 @@ git_largest_files_no_head() {
 
 # }}
 print_git_tag (){
-    echo git tag v*.*.*
-    echo git push origin v*.*.*
-    echo or git push origin --tags
+    echo "git tag v*.*.*"
+    echo "git push origin v*.*.*"
+    echo "or git push origin --tags"
 }
 print_git_ch_to_ssh () {
     echo git remote set-url origin git@github.com:name/repo.git
