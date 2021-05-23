@@ -247,6 +247,8 @@ nnoremap <leader>ea :bufdo e<CR>
 
 nnoremap <leader>ccr :Cargo run<CR>
 nnoremap <leader>ccb :Cargo build<CR>
+nnoremap <leader>cct :Cargo test<CR>
+nnoremap <leader>cc :Cargo
 nnoremap <leader>cm :make<CR>
 
 " Moving buffer and tabs {{
