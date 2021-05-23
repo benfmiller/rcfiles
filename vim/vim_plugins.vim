@@ -85,12 +85,13 @@ Plug 'morhetz/gruvbox'
 Plug 'dbeniamine/cheat.sh-vim'
 Plug 'mhinz/vim-grepper'
 Plug 'vim-test/vim-test'
-Plug 'tpope/vim-dispatch'
+Plug 'preservim/tagbar' " requires sinstal exuberant-ctags
 
 Plug 'jiangmiao/auto-pairs'
 Plug 'szw/vim-maximizer', {'on':'MaximizerToggle'}
 Plug 'christoomey/vim-tmux-navigator'
 
+Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary', {'on': 'Commentary'}
 Plug 'tpope/vim-unimpaired'
@@ -494,6 +495,7 @@ nnoremap <leader>tu :UndotreeToggle<CR>
 nnoremap <leader>tm :MaximizerToggle<CR>
 nnoremap <leader>th :HexokinaseToggle<CR>
 nnoremap <leader>to :Obsess!<CR>
+nnoremap <leader>tt :TagbarToggle<CR>
 
 vmap <C-m> :'<,'>Commentary<CR>
 nnoremap <C-m> :Commentary<CR>
