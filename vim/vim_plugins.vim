@@ -506,6 +506,7 @@ nnoremap <leader>ou :e ~/.local/share/nvim/plugged/vim-unimpaired/doc/unimpaired
 " NERDtree
 nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
+let g:NERDTreeWinPos = "right"
 " nnoremap <C-f> :NERDTreeFind<CR>
 
 " Git Stuff {{
