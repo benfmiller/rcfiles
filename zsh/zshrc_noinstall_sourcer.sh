@@ -32,8 +32,7 @@ plugins=(git python vi-mode tmux jump z)
 source $ZSH/oh-my-zsh.sh
 source ~/rcfiles/zsh/zsh_user.sh
 
-export DISPLAY="`grep nameserver /etc/resolv.conf | sed 's/nam
-eserver //'`:0"
+export DISPLAY="`grep nameserver /etc/resolv.conf | sed 's/nameserver //'`:0"
 
 source "$HOME/.cargo/env"
 # Install Ruby Gems to ~/gems

@@ -274,6 +274,7 @@ alias print_add_ssh_passphrase="echo Add passphrase with \"ssh-keygen -p -f file
 # Aliases{{
 alias gs="git status"
 alias gss="git status -s"
+alias gsb="git status -sb"
 alias gp="git push"
 alias gl="git pull"
 alias ga="git add"
