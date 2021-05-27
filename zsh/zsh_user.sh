@@ -91,9 +91,11 @@ if type nvim > /dev/null 2>&1; then
 fi
 
 # opens command line in vim
-autoload -U edit-command-line
-zle -N edit-command-line
-bindkey '^x^e' edit-command-line
+if uname | grep -q 'Linux'; then
+    autoload -U edit-command-line
+    zle -N edit-command-line
+    bindkey '^x^e' edit-command-line
+fi
 #}}
 # More Aliases{{
 # for esc to edit line in vim normal mode
