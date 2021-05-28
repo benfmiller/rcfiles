@@ -12,6 +12,10 @@ pullrcs (){
         cat ~/rcfiles/vim/windows_addon.vim >> ~/.vimrc
         echo vim copied for windows
     fi
+    if [ $copy_tmux_plugins -eq 1 ]; then
+        cp ~/rcfiles/tmux/tmux_plugins_sourcer.conf ~/.tmux_plugins.conf
+        echo tmux plugins copied
+    fi
     cd $temp_dir
 }
 alias pushrcs="cd ;cd rcfiles; git push; cd ;"

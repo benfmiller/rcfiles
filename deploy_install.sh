@@ -47,6 +47,7 @@ else
 
     echo "copying config"
     cp ~/rcfiles/tmux/tmux_sourcer.conf ~/.tmux.conf
+    cp ~/rcfiles/tmux/tmux_plugins_sourcer.conf ~/.tmux_plugins.conf
     cp ~/rcfiles/vim/vimrc_sourcer.vim ~/.vimrc
     cp ~/rcfiles/zsh/zshrc_sourcer.sh ~/.zshrc
 
