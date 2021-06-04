@@ -441,7 +441,9 @@ print_all_custom_funcs() {
 }
 
 # }}
-VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
-VI_MODE_SET_CURSOR=true
+if uname | grep -q 'Linux'; then
+    VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
+    VI_MODE_SET_CURSOR=true
 
-bindkey -M viins 'jk' vi-cmd-mode
+    bindkey -M viins 'jk' vi-cmd-mode
+fi
