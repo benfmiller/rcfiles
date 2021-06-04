@@ -103,10 +103,10 @@ fi
 #}}
 # More Aliases{{
 # for esc to edit line in vim normal mode
-if test -f "~/.zshrc"; then
-    bindkey -v
-    echo "Worked"
-fi
+# if test -f "~/.zshrc"; then
+    # bindkey -v
+    # echo "Worked"
+# fi
 
 # export KEYTIMEOUT=1
 
@@ -441,3 +441,7 @@ print_all_custom_funcs() {
 }
 
 # }}
+VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
+VI_MODE_SET_CURSOR=true
+
+bindkey -M viins 'jk' vi-cmd-mode
