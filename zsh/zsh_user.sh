@@ -282,6 +282,7 @@ alias print_add_ssh_passphrase="echo Add passphrase with \"ssh-keygen -p -f file
 alias gs="git status"
 alias gss="git status -s"
 alias gsb="git status -sb"
+alias glods="git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%an>%Creset' --date=short"
 alias gp="git push"
 alias gl="git pull"
 alias ga="git add"
