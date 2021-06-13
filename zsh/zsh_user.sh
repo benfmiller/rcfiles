@@ -33,7 +33,7 @@ alias t="tmux -2 new-session -s"
 
 alias tl="tmux -2 ls"
 alias ta="tmux -2 attach"
-alias tat="tmux -2 attach -t"
+alias tat="tmux -2 attach -d -t"
 #}}
 #Installers{{
 install_oh_my_zsh () {
