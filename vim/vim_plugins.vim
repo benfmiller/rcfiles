@@ -514,7 +514,7 @@ let g:NERDTreeWinPos = "right"
 let g:git_messenger_no_default_mappings = 1
 
 nnoremap <leader>gg :G<CR>
-nnoremap <leader>gs :Git status<CR>
+nnoremap <leader>gs :Git status -sb<CR>
 nnoremap <leader>ga :Git add
 nnoremap <leader>gc :Gcommit<CR>
 nnoremap <leader>gp :Git push<CR>
