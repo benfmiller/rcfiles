@@ -117,6 +117,7 @@ alias l="ls -alh"
 alias p="pwd"
 alias c="cd"
 alias dt="du -shc ./*"
+alias df="df -h"
 
 alias aets="deactivate &> ~/null; source ~/venvs/tradesuite/Scripts/activate"
 alias aead="deactivate &> ~/null; source ~/venvs/audalign/Scripts/activate"
