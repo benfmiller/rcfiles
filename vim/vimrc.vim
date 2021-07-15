@@ -344,7 +344,7 @@ if has('nvim') && executable('nvr')
 endif
 " }}
 " Filetype setters{{
-
+let g:markdown_fenced_languages = ['python']
 " au filetype python setlocal mp=python3\ %
 " au filetype java setlocal mp=javac\ %
 " au filetype c setlocal mp=gcc\ -Werror\ -Wextra\ -Wall\ -ansi\ -pedantic-errors\ -g\ -lm\ %
