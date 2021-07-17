@@ -329,7 +329,12 @@ set pastetoggle=<leader>tp
 "
 " fill search field with last search with <C-r>/
 
-" redirect ex output to buffer? {{
+
+" In the quickfix window, <CR> is used to jump to the error under the
+" cursor, so undefine the mapping there.
+autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
+
+"redirect ex output to buffer? {{
 " :redir @a    redirect output of following commands to register a
 " :let         list every current option and its value
 " G<CR>        go straight to the end of the listing and make it disappear
