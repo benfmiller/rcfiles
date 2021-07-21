@@ -513,7 +513,7 @@ let g:NERDTreeWinPos = "right"
 " This comes from vim fugitive
 let g:git_messenger_no_default_mappings = 1
 
-nnoremap <leader>gg :G<CR>
+nnoremap <leader>gg :G<CR><C-w>10_
 nnoremap <leader>gs :Git status<CR>
 nnoremap <leader>gsb :Git status -sb<CR>
 nnoremap <leader>ga :Git add
