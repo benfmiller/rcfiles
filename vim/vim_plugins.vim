@@ -64,6 +64,8 @@ endif
 "}}
 
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
+
+Plug 'roxma/vim-tmux-clipboard'
 Plug 'junegunn/vim-easy-align'
 Plug 'morhetz/gruvbox'
 
