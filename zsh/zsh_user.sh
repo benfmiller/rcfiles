@@ -127,6 +127,10 @@ alias de="deactivate"
 alias ccr="cargo run"
 alias ccb="cargo build"
 alias cct="cargo test"
+
+alias python="python3"
+alias pip="pip3"
+
 #}}
 #Var Functions{{
 print_colors () {
