@@ -170,6 +170,7 @@ if (g:use_ycm == 1)
     nnoremap <leader>yt :YcmCompleter GetType<CR>
     nnoremap <leader>yg :YcmCompleter GoTo
     nnoremap <leader>yr :YcmCompleter RefactorRename
+    nmap <leader>yh <plug>(YCMHover)
 
 endif
 "}}
