@@ -3,6 +3,7 @@ alias cdscripts="cd ~/rcfiles/scripts"
 alias lscripts="ls ~/rcfiles/scripts"
 #}}
 #rcfiles {{
+export copy_tmux_plugins=1
 pullrcs (){
     temp_dir=$(pwd)
     cd ~/rcfiles
