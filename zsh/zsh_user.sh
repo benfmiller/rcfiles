@@ -141,7 +141,7 @@ alias temperature="watch -n 2 sensors"
 alias l="ls -alh"
 alias p="pwd"
 alias c="cd"
-alias dt="du -hs * | sort -h"
+alias dt="du -chs * | sort -h"
 alias df="df -h"
 
 alias aets="deactivate &> ~/null; source ~/venvs/tradesuite/Scripts/activate"
