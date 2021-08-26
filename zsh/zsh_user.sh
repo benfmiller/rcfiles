@@ -136,6 +136,7 @@ plugins=(git vi-mode tmux sudo zsh-interactive-cd fzf)
 # export KEYTIMEOUT=1
 
 alias winbash="/mnt/c/Program\ Files/Git/usr/bin/bash.exe -i -l"
+winbashex () {winbash -c "$*"}
 alias explorer="explorer.exe ."
 alias temperature="watch -n 2 sensors"
 
