@@ -139,6 +139,7 @@ alias winbash="/mnt/c/Program\ Files/Git/usr/bin/bash.exe -i -l"
 winbashex () {winbash -c "$*"}
 alias explorer="explorer.exe ."
 alias temperature="watch -n 2 sensors"
+alias wv="wslview"
 
 alias l="ls -alh"
 alias p="pwd"
