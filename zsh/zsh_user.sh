@@ -213,7 +213,7 @@ pandoct () {
     # extension="${1##*.}"
     extension="${1##*/}"
     filename="${1%.*}"
-    pandoc -s --template=$HOME/rcfiles/texts/mdToPDF.tex $1 -o $filename.pdf;
+    pandoc -s --template=$HOME/rcfiles/texts/pandoc/mdToPDF.tex $1 -o $filename.pdf;
 }
 #}}
 # Zsh Suggested User configuration? {{
