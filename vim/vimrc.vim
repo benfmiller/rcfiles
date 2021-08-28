@@ -290,8 +290,24 @@ xnoremap & :&&<CR>
 vmap / y/<C-R>"<CR>
 
 "centers screen when moving during search
-noremap <Leader>n nzz
-noremap <Leader>N Nzz
+nnoremap <Leader>n nzzzv
+nnoremap <Leader>N Nzzzv
+
+" new undo point on these puctuations
+inoremap , ,<c-g>u
+inoremap . .<c-g>u
+inoremap ! !<c-g>u
+inoremap ? ?<c-g>u
+
+" moving text by line
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+inoremap <C-j> <esc>:m .+1<CR>==
+inoremap <C-k> <esc>:m .-2<CR>==
+
+" adds to jump list with big jumps
+nnoremap <expr> k (v:count > 5 ? "m'" . v:count : "") . 'k'
+nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . 'j'
 
 " resize windows proportionally
 nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
