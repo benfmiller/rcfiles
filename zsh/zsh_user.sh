@@ -208,12 +208,21 @@ wordtotext () {
     unzip -p $filename.docx word/document.xml | sed -e 's/<\/w:p>/\n/g; s/<[^>]\{1,\}>//g; s/[^[:print:]\n]\{1,\}//g' > $filename.txt;
 }
 
+# Pandoc {{
 pandoct () {
     filename=$(basename -- "$1")
     # extension="${1##*.}"
     extension="${1##*/}"
     filename="${1%.*}"
     pandoc -s --template=$HOME/rcfiles/texts/pandoc/mdToPDF.tex $1 -o $filename.pdf;
+}
+
+pandoctx () {
+    filename=$(basename -- "$1")
+    # extension="${1##*.}"
+    extension="${1##*/}"
+    filename="${1%.*}"
+    pandoc -s --template=$HOME/rcfiles/texts/pandoc/mdToPDF.tex $1 -o $filename.docx;
 }
 
 pandocsimple () {
@@ -223,6 +232,15 @@ pandocsimple () {
     filename="${1%.*}"
     pandoc -s $1 -o $filename.pdf;
 }
+
+pandocsimplex () {
+    filename=$(basename -- "$1")
+    # extension="${1##*.}"
+    extension="${1##*/}"
+    filename="${1%.*}"
+    pandoc -s $1 -o $filename.docx;
+}
+}}
 #}}
 # Zsh Suggested User configuration? {{
 
