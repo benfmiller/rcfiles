@@ -207,6 +207,14 @@ wordtotext () {
     filename="${1%.*}"
     unzip -p $filename.docx word/document.xml | sed -e 's/<\/w:p>/\n/g; s/<[^>]\{1,\}>//g; s/[^[:print:]\n]\{1,\}//g' > $filename.txt;
 }
+
+pandoct () {
+    filename=$(basename -- "$1")
+    # extension="${1##*.}"
+    extension="${1##*/}"
+    filename="${1%.*}"
+    pandoc -s --template=$HOME/rcfiles/texts/mdToPDF.tex $1 -o $filename.pdf;
+}
 #}}
 # Zsh Suggested User configuration? {{
 
