@@ -208,6 +208,11 @@ wordtotext () {
     unzip -p $filename.docx word/document.xml | sed -e 's/<\/w:p>/\n/g; s/<[^>]\{1,\}>//g; s/[^[:print:]\n]\{1,\}//g' > $filename.txt;
 }
 
+edge () {
+    edge_path="/mnt/c/Program\ Files\ \(x86\)/Microsoft/Edge/Application/msedge.exe"
+    $(/mnt/c/Program\ Files\ \(x86\)/Microsoft/Edge/Application/msedge.exe $($HOME/rcfiles/scripts/edge.py `pwd -P` $1))
+}
+
 # Pandoc {{
 pandoct () {
     filename=$(basename -- "$1")
@@ -240,7 +245,7 @@ pandocsimplex () {
     filename="${1%.*}"
     pandoc -s $1 -o $filename.docx;
 }
-}}
+#}}
 #}}
 # Zsh Suggested User configuration? {{
 
