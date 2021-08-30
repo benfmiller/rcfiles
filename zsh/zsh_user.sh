@@ -253,6 +253,14 @@ pds () {
     pandoc -s $1 -o $filename.pdf;
     wslview $filename.pdf
 }
+pdt () {
+    filename=$(basename -- "$1")
+    # extension="${1##*.}"
+    extension="${1##*/}"
+    filename="${1%.*}"
+    pandoc -s --template=$HOME/rcfiles/texts/pandoc/mdToPDF.tex $1 -o $filename.pdf;
+    wslview $filename.pdf
+}
 #}}
 #}}
 # Zsh Suggested User configuration? {{
