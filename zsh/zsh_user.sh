@@ -245,6 +245,14 @@ pandocsimplex () {
     filename="${1%.*}"
     pandoc -s $1 -o $filename.docx;
 }
+pds () {
+    filename=$(basename -- "$1")
+    # extension="${1##*.}"
+    extension="${1##*/}"
+    filename="${1%.*}"
+    pandoc -s $1 -o $filename.pdf;
+    wslview $filename.pdf
+}
 #}}
 #}}
 # Zsh Suggested User configuration? {{
