@@ -31,7 +31,7 @@ call plug#begin(g:plug_path . '/plugged')
 " Check vimrc variables{{
 " Consider telescope???
 if (g:use_ycm == 1)
-    Plug 'ycm-core/YouCompleteMe', { 'do': './install.py' }
+    Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --rust-completer' }
     Plug 'SirVer/ultisnips'
 endif
 
