@@ -562,4 +562,10 @@ if uname | grep -q 'Linux'; then
     VI_MODE_SET_CURSOR=true
 
     bindkey -M viins 'jk' vi-cmd-mode
+
+    # for clear screen
+    zsh-clear () {clear;}
+    zle -N zsh-clear
+    bindkey '^o' zsh-clear
+
 fi
