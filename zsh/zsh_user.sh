@@ -564,8 +564,9 @@ if uname | grep -q 'Linux'; then
     bindkey -M viins 'jk' vi-cmd-mode
 
     # for clear screen
-    zsh-clear () {clear;}
-    zle -N zsh-clear
-    bindkey '^o' zsh-clear
+    # zsh-clear () {clear}
+    # zle -N zsh-clear
+    # bindkey '^o' zsh-clear
+    bindkey -s '^o' 'clear^M'
 
 fi
