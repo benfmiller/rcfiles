@@ -18,6 +18,9 @@ Have Fun!
 
 There will be errors as you reload your setup until everything is installed
 
+Many of the files are my setup specific or they are rarely used. Some of it is not used at all
+but helps me make sense of things
+
 ## Notes
 
 zsh_zsh.sh is for zsh specific config
