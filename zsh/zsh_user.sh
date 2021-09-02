@@ -21,7 +21,7 @@ pullrcs (){
 }
 alias pushrcs="cd ;cd rcfiles; git push; cd ;"
 cpnviminit () {
-    cd ; mkdir .config/nvim; cp rcfiles/vim/init.vim .config/nvim/;
+    cd ; mkdir ~/.config/nvim; cp ~/rcfiles/vim/init.vim ~/.config/nvim/;
 }
 #}}
 #System{{
@@ -263,6 +263,7 @@ pdt () {
 }
 #}}
 #}}
+# Oh-my-zsh config {{
 # Zsh Suggested User configuration? {{
 
 
@@ -291,6 +292,31 @@ pdt () {
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 #}}
+# Theme{{
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+ZSH_THEME="af-magic"
+#fishy
+#obraun
+#linuxonly
+
+# Set list of themes to pick from when loading at random
+# Setting this variable when ZSH_THEME=random will cause zsh to load
+# a theme from this variable instead of looking in $ZSH/themes/
+# If set to an empty array, this variable will have no effect.
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+#}}
+# Plugins{{
+# Which plugins would you like to load?
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(git python vi-mode tmux sudo zsh-interactive-cd fzf)
+#}}
+# }}
 # Git {{
 # Github {{
 # SetupKeys{{
@@ -515,7 +541,7 @@ print_all_custom_funcs() {
     echo generate_guid
     echo cs12
     echo cptocs12
-    echo cpviminit
+    echo cpnviminit
     echo cvim \(check if vim session is present\)
     echo svim \(open session.vim if found else open empty\)
     echo ginit
