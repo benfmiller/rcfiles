@@ -56,7 +56,7 @@ else
 endif
 
 if (g:use_md_viewer == 1)
-    Plug 'iamcco/markdown-preview.vim'
+    Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 endif
 
 " Requires nvim to be too new!
