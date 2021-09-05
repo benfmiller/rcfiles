@@ -256,8 +256,8 @@ function! RunPython(args)
 endfunction
 nnoremap <leader>rp :call RunPython(
 
-nnoremap <leader>p :!pdt %
-nnoremap <leader>[p :!pdtv %
+nnoremap <leader>p :!pdt %<CR>
+nnoremap <leader>[p :!pdtv %<CR>
 
 " Moving buffer and tabs {{
 
