@@ -214,8 +214,8 @@ nnoremap gV `[v`]
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
 " Moves up line visually
-nnoremap j gj
-nnoremap k gk
+nmap j gj
+nmap k gk
 
 nnoremap Y y$
 
