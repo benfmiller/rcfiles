@@ -251,6 +251,14 @@ nnoremap <leader>cct :Cargo test<CR>
 nnoremap <leader>cc :Cargo
 nnoremap <leader>cm :make<CR>
 
+function! RunPython(args)
+    :execute ':terminal cd %:h && python %:t ' a:args
+endfunction
+nnoremap <leader>rp :call RunPython(
+
+nnoremap <leader>p :!pdt %
+nnoremap <leader>[p :!pdtv %
+
 " Moving buffer and tabs {{
 
 " opens current window in new tab
@@ -300,8 +308,9 @@ inoremap ! !<c-g>u
 inoremap ? ?<c-g>u
 
 " moving text by line
-vnoremap J :m '>+1<CR>gv=gv
-vnoremap K :m '<-2<CR>gv=gv
+" I keep accidentally moving text
+" vnoremap J :m '>+1<CR>gv=gv
+" vnoremap K :m '<-2<CR>gv=gv
 inoremap <C-j> <esc>:m .+1<CR>==
 inoremap <C-k> <esc>:m .-2<CR>==
 
@@ -326,6 +335,9 @@ set nocompatible
 set ignorecase
 set hidden
 set autoread
+
+" shell logs in so commands in zsh_user can be used
+set shcf=-ic
 
 set undofile
 set undodir="$VIMDATA/undo"
@@ -370,4 +382,24 @@ let g:markdown_fenced_languages = ['python']
 " au filetype java setlocal mp=javac\ %
 " au filetype c setlocal mp=gcc\ -Werror\ -Wextra\ -Wall\ -ansi\ -pedantic-errors\ -g\ -lm\ %
 " au filetype cpp setlocal mp=gcc\ -Werror\ -Wextra\ -Wall\ -ansi\ -pedantic-errors\ -g\ -lm\ %
+
+" function FilenameMdToPDF()
+"     " return filename[:-2].pdf
+"     let filename = @%[0:-3] . "pdf"
+"     let template_location = system('echo $HOME')[0:-2] . "/rcfiles/texts/pandoc/mdToPDF.tex"
+"     " echom template_location
+"     " echom filename
+"     " call system("asdf")
+"     " let pandoc_call = system("echo $HOME")
+"     " let pandoc_call = system("pandoc -s --template=%template_location% % -o filename")
+"     " echo pandoc_call
+"     " execute ':terminal ++shell pdt %'
+"     " call system('pandoc -s --template=template_location % -o filename')
+"     silent !pdt %
+" endfunction
+
+" autocmd! BufWritePost *.md
+" autocmd BufWritePost *.md :call FilenameMdToPDF()
+" autocmd BufWritePost *.md :silent !pdt %
+" autocmd BufWritePost *.md :!pdt %
 " }}
