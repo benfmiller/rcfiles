@@ -245,7 +245,7 @@ pandocsimplex () {
     filename="${1%.*}"
     pandoc -s $1 -o $filename.docx;
 }
-pds () {
+pdsv () {
     filename=$(basename -- "$1")
     # extension="${1##*.}"
     extension="${1##*/}"
@@ -253,13 +253,27 @@ pds () {
     pandoc -s $1 -o $filename.pdf;
     wslview $filename.pdf
 }
-pdt () {
+pdtv () {
     filename=$(basename -- "$1")
     # extension="${1##*.}"
     extension="${1##*/}"
     filename="${1%.*}"
     pandoc -s --template=$HOME/rcfiles/texts/pandoc/mdToPDF.tex $1 -o $filename.pdf;
     wslview $filename.pdf
+}
+pds () {
+    filename=$(basename -- "$1")
+    # extension="${1##*.}"
+    extension="${1##*/}"
+    filename="${1%.*}"
+    pandoc -s $1 -o $filename.pdf;
+}
+pdt () {
+    filename=$(basename -- "$1")
+    # extension="${1##*.}"
+    extension="${1##*/}"
+    filename="${1%.*}"
+    pandoc -s --template=$HOME/rcfiles/texts/pandoc/mdToPDF.tex $1 -o $filename.pdf;
 }
 #}}
 #}}
