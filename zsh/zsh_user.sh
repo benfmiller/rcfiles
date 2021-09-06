@@ -213,6 +213,10 @@ edge () {
     $(/mnt/c/Program\ Files\ \(x86\)/Microsoft/Edge/Application/msedge.exe $($HOME/rcfiles/scripts/edge.py `pwd -P` $1))
 }
 
+apdf () {
+    /mnt/c/Program\ Files\ \(x86\)/Adobe/Acrobat\ DC/Acrobat/Acrobat.exe $*
+}
+
 # Pandoc {{
 pandoct () {
     filename=$(basename -- "$1")
