@@ -214,7 +214,7 @@ edge () {
 }
 
 apdf () {
-    /mnt/c/Program\ Files\ \(x86\)/Adobe/Acrobat\ DC/Acrobat/Acrobat.exe $*
+    $(/mnt/c/Program\ Files\ \(x86\)/Adobe/Acrobat\ DC/Acrobat/Acrobat.exe $($HOME/rcfiles/scripts/edge.py `pwd -P` $1))
 }
 
 # Pandoc {{
