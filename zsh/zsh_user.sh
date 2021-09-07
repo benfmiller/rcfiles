@@ -136,12 +136,9 @@ plugins=(git vi-mode tmux sudo zsh-interactive-cd fzf)
 # export KEYTIMEOUT=1
 
 
-# TODO
 if [ ! -z ${HOME_MACHINE+x} ]; then
     alias winbash="/mnt/c/Program\ Files/Git/usr/bin/bash.exe -i -l"
-    winbashex () {
-        winbash -c "$*"
-    }
+    alias winbashex="/mnt/c/Program\ Files/Git/usr/bin/bash.exe -i -l -c"
 fi
 alias explorer="explorer.exe ."
 alias temperature="watch -n 2 sensors"
@@ -609,7 +606,7 @@ print_all_custom_funcs() {
 
 # }}
 # Some Bindings {{
-if uname | grep -q 'Linux'; then
+if $(uname | grep -q 'Linux') && $(ps -p $$ | grep -q 'zsh'); then
     VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
     VI_MODE_SET_CURSOR=true
 
