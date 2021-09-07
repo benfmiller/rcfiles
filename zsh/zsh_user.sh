@@ -74,7 +74,7 @@ install_chtsh_glob(){ # requires rlwrap
 #}}
 # Path{{
 export PATH=~/.local/bin:$PATH
-if [ ! -z ${HOME_MACHINE+x} ]; then
+if [ ! -z "${HOME_MACHINE+x}" ]; then
     export PATH=$PATH:~/rcfiles/scripts
 fi
 export TMPDIR="/tmp"
@@ -115,7 +115,7 @@ fi
 # export KEYTIMEOUT=1
 
 
-if [ ! -z ${HOME_MACHINE+x} ]; then
+if [ ! -z "${HOME_MACHINE+x}" ]; then
     alias winbash="/mnt/c/Program\ Files/Git/usr/bin/bash.exe -i -l"
     alias winbashex="/mnt/c/Program\ Files/Git/usr/bin/bash.exe -i -l -c"
 fi
@@ -374,7 +374,7 @@ print_git_setup_github_ssh (){
 # If error persists, do it with the shell that added it in the first place
 #}}
 # Start ssh-agent{{
-if [ ! -z ${INCLUDE_GITHUB_KEYS+x} ];
+if [ ! -z "${INCLUDE_GITHUB_KEYS+x}" ];
 then
     env=~/.ssh/agent.env
 
