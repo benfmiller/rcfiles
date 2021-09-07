@@ -1,3 +1,6 @@
+if !exists("g:home_machine")
+    color desert
+endif
 " Mapleader{{
 inoremap jk <ESC>
 tnoremap jk <C-\><C-n>
@@ -126,8 +129,9 @@ set laststatus=2  " always display the status line
 " pathshorten()
 "
 set statusline=
-" set statusline+=%1*%{StatuslineGit()}\|%*
-set statusline+=%1*\ %{gitbranch#name()}\ \|%*
+if exists("g:home_machine")
+    set statusline+=%1*\ %{gitbranch#name()}\ \|%*
+endif
 set statusline+=%2*\ %f\ \|%*
 set statusline+=\ %<
 " set statusline+=%{pathshorten(\"%F\")}
