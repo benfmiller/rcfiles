@@ -99,7 +99,7 @@ if type nvim > /dev/null 2>&1; then
 fi
 
 # opens command line in vim
-if $(uname | grep -q 'Linux') && $(ps -p $$ | grep -q 'zsh'); then
+if $(ps -p $$ | grep -q 'zsh'); then
     autoload -U edit-command-line
     zle -N edit-command-line
     bindkey '^x^e' edit-command-line
@@ -585,7 +585,7 @@ print_all_custom_funcs() {
 
 # }}
 # Some Bindings {{
-if $(uname | grep -q 'Linux') && $(ps -p $$ | grep -q 'zsh'); then
+if $(ps -p $$ | grep -q 'zsh'); then
     VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
     VI_MODE_SET_CURSOR=true
 
