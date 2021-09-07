@@ -7,6 +7,7 @@ let g:use_rg=0
 let g:use_neovim=0
 let g:on_windows=1
 let g:use_md_viewer=0
+let g:home_machine=1
 
 let g:ale_completion_enabled = 0
 

@@ -73,7 +73,10 @@ install_chtsh_glob(){ # requires rlwrap
 # vim in .vim/plugged/YouCompleteMe
 #}}
 # Path{{
-export PATH=~/.local/bin:$PATH:~/rcfiles/scripts
+export PATH=~/.local/bin:$PATH
+if [ ! -z ${HOME_MACHINE+x} ]; then
+    export PATH=$PATH:~/rcfiles/scripts
+fi
 export TMPDIR="/tmp"
 #}}
 # Editor {{
@@ -101,30 +104,6 @@ if $(uname | grep -q 'Linux') && $(ps -p $$ | grep -q 'zsh'); then
     zle -N edit-command-line
     bindkey '^x^e' edit-command-line
 fi
-#}}
-# Theme{{
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="af-magic"
-# ZSH_THEME="obraun"
-#fishy
-#obraun
-
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in $ZSH/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
-#}}
-# Plugins{{
-# Which plugins would you like to load?
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(git vi-mode tmux sudo zsh-interactive-cd fzf)
 #}}
 # More Aliases{{
 # for esc to edit line in vim normal mode
@@ -360,7 +339,7 @@ ZSH_THEME="af-magic"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git python vi-mode tmux sudo zsh-interactive-cd fzf)
+plugins=(git vi-mode tmux sudo zsh-interactive-cd fzf)
 #}}
 # }}
 # Git {{
@@ -621,6 +600,62 @@ if $(uname | grep -q 'Linux') && $(ps -p $$ | grep -q 'zsh'); then
 fi
 # }}
 # Bash Prompt {{
+# Alternate Prompts {{
+# https://medium.com/@damianczapiewski/how-to-pimp-up-the-git-bash-prompt-on-windows-without-any-external-stuff-c69eb9ef0125
+# https://blog.devgenius.io/how-to-customize-the-git-bash-shell-prompt-336f6aefcf3f
+
+# origin_dist () {
+#  local STATUS="$(git status 2> /dev/null)"
+#  local DIST_STRING=""
+#  local IS_AHEAD=$(echo -n "$STATUS" | grep "ahead")
+#  local IS_BEHIND=$(echo -n "$STATUS" | grep "behind")
+#  if [ ! -z "$IS_AHEAD" ]; then
+#   local DIST_VAL=$(echo "$IS_AHEAD" | sed 's/[^0-9]*//g')
+#   DIST_STRING="$DIST_VAL ››"
+#  elif [ ! -z "$IS_BEHIND" ]; then
+#   local DIST_VAL=$(echo "$IS_BEHIND" | sed 's/[^0-9]*//g')
+#   DIST_STRING="‹‹ $DIST_VAL"
+#  fi
+#  if [ ! -z "$DIST_STRING" ]; then
+#   echo -en "\e[1;7m $DIST_STRING "
+#  fi
+# }
+
+# __PS1_GIT_DIST='`origin_dist`'
+
+# __PS1="${__PS1_BEFORE}${__PS1_TIME}${__PS1_USER}${__PS1_LOCATION}${__PS1_GIT_BRANCH}${__PS1_GIT_DIST}${__PS1_AFTER}"
+# ORIG_PS1="$PS1"
+
+
+# git_stats() {
+#   local STATUS=$(git status -s 2> /dev/null)
+#   local ADDED=$(echo "$STATUS" | grep '??' | wc -l)
+#   local DELETED=$(echo "$STATUS" | grep ' D' | wc -l)
+#   local MODIFIED=$(echo "$STATUS" | grep ' M' | wc -l)
+#   local STATS=''
+#   if [ $ADDED != 0 ]; then
+#     STATS="\e[42m $ADDED "
+#   fi
+#   if [ $DELETED != 0 ]; then
+#     STATS="$STATS\e[101m $DELETED "
+#   fi
+#   if [ $MODIFIED != 0 ]; then
+#     STATS="$STATS\e[30;103m $MODIFIED "
+#   fi
+#   echo -e "\e[0m    $STATS\e[0m"
+# }
+# __PS1_BEFORE='\[\e[42;97m\] \t '
+# __PS1_USER='\[\e[97;104m\] \u@\h '
+# __PS1_LOCATION='\[\e[30;43m\] \w '
+# __PS1_GIT_BRANCH='\[\e[97;45m\]`__git_ps1` ' __PS1_GIT_STATS='`git_stats` '
+# __PS1_AFTER='\[\e[0m\]\n\[\e[42;97m\]\$ \[\e[0m\] '
+
+# # export PS1="${__PS1_BEFORE}${__PS1_USER}${__PS1_LOCATION}${__PS1_GIT_BRANCH}${__PS1_GIT_STATS}${__PS1_AFTER}"
+# # export PS1="${__PS1_BEFORE}${__PS1_USER}${__PS1_GIT_BRANCH}${__PS1_AFTER}"
+# export PS1="\t ${PS1}"
+
+# -----------------------------------------------------------------------------------------------------------------
+#}}
 if ps -p $$ | grep -q 'bash'; then
     # from c/program files/Git/etc/profile.d/git-prompt.sh
 
