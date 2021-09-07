@@ -182,6 +182,31 @@ else
 fi
 }
 
+# cprc's {{
+cprcminimum () {
+    scp ~/rcfiles/vim/vimrc.vim $1:~/.vimrc
+    scp ~/rcfiles/zsh/zsh_user.sh $1:~/.zshrc
+    scp ~/rcfiles/tmux/tmux.conf $1:~/.tmux.conf
+}
+
+cprcminimumbash () {
+    scp ~/rcfiles/vim/vimrc.vim $1:~/.vimrc
+    scp ~/rcfiles/zsh/zsh_user.sh $1:~/.bashrc
+    scp ~/rcfiles/tmux/tmux.conf $1:~/.tmux.conf
+}
+
+cprcminimumhome () {
+    scp ~/.vimrc $1:~/.vimrc
+    scp ~/.zshrc $1:~/.zshrc
+    scp ~/.tmux.conf $1:~/.tmux.conf
+}
+cprcminimumhomebash () {
+    scp ~/.vimrc $1:~/.vimrc
+    scp ~/.bashrc $1:~/.bashrc
+    scp ~/.tmux.conf $1:~/.tmux.conf
+}
+# }}
+
 ecn () {
     ck;
     svim
@@ -575,6 +600,7 @@ print_all_custom_funcs() {
 }
 
 # }}
+# Some Bindings {{
 if uname | grep -q 'Linux'; then
     VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
     VI_MODE_SET_CURSOR=true
@@ -588,3 +614,6 @@ if uname | grep -q 'Linux'; then
     bindkey -s '^o' 'clear^M'
 
 fi
+# }}
+
+# ps -p $$
