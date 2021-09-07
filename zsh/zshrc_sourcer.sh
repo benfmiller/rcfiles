@@ -10,3 +10,5 @@ export GEM_HOME="$HOME/gems"
 export PATH="$HOME/gems/bin:$PATH"
 
 export copy_tmux_plugins=1
+export HOME_MACHINE=1
+export INCLUDE_GITHUB_KEYS=1
