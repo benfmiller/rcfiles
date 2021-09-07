@@ -96,7 +96,7 @@ if type nvim > /dev/null 2>&1; then
 fi
 
 # opens command line in vim
-if uname | grep -q 'Linux'; then
+if $(uname | grep -q 'Linux') && $(ps -p $$ | grep -q 'zsh'); then
     autoload -U edit-command-line
     zle -N edit-command-line
     bindkey '^x^e' edit-command-line
@@ -135,8 +135,14 @@ plugins=(git vi-mode tmux sudo zsh-interactive-cd fzf)
 
 # export KEYTIMEOUT=1
 
-alias winbash="/mnt/c/Program\ Files/Git/usr/bin/bash.exe -i -l"
-winbashex () {winbash -c "$*"}
+
+# TODO
+if [ ! -z ${HOME_MACHINE+x} ]; then
+    alias winbash="/mnt/c/Program\ Files/Git/usr/bin/bash.exe -i -l"
+    winbashex () {
+        winbash -c "$*"
+    }
+fi
 alias explorer="explorer.exe ."
 alias temperature="watch -n 2 sensors"
 alias wv="wslview"
@@ -184,25 +190,25 @@ fi
 
 # cprc's {{
 cprcminimum () {
-    scp ~/rcfiles/vim/vimrc.vim $1:~/.vimrc
     scp ~/rcfiles/zsh/zsh_user.sh $1:~/.zshrc
+    scp ~/rcfiles/vim/vimrc.vim $1:~/.vimrc
     scp ~/rcfiles/tmux/tmux.conf $1:~/.tmux.conf
 }
 
 cprcminimumbash () {
-    scp ~/rcfiles/vim/vimrc.vim $1:~/.vimrc
     scp ~/rcfiles/zsh/zsh_user.sh $1:~/.bashrc
+    scp ~/rcfiles/vim/vimrc.vim $1:~/.vimrc
     scp ~/rcfiles/tmux/tmux.conf $1:~/.tmux.conf
 }
 
 cprcminimumhome () {
-    scp ~/.vimrc $1:~/.vimrc
     scp ~/.zshrc $1:~/.zshrc
+    scp ~/.vimrc $1:~/.vimrc
     scp ~/.tmux.conf $1:~/.tmux.conf
 }
 cprcminimumhomebash () {
-    scp ~/.vimrc $1:~/.vimrc
     scp ~/.bashrc $1:~/.bashrc
+    scp ~/.vimrc $1:~/.vimrc
     scp ~/.tmux.conf $1:~/.tmux.conf
 }
 # }}
@@ -392,29 +398,31 @@ print_git_setup_github_ssh (){
 # If error persists, do it with the shell that added it in the first place
 #}}
 # Start ssh-agent{{
-env=~/.ssh/agent.env
+if [ ! -z ${INCLUDE_GITHUB_KEYS+x} ];
+then
+    env=~/.ssh/agent.env
 
-agent_load_env () { test -f "$env" && . "$env" >| /dev/null ; }
+    agent_load_env () { test -f "$env" && . "$env" >| /dev/null ; }
 
-agent_start () {
-    (umask 077; ssh-agent >| "$env")
-    . "$env" >| /dev/null ; }
+    agent_start () {
+        (umask 077; ssh-agent >| "$env")
+        . "$env" >| /dev/null ; }
 
-agent_load_env
+    agent_load_env
 
-# agent_run_state: 0=agent running w/ key; 1=agent w/o key; 2= agent not running
-agent_run_state=$(ssh-add -l >| /dev/null 2>&1; echo $?)
+    # agent_run_state: 0=agent running w/ key; 1=agent w/o key; 2= agent not running
+    agent_run_state=$(ssh-add -l >| /dev/null 2>&1; echo $?)
+    if [ ! "$SSH_AUTH_SOCK" ] || [ $agent_run_state = 2 ]; then
+        agent_start
+        ssh-add
+        ssh-add ~/.ssh/id_rsa_github
+    elif [ "$SSH_AUTH_SOCK" ] && [ $agent_run_state = 1 ]; then
+        ssh-add
+        ssh-add ~/.ssh/id_rsa_github
+    fi
 
-if [ ! "$SSH_AUTH_SOCK" ] || [ $agent_run_state = 2 ]; then
-    agent_start
-    ssh-add
-    ssh-add ~/.ssh/id_rsa_github
-elif [ "$SSH_AUTH_SOCK" ] && [ $agent_run_state = 1 ]; then
-    ssh-add
-    ssh-add ~/.ssh/id_rsa_github
+    unset env
 fi
-
-unset env
 #}}
 # Git branch main updater{{
 
@@ -615,5 +623,3 @@ if uname | grep -q 'Linux'; then
 
 fi
 # }}
-
-# ps -p $$
