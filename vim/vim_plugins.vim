@@ -65,7 +65,8 @@ endif
 
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
 
-Plug 'roxma/vim-tmux-clipboard'
+" Plug 'roxma/vim-tmux-clipboard'
+" switched to tbone cause above was slowing deletes
 Plug 'junegunn/vim-easy-align'
 Plug 'morhetz/gruvbox'
 
@@ -97,6 +98,7 @@ Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary', {'on': 'Commentary'}
 Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-tbone'
 " docs at ~/.local/share/nvim/plugged/vim-unimpaired/doc/unimpaired.txt
 Plug 'tpope/vim-obsession'
 " https://github.com/tpope/vim-obsession

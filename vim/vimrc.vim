@@ -210,6 +210,13 @@ nnoremap <leader>z za
 set foldmethod=marker
 set foldmarker={{,}}
 "}}
+" tmux copy buffer {{
+nnoremap <leader>ty :Tyank<CR>
+nnoremap <leader>tp :Tput<CR>
+nnoremap <C-y> :Tyank<CR>
+nnoremap <C-]> :Tput<CR>
+vnoremap <C-y> :Tyank<CR>
+" }}
 
 " highlight last inserted text
 nnoremap gV `[v`]
