@@ -460,14 +460,18 @@ fi
 # Git branch main updater{{
 
 git_chmastermain () {
+    echo first change the branch name on github
     git branch -m master main
     git fetch origin
     git branch -u origin/main main
+    git remote set-head origin -a
 }
 print_git_change_master_branch () {
+    echo first change the branch name on github
     echo git branch -m master main
     echo git fetch origin
     echo git branch -u origin/main main
+    echo git remote set-head origin -a
     echo
     echo "run git_chmastermain to do above code"
 }
