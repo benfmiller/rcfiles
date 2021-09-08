@@ -1,4 +1,3 @@
-source ~/rcfiles/zsh/zsh_zsh.sh
 source ~/rcfiles/zsh/zsh_user.sh
 source $ZSH/oh-my-zsh.sh
 
