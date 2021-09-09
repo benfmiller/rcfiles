@@ -18,8 +18,37 @@ snippet equation "Environment: Equation" b
 \end{equation}
 endsnippet
 
+snippet proof "Environment: Proof" b
+\begin{proof}
+	${0}
+\end{proof}
+endsnippet
+
+snippet algorithm "Environment: algorithm" b
+\begin{algorithm} \caption{\textsc{$1}($2)}\label{alg:seb}
+	{\bf Input:} $3\\\\
+	{\bf Output:} $4
+	\begin{algorithmic}[1]
+		\State $$5$
+	\end{algorithmic}
+\end{algorithm}
+$0
+endsnippet
+
 snippet ,m "math section" i
 $$1$$0
+endsnippet
+
+snippet alln "All numbers symbol" wA
+\mathbb{$1} $0
+endsnippet
+
+snippet malln "All numbers symbol in math" wA
+$\mathbb{$1}$ $0
+endsnippet
+
+snippet bf "Sets up bf" wA
+{\bf $1} $0
 endsnippet
 
 snippet dd "Display math" wA
