@@ -1703,6 +1703,7 @@ nnoremap <leader>rp :call RunPython(
 
 nnoremap <leader>p :!pdt %<CR>
 nnoremap <leader>[p :!pdtv %<CR>
+nnoremap <leader>op :!wslviewpdf %<CR>
 
 " Moving buffer and tabs {{
 
