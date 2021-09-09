@@ -18,9 +18,10 @@ endsnippet
 snippet myheader "My name in header" b
 ---
 header-includes: |
-    \usepackage{fancyhdr}
-    \pagestyle{fancy}
-    \fancyhead[R]{Ben Miller}
+	\usepackage{fancyhdr}
+	\pagestyle{fancy}
+	\fancyhead[R]{Ben Miller}
+	\fancyhead[C]{`!v strftime("%c")`}
 ---
 
 $0
