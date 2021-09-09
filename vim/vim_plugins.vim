@@ -32,13 +32,11 @@ call plug#begin(g:plug_path . '/plugged')
 " Consider telescope???
 if (g:use_ycm == 1)
     Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --rust-completer' }
-    Plug 'SirVer/ultisnips'
 endif
 
 if (g:use_coc == 1)
     " Use release branch (recommend)
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
-    Plug 'SirVer/ultisnips'
 endif
 
 if (g:use_vimspector == 1)
@@ -117,7 +115,7 @@ Plug 'junegunn/gv.vim'
 "
 Plug 'itchyny/vim-gitbranch'
 " Multiple Plug commands can be written in a single line using | separators
-" Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
 " On-demand loading
 " au filetype python Plug 'timonv/vim-cargo'
@@ -599,7 +597,8 @@ call SetupCommandAlias("grep", "GrepperGrep")
 " }}
 " {{ UltiSnips
 
-let g:UltiSnipsExpandTrigger = '<nop>'
+" let g:UltiSnipsExpandTrigger = '<nop>'
+let g:UltiSnipsExpandTrigger = '<C-space>'
 let g:UltiSnipsJumpForwardTrigger = '<c-i>'
 let g:UltiSnipsJumpBackwardTrigger = '<c-o>'
 let g:UltiSnipsRemoveSelectModeMappings = 0
