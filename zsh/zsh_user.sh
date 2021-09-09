@@ -82,8 +82,11 @@ export TMPDIR="/tmp"
 # Editor {{
 export EDITOR='vim'
 
+alias vi="vim -u $HOME/rcfiles/vim/vimrc.vim"
+
 if type nvim > /dev/null 2>&1; then
-    alias vim='nvim'
+    alias vi='nvim -u $HOME/rcfiles/vim/vimrc.vim'
+    alias vim="nvim"
     export EDITOR='nvim'
 
     # Uses nvr if inside nvim instance
