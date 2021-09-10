@@ -467,7 +467,7 @@ plugins=(git vi-mode tmux sudo zsh-interactive-cd fzf)
 
 # -----------------------------------------------------------------------------------------------------------------
 #}}
-# if ps -p $$ | grep -q 'bash'; then
+if ps -p $$ | grep -q 'bash'; then
     # from c/program files/Git/etc/profile.d/git-prompt.sh
 
 if test -f /etc/profile.d/git-sdk.sh
@@ -521,7 +521,19 @@ MSYS2_PS1="$PS1"               # for detection by MSYS2 SDK's bash.basrc
 #         . "$c"
 #     done
 # fi
-# fi
+fi
+if ps -p $$ | grep -q 'zsh'; then
+    if [ "$USERNAME" = "root" ]; then CARETCOLOR="red"; else CARETCOLOR="blue"; fi
+
+    local return_code="%(?..%{$fg[red]%}%? ↵%{$reset_color%})"
+
+    PROMPT='%{$fg[green]%}[%*]%{$reset_color%} %{$fg_no_bold[cyan]%}%n %{${fg_bold[blue]}%}::%{$reset_color%} %{$fg[yellow]%}%m%{$reset_color%} %{$fg_no_bold[magenta]%} ➜ %{$reset_color%} %{${fg[green]}%}%3~ $(git_prompt_info)%{${fg_bold[$CARETCOLOR]}%}»%{${reset_color}%} '
+
+    RPS1="${return_code}"
+
+    ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[red]%}‹"
+    ZSH_THEME_GIT_PROMPT_SUFFIX="› %{$reset_color%}"
+fi
 # }}
 # Git {{
 # Github {{
