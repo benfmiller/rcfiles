@@ -740,6 +740,15 @@ print_git_submodule () {
     echo git config alias.spush 'push --recurse-submodules=on-demand'
     echo git config alias.supdate 'submodule update --remote --merge'
 }
+
+print_git_pr () {
+    echo \# If you haven\'t set up your remote yet, run this line:
+    echo \# git remote add upstream https://github.com/konradjk/exac_browser.git
+    echo "\033[1;32mgit fetch --all \033[0m                                  # Get the latest code"
+    echo "\033[1;32mgit checkout -b my-single-change upstream/master \033[0m # Create new branch based on upstream/master"
+    echo "\033[1;32mgit cherry-pick b50b2e7 \033[0m                          # Cherry pick the commit you want"
+    echo "\033[1;32mgit push -u origin my-single-change \033[0m              # Push your changes to the remote branch"
+}
 # }}
 # Python {{
 # Twine {{
