@@ -125,6 +125,7 @@ fi
 alias explorer="explorer.exe ."
 alias temperature="watch -n 2 sensors"
 alias wv="wslview"
+alias wvap="wslview *.pdf"
 
 alias l="ls -alh"
 alias p="pwd"
