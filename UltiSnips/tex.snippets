@@ -31,13 +31,44 @@ snippet proof "Environment: Proof" b
 endsnippet
 
 snippet algorithm "Environment: algorithm" b
-\begin{algorithm} \caption{\textsc{$1}($2)}\label{alg:seb}
+\begin{algorithm} \caption{\textsc{$1} ($2)}\label{alg:seb}
 	{\bf Input:} $3\\\\
 	{\bf Output:} $4
 	\begin{algorithmic}[1]
-		\State $$5$
+		\State$$5$
 	\end{algorithmic}
 \end{algorithm}
+$0
+endsnippet
+
+snippet simalg "Simple Algorithm" wA
+\begin{algorithmic}[1]
+	\State$$1$
+\end{algorithmic}
+endsnippet
+
+snippet ,ss "new state" bA
+\State$$1$
+$0
+endsnippet
+
+snippet while "While block" b
+\While{$1}
+	$2
+\EndWhile\\\\
+$0
+endsnippet
+
+snippet for "for block" b
+\For{$1}
+	$2
+\EndFor{}
+$0
+endsnippet
+snippet if "if block" b
+\If{$1}
+	$2
+\EndIf{}
 $0
 endsnippet
 
@@ -68,6 +99,10 @@ endsnippet
 # context "math()"
 snippet ,ff "Fraction" iA
 \frac{${1:numer}}{${2:denom}}${0}
+endsnippet
+
+snippet ,* "cdot instead of asterisk" iA
+\cdot ${0}
 endsnippet
 
 snippet /\_\_/ "Subscript" riA
