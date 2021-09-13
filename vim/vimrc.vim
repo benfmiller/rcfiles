@@ -145,15 +145,6 @@ set statusline+=\ %p%%
 hi Statusline cterm=NONE term=NONE ctermfg=232 ctermbg=191
 " Not Current
 hi StatuslineNC cterm=NONE term=NONE ctermfg=232 ctermbg=248
-"Git
-hi User1 cterm=None term=None ctermfg=232 ctermbg=202
-"short name
-hi User2 cterm=None term=None ctermfg=232 ctermbg=178
-"modified flag
-hi User3 cterm=None term=None ctermfg=white ctermbg=235
-" BuffNum
-hi User5 cterm=None term=None ctermfg=232 ctermbg=106
-" user 4 and 6 are in all plug for ale and obsess
 "}}
 " Colors {{
 " if !exists("g:home_machine")
@@ -1581,17 +1572,16 @@ endfunction
 
 " vim: set sw=2 ts=2 sts=2 et tw=80 ft=vim fdm=marker:
 " }}
-"
+" }}
 "Git
 hi User1 cterm=None term=None ctermfg=232 ctermbg=202
 "short name
-hi User2 cterm=None term=None ctermfg=232 ctermbg=178
+hi User2 cterm=None term=None ctermfg=232 ctermbg=154
 "modified flag
 hi User3 cterm=None term=None ctermfg=white ctermbg=235
 " BuffNum
-hi User5 cterm=None term=None ctermfg=232 ctermbg=106
+hi User5 cterm=None term=None ctermfg=232 ctermbg=178
 " user 4 and 6 are in all plug for ale and obsess
-" }}
 "}}
 " Hlsearches{{
 set incsearch       "Search as characters are entered

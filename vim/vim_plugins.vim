@@ -87,6 +87,7 @@ Plug 'dbeniamine/cheat.sh-vim'
 Plug 'mhinz/vim-grepper'
 Plug 'vim-test/vim-test'
 Plug 'preservim/tagbar' " requires sinstal exuberant-ctags
+Plug 'lervag/vimtex'
 
 Plug 'jiangmiao/auto-pairs'
 Plug 'szw/vim-maximizer', {'on':'MaximizerToggle'}
@@ -152,11 +153,11 @@ set bg=dark
 "Git
 hi User1 cterm=None term=None ctermfg=232 ctermbg=202
 "short name
-hi User2 cterm=None term=None ctermfg=232 ctermbg=178
+hi User2 cterm=None term=None ctermfg=232 ctermbg=154
 "modified flag
 hi User3 cterm=None term=None ctermfg=white ctermbg=235
 " BuffNum
-hi User5 cterm=None term=None ctermfg=232 ctermbg=106
+hi User5 cterm=None term=None ctermfg=232 ctermbg=178
 " user 4 and 6 are in all plug for ale and obsess
 " }}
 " Plugin settings and maps {{
