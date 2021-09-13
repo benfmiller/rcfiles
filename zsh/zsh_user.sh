@@ -123,6 +123,7 @@ if [ ! -z "${HOME_MACHINE+x}" ]; then
     alias winbash="/mnt/c/Program\ Files/Git/usr/bin/bash.exe -i -l"
     alias winbashex="/mnt/c/Program\ Files/Git/usr/bin/bash.exe -i -l -c"
 fi
+alias movetoparent="find . -mindepth 1 -maxdepth 1 -exec mv -t .. -- {} +"
 alias explorer="explorer.exe ."
 alias temperature="watch -n 2 sensors"
 alias wv="wslview"
