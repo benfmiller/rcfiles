@@ -513,6 +513,8 @@ nnoremap <C-t> :NERDTreeToggle<CR>
 let g:NERDTreeWinPos = "right"
 " nnoremap <C-f> :NERDTreeFind<CR>
 
+au Filetype tex let b:AutoPairs = {"$":"$", "$$":"$$", '(':')', '[':']', '{':'}',"'":"'",'"':'"', "`":"`", '```':'```', '"""':'"""', "'''":"'''"}
+
 " Git Stuff {{
 " This comes from vim fugitive
 let g:git_messenger_no_default_mappings = 1
