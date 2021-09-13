@@ -31,7 +31,7 @@ snippet proof "Environment: Proof" b
 endsnippet
 
 snippet algorithm "Environment: algorithm" b
-\begin{algorithm} \caption{\textsc{$1} ($2)}\label{alg:seb}
+\begin{algorithm} \caption{\textsc{${1:AlgName}} (${2:Args})}\label{alg:seb}
 	{\bf Input:} $3\\\\
 	{\bf Output:} $4
 	\begin{algorithmic}[1]
@@ -101,8 +101,12 @@ snippet ,ff "Fraction" iA
 \frac{${1:numer}}{${2:denom}}${0}
 endsnippet
 
-snippet ,* "cdot instead of asterisk" iA
+snippet ,c "cdot instead of asterisk" iA
 \cdot ${0}
+endsnippet
+
+snippet ,m "math dollar signs" iA
+$$1$$0
 endsnippet
 
 snippet /\_\_/ "Subscript" riA
@@ -142,6 +146,14 @@ snippet begin "begin{} / end{}"
 \begin{${1:name}}
 	${0}
 \end{$1}
+endsnippet
+
+snippet recursivedef "define recursive equation" bA
+\[ T (n) = \begin{cases}
+		1        & n=1  \\\\
+		T($1 & n>1.
+	\end{cases}
+\]
 endsnippet
 
 snippet itemize
