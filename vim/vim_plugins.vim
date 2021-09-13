@@ -514,6 +514,7 @@ let g:NERDTreeWinPos = "right"
 " nnoremap <C-f> :NERDTreeFind<CR>
 
 au Filetype tex let b:AutoPairs = {"$":"$", "$$":"$$", '(':')', '[':']', '{':'}',"'":"'",'"':'"', "`":"`", '```':'```', '"""':'"""', "'''":"'''"}
+au Filetype markdown let b:AutoPairs = {"*":"*", "**":"**", "$":"$", "$$":"$$", '(':')', '[':']', '{':'}',"'":"'",'"':'"', "`":"`", '```':'```', '"""':'"""', "'''":"'''"}
 
 " Git Stuff {{
 " This comes from vim fugitive
