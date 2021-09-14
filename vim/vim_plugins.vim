@@ -508,7 +508,7 @@ nnoremap <C-m> :Commentary<CR>
 nnoremap <leader>ou :e ~/.local/share/nvim/plugged/vim-unimpaired/doc/unimpaired.txt<CR>
 
 " NERDtree
-nnoremap <C-n> :NERDTree<CR>
+" nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 let g:NERDTreeWinPos = "right"
 " nnoremap <C-f> :NERDTreeFind<CR>
@@ -603,8 +603,8 @@ call SetupCommandAlias("grep", "GrepperGrep")
 
 " let g:UltiSnipsExpandTrigger = '<nop>'
 let g:UltiSnipsExpandTrigger = '<C-space>'
-let g:UltiSnipsJumpForwardTrigger = '<c-i>'
-let g:UltiSnipsJumpBackwardTrigger = '<c-o>'
+let g:UltiSnipsJumpForwardTrigger = '<C-m>'
+let g:UltiSnipsJumpBackwardTrigger = '<C-b>'
 let g:UltiSnipsRemoveSelectModeMappings = 0
 let g:UltiSnipsSnippetDirectories = ["~/rcfiles/UltiSnips"]
 
