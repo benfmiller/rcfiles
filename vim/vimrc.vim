@@ -1747,12 +1747,12 @@ inoremap <C-j> <esc>:m .+1<CR>==
 inoremap <C-k> <esc>:m .-2<CR>==
 
 " adds to jump list with big jumps
-nnoremap <expr> k (v:count > 5 ? "m'" . v:count : "") . 'k'
-nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . 'j'
+nnoremap <expr> k (v:count > 5 ? "m'" . v:count : "") . 'gk'
+nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . 'gj'
 
-" Moves up line visually
-nnoremap j gj
-nnoremap k gk
+" " Moves up line visually
+" nnoremap j gj
+" nnoremap k gk
 
 " resize windows proportionally
 nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
