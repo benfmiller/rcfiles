@@ -488,6 +488,15 @@ if (g:use_vimspector == 1)
     nmap <leader>daw <Plug>VimspectorAddWatch
     nmap <leader>dew <Plug>VimspectorDeleteWatch
 
+    " alt maps
+    nmap <M-q> :VimspectorReset<CR>
+    nmap <M-d> :call vimspector#Continue()<CR>
+    nmap <M-l> <Plug>VimspectorStepInto
+    nmap <M-j> <Plug>VimspectorStepOver
+    nmap <M-k> <Plug>VimspectorStepOut
+    nmap <M-h> <Plug>VimspectorRestart
+    nmap <M-c> <Plug>VimspectorRunToCursor
+
     nmap <leader>drc <Plug>VimspectorRunToCursor
     nmap <C-b> <Plug>VimspectorToggleBreakpoint
     nmap <leader>db <Plug>VimspectorToggleConditionalBreakpoint
