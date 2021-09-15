@@ -1,0 +1,28 @@
+snippet vimspector "create vimspector config" b
+{
+	"configurations": {
+		"run test": {
+			"adapter": "${1:vscode-cpptools}",
+			"configuration": {
+				"type":    "${2:cppdbg}",
+				"request": "launch",
+				"program": "${3:${workspaceRoot}/src/vim}",
+				"args": [
+					"${4:-v}"
+				],
+				"cwd": "${workspaceRoot}",
+				"environment": [
+					{ "${5:name}": "${6:VIMRUNTIME}", "${7:value}": "${8:${workspaceRoot}/runtime}" }
+				],
+					"externalConsole": ${9:true},
+					"stopAtEntry": ${10:true},
+					"MIMode": "${11:lldb}",
+					"logging": {
+						"engineLogging": false
+				}
+			}
+		}
+	}
+}
+$0
+endsnippet
