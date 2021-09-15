@@ -1,4 +1,4 @@
-snippet vimspector "create vimspector config" b
+snippet vimspector-default "create vimspector default config" b
 {
 	"configurations": {
 		"run test": {
@@ -19,6 +19,35 @@ snippet vimspector "create vimspector config" b
 					"MIMode": "${11:lldb}",
 					"logging": {
 						"engineLogging": false
+				}
+			}
+		}
+	}
+}
+$0
+endsnippet
+
+snippet vimspector-python "create vimspector python config" b
+{
+	"configurations": {
+		"Python: debug $1": {
+			"adapter": "debugpy",
+			"configuration": {
+				"type":    "python",
+				"request": "launch",
+				"program": "$${workspaceRoot}/$2}",
+				"args": [
+					"${3:-v}"
+				],
+				"cwd": "${workspaceRoot}",
+				"environment": [
+					{ "${4:name}": "${5:NAME}", "${6:value}": "${7:value}" }
+				],
+					"externalConsole": false,
+					"stopAtEntry": ${8:true},
+					"MIMode": "pdb",
+					"logging": {
+						"engineLogging": true
 				}
 			}
 		}
