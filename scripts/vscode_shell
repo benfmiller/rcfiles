@@ -37,7 +37,10 @@ else
         # -L vscode
     fi
 
-    # Switch to the session
-    tmux switch-client -t "$SESSION"
-    # -L vscode
+    # attach rather that switch - uses vscode terminal rather than external terminal
+    tmux attach-session -d -t "$SESSION" || tmux new-session -s "$SESSION"
+
+    # # Switch to the session
+    # tmux switch-client -t "$SESSION"
+    # # -L vscode
 fi
