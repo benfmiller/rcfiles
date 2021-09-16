@@ -81,14 +81,14 @@ fi
 export TMPDIR="/tmp"
 #}}
 # Editor {{
-export EDITOR='vim'
+export EDITOR='vim -u $HOME/rcfiles/vim/vimrc.vim'
 
 alias vi="vim -u $HOME/rcfiles/vim/vimrc.vim"
 
 if type nvim > /dev/null 2>&1; then
     alias vi='nvim -u $HOME/rcfiles/vim/vimrc.vim'
     alias vim="nvim"
-    export EDITOR='nvim'
+    export EDITOR='nvim -u $HOME/rcfiles/vim/vimrc.vim'
 
     # Uses nvr if inside nvim instance
     # requires pip3 install neovim-remote
@@ -106,7 +106,7 @@ fi
 if $(ps -p $$ | grep -q 'zsh'); then
     autoload -U edit-command-line
     zle -N edit-command-line
-    bindkey '^x^e' edit-command-line
+    bindkey '^f' edit-command-line
 fi
 #}}
 # More Aliases{{
