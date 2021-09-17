@@ -37,6 +37,7 @@ alias tl="tmux -2 ls"
 alias ta="tmux -2 attach"
 alias tat="tmux -2 attach -d -t"
 alias tst="tmux switch-client -t"
+alias tata="~/rcfiles/scripts/tmux_switcher.sh"
 #}}
 #Installers{{
 install_oh_my_zsh () {
