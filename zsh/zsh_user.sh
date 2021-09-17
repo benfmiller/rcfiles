@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 #Moving Aliases{{
 alias cdscripts="cd ~/rcfiles/scripts"
 alias lscripts="ls ~/rcfiles/scripts"
