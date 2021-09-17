@@ -82,6 +82,7 @@ if [ ! -z "${HOME_MACHINE+x}" ]; then
 fi
 export TMPDIR="/tmp"
 export FZF_DEFAULT_OPTS='--bind=ctrl-k:up,ctrl-j:down'
+export CN="$HOME/GoogleDrive/CProjects/Cnotes"
 #}}
 # Editor {{
 export EDITOR='vim -u $HOME/rcfiles/vim/vimrc.vim'
