@@ -3,6 +3,10 @@ languages=`echo "golang flutter nodejs javascript typescript cpp c lua rust pyth
 core_utils=`echo "git xargs find mv sed awk" | tr ' ' '\n'`
 
 selected=`printf "$languages\n$core_utils" | fzf`
+if [[ -z $selected ]]; then
+    exit 0
+fi
+
 read -p "Enter Query: " query
 query=`echo $query | tr ' ' '+'`
 
