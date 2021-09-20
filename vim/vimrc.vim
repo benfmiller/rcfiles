@@ -1585,9 +1585,9 @@ hi User5 cterm=None term=None ctermfg=232 ctermbg=178
 "}}
 " Hlsearches{{
 set incsearch       "Search as characters are entered
-set hlsearch        " highligh matches
-nnoremap <leader>. :set hlsearch<CR>
-nnoremap <leader>, :nohlsearch<CR>
+set nohlsearch        " highligh matches
+nnoremap <leader>, :set hlsearch!<CR>
+" nnoremap <leader>, :nohlsearch<CR>
 "}}
 " tabs{{
 set tabstop=4 "number of visual spaces per tab
