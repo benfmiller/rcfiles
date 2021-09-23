@@ -1638,7 +1638,7 @@ set foldmarker={{,}}
 nnoremap <leader>ty :Tyank<CR>
 " nnoremap <leader>tp :Tput<CR>
 nnoremap <C-y> :Tyank<CR>
-nnoremap <C-]> :Tput<CR>
+nnoremap <C-c> :Tput<CR>
 vnoremap <C-y> :Tyank<CR>
 " }}
 
