@@ -1659,6 +1659,9 @@ nnoremap <leader>qq :qa!<CR>
 nnoremap <leader>qt :tabc<CR>
 nnoremap <leader>qw <C-w>c
 
+nnoremap <M-,> :tabm -1<CR>
+nnoremap <M-.> :tabm +1<CR>
+
 nnoremap <leader>1 1gt
 nnoremap <leader>2 2gt
 nnoremap <leader>3 3gt
