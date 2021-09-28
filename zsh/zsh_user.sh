@@ -26,8 +26,25 @@ cpnviminit () {
 }
 #}}
 #System{{
-alias tupdate="sudo apt update && sudo apt upgrade -y ; echo ; echo \"PullingRcs\" ; pullrcs ; zsh"
-alias sinstal="sudo apt install"
+tupdate () {
+
+    if  uname -a | grep -qs MANJARO || uname -a | grep -qs arch ; then
+        sudo pacman -Syu
+    else
+        sudo apt update && sudo apt upgrade -y
+    fi
+
+    echo
+    echo \"PullingRcs\"
+    pullrcs
+    zsh
+}
+
+if  uname -a | grep -qs MANJARO || uname -a | grep -qs arch ; then
+    alias sinstal="sudo pacman -S"
+else
+    alias sinstal="sudo apt install"
+fi
 #}}
 #Tmux{{
 # This requires a name for session
@@ -162,6 +179,7 @@ alias cct="cargo test"
 alias python="python3"
 alias pip="pip3"
 
+alias pm="pacman"
 #}}
 #Var Functions{{
 print_colors () {
