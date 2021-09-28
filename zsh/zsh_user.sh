@@ -130,8 +130,19 @@ fi
 alias movetoparent="find . -mindepth 1 -maxdepth 1 -exec mv -t .. -- {} +"
 alias explorer="explorer.exe ."
 alias temperature="watch -n 2 sensors"
-alias wv="wslview"
-alias wvap="wslview *.pdf"
+alias hib="sudo systemctl hibernate"
+
+if ! command -v wslview &> /dev/null
+then
+    alias wslview="open"
+fi
+
+wv () {
+    wslview $* &
+}
+wvap () {
+    wslview *.pdf &
+}
 
 alias l="ls -alh"
 alias p="pwd"

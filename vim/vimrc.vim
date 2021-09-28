@@ -1690,9 +1690,12 @@ function! RunPython(args)
 endfunction
 nnoremap <leader>rp :call RunPython(
 
-nnoremap <leader>p :!pdt %<CR>
-nnoremap <leader>[p :!pdtv %<CR>
-nnoremap <leader>op :!wslviewpdf %<CR>
+" nnoremap <leader>p :!pdt %<CR>
+" nnoremap <leader>[p :!pdtv %<CR>
+" nnoremap <leader>op :!wslviewpdf %<CR>
+nnoremap <leader>p :!zsh -ic pdt %<CR>
+nnoremap <leader>[p :!zsh -ic pdtv %<CR>
+nnoremap <leader>op :!zsh -ic wslviewpdf %<CR>
 
 " Moving buffer and tabs {{
 
@@ -1776,7 +1779,8 @@ set hidden
 set autoread
 
 " shell logs in so commands in zsh_user can be used
-set shcf=-ic
+" set shcf=-ic
+" set shell=bash\ -lc
 
 set undofile
 set undodir="$VIMDATA/undo"

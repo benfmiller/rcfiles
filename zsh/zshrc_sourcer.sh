@@ -1,7 +1,7 @@
 source ~/rcfiles/zsh/zsh_user.sh
 source $ZSH/oh-my-zsh.sh
 
-export DISPLAY="`grep nameserver /etc/resolv.conf | sed 's/nameserver //'`:0"
+# export DISPLAY="`grep nameserver /etc/resolv.conf | sed 's/nameserver //'`:0"
 
 source "$HOME/.cargo/env"
 # Install Ruby Gems to ~/gems
