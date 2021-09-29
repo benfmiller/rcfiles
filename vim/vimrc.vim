@@ -1690,12 +1690,16 @@ function! RunPython(args)
 endfunction
 nnoremap <leader>rp :call RunPython(
 
-" nnoremap <leader>p :!pdt %<CR>
-" nnoremap <leader>[p :!pdtv %<CR>
-" nnoremap <leader>op :!wslviewpdf %<CR>
-nnoremap <leader>p :!zsh -ic pdt %<CR>
-nnoremap <leader>[p :!zsh -ic pdtv %<CR>
-nnoremap <leader>op :!zsh -ic wslviewpdf %<CR>
+let g:in_wsl = get(g:, 'in_wsl', 1)
+if (g:in_wsl == 0)
+    nnoremap <leader>p :!zsh -ic pdt %<CR>
+    nnoremap <leader>[p :!zsh -ic pdtv %<CR>
+    nnoremap <leader>op :!zsh -ic wslviewpdf %<CR>
+else
+    nnoremap <leader>p :!pdt %<CR>
+    nnoremap <leader>[p :!pdtv %<CR>
+    nnoremap <leader>op :!wslviewpdf %<CR>
+endif
 
 " Moving buffer and tabs {{
 
