@@ -172,6 +172,7 @@ if (g:use_ycm == 1)
     nnoremap <leader>yg :YcmCompleter GoTo
     nnoremap <leader>yr :YcmCompleter RefactorRename
     nmap <leader>yh <plug>(YCMHover)
+    let g:ycm_filetype_blacklist = {}
 
 endif
 "}}
