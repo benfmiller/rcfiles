@@ -56,10 +56,10 @@ bindsym $mod+k focus up
 bindsym $mod+l focus right
 
 # move focused window
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
 
 # split in horizontal orientation
 bindsym $mod+c split h
@@ -87,6 +87,9 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 
+# look at keymaps
+bindsym $mod+control+h "$HOME/rcfiles/i3/config | fzf"
+
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+Escape exec "i3-nagbar -t warning -m 'Do you really want to exit i3?' -b 'Yes, exit i3' 'i3-msg exit'"
 bindsym $mod+Shift+Delete exec "i3-nagbar -t alert -m 'Do you really want to shut down?' -b 'Yes, Shutdown' 'shutdown -h now'"
@@ -98,10 +101,10 @@ bindsym $mod+shift+$alt+p focus parent
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up   resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
 
         # back to normal: Enter or Escape
         bindsym Return mode "default"
@@ -112,8 +115,7 @@ bindsym $mod+r mode "resize"
 
 # Lock the computer
 bindsym $mod+shift+l exec /bin/bash ~/.config/i3/scripts/i3lock.sh
-
-# Lock the computer
+# Suspend the computer
 bindsym $mod+control+shift+l exec /bin/bash ~/.config/i3/scripts/suspend.sh
 
 ############################################
@@ -132,6 +134,8 @@ bindsym $mod+Tab exec "rofi -show"
 bindsym $mod+s exec "rofi -show ssh"
 bindsym $mod+n exec $vpnmanager
 
+bindsym $alt+Tab workspace back_and_forth
+
 ############################################
 #    Media keys                            #
 ############################################
@@ -141,6 +145,8 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #d
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 
 # Sreen brightness controls
+# bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
+# bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
 bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
 
