@@ -7,6 +7,7 @@
 
 # Set the mod key to the "Windows key" and the floating modifier to the mod key.
 set $mod Mod4
+set $alt Mod1
 floating_modifier $mod
 
 ############################################
@@ -46,13 +47,13 @@ set $vpnmanager ~/.config/i3/scripts/vpn-manager.sh
 #    i3 management keys                    #
 ############################################
 # kill focused window
-bindsym $mod+Shift+w kill
+bindsym $mod+Shift+q kill
 
 # change focus
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
 
 # move focused window
 bindsym $mod+Shift+Left move left
@@ -61,7 +62,7 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+h split h
+bindsym $mod+c split h
 
 # split in vertical orientation
 bindsym $mod+v split v
@@ -92,7 +93,7 @@ bindsym $mod+Shift+Delete exec "i3-nagbar -t alert -m 'Do you really want to shu
 bindsym $mod+Shift+BackSpace exec "i3-nagbar -t error -m 'Do you really want to reboot?' -b 'Yes, Reboot' 'reboot'"
 
 # focus on the parent window
-bindsym $mod+shift+alt+p focus parent
+bindsym $mod+shift+$alt+p focus parent
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -110,10 +111,10 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Lock the computer
-bindsym $mod+l exec /bin/bash ~/.config/i3/scripts/i3lock.sh
+bindsym $mod+shift+l exec /bin/bash ~/.config/i3/scripts/i3lock.sh
 
 # Lock the computer
-bindsym $mod+shift+l exec /bin/bash ~/.config/i3/scripts/suspend.sh
+bindsym $mod+control+shift+l exec /bin/bash ~/.config/i3/scripts/suspend.sh
 
 ############################################
 #    Application Keys                      #
@@ -180,7 +181,7 @@ bindsym $mod+Shift+7 move container to workspace $workspace7
 bindsym $mod+Shift+8 move container to workspace $workspace8
 bindsym $mod+Shift+9 move container to workspace $workspace9
 bindsym $mod+Shift+0 move container to workspace $workspace10
-bindsym $mod+Shift+q move container to workspace $workspace11
+bindsym $mod+Shift+w move container to workspace $workspace11
 bindsym $mod+Shift+p move container to workspace $workspace12
 
 
@@ -192,7 +193,7 @@ font pango:Liberation sans 13
 
 # Bar decoration
 bar {
-        status_command i3blocks -c ~/.config/i3/i3blocks.conf
+        status_command i3blocks ~/.config/i3/i3blocks.conf
 	position top
         strip_workspace_numbers no
 	tray_output primary
