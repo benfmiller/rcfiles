@@ -114,7 +114,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Lock the computer
-bindsym $mod+shift+l exec /bin/bash ~/.config/i3/scripts/i3lock.sh
+bindsym $mod+$alt+shift+l exec /bin/bash ~/.config/i3/scripts/i3lock.sh
 # Suspend the computer
 bindsym $mod+control+shift+l exec /bin/bash ~/.config/i3/scripts/suspend.sh
 
@@ -140,9 +140,9 @@ bindsym $alt+Tab workspace back_and_forth
 #    Media keys                            #
 ############################################
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume `pactl list short sinks | grep RUNNING | cut -f1` +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume `pactl list short sinks | grep RUNNING | cut -f1` -5% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute `pactl list short sinks | grep RUNNING | cut -f1` toggle # mute sound
 
 # Sreen brightness controls
 # bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
@@ -152,6 +152,7 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightne
 
 # Media player controls
 bindsym XF86AudioPlay exec playerctl play
+# bindsym XF86AudioPlay exec notify-send "playing!!!"
 bindsym XF86AudioPause exec playerctl pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
