@@ -39,6 +39,27 @@ set $workspace10 "10: "
 set $workspace11 " VM/Remote"
 set $workspace12 " Enpass"
 
+# # Bind App to workspace
+# # Check class by using xprop command
+# assign [class="chromium"] $ws2
+# assign [class="Firefox"] $ws2
+# assign [class="Atom"] $ws3
+# assign [class="Foxit Reader"] $ws3
+# assign [class="Pcmanfm"] $ws4
+# assign [class="VirtualBox"] $ws5
+# assign [class="Virt-manager"] $ws5
+# assign [class="Skype"] $ws6
+# assign [class="mpv"] $ws9
+# assign [class="vlc"] $ws9
+# assign [class="Thunderbird"] $ws7
+# assign [class="(?i)libreoffice-startcenter"] $ws8
+# assign [class="(?i)soffice"] $ws8
+# assign [class="(?i)libreoffice"] $ws8
+
+
+# # Assign to certain workspace
+# assign [window_role="browser"] $ws2
+
 # scripts
 set $tidal ~/.config/i3/scripts/tidal-cli.sh
 set $vpnmanager ~/.config/i3/scripts/vpn-manager.sh
@@ -124,7 +145,7 @@ bindsym $mod+control+shift+l exec /bin/bash ~/.config/i3/scripts/suspend.sh
 bindsym $mod+Return exec terminator                                 # terminal
 bindsym $mod+e exec thunar                                          # File manager
 bindsym Print exec  flameshot screen -d 0 -p ~/Pictures/Screenshots     # Fullscreen screenshot
-bindsym $mod+Print exec flameshot gui					# Show screenshot window
+bindsym $mod+control+p exec flameshot gui					# Show screenshot window
 bindsym $mod+shift+b exec /bin/bash ~/.config/i3/scripts/brightness.sh
 bindsym control+shift+Escape exec sysmontask
 
@@ -200,19 +221,20 @@ font pango:Liberation sans 13
 
 # Bar decoration
 bar {
-        status_command i3status i3blocks ~/.config/i3/i3blocks.conf
+    status_command i3blocks -c ~/.config/i3/i3blocks.conf
 	position top
-        strip_workspace_numbers no
+    font pango:Hack, FontAwesome 13
+    strip_workspace_numbers no
 	tray_output primary
-        colors {
-                separator $textColour
-                background $primaryBackgroundColour
-                statusline $statusLineColour
-                #                  border                   background                  text
-                focused_workspace  $primaryBackgroundColour $primaryBackgroundColour    $focusedTextColour
-                active_workspace   $primaryBackgroundColour $secondaryBackgroundColour  $textColour
-                inactive_workspace $primaryBackgroundColour $primaryBackgroundColour    $textColour
-                urgent_workspace   $primaryBackgroundColour $primaryBackgroundColour    $urgentTextColour
+    colors {
+        separator $textColour
+        background $primaryBackgroundColour
+        statusline $statusLineColour
+        #                  border                   background                  text
+        focused_workspace  $primaryBackgroundColour $primaryBackgroundColour    $focusedTextColour
+        active_workspace   $primaryBackgroundColour $secondaryBackgroundColour  $textColour
+        inactive_workspace $primaryBackgroundColour $primaryBackgroundColour    $textColour
+        urgent_workspace   $primaryBackgroundColour $primaryBackgroundColour    $urgentTextColour
     }
 }
 
