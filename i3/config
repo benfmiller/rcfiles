@@ -88,7 +88,7 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
 # look at keymaps
-bindsym $mod+control+h "$HOME/rcfiles/i3/config | fzf"
+bindsym $mod+control+h exec terminator -e "cat $HOME/rcfiles/i3/config | fzf"
 
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+Escape exec "i3-nagbar -t warning -m 'Do you really want to exit i3?' -b 'Yes, exit i3' 'i3-msg exit'"
@@ -200,7 +200,7 @@ font pango:Liberation sans 13
 
 # Bar decoration
 bar {
-        status_command i3blocks ~/.config/i3/i3blocks.conf
+        status_command i3status i3blocks ~/.config/i3/i3blocks.conf
 	position top
         strip_workspace_numbers no
 	tray_output primary

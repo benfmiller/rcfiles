@@ -13,6 +13,7 @@ convert "$tmpbg" "$icon" -gravity center -composite -matte "$tmpbg"
 # Stop music if playing
 ~/.config/i3/scripts/tidal-cli.sh pause
 
+i3lock -f -i "$icon";
 # check whether the lockscreen is being activated because of a suspend
 if [[ $* == *--suspend ]]; then
     # if it is, simply lock without no-fork
