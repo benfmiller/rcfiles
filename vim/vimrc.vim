@@ -1572,6 +1572,10 @@ endfunction
 
 " vim: set sw=2 ts=2 sts=2 et tw=80 ft=vim fdm=marker:
 " }}
+highlight Normal     ctermbg=NONE guibg=NONE
+highlight LineNr     ctermbg=NONE guibg=NONE
+highlight SignColumn ctermbg=NONE guibg=NONE
+highlight Folded ctermbg=NONE guibg=NONE
 " }}
 "Git
 hi User1 cterm=None term=None ctermfg=232 ctermbg=202

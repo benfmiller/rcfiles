@@ -159,7 +159,12 @@ hi User3 cterm=None term=None ctermfg=white ctermbg=235
 " BuffNum
 hi User5 cterm=None term=None ctermfg=232 ctermbg=178
 " user 4 and 6 are in all plug for ale and obsess
-" }}
+"
+highlight Normal     ctermbg=NONE guibg=NONE
+highlight LineNr     ctermbg=NONE guibg=NONE
+highlight SignColumn ctermbg=NONE guibg=NONE
+highlight Folded ctermbg=NONE guibg=NONE
+"}}
 " Plugin settings and maps {{
 " YCM {{
 if (g:use_ycm == 1)
