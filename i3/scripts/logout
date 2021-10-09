@@ -1,12 +1,15 @@
 #!/usr/bin/env bash
 # Manage logout with rofi
-option=`echo -e "suspend\nlock screen\nlogout\nreboot\npoweroff\nKill user $USER" | rofi -width 600 -dmenu -p system:`
+option=`echo -e "suspend\nhibernate\nlock screen\nlogout\nreboot\npoweroff\nKill user $USER" | rofi -width 600 -dmenu -p system:`
 case $option in
     suspend)
         sudo  /usr/bin/systemctl syspend
         ;;
+    hibernate)
+        sudo  /usr/bin/systemctl hibernate
+        ;;
     'lock screen')
-        i3lock -i /home/koromicha/Pictures/linuxtux.png
+        i3lock -f -i "$HOME/.config/i3/icons/lock.png"
         ;;
     logout)
         i3-nagbar -t warning -m 'Are you sure you  want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'
