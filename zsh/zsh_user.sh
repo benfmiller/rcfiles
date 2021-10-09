@@ -147,7 +147,7 @@ fi
 alias movetoparent="find . -mindepth 1 -maxdepth 1 -exec mv -t .. -- {} +"
 alias explorer="explorer.exe ."
 alias temperature="watch -n 2 sensors"
-alias hib="sudo systemctl hibernate"
+alias hib="i3lock -f -i "$HOME/.config/i3/icons/lock.png" ; sudo /usr/bin/systemctl hibernate"
 
 if ! command -v wslview &> /dev/null
 then

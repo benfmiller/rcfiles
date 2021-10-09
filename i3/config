@@ -375,6 +375,7 @@ mode "$mode_gaps_outer" {
 ############################################
 exec --no-startup-id i3-msg 'workspace $workspace1; exec firefox; exec terminator' && i3-msg 'workspace $workspace1'
 # exec --no-startup-id i3-msg 'workspace $workspace12; exec enpass'
+exec --no-startup-id xss-lock -- ~/rcfiles/i3/scripts/i3lock.sh
 exec --no-startup-id nm-applet
 exec_always feh --bg-scale $(find ~/Pictures/wallpapers/ -type f -name "*" | shuf -n 1)
 exec /usr/bin/compton
