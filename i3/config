@@ -378,7 +378,8 @@ exec --no-startup-id i3-msg 'workspace $workspace1; exec firefox; exec terminato
 exec --no-startup-id xss-lock -- ~/rcfiles/i3/scripts/i3lock.sh
 exec --no-startup-id nm-applet
 exec_always feh --bg-scale $(find ~/Pictures/wallpapers/ -type f -name "*" | shuf -n 1)
-exec /usr/bin/compton --config ~/rcfiles/config/compton.conf -b
+# exec /usr/bin/compton --config ~/rcfiles/config/compton.conf -b
+exec /usr/bin/compton -b --vsync
 exec /bin/bash ~/rcfiles/i3/scripts/startup.sh
 
 bindsym $mod+Shift+a border normal
