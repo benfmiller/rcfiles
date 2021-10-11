@@ -1,7 +1,9 @@
 #!/bin/bash
 
-if ping -c 1 8.8.8.8; then
-    ping -c 2 8.8.8.8 | tail -1 | awk '{print $4}' | cut -d '/' -f 2 | cut -f1 -d"."
+latency=`ping -c 2 8.8.8.8 | tail -1 | awk '{print $4}' | cut -d '/' -f 2 | cut -f1 -d"."`
+# if ping -c 1 8.8.8.8 > /dev/null; then
+if [ ! -z "$latency" ]; then
+    echo $latency
 else
     echo 999
 fi
