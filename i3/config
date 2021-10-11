@@ -113,7 +113,8 @@ bindsym $mod+Shift+r restart
 bindsym $mod+control+h exec terminator -e "cat $HOME/rcfiles/i3/config | fzf"
 
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+Escape exec "i3-nagbar -t warning -m 'Do you really want to exit i3?' -b 'Yes, exit i3' 'i3-msg exit'"
+# bindsym $mod+Shift+Escape exec "i3-nagbar -t warning -m 'Do you really want to exit i3?' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+Escape exec i3-msg exit
 bindsym $mod+Shift+Delete exec "i3-nagbar -t alert -m 'Do you really want to shut down?' -b 'Yes, Shutdown' 'shutdown -h now'"
 bindsym $mod+Shift+BackSpace exec "i3-nagbar -t error -m 'Do you really want to reboot?' -b 'Yes, Reboot' 'reboot'"
 
@@ -378,8 +379,9 @@ exec --no-startup-id i3-msg 'workspace $workspace1; exec firefox; exec terminato
 exec --no-startup-id xss-lock -- ~/rcfiles/i3/scripts/i3lock.sh
 exec --no-startup-id nm-applet
 exec_always feh --bg-scale $(find ~/Pictures/wallpapers/ -type f -name "*" | shuf -n 1)
-# exec /usr/bin/compton --config ~/rcfiles/config/compton.conf -b
-exec /usr/bin/compton -b --vsync
+exec /usr/bin/compton --config ~/rcfiles/config/compton.conf -b
+# exec /usr/bin/compton -b --vsync
+# exec /usr/bin/compton --config ~/.xinitrc -b
 exec /bin/bash ~/rcfiles/i3/scripts/startup.sh
 
 bindsym $mod+Shift+a border normal
