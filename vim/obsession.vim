@@ -1,0 +1,1 @@
+/home/ben/.local/share/nvim/plugged/vim-obsession/plugin/obsession.vim

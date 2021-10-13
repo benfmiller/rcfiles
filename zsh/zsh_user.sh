@@ -189,8 +189,9 @@ done
 }
 
 svim () {
-if test -f "./Session.vim"; then
-    vim -S $1
+session_name=".Session-$(hostname | tr -d "\n").vim"
+if test -f $session_name; then
+    vim -S $session_name
 else
     vim
 fi
