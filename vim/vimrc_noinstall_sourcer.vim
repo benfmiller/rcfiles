@@ -13,3 +13,4 @@ let g:ale_completion_enabled = 0
 
 source ~/rcfiles/vim/vimrc.vim
 source ~/rcfiles/vim/vim_plugins.vim
+source ~/rcfiles/vim/obsession.vim
