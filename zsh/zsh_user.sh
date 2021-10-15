@@ -149,6 +149,9 @@ alias explorer="explorer.exe ."
 alias temperature="watch -n 2 sensors"
 alias hib="i3lock -f -i "$HOME/.config/i3/icons/lock.png" ; sudo /usr/bin/systemctl hibernate"
 
+alias setdisploc="export DISPLAY=:0"
+alias setdispssh="export DISPLAY=localhost:10.0"
+
 if ! command -v wslview &> /dev/null
 then
     alias wslview="open"
