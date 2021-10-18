@@ -432,7 +432,8 @@ COMPLETION_WAITING_DOTS="true"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="af-magic"
+ZSH_THEME="agnoster"
+# af-magic
 #fishy
 #obraun
 #linuxonly
