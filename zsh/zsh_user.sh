@@ -152,6 +152,8 @@ alias hib="i3lock -f -i "$HOME/.config/i3/icons/lock.png" ; sudo /usr/bin/system
 alias setdisploc="export DISPLAY=:0"
 alias setdispssh="export DISPLAY=localhost:10.0"
 
+alias myrsync="rsync -avS --progress --delete"
+
 if ! command -v wslview &> /dev/null
 then
     alias wslview="open"
