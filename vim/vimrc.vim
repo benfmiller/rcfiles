@@ -20,6 +20,8 @@ set mouse=nv
 
 set cmdheight=2
 
+set colorcolumn=80
+
 " Tabs {{
 " TabLine     tab pages line, not active tab page label gui=NONE guibg=#3e4452 guifg=#abb2bf
 " TabLineFill tab pages line, where there are no labels
@@ -1757,8 +1759,8 @@ inoremap ? ?<c-g>u
 " I keep accidentally moving text
 " vnoremap J :m '>+1<CR>gv=gv
 " vnoremap K :m '<-2<CR>gv=gv
-inoremap <C-j> <esc>:m .+1<CR>==
-inoremap <C-k> <esc>:m .-2<CR>==
+" inoremap <C-j> <esc>:m .+1<CR>==
+" inoremap <C-k> <esc>:m .-2<CR>==
 
 " adds to jump list with big jumps
 nnoremap <expr> k (v:count > 5 ? "m'" . v:count : "") . 'gk'
@@ -1773,6 +1775,8 @@ nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
 nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
 nnoremap <silent> <Leader>> :exe "resize " . (winwidth(0) * 3/2)<CR>
 nnoremap <silent> <Leader>< :exe "resize " . (winwidth(0) * 2/3)<CR>
+
+nnoremap <leader>sw :set wrap!<CR>
 
 " }}
 " Various{{
