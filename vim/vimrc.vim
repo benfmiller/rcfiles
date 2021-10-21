@@ -1778,6 +1778,18 @@ nnoremap <silent> <Leader>< :exe "resize " . (winwidth(0) * 2/3)<CR>
 
 nnoremap <leader>sw :set wrap!<CR>
 
+" -----
+" centers the current pane as the middle 2 of 4 imaginary columns
+" should be called in a window with a single pane
+
+ function CenterPane()
+   lefta vnew
+   wincmd w
+   exec 'vertical resize '. string(&columns * 0.75)
+ endfunction
+
+" optionally map it to a key:
+nnoremap <leader>cp :call CenterPane()<cr>
 " }}
 " Various{{
 set lazyredraw          "only redraws screen when we have to
