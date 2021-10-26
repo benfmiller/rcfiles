@@ -167,6 +167,7 @@ wvap () {
 }
 
 alias l="ls -alh"
+alias lls="ls -lh"
 alias p="pwd"
 alias c="cd"
 alias dt="du -chs * | sort -h"
