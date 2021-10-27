@@ -7,18 +7,21 @@ folder="$(pwd)"
 # Construct the path for the folder icon
 FOLDER_ICON_PATH="$folder/.icon"
 
-if [ -f $FOLDER_ICON_PATH ]; then
-    folder_icon="$(cat $FOLDER_ICON_PATH)"
-else
-    echo "Could not find an .icon file in $folder, using the default icon ️️️️️️🖥️"
-    folder_icon="🖥️"
-fi
-
 # Strip the path and leave the folder name
 folder_name="$(basename $folder)"
 
-# Construct the session name
-SESSION="$folder_name $folder_icon"
+if [ -f $FOLDER_ICON_PATH ]; then
+    folder_icon="$(cat $FOLDER_ICON_PATH)"
+
+    # Construct the session name
+    SESSION="$folder_name $folder_icon"
+else
+    echo "Could not find an .icon file in $folder, using the default icon ️️️️️️🖥️"
+    folder_icon="🖥️"
+
+    SESSION="$folder_name"
+fi
+
 
 # Attach to Tmux
 
