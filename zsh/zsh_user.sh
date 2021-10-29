@@ -194,6 +194,17 @@ for i in {0..255} ; do
 done
 }
 
+print_nmcli () {
+    echo "nmcli dev status"
+    echo "nmcli radio wifi"
+    echo "nmcli radio wifi on"
+    echo
+    echo "nmcli dev wifi list"
+    echo "sudo nmcli dev wifi connect {network-ssid}"
+    echo 'sudo nmcli dev wifi connect {network-ssid} password {network-password}'
+    echo "nmcli con up id {network-ssid} # uses existing profile"
+}
+
 svim () {
 session_name=".Session-$(hostname | tr -d "\n").vim"
 if test -f $session_name; then
