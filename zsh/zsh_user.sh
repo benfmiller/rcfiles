@@ -203,6 +203,7 @@ print_nmcli () {
     echo "sudo nmcli dev wifi connect {network-ssid}"
     echo 'sudo nmcli dev wifi connect {network-ssid} password {network-password}'
     echo "nmcli con up id {network-ssid} # uses existing profile"
+    echo "sudo nmcli --ask dev wifi connect network-ssid # don't have to type password in command"
 }
 
 svim () {
