@@ -141,7 +141,7 @@ bindsym $mod+$alt+shift+l exec /bin/bash ~/rcfiles/i3/scripts/i3lock.sh
 # Suspend the computer
 bindsym $mod+control+shift+l exec /bin/bash ~/rcfiles/i3/scripts/suspend.sh
 # Logout the computer
-bindsym $mod++shift+o exec /bin/bash ~/rcfiles/i3/scripts/logout
+bindsym $mod+shift+o exec /bin/bash ~/rcfiles/i3/scripts/logout
 
 ############################################
 #    Application Keys                      #
