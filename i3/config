@@ -18,6 +18,8 @@ set $urgentTextBackgroundColour           #a6a6a6
 set $primaryBackgroundColour    #1e1e1e
 set $secondaryBackgroundColour  #252526
 set $tertiaryBackgroundColour   #333333
+set $focusedBorderColour        #959c22
+# set $focusedBorderColour        #91682f # this was yellowish
 
 set $textColour                 #848484
 set $focusedTextColour          #f6f6f7
@@ -124,10 +126,10 @@ bindsym $mod+shift+$alt+p focus parent
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
-        bindsym h resize shrink width 10 px or 10 ppt
-        bindsym j resize grow height 10 px or 10 ppt
-        bindsym k resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
+        bindsym h resize shrink width 5 px or 5 ppt
+        bindsym j resize grow height 5 px or 5 ppt
+        bindsym k resize shrink height 5 px or 5 ppt
+        bindsym l resize grow width 5 px or 5 ppt
 
         # back to normal: Enter or Escape
         bindsym Return mode "default"
@@ -154,7 +156,7 @@ bindsym $mod+shift+b exec /bin/bash ~/rcfiles/i3/scripts/brightness.sh
 bindsym control+shift+Escape exec sysmontask
 bindsym $mod+shift+f exec $HOME/rcfiles/i3/scripts/rofifinder
 
-bindsym $mod+b exec feh --bg-scale $(find $HOME/rcfiles/wallpapers/images -type f -name "*" | shuf -n 1)
+bindsym $mod+b exec feh --bg-scale $(find $HOME/rcfiles/wallpapers/images -type f -name "*" | shuf -n 1) # change background
 
 # Rofi
 # bindsym $mod+d exec "rofi -show run"
@@ -284,8 +286,8 @@ new_window 1pixel
 hide_edge_borders both
 
 # Window Colours
-#                       border                     background                  text               indicator
-client.focused          $primaryBackgroundColour   $primaryBackgroundColour    $focusedTextColour $indicatorColour
+#                       border                     background                  text               indicator         borderFocus
+client.focused          $primaryBackgroundColour   $primaryBackgroundColour    $focusedTextColour $indicatorColour  $focusedBorderColour
 client.focused_inactive $secondaryBackgroundColour $secondaryBackgroundColour  $textColour        $indicatorColour
 client.unfocused        $secondaryBackgroundColour $secondaryBackgroundColour  $textColour        $indicatorColour
 client.urgent           $secondaryBackgroundColour $urgentTextBackgroundColour $urgentTextColour  $indicatorColour
