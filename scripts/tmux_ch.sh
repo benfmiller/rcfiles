@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-languages=`echo "golang flutter nodejs javascript typescript cpp c lua rust python bash php haskell css html" | tr ' ' '\n'`
+languages=`echo "golang flutter nodejs javascript typescript cpp c lua rust python bash php haskell css html sql" | tr ' ' '\n'`
 core_utils=`echo "git xargs find mv sed awk" | tr ' ' '\n'`
 
 selected=`printf "$languages\n$core_utils" | fzf`
