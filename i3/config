@@ -154,6 +154,8 @@ bindsym $mod+shift+b exec /bin/bash ~/rcfiles/i3/scripts/brightness.sh
 bindsym control+shift+Escape exec sysmontask
 bindsym $mod+shift+f exec $HOME/rcfiles/i3/scripts/rofifinder
 
+bindsym $mod+b exec feh --bg-scale $(find $HOME/rcfiles/wallpapers/images -type f -name "*" | shuf -n 1)
+
 # Rofi
 # bindsym $mod+d exec "rofi -show run"
 # this is a better
@@ -296,6 +298,10 @@ for_window [class="Eog"] floating enable
 for_window [title="Tidal-hifi - settings"] floating enable
 for_window [class="Sysmontask"] floating enable
 for_window [class="Sysmontask"] resize set 930 665
+
+# Android emulator
+for_window [title=".*Emulator.*"] floating enable
+# assign [title=".*Emulator.*"] 5
 
 ############################################
 #    Workspace specific tools              #
