@@ -1,6 +1,8 @@
 " Mapleader{{
 inoremap jk <ESC>
 tnoremap jk <C-\><C-n>
+cnoremap jk <C-f>
+
 let mapleader = " "
 "}}
 " Visuals{{
