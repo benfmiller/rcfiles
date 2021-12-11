@@ -16,7 +16,8 @@ borg create \
     --exclude-caches \
     ::"{hostname}-daily-{now}" \
     /mnt/NAS/GoogleDrive \
-    /home/ben/OneDrive
+    /home/ben/OneDrive \
+    /mnt/NAS/DailyBackup
 
 
 backup_exit=$?
