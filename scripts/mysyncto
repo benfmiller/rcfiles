@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+if test -f ./syncto.txt
+then
+    synctoLocation=$(cat ./syncto.txt)
+    tmux neww bash -c "echo syncing to \"$synctoLocation\" & echo & \
+        rsync -avS --progress --delete ./ $synctoLocation ; \
+        echo ; echo -e \"\033[1;32mDone!\"; \
+        while [ : ]; do sleep 1; done"
+else
+    tmux neww bash -c "echo no syncto.txt file ; while [ : ]; do sleep 1; done"
+fi

@@ -866,5 +866,7 @@ if $(ps -p $$ | grep -q 'zsh'); then
     # bindkey '^o' zsh-clear
     bindkey -s '^o' 'clear^M'
 
+    bindkey -s '^y' 'mysyncto^M'
+
 fi
 # }}
