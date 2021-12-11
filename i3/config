@@ -148,7 +148,8 @@ bindsym $mod+shift+o exec /bin/bash ~/rcfiles/i3/scripts/logout
 ############################################
 #    Application Keys                      #
 ############################################
-bindsym $mod+Return exec terminator                                 # terminal
+bindsym $mod+Return exec terminator -e "$HOME/rcfiles/scripts/learning"
+bindsym $mod+shift+Return exec terminator                                 # terminal
 bindsym $mod+e exec thunar                                          # File manager
 bindsym Print exec  flameshot screen -d 0 -p ~/Pictures/Screenshots     # Fullscreen screenshot
 bindsym $mod+control+p exec flameshot gui					# Show screenshot window

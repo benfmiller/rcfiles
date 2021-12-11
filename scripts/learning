@@ -2,26 +2,7 @@
 
 ############################### FOLDER ICONS ###################################
 
-folder="$(pwd)"
-
-# Construct the path for the folder icon
-FOLDER_ICON_PATH="$folder/.icon"
-
-# Strip the path and leave the folder name
-folder_name="$(basename $folder)"
-
-if [ -f $FOLDER_ICON_PATH ]; then
-    folder_icon="$(cat $FOLDER_ICON_PATH)"
-
-    # Construct the session name
-    SESSION="$folder_name $folder_icon"
-else
-    echo "Could not find an .icon file in $folder, using no icon"
-    folder_icon="🖥️"
-
-    SESSION="$folder_name"
-fi
-
+SESSION="learning"
 
 # Attach to Tmux
 
