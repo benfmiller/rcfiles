@@ -569,7 +569,9 @@ if (g:use_fzf == 1)
     nnoremap <leader>fhf :History<CR>
     nnoremap <leader>fhs :History/<CR>
     nnoremap <leader>flb :BLines<CR>
-    nnoremap <leader>fll :Lines<CR>
+
+    nnoremap <leader>? :Lines<CR>
+    nnoremap <leader>/ :Lines<CR>
 
     nnoremap <leader>fgf :GFiles<CR>
     nnoremap <leader>fgc :Commits<CR>
@@ -590,7 +592,7 @@ nnoremap <leader>rg :Grepper<CR>
 nnoremap <Leader>* :Grepper -cword -noprompt<CR>
 "
 " Search for the current selection
-nmap <leader>/ <plug>(GrepperOperator)
+" nmap <leader>/ <plug>(GrepperOperator)
 xmap <leader>/ <plug>(GrepperOperator)
 
 if (g:use_rg == 1)
