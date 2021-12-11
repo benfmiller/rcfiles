@@ -1656,8 +1656,9 @@ cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
 nnoremap Y y$
 
-" save session, open with vim -S
-nnoremap <leader>S :mksession!<CR>
+" load our fun session.vim file
+let g:session_name = "./.Session-" . system('hostname | tr -d "\n"') . ".vim"
+execute 'nnoremap <leader>S :source ' . g:session_name . '<CR>'
 " save file
 nnoremap <leader>w :w<CR>
 nnoremap <leader>qb :bd!<CR>
