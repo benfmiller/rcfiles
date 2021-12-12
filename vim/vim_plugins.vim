@@ -570,7 +570,7 @@ if (g:use_fzf == 1)
     nnoremap <leader>fhs :History/<CR>
     nnoremap <leader>flb :BLines<CR>
 
-    nnoremap <leader>? :Lines<CR>
+    nnoremap <leader>? :BLines<CR>
     nnoremap <leader>/ :Lines<CR>
 
     nnoremap <leader>fgf :GFiles<CR>
