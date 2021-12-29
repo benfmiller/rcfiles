@@ -172,6 +172,7 @@ alias p="pwd"
 alias c="cd"
 alias dt="du -chs * | sort -h"
 alias df="df -h"
+alias dfg="df | rg -v tmpfs"
 
 alias aets="deactivate &> /dev/null; source ~/venvs/tradesuite/Scripts/activate"
 alias aead="deactivate &> /dev/null; source ~/venvs/audalign/Scripts/activate"
