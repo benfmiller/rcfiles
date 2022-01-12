@@ -383,7 +383,7 @@ mode "$mode_gaps_outer" {
 ############################################
 #    Autorun                               #
 ############################################
-exec --no-startup-id i3-msg 'workspace $workspace1;  exec terminator; exec brave-browser' && i3-msg 'workspace $workspace1'
+exec --no-startup-id i3-msg 'workspace $workspace1;  exec terminator -e "$HOME/rcfiles/scripts/learning && /usr/bin/zsh --login"; exec brave-browser' && i3-msg 'workspace $workspace1'
 # exec --no-startup-id i3-msg 'workspace $workspace12; exec enpass'
 exec --no-startup-id xss-lock -- ~/rcfiles/i3/scripts/i3lock.sh
 exec --no-startup-id nm-applet
