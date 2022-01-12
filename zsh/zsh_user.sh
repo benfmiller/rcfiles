@@ -189,6 +189,8 @@ alias python="python3"
 alias pip="pip3"
 
 alias pm="pacman"
+
+alias tf="terraform"
 #}}
 #Var Functions{{
 print_colors () {
