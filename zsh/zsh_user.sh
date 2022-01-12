@@ -190,7 +190,7 @@ alias pip="pip3"
 
 alias pm="pacman"
 
-alias tf="terraform"
+alias dk="docker"
 #}}
 #Var Functions{{
 print_colors () {
@@ -480,7 +480,7 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git vi-mode tmux sudo zsh-interactive-cd fzf)
+plugins=(git vi-mode tmux sudo zsh-interactive-cd fzf terraform)
 #}}
 # }}
 # Bash Prompt {{
