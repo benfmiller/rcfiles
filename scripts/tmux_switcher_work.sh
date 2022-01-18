@@ -1,7 +1,12 @@
 #!/usr/bin/env bash
 
 selected=$(find $HOME/Work/ -maxdepth 2 -mindepth 1 -type d -printf '%p\n' )
-selected=$(echo $selected | tr ' ' '\n' | cut -f5- -d"/" | tr '/' '-')
+
+# This keeps parent folder in there
+# selected=$(echo $selected | tr ' ' '\n' | cut -f5- -d"/" | tr '/' '-')
+
+# This gets childest folder
+selected=$(echo $selected | tr ' ' '\n' | rev | cut -f1 -d"/" | rev)
 selected=$selected\ learning
 
 selected=$(echo $selected | tr ' ' '\n' | fzf)
