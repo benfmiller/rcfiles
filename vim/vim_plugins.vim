@@ -516,7 +516,11 @@ endif
 " Plugin Maps{{
 " toggle undotree
 nnoremap <leader>tu :UndotreeToggle<CR>
+
 nnoremap <leader>tm :MaximizerToggle<CR>
+nnoremap <M-m> :MaximizerToggle<CR>
+inoremap <M-m> <C-[>:MaximizerToggle<CR>a
+
 nnoremap <leader>th :HexokinaseToggle<CR>
 nnoremap <leader>to :Obsess!<CR>
 nnoremap <leader>tt :TagbarToggle<CR>
