@@ -434,6 +434,7 @@ let g:ale_fixers = {
 \   'javascript': ['eslint'],
 \   'python': ['black', 'autoimport', 'isort', 'autoimport'],
 \   'rust': ['rustfmt'],
+\   'terraform' : ['terraform']
 \}
 if ale#path#FindNearestFile(0, 'Cargo.toml') is# ''
   let g:ale_linters = {'rust': ['rustc']}
