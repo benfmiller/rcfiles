@@ -57,6 +57,12 @@ if (g:use_md_viewer == 1)
     Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 endif
 
+
+if (g:use_neovim == 1)
+    Plug 'nvim-lua/plenary.nvim' " don't forget to add this one if you don't have it yet!
+    Plug 'ThePrimeagen/harpoon'
+endif
+
 " Requires nvim to be too new!
 " Plug 'nvim-treesitter/nvim-treesitter', {'do': 'TSUpdate'}
 "}}
@@ -82,6 +88,7 @@ Plug 'morhetz/gruvbox'
 
 " And this?
 " https://github.com/honza/vim-snippets
+"
 "
 Plug 'hashivim/vim-terraform'
 Plug 'vim-syntastic/syntastic'
@@ -513,57 +520,6 @@ if (g:use_vimspector == 1)
     nmap <leader>db <Plug>VimspectorToggleConditionalBreakpoint
 endif
 " }}
-" Plugin Maps{{
-" toggle undotree
-nnoremap <leader>tu :UndotreeToggle<CR>
-
-nnoremap <leader>tm :MaximizerToggle<CR>
-nnoremap <M-m> :MaximizerToggle<CR>
-inoremap <M-m> <C-[>:MaximizerToggle<CR>a
-
-nnoremap <leader>th :HexokinaseToggle<CR>
-nnoremap <leader>to :Obsess!<CR>
-nnoremap <leader>tt :TagbarToggle<CR>
-
-vmap <C-m> :'<,'>Commentary<CR>
-nnoremap <C-m> :Commentary<CR>
-
-" open unimpaired vim info
-nnoremap <leader>ou :e ~/.local/share/nvim/plugged/vim-unimpaired/doc/unimpaired.txt<CR>
-
-" NERDtree
-" nnoremap <C-n> :NERDTree<CR>
-nnoremap <C-t> :NERDTreeToggle<CR>
-let g:NERDTreeWinPos = "right"
-" nnoremap <C-f> :NERDTreeFind<CR>
-
-au Filetype tex let b:AutoPairs = {"$":"$", "$$":"$$", '(':')', '[':']', '{':'}',"'":"'",'"':'"', "`":"`", '```':'```', '"""':'"""', "'''":"'''"}
-au Filetype markdown let b:AutoPairs = {"*":"*", "**":"**", "$":"$", "$$":"$$", '(':')', '[':']', '{':'}',"'":"'",'"':'"', "`":"`", '```':'```', '"""':'"""', "'''":"'''"}
-
-" Git Stuff {{
-" This comes from vim fugitive
-let g:git_messenger_no_default_mappings = 1
-
-nnoremap <leader>gg :G<CR><C-w>10_
-nnoremap <leader>gs :Git status<CR>
-nnoremap <leader>gsb :Git status -sb<CR>
-nnoremap <leader>ga :Git add
-nnoremap <leader>gc :Git commit -m "
-nnoremap <leader>gp :Git push<CR>
-nnoremap <leader>gl :Git pull<CR>
-nnoremap <leader>gr :Git merge
-nnoremap <leader>gos :Git log --stat<CR>
-nnoremap <leader>goo :Git log --oneline<CR>
-
-nnoremap <leader>gD :SignifyDiff<CR>
-nnoremap <leader>gd :SignifyHunkDiff<CR>
-
-nnoremap <leader>gm :GitMessenger<CR>
-
-nnoremap <leader>gv :GV<CR>
-nnoremap <leader>gtv :GV!<CR>
-"}}
-"}}
 " FZF {{
 if (g:use_fzf == 1)
     nnoremap <leader>ff :Files<CR>
@@ -682,4 +638,92 @@ let g:terraform_completion_keys = 0
 " (Optional) Default: 1, enable(1)/disable(0) terraform module registry completion
 let g:terraform_registry_module_completion = 0
 " }}
+" harpoon {{
+nnoremap <leader>ha :lua require("harpoon.mark").add_file()<CR>
+nnoremap <leader>hh :lua require("harpoon.ui").toggle_quick_menu()<CR>
+
+nnoremap <leader>h1 :lua require("harpoon.ui").nav_file(1)<CR>
+nnoremap <leader>h2 :lua require("harpoon.ui").nav_file(2)<CR>
+nnoremap <leader>h3 :lua require("harpoon.ui").nav_file(3)<CR>
+nnoremap <leader>h4 :lua require("harpoon.ui").nav_file(4)<CR>
+nnoremap <leader>h5 :lua require("harpoon.ui").nav_file(5)<CR>
+nnoremap <leader>h6 :lua require("harpoon.ui").nav_file(6)<CR>
+nnoremap <leader>h7 :lua require("harpoon.ui").nav_file(7)<CR>
+nnoremap <leader>h8 :lua require("harpoon.ui").nav_file(8)<CR>
+nnoremap <leader>h9 :lua require("harpoon.ui").nav_file(9)<CR>
+
+nnoremap <leader>hl :lua require("harpoon.ui").nav_next()<CR>
+nnoremap <leader>hk :lua require("harpoon.ui").nav_prev()<CR>
+
+nnoremap <leader>h1 :lua require("harpoon.ui").nav_file(1)<CR>
+nnoremap <leader>h2 :lua require("harpoon.ui").nav_file(2)<CR>
+nnoremap <leader>h3 :lua require("harpoon.ui").nav_file(3)<CR>
+nnoremap <leader>h4 :lua require("harpoon.ui").nav_file(4)<CR>
+nnoremap <leader>h5 :lua require("harpoon.ui").nav_file(5)<CR>
+nnoremap <leader>h6 :lua require("harpoon.ui").nav_file(6)<CR>
+nnoremap <leader>h7 :lua require("harpoon.ui").nav_file(7)<CR>
+nnoremap <leader>h8 :lua require("harpoon.ui").nav_file(8)<CR>
+nnoremap <leader>h9 :lua require("harpoon.ui").nav_file(9)<CR>
+
+nnoremap <leader>ht1 :lua require("harpoon.term").gotoTerminal(1)<CR>
+nnoremap <leader>ht2 :lua require("harpoon.term").gotoTerminal(2)<CR>
+nnoremap <leader>ht3 :lua require("harpoon.term").gotoTerminal(3)<CR>
+nnoremap <leader>ht4 :lua require("harpoon.term").gotoTerminal(4)<CR>
+nnoremap <leader>ht5 :lua require("harpoon.term").gotoTerminal(5)<CR>
+nnoremap <leader>ht6 :lua require("harpoon.term").gotoTerminal(6)<CR>
+nnoremap <leader>ht7 :lua require("harpoon.term").gotoTerminal(7)<CR>
+nnoremap <leader>ht8 :lua require("harpoon.term").gotoTerminal(8)<CR>
+nnoremap <leader>ht9 :lua require("harpoon.term").gotoTerminal(9)<CR>
+" }}
+" Plugin Maps{{
+" toggle undotree
+nnoremap <leader>tu :UndotreeToggle<CR>
+
+nnoremap <leader>tm :MaximizerToggle<CR>
+nnoremap <M-m> :MaximizerToggle<CR>
+inoremap <M-m> <C-[>:MaximizerToggle<CR>a
+
+nnoremap <leader>th :HexokinaseToggle<CR>
+nnoremap <leader>to :Obsess!<CR>
+nnoremap <leader>tt :TagbarToggle<CR>
+
+vmap <C-m> :'<,'>Commentary<CR>
+nnoremap <C-m> :Commentary<CR>
+
+" open unimpaired vim info
+nnoremap <leader>ou :e ~/.local/share/nvim/plugged/vim-unimpaired/doc/unimpaired.txt<CR>
+
+" NERDtree
+" nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+let g:NERDTreeWinPos = "right"
+" nnoremap <C-f> :NERDTreeFind<CR>
+
+au Filetype tex let b:AutoPairs = {"$":"$", "$$":"$$", '(':')', '[':']', '{':'}',"'":"'",'"':'"', "`":"`", '```':'```', '"""':'"""', "'''":"'''"}
+au Filetype markdown let b:AutoPairs = {"*":"*", "**":"**", "$":"$", "$$":"$$", '(':')', '[':']', '{':'}',"'":"'",'"':'"', "`":"`", '```':'```', '"""':'"""', "'''":"'''"}
+
+" Git Stuff {{
+" This comes from vim fugitive
+let g:git_messenger_no_default_mappings = 1
+
+nnoremap <leader>gg :G<CR><C-w>10_
+nnoremap <leader>gs :Git status<CR>
+nnoremap <leader>gsb :Git status -sb<CR>
+nnoremap <leader>ga :Git add
+nnoremap <leader>gc :Git commit -m "
+nnoremap <leader>gp :Git push<CR>
+nnoremap <leader>gl :Git pull<CR>
+nnoremap <leader>gr :Git merge
+nnoremap <leader>gos :Git log --stat<CR>
+nnoremap <leader>goo :Git log --oneline<CR>
+
+nnoremap <leader>gD :SignifyDiff<CR>
+nnoremap <leader>gd :SignifyHunkDiff<CR>
+
+nnoremap <leader>gm :GitMessenger<CR>
+
+nnoremap <leader>gv :GV<CR>
+nnoremap <leader>gtv :GV!<CR>
+"}}
+"}}
 " }}
