@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 
-selected=$(find $HOME/Work/ -maxdepth 2 -mindepth 1 -type d -printf '%p\n' )
+if [ -z $(uname | grep -v Darwin) ]; then
+    selected=$(gfind $HOME/Work/ -maxdepth 2 -mindepth 1 -type d -printf '%p\n' )
+else
+    selected=$(find $HOME/Work/ -maxdepth 2 -mindepth 1 -type d -printf '%p\n' )
+fi
 
 # This keeps parent folder in there
 # selected=$(echo $selected | tr ' ' '\n' | cut -f5- -d"/" | tr '/' '-')
