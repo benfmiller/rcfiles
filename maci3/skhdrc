@@ -1,0 +1,128 @@
+# https://github.com/koekeishiya/skhd
+
+# change focus
+cmd + ctrl - h : yabai -m window --focus west
+cmd + ctrl - j : yabai -m window --focus south
+cmd + ctrl - k : yabai -m window --focus north
+cmd + ctrl - l : yabai -m window --focus east
+# (alt) change focus (using arrow keys)
+cmd + ctrl - left  : yabai -m window --focus west
+cmd + ctrl - down  : yabai -m window --focus south
+cmd + ctrl - up    : yabai -m window --focus north
+cmd + ctrl - right : yabai -m window --focus east
+
+# shift window in current workspace
+cmd + ctrl + shift - h : yabai -m window --swap west || $(yabai -m window --display west; yabai -m display --focus west)
+cmd + ctrl + shift - j : yabai -m window --swap south || $(yabai -m window --display south; yabai -m display --focus south)
+cmd + ctrl + shift - k : yabai -m window --swap north || $(yabai -m window --display north; yabai -m display --focus north)
+cmd + ctrl + shift - l : yabai -m window --swap east || $(yabai -m window --display east; yabai -m display --focus east)
+# alternatively, use the arrow keys
+cmd + ctrl + shift - left : yabai -m window --swap west || $(yabai -m window --display west; yabai -m display --focus west)
+cmd + ctrl + shift - down : yabai -m window --swap south || $(yabai -m window --display south; yabai -m display --focus south)
+cmd + ctrl + shift - up : yabai -m window --swap north || $(yabai -m window --display north; yabai -m display --focus north)
+cmd + ctrl + shift - right : yabai -m window --swap east || $(yabai -m window --display east; yabai -m display --focus east)
+
+# set insertion point in focused container
+cmd + ctrl + shift + alt - h : yabai -m window --insert west
+cmd + ctrl + shift + alt - j : yabai -m window --insert south
+cmd + ctrl + shift + alt - k : yabai -m window --insert north
+cmd + ctrl + shift + alt - l : yabai -m window --insert east
+# (alt) set insertion point in focused container using arrows
+cmd + ctrl + shift + alt - left  : yabai -m window --insert west
+cmd + ctrl + shift + alt - down  : yabai -m window --insert south
+cmd + ctrl + shift + alt - up    : yabai -m window --insert north
+cmd + ctrl + shift + alt - right : yabai -m window --insert east
+
+
+# go back to previous workspace (kind of like back_and_forth in i3)
+cmd + ctrl - b : yabai -m space --focus recent
+
+# move focused window to previous workspace
+cmd + ctrl + shift - b : yabai -m window --space recent; \
+                         yabai -m space --focus recent
+
+
+
+# move focused window to next/prev workspace
+cmd + ctrl + shift - 1 : yabai -m window --space 1
+cmd + ctrl + shift - 2 : yabai -m window --space 2
+cmd + ctrl + shift - 3 : yabai -m window --space 3
+cmd + ctrl + shift - 4 : yabai -m window --space 4
+cmd + ctrl + shift - 5 : yabai -m window --space 5
+cmd + ctrl + shift - 6 : yabai -m window --space 6
+cmd + ctrl + shift - 7 : yabai -m window --space 7
+cmd + ctrl + shift - 8 : yabai -m window --space 8
+cmd + ctrl + shift - 9 : yabai -m window --space 9
+#alt + shift - 0 : yabai -m window --space 10
+
+
+# this is handled by mac keyboard shortcuts
+# cmd + ctrl - 1 : yabai -m space --focus 1
+# cmd + ctrl - 2 : yabai -m space --focus 2
+# cmd + ctrl - 3 : yabai -m space --focus 3
+# cmd + ctrl - 4 : yabai -m space --focus 4
+# cmd + ctrl - 5 : yabai -m space --focus 5
+# cmd + ctrl - 6 : yabai -m space --focus 6
+# cmd + ctrl - 7 : yabai -m space --focus 7
+# cmd + ctrl - 8 : yabai -m space --focus 8
+# cmd + ctrl - 9 : yabai -m space --focus 9
+# cmd + ctrl - 0 : yabai -m space --focus 10
+
+# increase region size
+# ctrl + shift + alt - h : chunkc tiling::window --use-temporary-ratio 0.1 --adjust-window-edge west
+# ctrl + shift + alt - j : chunkc tiling::window --use-temporary-ratio 0.1 --adjust-window-edge south
+# ctrl + shift + alt - k : chunkc tiling::window --use-temporary-ratio 0.1 --adjust-window-edge north
+# ctrl + shift + alt - l : chunkc tiling::window --use-temporary-ratio 0.1 --adjust-window-edge east
+
+# # decrease region size
+# alt + shift + cmd - h : chunkc tiling::window --use-temporary-ratio -0.1 --adjust-window-edge west
+# alt + shift + cmd - j : chunkc tiling::window --use-temporary-ratio -0.1 --adjust-window-edge south
+# alt + shift + cmd - k : chunkc tiling::window --use-temporary-ratio -0.1 --adjust-window-edge north
+# alt + shift + cmd - l : chunkc tiling::window --use-temporary-ratio -0.1 --adjust-window-edge east
+
+# # mirror tree y-axis
+cmd + ctrl + shift - y : yabai -m space --mirror y-axis
+
+# # mirror tree x-axis
+cmd + ctrl + shift - x : yabai -m space --mirror x-axis
+
+# balance size of windows
+cmd + ctrl + shift - 0 : yabai -m space --balance
+
+
+# change layout of desktop
+cmd + ctrl + alt - e : yabai -m space --layout bsp
+cmd + ctrl + alt - l : yabai -m space --layout float
+cmd + ctrl + alt - s : yabai -m space --layout stack
+
+
+# cycle through stack windows
+# alt - p : yabai -m window --focus stack.next || yabai -m window --focus south
+# alt - n : yabai -m window --focus stack.prev || yabai -m window --focus north
+
+# forwards
+cmd + ctrl - p : yabai -m query --spaces --space \
+            | jq -re ".index" \
+            | xargs -I{} yabai -m query --windows --space {} \
+            | jq -sre "add | map(select(.minimized != 1)) | sort_by(.display, .frame.y, .frame.x, .id) | reverse | nth(index(map(select(.focused == 1))) - 1).id" \
+            | xargs -I{} yabai -m window --focus {}
+
+# backwards
+cmd + ctrl - n : yabai -m query --spaces --space \
+            | jq -re ".index" \
+            | xargs -I{} yabai -m query --windows --space {} \
+            | jq -sre "add | map(select(.minimized != 1)) | sort_by(.display, .frame.y, .frame.y, .id) | nth(index(map(select(.focused == 1))) - 1).id" \
+            | xargs -I{} yabai -m window --focus {}
+
+
+# close focused window
+cmd + ctrl - q : yabai -m window --close
+
+
+# enter fullscreen mode for the focused container
+cmd + ctrl - f : yabai -m window --toggle zoom-fullscreen
+
+# toggle window native fullscreen
+cmd + ctrl + shift - f : yabai -m window --toggle native-fullscreen
+
+cmd + shift - return : open -a Terminal $HOME
