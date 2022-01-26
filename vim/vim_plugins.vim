@@ -675,6 +675,16 @@ nnoremap <leader>ht7 :lua require("harpoon.term").gotoTerminal(7)<CR>
 nnoremap <leader>ht8 :lua require("harpoon.term").gotoTerminal(8)<CR>
 nnoremap <leader>ht9 :lua require("harpoon.term").gotoTerminal(9)<CR>
 " }}
+" NERDtree {{
+" nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+let g:NERDTreeWinPos = "right"
+" nnoremap <C-f> :NERDTreeFind<CR>
+" enable line numbers
+let NERDTreeShowLineNumbers=1
+" make sure relative line numbers are used
+autocmd FileType nerdtree setlocal relativenumber
+" }}
 " Plugin Maps{{
 " toggle undotree
 nnoremap <leader>tu :UndotreeToggle<CR>
@@ -692,12 +702,6 @@ nnoremap <C-m> :Commentary<CR>
 
 " open unimpaired vim info
 nnoremap <leader>ou :e ~/.local/share/nvim/plugged/vim-unimpaired/doc/unimpaired.txt<CR>
-
-" NERDtree
-" nnoremap <C-n> :NERDTree<CR>
-nnoremap <C-t> :NERDTreeToggle<CR>
-let g:NERDTreeWinPos = "right"
-" nnoremap <C-f> :NERDTreeFind<CR>
 
 au Filetype tex let b:AutoPairs = {"$":"$", "$$":"$$", '(':')', '[':']', '{':'}',"'":"'",'"':'"', "`":"`", '```':'```', '"""':'"""', "'''":"'''"}
 au Filetype markdown let b:AutoPairs = {"*":"*", "**":"**", "$":"$", "$$":"$$", '(':')', '[':']', '{':'}',"'":"'",'"':'"', "`":"`", '```':'```', '"""':'"""', "'''":"'''"}
