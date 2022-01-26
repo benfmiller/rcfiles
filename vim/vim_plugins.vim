@@ -674,6 +674,16 @@ nnoremap <leader>ht6 :lua require("harpoon.term").gotoTerminal(6)<CR>
 nnoremap <leader>ht7 :lua require("harpoon.term").gotoTerminal(7)<CR>
 nnoremap <leader>ht8 :lua require("harpoon.term").gotoTerminal(8)<CR>
 nnoremap <leader>ht9 :lua require("harpoon.term").gotoTerminal(9)<CR>
+
+nnoremap <leader>H1 :lua require("harpoon.term").gotoTerminal(1)<CR>
+nnoremap <leader>H2 :lua require("harpoon.term").gotoTerminal(2)<CR>
+nnoremap <leader>H3 :lua require("harpoon.term").gotoTerminal(3)<CR>
+nnoremap <leader>H4 :lua require("harpoon.term").gotoTerminal(4)<CR>
+nnoremap <leader>H5 :lua require("harpoon.term").gotoTerminal(5)<CR>
+nnoremap <leader>H6 :lua require("harpoon.term").gotoTerminal(6)<CR>
+nnoremap <leader>H7 :lua require("harpoon.term").gotoTerminal(7)<CR>
+nnoremap <leader>H8 :lua require("harpoon.term").gotoTerminal(8)<CR>
+nnoremap <leader>H9 :lua require("harpoon.term").gotoTerminal(9)<CR>
 " }}
 " NERDtree {{
 " nnoremap <C-n> :NERDTree<CR>
