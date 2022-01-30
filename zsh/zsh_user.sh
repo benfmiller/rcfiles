@@ -191,6 +191,7 @@ alias pip="pip3"
 alias pm="pacman"
 
 alias dk="docker"
+alias tfw="terraform workspace"
 #}}
 #Var Functions{{
 print_colors () {
