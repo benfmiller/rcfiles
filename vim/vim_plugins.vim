@@ -446,6 +446,7 @@ let g:ale_fixers = {
 if ale#path#FindNearestFile(0, 'Cargo.toml') is# ''
   let g:ale_linters = {'rust': ['rustc']}
 endif
+
 " let g:ale_linters = {
 " \   'rust': ['cargo', 'rls', 'rustc', 'analyzer'],
 " \}
@@ -694,6 +695,19 @@ let g:NERDTreeWinPos = "right"
 let NERDTreeShowLineNumbers=1
 " make sure relative line numbers are used
 autocmd FileType nerdtree setlocal relativenumber
+" }}
+" Syntastic {{
+nnoremap <leader>ts :SyntasticToggleMode<CR>
+" see :h syntastic-loclist-callback
+function! SyntasticCheckHook(errors)
+    if !empty(a:errors)
+        let g:syntastic_loc_list_height = min([len(a:errors), 4])
+    endif
+endfunction
+
+" let g:syntastic_warning_symbol = '⛅'
+" let g:syntastic_error_symbol= '🌋'
+"'●⊗⊕⌛⌦⌼☕⛔✍⚠₿⌚⏱♛♔⭐⛅🌋'
 " }}
 " Plugin Maps{{
 " toggle undotree
