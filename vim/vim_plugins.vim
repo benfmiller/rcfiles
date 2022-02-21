@@ -702,6 +702,7 @@ nnoremap <leader>ts :SyntasticToggleMode<CR>
 function! SyntasticCheckHook(errors)
     if !empty(a:errors)
         let g:syntastic_loc_list_height = min([len(a:errors), 4])
+        call cheat#providers#syntastic#Hook(a:errors)
     endif
 endfunction
 

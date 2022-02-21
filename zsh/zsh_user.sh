@@ -9,7 +9,7 @@ pullrcs (){
     temp_dir=$(pwd)
     cd ~/rcfiles
     git pull
-    if uname | grep -qv 'Linux'; then
+    if uname | grep -qv 'Linux\|Darwin'; then
         cp ~/rcfiles/vim/vimrc.vim ~/.vimrc
         cat ~/rcfiles/vim/windows_addon.vim >> ~/.vimrc
         echo vim copied for windows
@@ -192,6 +192,8 @@ alias pm="pacman"
 
 alias dk="docker"
 alias tfw="terraform workspace"
+alias ktx="kubectx"
+alias kbn="kubens"
 #}}
 #Var Functions{{
 print_colors () {
