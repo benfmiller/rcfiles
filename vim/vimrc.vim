@@ -140,9 +140,10 @@ set statusline+=%-0.30F
 set statusline+=%h
 set statusline+=%3*%m
 set statusline+=%r%*
-set statusline+=\ \|%5*\ Buff[%n]
+" set statusline+=\ \|%5*\ Buff[%n]
 set statusline+=\ %*%=[char\ %b\ 0x%B]\ \|
-set statusline+=\ line:%l\ col:%c%V
+set statusline+=\ col:%c%V
+" set statusline+=\ line:%l\ col:%c%V
 set statusline+=\ %p%%
 
 
