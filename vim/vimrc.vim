@@ -141,7 +141,8 @@ set statusline+=%h
 set statusline+=%3*%m
 set statusline+=%r%*
 " set statusline+=\ \|%5*\ Buff[%n]
-set statusline+=\ %*%=[char\ %b\ 0x%B]\ \|
+set statusline+=\ \%5*\|
+set statusline+=%*\ %=[char\ %b\ 0x%B]\ \|
 set statusline+=\ col:%c%V
 " set statusline+=\ line:%l\ col:%c%V
 set statusline+=\ %p%%
