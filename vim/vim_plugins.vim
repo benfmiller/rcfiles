@@ -524,7 +524,9 @@ endif
 " FZF {{
 if (g:use_fzf == 1)
     nnoremap <leader>ff :Files<CR>
+    nnoremap <leader>fr :Rg<CR>
     nnoremap <leader>fbb :Buffers<CR>
+    nnoremap <leader>fb :Buffers<CR>
     nnoremap <leader>fo :Colors<CR>
     nnoremap <leader>fc :Commands<CR>
     nnoremap <leader>fm :Maps<CR>
