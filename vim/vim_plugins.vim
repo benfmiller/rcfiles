@@ -745,7 +745,8 @@ nnoremap <leader>gc :Git commit -m "
 nnoremap <leader>gp :Git push<CR>
 nnoremap <leader>grttt :Git restore %<CR>
 nnoremap <leader>gl :Git pull<CR>
-nnoremap <leader>gr :Git merge
+nnoremap <leader>grl :Git remote update origin --prune<CR>
+nnoremap <leader>grm :Git merge
 nnoremap <leader>gos :Git log --stat<CR>
 nnoremap <leader>goo :Git log --oneline<CR>
 
