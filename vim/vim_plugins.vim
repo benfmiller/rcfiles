@@ -743,6 +743,7 @@ nnoremap <leader>gsb :Git status -sb<CR>
 nnoremap <leader>ga :Git add
 nnoremap <leader>gc :Git commit -m "
 nnoremap <leader>gp :Git push<CR>
+nnoremap <leader>grttt :Git restore %<CR>
 nnoremap <leader>gl :Git pull<CR>
 nnoremap <leader>gr :Git merge
 nnoremap <leader>gos :Git log --stat<CR>
