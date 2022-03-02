@@ -524,7 +524,9 @@ endif
 " FZF {{
 if (g:use_fzf == 1)
     nnoremap <leader>ff :Files<CR>
+    nnoremap <leader>fr :Rg<CR>
     nnoremap <leader>fbb :Buffers<CR>
+    nnoremap <leader>fb :Buffers<CR>
     nnoremap <leader>fo :Colors<CR>
     nnoremap <leader>fc :Commands<CR>
     nnoremap <leader>fm :Maps<CR>
@@ -702,6 +704,7 @@ nnoremap <leader>ts :SyntasticToggleMode<CR>
 function! SyntasticCheckHook(errors)
     if !empty(a:errors)
         let g:syntastic_loc_list_height = min([len(a:errors), 4])
+        call cheat#providers#syntastic#Hook(a:errors)
     endif
 endfunction
 
@@ -740,8 +743,10 @@ nnoremap <leader>gsb :Git status -sb<CR>
 nnoremap <leader>ga :Git add
 nnoremap <leader>gc :Git commit -m "
 nnoremap <leader>gp :Git push<CR>
+nnoremap <leader>grttt :Git restore %<CR>
 nnoremap <leader>gl :Git pull<CR>
-nnoremap <leader>gr :Git merge
+nnoremap <leader>grl :Git remote update origin --prune<CR>
+nnoremap <leader>grm :Git merge
 nnoremap <leader>gos :Git log --stat<CR>
 nnoremap <leader>goo :Git log --oneline<CR>
 
