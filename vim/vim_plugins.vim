@@ -94,6 +94,7 @@ Plug 'hashivim/vim-terraform'
 Plug 'vim-syntastic/syntastic'
 Plug 'juliosueiras/vim-terraform-completion'
 "
+Plug 'vim-utils/vim-man'
 Plug 'dbeniamine/cheat.sh-vim'
 Plug 'mhinz/vim-grepper'
 Plug 'vim-test/vim-test'
