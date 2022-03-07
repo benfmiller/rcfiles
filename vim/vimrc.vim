@@ -1695,6 +1695,14 @@ nnoremap <leader>ccb :Cargo build<CR>
 nnoremap <leader>cct :Cargo test<CR>
 nnoremap <leader>cc :Cargo
 nnoremap <leader>cm :make<CR>
+nnoremap <leader>cg :!go run .<CR>
+nnoremap <leader>cgr :!go run %
+nnoremap <leader>cgg :!go
+
+autocmd FileType go nmap <Leader>cv :!go run %<CR>
+autocmd FileType python nmap <Leader>cv :!python3 %<CR>
+autocmd FileType java nmap <Leader>cv :!java %<CR>
+autocmd FileType rust nmap <Leader>cv :Cargo run<CR>
 
 function! RunPython(args)
     :execute ':terminal cd %:h && python %:t ' a:args
