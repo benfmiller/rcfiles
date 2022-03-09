@@ -122,6 +122,7 @@ cmd + ctrl - n : yabai -m query --spaces --space \
 
 # close focused window
 cmd + ctrl - q : yabai -m window --close
+cmd + shift - q : yabai -m window --close
 
 
 # enter fullscreen mode for the focused container
