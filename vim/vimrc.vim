@@ -1699,9 +1699,9 @@ nnoremap <leader>cg :!go run .<CR>
 nnoremap <leader>cgr :!go run %
 nnoremap <leader>cgg :!go
 
-autocmd FileType go nmap <Leader>cv :!go run %<CR>
-autocmd FileType python nmap <Leader>cv :!python3 %<CR>
-autocmd FileType java nmap <Leader>cv :!java %<CR>
+autocmd FileType go nmap <Leader>cv :belowright split<Bar> term go run %<CR><C-w>15_
+autocmd FileType python nmap <Leader>cv :belowright split<Bar> term python3 %<CR><C-w>15_
+autocmd FileType java nmap <Leader>cv :belowright split<Bar> term java %<CR><C-w>15_
 autocmd FileType rust nmap <Leader>cv :Cargo run<CR>
 
 function! RunPython(args)
