@@ -1703,6 +1703,7 @@ autocmd FileType go nmap <Leader>cv :belowright split<Bar> term go run %<CR><C-w
 autocmd FileType python nmap <Leader>cv :belowright split<Bar> term python3 %<CR><C-w>15_
 autocmd FileType java nmap <Leader>cv :belowright split<Bar> term java %<CR><C-w>15_
 autocmd FileType rust nmap <Leader>cv :Cargo run<CR>
+autocmd FileType kotlin nmap <Leader>cv :belowright split<Bar> term kotlinc % -include-runtime -d '%:r'.jar && java -jar '%:r'.jar<CR><C-w>15_
 
 function! RunPython(args)
     :execute ':terminal cd %:h && python %:t ' a:args
