@@ -1686,6 +1686,11 @@ nnoremap <leader>9 9gt
 nnoremap <leader>= <C-w>s
 nnoremap <leader>\ <C-w>v
 
+function! SourceSession()
+    execute "source " . getcwd() . "/.Session-" . system('hostname | tr -d "\n"') . ".vim"
+endfunction
+nnoremap <leader>ss :call SourceSession()<cr>
+
 " edits
 nnoremap <leader>et :e %<CR>
 nnoremap <leader>ea :bufdo e<CR>
@@ -1733,7 +1738,7 @@ nnoremap <leader>m gt
 nnoremap <leader>M gT
 
 " List buffers
-nnoremap <leader>l :ls<CR>
+nnoremap <leader>ll :ls<CR>
 
 nnoremap <leader>bm :bm<CR>
 nnoremap <leader>bb :b#<CR>
