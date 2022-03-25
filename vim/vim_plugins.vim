@@ -577,6 +577,7 @@ elseif (g:use_ctrlp == 1)
 elseif (g:use_telescope == 1)
     " Find files using Telescope command-line sugar.
     nnoremap <leader>ff <cmd>Telescope find_files<cr>
+    nnoremap <leader>fgg <cmd>Telescope git_files<cr>
     nnoremap <leader>fb <cmd>Telescope buffers<cr>
     nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
@@ -594,9 +595,6 @@ elseif (g:use_telescope == 1)
     nnoremap <leader>flb <cmd>Telescope current_buffer_fuzzy_find<cr>
     nnoremap <leader>/ <cmd>Telescope current_buffer_fuzzy_find<cr>
     nnoremap <leader>? <cmd>Telescope live_grep<cr>
-
-
-    nnoremap <leader>fgf <cmd>Telescope git_files<cr>
 
     nnoremap <leader>fgc <cmd>Telescope git_commits<cr>
     nnoremap <leader>fgb <cmd>Telescope git_bcommits<cr>

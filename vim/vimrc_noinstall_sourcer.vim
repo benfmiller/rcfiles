@@ -1,10 +1,13 @@
 let g:use_coc=0
 let g:use_ycm=0
+let g:use_cmp=0
 let g:use_vimspector=0
-"if zero, uses ctrlp instead
+let g:use_telescope=0
 let g:use_fzf=0
+let g:use_ctrlp=1
 let g:use_rg=0
 let g:use_neovim=0
+let g:use_devicons=0
 let g:on_windows=0
 let g:use_md_viewer=0
 let g:home_machine=1
