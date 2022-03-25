@@ -29,7 +29,6 @@ endif
 call plug#begin(g:plug_path . '/plugged')
 "
 " Check vimrc variables{{
-" Consider telescope???
 if (g:use_ycm == 1)
     Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --rust-completer' }
 endif
@@ -48,11 +47,15 @@ if (g:use_fzf == 1)
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
     Plug 'stsewd/fzf-checkout.vim'
-endif
-
-if (g:use_ctrlp == 1)
+    plug 'gfanto/fzf-lsp.nvim'
+elseif (g:use_ctrlp == 1)
     " https://github.com/kien/ctrlp.vim
     Plug 'kien/ctrlp.vim'
+elseif (g:use_telescope == 1)
+    Plug 'nvim-lua/popup.nvim'
+    Plug 'nvim-telescope/telescope.nvim'
+    Plug 'nvim-telescope/telescope-fzy-native.nvim'
+    Plug 'nvim-telescope/telescope-rg.nvim'
 endif
 
 if (g:use_md_viewer == 1)
@@ -87,6 +90,10 @@ if (g:use_cmp == 1)
     " Plug 'tjdevries/nlua.nvim'
     " Plug 'tjdevries/lsp_extensions.nvim'
 endif
+
+if (g:use_devicons == 1)
+    Plug 'kyazdani42/nvim-web-devicons'
+endif
 "}}
 
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
@@ -109,7 +116,6 @@ Plug 'hashivim/vim-terraform', {'for': 'terraform'}
 Plug 'juliosueiras/vim-terraform-completion', {'for': 'terraform'}
 Plug 'vim-syntastic/syntastic'
 "
-Plug 'kyazdani42/nvim-web-devicons'
 Plug 'vim-utils/vim-man'
 Plug 'dbeniamine/cheat.sh-vim'
 Plug 'mhinz/vim-grepper'
@@ -569,6 +575,94 @@ if (g:use_fzf == 1)
 elseif (g:use_ctrlp == 1)
     nnoremap <leader>ff :CtrlP<CR>
 elseif (g:use_telescope == 1)
+    " Find files using Telescope command-line sugar.
+    nnoremap <leader>ff <cmd>Telescope find_files<cr>
+    nnoremap <leader>fb <cmd>Telescope buffers<cr>
+    nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+    nnoremap <leader>fr <cmd>lua require("telescope").extensions.live_grep_raw.live_grep_raw()<cr>
+    nnoremap <leader>fbb <cmd>Telescope buffers<cr>
+    nnoremap <leader>fb <cmd>Telescope buffers<cr>
+    nnoremap <leader>fo <cmd>Telescope colorscheme<cr>
+    nnoremap <leader>fcc <cmd>Telescope commands<cr>
+    nnoremap <leader>fhc <cmd>Telescope command_history<cr>
+    nnoremap <leader>fhs <cmd>Telescope search_history<cr>
+    nnoremap <leader>fm <cmd>Telescope keymaps<cr>
+    nnoremap <leader>fa <cmd>Telescope marks<cr>
+    nnoremap <leader>ft <cmd>Telescope filetypes<cr>
+
+    nnoremap <leader>flb <cmd>Telescope current_buffer_fuzzy_find<cr>
+    nnoremap <leader>/ <cmd>Telescope current_buffer_fuzzy_find<cr>
+    nnoremap <leader>? <cmd>Telescope live_grep<cr>
+
+
+    nnoremap <leader>fgf <cmd>Telescope git_files<cr>
+
+    nnoremap <leader>fgc <cmd>Telescope git_commits<cr>
+    nnoremap <leader>fgb <cmd>Telescope git_bcommits<cr>
+
+    nnoremap <leader>fgss <cmd>Telescope git_status<cr>
+    nnoremap <leader>fgst <cmd>Telescope git_stash<cr>
+    nnoremap <leader>gb <cmd>Telescope git_branches<cr>
+
+    nnoremap <leader>fp <cmd>Telescope planets<cr>
+
+    nnoremap <leader>fdt <cmd>Telescope treesitter<cr>
+
+    nnoremap <leader>yr <cmd>Telescope lsp_references<cr>
+    nnoremap <leader>ya <cmd>Telescope lsp_code_actions<cr>
+    nnoremap <leader>ybb <cmd>Telescope diagnostics bufnr=0<cr>
+    nnoremap <leader>yba <cmd>Telescope diagnostics<cr>
+    nnoremap <leader>yi <cmd>Telescope lsp_implementations<cr>
+    nnoremap <leader>yd <cmd>Telescope lsp_definitions<cr>
+    nnoremap <leader>yt <cmd>Telescope lsp_type_definitions<cr>
+    nnoremap <leader>yss <cmd>Telescope lsp_document_symbols<cr>
+    nnoremap <leader>ysw <cmd>Telescope lsp_workspace_symbols<cr>
+    nnoremap <leader>ysd <cmd>Telescope lsp_dynamic_workspace_symbols<cr>
+
+
+    " Using Lua functions
+    " nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
+    " nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
+    " nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
+    " nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
+lua << EOF
+require('telescope').setup{
+  defaults = {
+    -- Default configuration for telescope goes here:
+    -- config_key = value,
+    mappings = {
+      i = {
+        -- map actions.which_key to <C-h> (default: <C-/>)
+        -- actions.which_key shows the mappings for your picker,
+        -- e.g. git_{create, delete, ...}_branch for the git_branches picker
+        ["<C-h>"] = "which_key"
+      }
+    }
+  },
+  pickers = {
+    -- Default configuration for builtin pickers goes here:
+    -- picker_name = {
+    --   picker_config_key = value,
+    --   ...
+    -- }
+    -- Now the picker_config_key will be applied every time you call this
+    -- builtin picker
+    find_files = {
+        hidden = true,
+        no_ignore = true
+
+    }
+  },
+  extensions = {
+    -- Your extension configuration goes here:
+    -- extension_name = {
+    --   extension_config_key = value,
+    -- }
+    -- please take a look at the readme of the extension you want to configure
+  }
+}
+EOF
 endif
 "}}
 " Grepper {{
@@ -791,7 +885,9 @@ nnoremap <leader>gtv :GV!<CR>
 "}}
 " }}
 " Lua! {{
+" Devicons {{
 "
+if (g:use_devicons == 1)
 lua << EOF
 require'nvim-web-devicons'.setup {
  -- your personnal icons can go here (to override)
@@ -810,7 +906,8 @@ require'nvim-web-devicons'.setup {
  default = true;
 }
 EOF
-"
+endif
+" }}
 " nvim-cmp {{
 set completeopt=menu,menuone,noselect
 
@@ -835,7 +932,7 @@ lua <<EOF
       ['<S-tab>'] = cmp.mapping.select_prev_item(),
       ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
       ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
-      ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+      -- ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
       ['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
       ['<C-e>'] = cmp.mapping({
         i = cmp.mapping.abort(),
@@ -913,7 +1010,7 @@ end
 
 
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-local servers = { 'pyright', 'rust_analyzer', 'tsserver' }
+local servers = { 'pyright', 'rust_analyzer', 'tsserver', 'gopls', 'java_language_server', 'kotlin_language_server' }
 for _, lsp in pairs(servers) do
   require('lspconfig')[lsp].setup {
     on_attach = on_attach,
