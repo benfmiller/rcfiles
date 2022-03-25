@@ -1815,6 +1815,7 @@ set nocompatible
 set ignorecase
 set hidden
 set autoread
+set signcolumn=yes
 
 " shell logs in so commands in zsh_user can be used
 " set shcf=-ic
