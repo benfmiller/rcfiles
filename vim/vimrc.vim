@@ -1689,7 +1689,9 @@ nnoremap <leader>\ <C-w>v
 function! SourceSession()
     execute "source " . getcwd() . "/.Session-" . system('hostname | tr -d "\n"') . ".vim"
 endfunction
-nnoremap <leader>ss :call SourceSession()<cr>
+nnoremap <leader>sss :call SourceSession()<cr>
+nnoremap <leader>ss :source ./.Session-
+nnoremap <leader>ssm :source ./.Session-
 
 " edits
 nnoremap <leader>et :e %<CR>
