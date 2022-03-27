@@ -47,7 +47,7 @@ if (g:use_fzf == 1)
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
     Plug 'stsewd/fzf-checkout.vim'
-    plug 'gfanto/fzf-lsp.nvim'
+    Plug 'gfanto/fzf-lsp.nvim'
 elseif (g:use_ctrlp == 1)
     " https://github.com/kien/ctrlp.vim
     Plug 'kien/ctrlp.vim'
@@ -585,7 +585,7 @@ elseif (g:use_telescope == 1)
     nnoremap <leader>fbb <cmd>Telescope buffers<cr>
     nnoremap <leader>fb <cmd>Telescope buffers<cr>
     nnoremap <leader>fo <cmd>Telescope colorscheme<cr>
-    nnoremap <leader>fcc <cmd>Telescope commands<cr>
+    nnoremap <leader>fc <cmd>Telescope commands<cr>
     nnoremap <leader>fhc <cmd>Telescope command_history<cr>
     nnoremap <leader>fhs <cmd>Telescope search_history<cr>
     nnoremap <leader>fm <cmd>Telescope keymaps<cr>
@@ -1016,7 +1016,7 @@ require'lspconfig'.html.setup {
 }
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 local servers = { 'pyright', 'rust_analyzer', 'tsserver', 'gopls', 'java_language_server',
-    'kotlin_language_server', 'bashls', 'terraform_lsp', 'yamlls', 'html',
+    'kotlin_language_server', 'bashls', 'terraform_lsp', 'yamlls', 'html', 'vimls', 'sumneko_lua',
     'cssls', 'jsonls', 'html', 'eslint', 'graphql', 'dockerls'}
 for _, lsp in pairs(servers) do
   require('lspconfig')[lsp].setup {

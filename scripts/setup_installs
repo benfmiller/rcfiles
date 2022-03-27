@@ -12,7 +12,7 @@ download_latest_github () {
 
 install_from_download () {
     tar -xvf $1
-    sudo mv $2 $HOME/.local/bin/
+    mv $2 $HOME/.local/bin/
 }
 
 if uname | grep -q 'Darwin'; then
@@ -27,7 +27,7 @@ if uname | grep -q 'Darwin'; then
     brew_list=`brew list`
 
     PACKAGES_BASE="kotlin espeak flac wget bpytop yarn docker-machine openjdk
-    minikube pdftoipe kubectx bat pandoc texlive htop kotlin-language-server terraform-lsp
+    minikube pdftoipe kubectx bat pandoc texlive htop kotlin-language-server terraform-lsp lua-language-server
     terraform act findutils gnupg neovim fzf ripgrep tmux xclip cmake go node"
     PACKAGES=""
 
@@ -91,6 +91,9 @@ if ! command -v terraform-lsp &> /dev/null; then
     echo $github_link
     echo "installing file terraform-lsp-$latest_tag.tar.gz"
     install_from_download terraform-lsp-$latest_tag.tar.gz terraform-lsp
+fi
+if ! command -v vim-language-server &> /dev/null; then
+    npm install -g vim-language-server
 fi
 
 #----------------------------------------------------------------------------
