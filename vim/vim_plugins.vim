@@ -567,6 +567,7 @@ if (g:use_fzf == 1)
     nnoremap <leader>/ :Lines<CR>
 
     nnoremap <leader>fgf :GFiles<CR>
+    nnoremap <leader>F :GFiles<CR>
     nnoremap <leader>fgc :Commits<CR>
     nnoremap <leader>fgb :BCommits<CR>
 
@@ -577,7 +578,7 @@ elseif (g:use_ctrlp == 1)
 elseif (g:use_telescope == 1)
     " Find files using Telescope command-line sugar.
     nnoremap <leader>ff <cmd>Telescope find_files<cr>
-    nnoremap <leader>fgg <cmd>Telescope git_files<cr>
+    nnoremap <leader>F <cmd>Telescope git_files<cr>
     nnoremap <leader>fb <cmd>Telescope buffers<cr>
     nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
@@ -995,7 +996,7 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>K', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
@@ -1017,7 +1018,7 @@ require'lspconfig'.html.setup {
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 local servers = { 'pyright', 'rust_analyzer', 'tsserver', 'gopls', 'java_language_server',
     'kotlin_language_server', 'bashls', 'terraform_lsp', 'yamlls', 'html', 'vimls', 'sumneko_lua',
-    'cssls', 'jsonls', 'html', 'eslint', 'graphql', 'dockerls'}
+    'cssls', 'jsonls', 'html', 'eslint', 'graphql', 'dockerls', 'texlab'}
 for _, lsp in pairs(servers) do
   require('lspconfig')[lsp].setup {
     on_attach = on_attach,
