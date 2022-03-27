@@ -1,5 +1,20 @@
 #!/usr/bin/env sh
 
+temp_dir=$(pwd)
+cd /tmp
+
+download_latest_github () {
+    latest_tag=$(curl -s https://api.github.com/repos/$1/$2/releases/latest | sed -Ene '/^ *"tag_name": *"(v.+)",$/s//\1/p')
+    echo "Installing from github.com/$1/$2 using version $latest_tag"
+    curl -JLO https://github.com/$1/$2/archive/$latest_tag.tar.gz
+    github_link=https://github.com/$1/$2/archive/$latest_tag.tar.gz
+}
+
+install_from_download () {
+    tar -xvf $1
+    sudo mv $2 $HOME/.local/bin/
+}
+
 if uname | grep -q 'Darwin'; then
 
     if ! command -v brew &> /dev/null
@@ -12,7 +27,7 @@ if uname | grep -q 'Darwin'; then
     brew_list=`brew list`
 
     PACKAGES_BASE="kotlin espeak flac wget bpytop yarn docker-machine openjdk
-    minikube pdftoipe kubectx bat pandoc texlive htop kotlin-language-server terraform-ls
+    minikube pdftoipe kubectx bat pandoc texlive htop kotlin-language-server terraform-lsp
     terraform act findutils gnupg neovim fzf ripgrep tmux xclip cmake go node"
     PACKAGES=""
 
@@ -70,6 +85,14 @@ fi
 if ! command -v docker-langserver &> /dev/null; then
     npm install -g dockerfile-language-server-nodejs
 fi
+if ! command -v terraform-lsp &> /dev/null; then
+    echo downloading latest github terraform-lsp
+    download_latest_github juliosueiras terraform-lsp
+    echo $github_link
+    echo "installing file terraform-lsp-$latest_tag.tar.gz"
+    install_from_download terraform-lsp-$latest_tag.tar.gz terraform-lsp
+fi
+
 #----------------------------------------------------------------------------
 
 # installing install_ completions
@@ -96,3 +119,5 @@ fi
 # brew install --cask font-hack-nerd-font
 # brew install node@16
 # brew link --overwrite node@16
+
+cd $temp_dir
