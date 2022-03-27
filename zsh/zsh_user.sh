@@ -154,6 +154,8 @@ alias setdispssh="export DISPLAY=localhost:10.0"
 
 alias myrsync="rsync -avS --progress --delete"
 
+alias top=bpytop
+
 if ! command -v wslview &> /dev/null
 then
     alias wslview="open"
