@@ -79,9 +79,11 @@ if (g:use_cmp == 1)
     Plug 'hrsh7th/cmp-nvim-lsp'
     Plug 'hrsh7th/cmp-buffer'
     Plug 'hrsh7th/nvim-cmp'
+    Plug 'ray-x/lsp_signature.nvim'
     Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
     Plug 'onsails/lspkind-nvim'
-    Plug 'github/copilot.vim'
+    " Still in testing phase, requires :Copilot setup, which authenticates to waitlist
+    " Plug 'github/copilot.vim'
     Plug 'nvim-lua/lsp_extensions.nvim'
     "
     " Plug 'nvim-lua/completion-nvim'
@@ -990,6 +992,20 @@ local on_attach = function(client, bufnr)
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
+  require "lsp_signature".on_attach({
+      bind = true, -- This is mandatory, otherwise border config won't get registered.
+      handler_opts = {
+        border = "rounded" -- double, rounded, single, shadow, none
+      },
+      hi_parameter = "IncSearch",
+      -- hi_parameter = "LspSignatureActiveParameter",
+      floating_window=true,
+      doc_lines=10,
+      hint_enable = true,
+      hint_prefix = "🦊 ",
+      max_width = 100,
+      toggle_key = '<C-l>',
+    }, bufnr)
   -- Mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
