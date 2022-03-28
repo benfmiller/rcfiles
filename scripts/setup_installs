@@ -26,7 +26,7 @@ if uname | grep -q 'Darwin'; then
 
     brew_list=`brew list`
 
-    PACKAGES_BASE="kotlin espeak flac wget bpytop yarn docker-machine openjdk texlab
+    PACKAGES_BASE="kotlin espeak flac wget bpytop yarn docker-machine openjdk texlab kubernetes-cli
     minikube pdftoipe kubectx bat pandoc texlive htop kotlin-language-server terraform-lsp lua-language-server
     terraform act findutils gnupg neovim fzf ripgrep tmux xclip cmake go node"
     PACKAGES=""
@@ -56,7 +56,9 @@ if uname | grep -q 'Darwin'; then
     if ! echo "$brew_list" | grep -q "font-fontawesome"; then
         brew install --cask font-fontawesome
     fi
-
+    if ! echo "$brew_list" | grep -q "font-hack-nerd-font"; then
+        brew install --cask font-hack-nerd-font
+    fi
 fi
 #----------------------------------------------------------------------------
 
@@ -119,7 +121,7 @@ if [ ! -d "$HOME/.tmux/plugins/tpm" ] ; then
     echo installing tmux plugin manager
 	# git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 fi
-# brew install --cask font-hack-nerd-font
+
 # brew install node@16
 # brew link --overwrite node@16
 
