@@ -200,6 +200,9 @@ highlight Normal     ctermbg=NONE guibg=NONE
 highlight LineNr     ctermbg=NONE guibg=NONE
 highlight SignColumn ctermbg=NONE guibg=NONE
 highlight Folded ctermbg=NONE guibg=NONE
+
+" For Lsp signature highlight
+hi! link LspSignatureActiveParameter Search
 "}}
 " Plugin settings and maps {{
 " YCM {{
@@ -222,7 +225,7 @@ endif
 
 if (g:use_coc == 1)
 
-    " TODO lints at end of line
+    " lints at end of line
     let g:Coc_virtualText = 1
 
 
@@ -997,8 +1000,9 @@ local on_attach = function(client, bufnr)
       handler_opts = {
         border = "rounded" -- double, rounded, single, shadow, none
       },
-      hi_parameter = "IncSearch",
-      -- hi_parameter = "LspSignatureActiveParameter",
+      -- hi_parameter = "IncSearch",
+      -- fix_pos = false,
+      hi_parameter = "LspSignatureActiveParameter",
       floating_window=true,
       doc_lines=10,
       hint_enable = true,
