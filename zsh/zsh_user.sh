@@ -663,10 +663,19 @@ then
     if [ ! "$SSH_AUTH_SOCK" ] || [ $agent_run_state = 2 ]; then
         agent_start
         ssh-add
-        ssh-add ~/.ssh/id_rsa_github
+        if test -f "~/.ssh/id_ed25519_github"; then
+            ssh-add ~/.ssh/id_ed25519_github
+        else
+            ssh-add ~/.ssh/id_rsa_github
+        fi
+
     elif [ "$SSH_AUTH_SOCK" ] && [ $agent_run_state = 1 ]; then
         ssh-add
-        ssh-add ~/.ssh/id_rsa_github
+        if test -f "~/.ssh/id_ed25519_github"; then
+            ssh-add ~/.ssh/id_ed25519_github
+        else
+            ssh-add ~/.ssh/id_rsa_github
+        fi
     fi
 
     unset env
