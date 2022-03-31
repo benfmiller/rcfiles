@@ -56,6 +56,7 @@ elseif (g:use_telescope == 1)
     Plug 'nvim-telescope/telescope.nvim'
     Plug 'nvim-telescope/telescope-fzy-native.nvim'
     Plug 'nvim-telescope/telescope-rg.nvim'
+    Plug 'ThePrimeagen/git-worktree.nvim'
 endif
 
 if (g:use_md_viewer == 1)
@@ -889,6 +890,50 @@ nnoremap <leader>gtv :GV!<CR>
 "}}
 " }}
 " Lua! {{
+" {{
+" git-worktree
+lua <<EOF
+
+-- https://github.com/ThePrimeagen/git-worktree.nvim
+
+require("telescope").load_extension("git_worktree")
+
+require("git-worktree").setup({
+    --change_directory_command = <str> -- default: "cd",
+    --update_on_change = <boolean> -- default: true,
+    --update_on_change_command = <str> -- default: "e .",
+    --clearjumps_on_change = <boolean> -- default: true,
+    --autopush = <boolean> -- default: false,
+})
+
+local Worktree = require("git-worktree")
+
+-- op = Operations.Switch, Operations.Create, Operations.Delete
+-- metadata = table of useful values (structure dependent on op)
+--      Switch
+--          path = path you switched to
+--          prev_path = previous worktree path
+--      Create
+--          path = path where worktree created
+--          branch = branch name
+--          upstream = upstream remote name
+--      Delete
+--          path = path where worktree deleted
+
+Worktree.on_tree_change(function(op, metadata)
+  if op == Worktree.Operations.Switch then
+    print("Switched from " .. metadata.prev_path .. " to " .. metadata.path)
+  end
+end)
+
+EOF
+
+nnoremap <leader>gws :lua require('telescope').extensions.git_worktree.git_worktrees()<cr>
+nnoremap <leader>gwa :lua require('telescope').extensions.git_worktree.create_git_worktree()<cr>
+" -- <Enter> - switches to that worktree
+" -- <c-d> - deletes that worktree
+" -- <c-f> - toggles forcing of the next deletion
+" }}
 " Devicons {{
 "
 if (g:use_devicons == 1)
