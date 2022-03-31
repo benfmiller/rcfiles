@@ -890,10 +890,10 @@ nnoremap <leader>gtv :GV!<CR>
 "}}
 " }}
 " Lua! {{
-" {{
-" git-worktree
-lua <<EOF
+" git-worktree {{
 
+if (g:use_telescope == 1)
+lua <<EOF
 -- https://github.com/ThePrimeagen/git-worktree.nvim
 
 require("telescope").load_extension("git_worktree")
@@ -933,6 +933,7 @@ nnoremap <leader>gwa :lua require('telescope').extensions.git_worktree.create_gi
 " -- <Enter> - switches to that worktree
 " -- <c-d> - deletes that worktree
 " -- <c-f> - toggles forcing of the next deletion
+endif
 " }}
 " Devicons {{
 "
