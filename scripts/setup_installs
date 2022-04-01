@@ -28,7 +28,7 @@ if uname | grep -q 'Darwin'; then
 
     PACKAGES_BASE="kotlin espeak flac wget bpytop yarn docker-machine openjdk texlab kubernetes-cli
     minikube pdftoipe kubectx bat pandoc texlive htop kotlin-language-server terraform-lsp lua-language-server
-    terraform act findutils gnupg neovim fzf ripgrep tmux xclip cmake go node"
+    terraform terraformer act findutils gnupg neovim fzf ripgrep tmux xclip cmake go node"
     PACKAGES=""
 
     for p in $PACKAGES_BASE; do
