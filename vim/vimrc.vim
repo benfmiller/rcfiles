@@ -129,9 +129,15 @@ set laststatus=2  " always display the status line
 " %-0{minwid}.{maxwid}{item}
 " pathshorten()
 "
+" let b:buf_branch=""
+
 set statusline=
 if exists("g:home_machine")
-    set statusline+=%1*\ %{gitbranch#name()}\ \|%*
+    " set statusline+=%1*\ %{gitbranch#name()}\ \|%*
+    " set statusline+=%1*%{StatuslineGit()}\|%*
+    set statusline+=%1*\ %{fugitive#statusline()[5:-3]}\ \|%*
+    " set statusline+=%1*%{FugitiveStatusline()}\|%*
+    " set statusline+=%1*%b:buf_branch\|%*
 endif
 set statusline+=%2*\ %f\ \|%*
 set statusline+=\ %<

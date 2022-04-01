@@ -151,7 +151,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'junegunn/gv.vim', {'on': 'GV'}
 "
-Plug 'itchyny/vim-gitbranch'
+" Using vim-fugitive status line now
+" Plug 'itchyny/vim-gitbranch'
 " Multiple Plug commands can be written in a single line using | separators
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets' | Plug 'quangnguyen30192/cmp-nvim-ultisnips'
 
@@ -583,8 +584,8 @@ elseif (g:use_ctrlp == 1)
     nnoremap <leader>ff :CtrlP<CR>
 elseif (g:use_telescope == 1)
     " Find files using Telescope command-line sugar.
-    nnoremap <leader>ff <cmd>Telescope find_files<cr>
-    nnoremap <leader>F <cmd>Telescope git_files<cr>
+    nnoremap <leader>F <cmd>Telescope find_files<cr>
+    nnoremap <leader>ff <cmd>Telescope git_files<cr>
     nnoremap <leader>fb <cmd>Telescope buffers<cr>
     nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
