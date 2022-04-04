@@ -57,6 +57,9 @@ elseif (g:use_telescope == 1)
     Plug 'nvim-telescope/telescope-fzy-native.nvim'
     Plug 'nvim-telescope/telescope-rg.nvim'
     Plug 'ThePrimeagen/git-worktree.nvim'
+
+    Plug 'junegunn/fzf', { 'do': { -> fzf#install() }}
+    Plug 'junegunn/fzf.vim', {'on': 'Lines'}
 endif
 
 if (g:use_md_viewer == 1)
@@ -602,7 +605,9 @@ elseif (g:use_telescope == 1)
 
     nnoremap <leader>flb <cmd>Telescope current_buffer_fuzzy_find<cr>
     nnoremap <leader>/ <cmd>Telescope current_buffer_fuzzy_find<cr>
-    nnoremap <leader>? <cmd>Telescope live_grep<cr>
+    " nnoremap <leader>? <cmd>Telescope live_grep<cr>
+    " nnoremap <leader>? <cmd>lua require("telescope.builtin").live_grep({ sorter = require('telescope.sorters').get_generic_fuzzy_sorter({})})<cr>
+    nnoremap <leader>? :Lines<CR>
 
     nnoremap <leader>fgc <cmd>Telescope git_commits<cr>
     nnoremap <leader>fgb <cmd>Telescope git_bcommits<cr>
@@ -623,6 +628,7 @@ elseif (g:use_telescope == 1)
     nnoremap <leader>yd <cmd>Telescope lsp_definitions<cr>
     nnoremap <leader>yt <cmd>Telescope lsp_type_definitions<cr>
     nnoremap <leader>yss <cmd>Telescope lsp_document_symbols<cr>
+    nnoremap <C-M-o> <cmd>Telescope lsp_document_symbols<cr>
     nnoremap <leader>ysw <cmd>Telescope lsp_workspace_symbols<cr>
     nnoremap <leader>ysd <cmd>Telescope lsp_dynamic_workspace_symbols<cr>
 
