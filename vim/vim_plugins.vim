@@ -108,6 +108,7 @@ endif
 " switched to tbone cause above was slowing deletes
 Plug 'junegunn/vim-easy-align'
 Plug 'morhetz/gruvbox'
+" Plug 'npxbr/gruvbox.nvim'
 
 " TODO More plugins to look into some time
 " This might be fun at some time, requires google api key
@@ -121,6 +122,8 @@ Plug 'morhetz/gruvbox'
 Plug 'hashivim/vim-terraform', {'for': 'terraform'}
 Plug 'juliosueiras/vim-terraform-completion', {'for': 'terraform'}
 Plug 'vim-syntastic/syntastic'
+
+Plug 'udalov/kotlin-vim', {'for': 'kotlin'}
 "
 Plug 'vim-utils/vim-man'
 Plug 'dbeniamine/cheat.sh-vim'
@@ -591,6 +594,7 @@ elseif (g:use_telescope == 1)
     nnoremap <leader>ff <cmd>Telescope git_files<cr>
     nnoremap <leader>fb <cmd>Telescope buffers<cr>
     nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+    nnoremap <leader>fhh <cmd>Telescope help_tags<cr>
 
     nnoremap <leader>fr <cmd>lua require("telescope").extensions.live_grep_raw.live_grep_raw()<cr>
     nnoremap <leader>fbb <cmd>Telescope buffers<cr>
@@ -1086,8 +1090,18 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 require'lspconfig'.html.setup {
+  on_attach = on_attach,
   capabilities = capabilities,
 }
+-- require'lspconfig'.kotlin_language_server.setup {
+    -- on_attach = on_attach,
+    -- capabilities = capabilities,
+    -- root_dir = root_pattern("settings.gradle", ""),
+    -- flags = {
+      -- -- This will be the default in neovim 0.7+
+      -- debounce_text_changes = 150,
+    -- }
+-- }
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 local servers = { 'pyright', 'rust_analyzer', 'tsserver', 'gopls', 'java_language_server',
     'kotlin_language_server', 'bashls', 'terraform_lsp', 'yamlls', 'html', 'vimls', 'sumneko_lua',
