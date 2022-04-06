@@ -914,7 +914,7 @@ require("git-worktree").setup({
     --update_on_change = <boolean> -- default: true,
     --update_on_change_command = <str> -- default: "e .",
     --clearjumps_on_change = <boolean> -- default: true,
-    --autopush = <boolean> -- default: false,
+    autopush = true -- default: false,
 })
 
 local Worktree = require("git-worktree")
