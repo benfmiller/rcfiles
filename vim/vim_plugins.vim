@@ -110,7 +110,7 @@ Plug 'junegunn/vim-easy-align'
 Plug 'morhetz/gruvbox'
 " Plug 'npxbr/gruvbox.nvim'
 
-" TODO More plugins to look into some time
+" TODO: More plugins to look into some time
 " This might be fun at some time, requires google api key
 " https://github.com/itchyny/calendar.vim
 "
@@ -125,6 +125,10 @@ Plug 'vim-syntastic/syntastic'
 
 Plug 'udalov/kotlin-vim', {'for': 'kotlin'}
 "
+Plug 'folke/todo-comments.nvim'
+Plug 'folke/lsp-colors.nvim'
+Plug 'folke/trouble.nvim'
+
 Plug 'vim-utils/vim-man'
 Plug 'dbeniamine/cheat.sh-vim'
 Plug 'mhinz/vim-grepper'
@@ -605,7 +609,7 @@ elseif (g:use_telescope == 1)
     nnoremap <leader>fhs <cmd>Telescope search_history<cr>
     nnoremap <leader>fm <cmd>Telescope keymaps<cr>
     nnoremap <leader>fa <cmd>Telescope marks<cr>
-    nnoremap <leader>ft <cmd>Telescope filetypes<cr>
+    nnoremap <leader>fty <cmd>Telescope filetypes<cr>
 
     nnoremap <leader>flb <cmd>Telescope current_buffer_fuzzy_find<cr>
     nnoremap <leader>/ <cmd>Telescope current_buffer_fuzzy_find<cr>
@@ -622,7 +626,7 @@ elseif (g:use_telescope == 1)
 
     nnoremap <leader>fp <cmd>Telescope planets<cr>
 
-    nnoremap <leader>fdt <cmd>Telescope treesitter<cr>
+    nnoremap <leader>fts <cmd>Telescope treesitter<cr>
 
     nnoremap <leader>yr <cmd>Telescope lsp_references<cr>
     nnoremap <leader>ya <cmd>Telescope lsp_code_actions<cr>
@@ -636,6 +640,7 @@ elseif (g:use_telescope == 1)
     nnoremap <leader>ysw <cmd>Telescope lsp_workspace_symbols<cr>
     nnoremap <leader>ysd <cmd>Telescope lsp_dynamic_workspace_symbols<cr>
 
+    nnoremap <leader>fd <cmd>TodoTelescope<cr>
 
     " Using Lua functions
     " nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
@@ -873,6 +878,15 @@ augroup END
 
 autocmd BufWritePost *.snippets :CmpUltisnipsReloadSnippets
 
+nnoremap <leader>xx <cmd>TroubleToggle<cr>
+nnoremap <leader>xw <cmd>TroubleToggle workspace_diagnostics<cr>
+nnoremap <leader>xd <cmd>TroubleToggle document_diagnostics<cr>
+nnoremap <leader>xq <cmd>TroubleToggle quickfix<cr>
+nnoremap <leader>xl <cmd>TroubleToggle loclist<cr>
+nnoremap <leader>xt <cmd>TodoTrouble<cr>
+nnoremap gR <cmd>TroubleToggle lsp_references<cr>
+
+nnoremap <leader>xa <cmd>TodoQuickFix<cr>
 " Git Stuff {{
 " This comes from vim fugitive
 let g:git_messenger_no_default_mappings = 1
@@ -945,6 +959,28 @@ nnoremap <leader>gwa :lua require('telescope').extensions.git_worktree.create_gi
 " -- <c-d> - deletes that worktree
 " -- <c-f> - toggles forcing of the next deletion
 endif
+" }}
+" Trouble {{
+"https://github.com/folke/todo-comments.nvim
+"
+lua << EOF
+require("trouble").setup {
+-- your configuration comes here
+-- or leave it empty to use the default settings
+-- refer to the configuration section below
+}
+require("todo-comments").setup {
+-- your configuration comes here
+-- or leave it empty to use the default settings
+-- refer to the configuration section below
+}
+require("lsp-colors").setup({
+    Error = "#db4b4b",
+    Warning = "#e0af68",
+    Information = "#0db9d7",
+    Hint = "#10B981"
+})
+EOF
 " }}
 " Devicons {{
 "

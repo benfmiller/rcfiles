@@ -9,7 +9,7 @@ let mapleader = " "
 set number
 set relativenumber
 " nnoremap <leader>nn :set number!<CR>:set relativenumber!<CR>
-" set termguicolors!
+set termguicolors
 " color elflord
 set showcmd             " show command in bottom bar
 set wildmenu            "visual autocomplete for command menu
