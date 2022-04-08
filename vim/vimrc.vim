@@ -13,7 +13,8 @@ set termguicolors
 " color elflord
 set showcmd             " show command in bottom bar
 set wildmenu            "visual autocomplete for command menu
-autocmd InsertEnter,InsertLeave * set cul!
+" autocmd InsertEnter,InsertLeave * set cul!
+set cul "highlights current line. (cursorline)
 set showmatch           "highlight matching brackets [{()}]
 syntax enable
 set scrolloff=8
@@ -29,8 +30,8 @@ set colorcolumn=80
 " TabLineFill tab pages line, where there are no labels
 " TabLineSel  tab pages line, active tab page label      gui=NONE guibg=#1D6E02 guifg=#ffffff
 
-hi TabLineSel cterm=NONE term=NONE ctermfg=232 ctermbg=154
-hi TabLine        cterm=NONE term=NONE ctermfg=cyan ctermbg=black
+hi TabLineSel cterm=NONE term=NONE ctermfg=232 ctermbg=154 guifg=#080808 guibg=#afff00
+hi TabLine        cterm=NONE term=NONE ctermfg=cyan ctermbg=black guifg=#00ffff guibg=#000000
 
 " Tab number function {{
 set tabline=%!MyTabLine()  " custom tab pages line
@@ -154,9 +155,9 @@ set statusline+=\ col:%c%V
 set statusline+=\ %p%%
 
 
-hi Statusline cterm=NONE term=NONE ctermfg=232 ctermbg=191
+hi Statusline cterm=NONE term=NONE ctermfg=232 ctermbg=191 guifg=#080808 guibg=#d7ff5f
 " Not Current
-hi StatuslineNC cterm=NONE term=NONE ctermfg=232 ctermbg=248
+hi StatuslineNC cterm=NONE term=NONE ctermfg=232 ctermbg=248 guifg=#080808 guibg=#a8a8a8
 "}}
 " Colors {{
 " if !exists("g:home_machine")
@@ -1590,13 +1591,13 @@ highlight SignColumn ctermbg=NONE guibg=NONE
 highlight Folded ctermbg=NONE guibg=NONE
 " }}
 "Git
-hi User1 cterm=None term=None ctermfg=232 ctermbg=202
+hi User1 cterm=None term=None ctermfg=232 ctermbg=202 guifg=#080808 guibg=#ff5f00
 "short name
-hi User2 cterm=None term=None ctermfg=232 ctermbg=154
+hi User2 cterm=None term=None ctermfg=232 ctermbg=154 guifg=#080808 guibg=#afff00
 "modified flag
-hi User3 cterm=None term=None ctermfg=white ctermbg=235
+hi User3 cterm=None term=None ctermfg=white ctermbg=235 guifg=#ffffff guibg=#262626
 " BuffNum
-hi User5 cterm=None term=None ctermfg=232 ctermbg=178
+hi User5 cterm=None term=None ctermfg=232 ctermbg=178 guifg=#080808 guibg=#d7af00
 " user 4 and 6 are in all plug for ale and obsess
 "}}
 " Hlsearches{{

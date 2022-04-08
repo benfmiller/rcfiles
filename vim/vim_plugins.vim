@@ -58,7 +58,7 @@ elseif (g:use_telescope == 1)
     Plug 'nvim-telescope/telescope-rg.nvim'
     Plug 'ThePrimeagen/git-worktree.nvim'
 
-    Plug 'junegunn/fzf', { 'do': { -> fzf#install() }}
+    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim', {'on': 'Lines'}
 endif
 
@@ -82,6 +82,7 @@ if (g:use_cmp == 1)
     Plug 'neovim/nvim-lspconfig'
     Plug 'hrsh7th/cmp-nvim-lsp'
     Plug 'hrsh7th/cmp-buffer'
+    Plug 'hrsh7th/cmp-path'
     Plug 'hrsh7th/nvim-cmp'
     Plug 'ray-x/lsp_signature.nvim'
     Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
@@ -195,17 +196,18 @@ call plug#end()
 color gruvbox
 set bg=dark
 "
+"https://www.ditig.com/256-colors-cheat-sheet
 " hi Statusline cterm=NONE term=NONE ctermfg=232 ctermbg=191
 " " Not Current
 " hi StatuslineNC cterm=NONE term=NONE ctermfg=232 ctermbg=248
 "Git
-hi User1 cterm=None term=None ctermfg=232 ctermbg=202
+hi User1 cterm=None term=None ctermfg=232 ctermbg=202 guifg=#080808 guibg=#ff5f00
 "short name
-hi User2 cterm=None term=None ctermfg=232 ctermbg=154
+hi User2 cterm=None term=None ctermfg=232 ctermbg=154 guifg=#080808 guibg=#afff00
 "modified flag
-hi User3 cterm=None term=None ctermfg=white ctermbg=235
+hi User3 cterm=None term=None ctermfg=white ctermbg=235 guifg=#ffffff guibg=#262626
 " BuffNum
-hi User5 cterm=None term=None ctermfg=232 ctermbg=178
+hi User5 cterm=None term=None ctermfg=232 ctermbg=178 guifg=#080808 guibg=#d7af00
 " user 4 and 6 are in all plug for ale and obsess
 "
 highlight Normal     ctermbg=NONE guibg=NONE
@@ -414,7 +416,7 @@ endif
 " Obsess {{
 set statusline+=\ \|\ %4*%{ObsessionStatus(\"ObAct\",\"ObPaus\")}%*
 " Obsess, moved to all plug
-hi User4 cterm=None term=None ctermfg=232 ctermbg=6
+hi User4 cterm=None term=None ctermfg=232 ctermbg=6 guifg=#080808 guibg=#008080
 " }}
 " Ale {{
 " Ale Maps{{
@@ -438,7 +440,7 @@ endfunction
 set statusline+=%=
 set statusline+=\ %6*%{LinterStatus()}%*
 " Ale color
-hi User6 cterm=None term=None ctermfg=255 ctermbg=202
+hi User6 cterm=None term=None ctermfg=255 ctermbg=202 guifg=#eeeeee guibg=#ff5f00
 
 
 " ALE Lint on text changed
@@ -1040,13 +1042,20 @@ lua <<EOF
     },
     sources = cmp.config.sources({
       { name = 'nvim_lsp' },
+      { name = 'path' },
       -- { name = 'vsnip' }, -- For vsnip users.
       -- { name = 'luasnip' }, -- For luasnip users.
       { name = 'ultisnips' }, -- For ultisnips users.
       -- { name = 'snippy' }, -- For snippy users.
     }, {
       { name = 'buffer' },
-    })
+    }),
+experimental = {
+    -- completion menu
+    native_menu = false,
+
+    ghost_text = true,
+},
   })
 
   -- Set configuration for specific filetype.
