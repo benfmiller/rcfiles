@@ -897,7 +897,8 @@ nnoremap <leader>gg :G<CR><C-w>10_
 nnoremap <leader>gs :Git status<CR>
 nnoremap <leader>gsb :Git status -sb<CR>
 nnoremap <leader>ga :Git add
-nnoremap <leader>gcc :Git commit -m "
+nnoremap <leader>gcm :Git commit -m "
+nnoremap <leader>gcc :Git commit<cr>
 nnoremap <leader>gca :Git commit --amend
 nnoremap <leader>gpp :Git push<CR>
 nnoremap <leader>gpf :Git push -f<CR>
