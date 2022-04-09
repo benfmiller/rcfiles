@@ -913,6 +913,23 @@ nnoremap <leader>gm :GitMessenger<CR>
 
 nnoremap <leader>gv :GV<CR>
 nnoremap <leader>gtv :GV!<CR>
+
+nnoremap <leader>gi. .checkout<cr>
+
+nnoremap <leader>gri :Git rebase -i
+nnoremap <leader>grc :Git rebase --continue<cr>
+nnoremap <leader>gre :Git rebase --edit-todo
+nnoremap <leader>gra :Git rebase --abort
+
+" https://git-scm.com/book/en/v2/Git-Tools-Rewriting-History
+nnoremap <leader>grff <cmd>Git reflog<cr>
+nnoremap <leader>grfl <cmd>Git log -g<cr>
+nnoremap <leader>grfo <cmd>Git log  --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%an>%Creset' --date=short -g<cr>
+nnoremap <leader>grb :Git branch recover-branch
+nnoremap <leader>grbf yiw:Git branch recover-branch <C-r>"
+
+nnoremap <leader>gic <cmd>Git count-objects -v<cr>
+
 "}}
 "}}
 " }}
