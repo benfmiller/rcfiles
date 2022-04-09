@@ -897,8 +897,10 @@ nnoremap <leader>gg :G<CR><C-w>10_
 nnoremap <leader>gs :Git status<CR>
 nnoremap <leader>gsb :Git status -sb<CR>
 nnoremap <leader>ga :Git add
-nnoremap <leader>gc :Git commit -m "
-nnoremap <leader>gp :Git push<CR>
+nnoremap <leader>gcc :Git commit -m "
+nnoremap <leader>gca :Git commit --amend
+nnoremap <leader>gpp :Git push<CR>
+nnoremap <leader>gpf :Git push -f<CR>
 nnoremap <leader>grttt :Git restore %<CR>
 nnoremap <leader>gl :Git pull<CR>
 nnoremap <leader>grl :Git remote update origin --prune<CR>
