@@ -1713,6 +1713,8 @@ nnoremap <leader>cg :!go run .<CR>
 nnoremap <leader>cgr :!go run %
 nnoremap <leader>cgg :!go
 
+autocmd FileType sh nmap <Leader>cv :belowright split<Bar> term bash %<CR><C-w>15_
+autocmd FileType bash nmap <Leader>cv :belowright split<Bar> term bash %<CR><C-w>15_
 autocmd FileType go nmap <Leader>cv :belowright split<Bar> term go run %<CR><C-w>15_
 autocmd FileType python nmap <Leader>cv :belowright split<Bar> term python3 %<CR><C-w>15_
 autocmd FileType java nmap <Leader>cv :belowright split<Bar> term java %<CR><C-w>15_

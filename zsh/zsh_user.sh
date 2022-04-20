@@ -486,7 +486,7 @@ ZSH_THEME="pygmalion-virtualenv"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git vi-mode tmux sudo zsh-interactive-cd fzf terraform)
+plugins=(git vi-mode tmux sudo zsh-interactive-cd fzf terraform direnv)
 #}}
 # }}
 # Bash Prompt {{

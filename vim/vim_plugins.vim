@@ -880,12 +880,12 @@ augroup END
 
 autocmd BufWritePost *.snippets :CmpUltisnipsReloadSnippets
 
-nnoremap <leader>xx <cmd>TroubleToggle<cr>
-nnoremap <leader>xw <cmd>TroubleToggle workspace_diagnostics<cr>
-nnoremap <leader>xd <cmd>TroubleToggle document_diagnostics<cr>
-nnoremap <leader>xq <cmd>TroubleToggle quickfix<cr>
-nnoremap <leader>xl <cmd>TroubleToggle loclist<cr>
-nnoremap <leader>xt <cmd>TodoTrouble<cr>
+nnoremap <leader>xx <cmd>TroubleToggle<cr><C-w>5_
+nnoremap <leader>xw <cmd>TroubleToggle workspace_diagnostics<cr><C-w>5_
+nnoremap <leader>xd <cmd>TroubleToggle document_diagnostics<cr><C-w>5_
+nnoremap <leader>xq <cmd>TroubleToggle quickfix<cr><C-w>5_
+nnoremap <leader>xl <cmd>TroubleToggle loclist<cr><C-w>5_
+nnoremap <leader>xt <cmd>TodoTrouble<cr><C-w>5_
 nnoremap gR <cmd>TroubleToggle lsp_references<cr>
 
 nnoremap <leader>xa <cmd>TodoQuickFix<cr>
