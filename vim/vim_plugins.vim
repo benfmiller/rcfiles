@@ -75,6 +75,9 @@ if (g:use_neovim == 1)
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
     Plug 'nvim-treesitter/playground'
 
+    Plug 'numToStr/Comment.nvim'
+else
+    Plug 'tpope/vim-commentary', {'on': 'Commentary'}
 endif
 
 if (g:use_cmp == 1)
@@ -144,7 +147,6 @@ Plug 'christoomey/vim-tmux-navigator'
 
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-commentary', {'on': 'Commentary'}
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-tbone'
 " docs at ~/.local/share/nvim/plugged/vim-unimpaired/doc/unimpaired.txt
@@ -864,9 +866,15 @@ nnoremap <leader>th :HexokinaseToggle<CR>
 nnoremap <leader>to :Obsess!<CR>
 nnoremap <leader>tt :TagbarToggle<CR>
 
-vmap gm <cmd>'<,'>Commentary<CR>
-nnoremap gm <cmd>Commentary<CR>
-
+if (g:use_neovim == 1)
+    lua require('Comment').setup()
+    vmap gm <Plug>(comment_toggle_linewise_visual)
+    nmap gm <Plug>(comment_toggle_current_linewise)
+else
+    vmap gm <cmd>'<,'>Commentary<CR>
+    nnoremap gm <cmd>Commentary<CR>
+endif
+"
 " open unimpaired vim info
 nnoremap <leader>ou :e ~/.local/share/nvim/plugged/vim-unimpaired/doc/unimpaired.txt<CR>
 
