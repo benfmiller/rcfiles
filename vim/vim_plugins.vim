@@ -83,6 +83,7 @@ if (g:use_cmp == 1)
     Plug 'hrsh7th/cmp-nvim-lsp'
     Plug 'hrsh7th/cmp-buffer'
     Plug 'hrsh7th/cmp-path'
+    Plug 'hrsh7th/cmp-cmdline'
     Plug 'hrsh7th/nvim-cmp'
     Plug 'ray-x/lsp_signature.nvim'
     Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
@@ -863,8 +864,8 @@ nnoremap <leader>th :HexokinaseToggle<CR>
 nnoremap <leader>to :Obsess!<CR>
 nnoremap <leader>tt :TagbarToggle<CR>
 
-vmap <C-m> :'<,'>Commentary<CR>
-nnoremap <C-m> :Commentary<CR>
+vmap gm <cmd>'<,'>Commentary<CR>
+nnoremap gm <cmd>Commentary<CR>
 
 " open unimpaired vim info
 nnoremap <leader>ou :e ~/.local/share/nvim/plugged/vim-unimpaired/doc/unimpaired.txt<CR>
@@ -1049,8 +1050,8 @@ lua <<EOF
     mapping = {
       ['<tab>'] = cmp.mapping.select_next_item(),
       ['<S-tab>'] = cmp.mapping.select_prev_item(),
-      ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
-      ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
+      ['<C-u>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
+      ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
       -- ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
       ['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
       ['<C-e>'] = cmp.mapping({
@@ -1100,7 +1101,11 @@ experimental = {
       { name = 'path' }
     }, {
       { name = 'cmdline' }
-    })
+    }),
+    mapping = {
+      ['<C-u>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
+      ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
+    },
   })
 
 -- Mappings.
