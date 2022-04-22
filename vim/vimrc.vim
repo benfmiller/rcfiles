@@ -1744,6 +1744,16 @@ nnoremap <leader>ot :tabedit %<CR>
 nnoremap <leader>ob :ls<CR>:b
 nnoremap <leader>on :tabnew<CR>
 
+nnoremap <leader>om1 1gt:tabnew<CR>
+nnoremap <leader>om2 2gt:tabnew<CR>
+nnoremap <leader>om3 3gt:tabnew<CR>
+nnoremap <leader>om4 4gt:tabnew<CR>
+nnoremap <leader>om5 5gt:tabnew<CR>
+nnoremap <leader>om6 6gt:tabnew<CR>
+nnoremap <leader>om7 7gt:tabnew<CR>
+nnoremap <leader>om8 8gt:tabnew<CR>
+nnoremap <leader>om9 9gt:tabnew<CR>
+
 " Switch tab with lead m
 nnoremap <leader>m gt
 nnoremap <leader>M gT

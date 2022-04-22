@@ -801,28 +801,15 @@ endfunction
 nnoremap <leader>ha :lua require("harpoon.mark").add_file()<CR>
 nnoremap <leader>hh :lua require("harpoon.ui").toggle_quick_menu()<CR>
 
-nnoremap <leader>h1 :lua require("harpoon.ui").nav_file(1)<CR>
-nnoremap <leader>h2 :lua require("harpoon.ui").nav_file(2)<CR>
-nnoremap <leader>h3 :lua require("harpoon.ui").nav_file(3)<CR>
-nnoremap <leader>h4 :lua require("harpoon.ui").nav_file(4)<CR>
-nnoremap <leader>h5 :lua require("harpoon.ui").nav_file(5)<CR>
-nnoremap <leader>h6 :lua require("harpoon.ui").nav_file(6)<CR>
-nnoremap <leader>h7 :lua require("harpoon.ui").nav_file(7)<CR>
-nnoremap <leader>h8 :lua require("harpoon.ui").nav_file(8)<CR>
-nnoremap <leader>h9 :lua require("harpoon.ui").nav_file(9)<CR>
-
-nnoremap <leader>hl :lua require("harpoon.ui").nav_next()<CR>
-nnoremap <leader>hk :lua require("harpoon.ui").nav_prev()<CR>
-
-nnoremap <leader>h1 :lua require("harpoon.ui").nav_file(1)<CR>
-nnoremap <leader>h2 :lua require("harpoon.ui").nav_file(2)<CR>
-nnoremap <leader>h3 :lua require("harpoon.ui").nav_file(3)<CR>
-nnoremap <leader>h4 :lua require("harpoon.ui").nav_file(4)<CR>
-nnoremap <leader>h5 :lua require("harpoon.ui").nav_file(5)<CR>
-nnoremap <leader>h6 :lua require("harpoon.ui").nav_file(6)<CR>
-nnoremap <leader>h7 :lua require("harpoon.ui").nav_file(7)<CR>
-nnoremap <leader>h8 :lua require("harpoon.ui").nav_file(8)<CR>
-nnoremap <leader>h9 :lua require("harpoon.ui").nav_file(9)<CR>
+nnoremap <leader>h1 :lua require("harpoon.term").gotoTerminal(1)<CR>
+nnoremap <leader>h2 :lua require("harpoon.term").gotoTerminal(2)<CR>
+nnoremap <leader>h3 :lua require("harpoon.term").gotoTerminal(3)<CR>
+nnoremap <leader>h4 :lua require("harpoon.term").gotoTerminal(4)<CR>
+nnoremap <leader>h5 :lua require("harpoon.term").gotoTerminal(5)<CR>
+nnoremap <leader>h6 :lua require("harpoon.term").gotoTerminal(6)<CR>
+nnoremap <leader>h7 :lua require("harpoon.term").gotoTerminal(7)<CR>
+nnoremap <leader>h8 :lua require("harpoon.term").gotoTerminal(8)<CR>
+nnoremap <leader>h9 :lua require("harpoon.term").gotoTerminal(9)<CR>
 
 nnoremap <leader>ht1 :lua require("harpoon.term").gotoTerminal(1)<CR>
 nnoremap <leader>ht2 :lua require("harpoon.term").gotoTerminal(2)<CR>
@@ -834,15 +821,29 @@ nnoremap <leader>ht7 :lua require("harpoon.term").gotoTerminal(7)<CR>
 nnoremap <leader>ht8 :lua require("harpoon.term").gotoTerminal(8)<CR>
 nnoremap <leader>ht9 :lua require("harpoon.term").gotoTerminal(9)<CR>
 
-nnoremap <leader>H1 :lua require("harpoon.term").gotoTerminal(1)<CR>
-nnoremap <leader>H2 :lua require("harpoon.term").gotoTerminal(2)<CR>
-nnoremap <leader>H3 :lua require("harpoon.term").gotoTerminal(3)<CR>
-nnoremap <leader>H4 :lua require("harpoon.term").gotoTerminal(4)<CR>
-nnoremap <leader>H5 :lua require("harpoon.term").gotoTerminal(5)<CR>
-nnoremap <leader>H6 :lua require("harpoon.term").gotoTerminal(6)<CR>
-nnoremap <leader>H7 :lua require("harpoon.term").gotoTerminal(7)<CR>
-nnoremap <leader>H8 :lua require("harpoon.term").gotoTerminal(8)<CR>
-nnoremap <leader>H9 :lua require("harpoon.term").gotoTerminal(9)<CR>
+nnoremap <leader>hl :lua require("harpoon.ui").nav_next()<CR>
+nnoremap <leader>hk :lua require("harpoon.ui").nav_prev()<CR>
+
+nnoremap <leader>H1 :lua require("harpoon.ui").nav_file(1)<CR>
+nnoremap <leader>H2 :lua require("harpoon.ui").nav_file(2)<CR>
+nnoremap <leader>H3 :lua require("harpoon.ui").nav_file(3)<CR>
+nnoremap <leader>H4 :lua require("harpoon.ui").nav_file(4)<CR>
+nnoremap <leader>H5 :lua require("harpoon.ui").nav_file(5)<CR>
+nnoremap <leader>H6 :lua require("harpoon.ui").nav_file(6)<CR>
+nnoremap <leader>H7 :lua require("harpoon.ui").nav_file(7)<CR>
+nnoremap <leader>H8 :lua require("harpoon.ui").nav_file(8)<CR>
+nnoremap <leader>H9 :lua require("harpoon.ui").nav_file(9)<CR>
+
+nnoremap <leader>hf1 :lua require("harpoon.ui").nav_file(1)<CR>
+nnoremap <leader>hf2 :lua require("harpoon.ui").nav_file(2)<CR>
+nnoremap <leader>hf3 :lua require("harpoon.ui").nav_file(3)<CR>
+nnoremap <leader>hf4 :lua require("harpoon.ui").nav_file(4)<CR>
+nnoremap <leader>hf5 :lua require("harpoon.ui").nav_file(5)<CR>
+nnoremap <leader>hf6 :lua require("harpoon.ui").nav_file(6)<CR>
+nnoremap <leader>hf7 :lua require("harpoon.ui").nav_file(7)<CR>
+nnoremap <leader>hf8 :lua require("harpoon.ui").nav_file(8)<CR>
+nnoremap <leader>hf9 :lua require("harpoon.ui").nav_file(9)<CR>
+
 " }}
 " NERDtree {{
 " nnoremap <C-n> :NERDTree<CR>
@@ -889,12 +890,12 @@ augroup END
 
 autocmd BufWritePost *.snippets :CmpUltisnipsReloadSnippets
 
-nnoremap <leader>xx <cmd>TroubleToggle<cr><C-w>5_
-nnoremap <leader>xw <cmd>TroubleToggle workspace_diagnostics<cr><C-w>5_
-nnoremap <leader>xd <cmd>TroubleToggle document_diagnostics<cr><C-w>5_
-nnoremap <leader>xq <cmd>TroubleToggle quickfix<cr><C-w>5_
-nnoremap <leader>xl <cmd>TroubleToggle loclist<cr><C-w>5_
-nnoremap <leader>xt <cmd>TodoTrouble<cr><C-w>5_
+nnoremap <leader>xx <cmd>TroubleToggle<cr><C-w>5_<cmd>set cmdheight=2<cr>
+nnoremap <leader>xw <cmd>TroubleToggle workspace_diagnostics<cr><C-w>5_<cmd>set cmdheight=2<cr>
+nnoremap <leader>xd <cmd>TroubleToggle document_diagnostics<cr><C-w>5_<cmd>set cmdheight=2<cr>
+nnoremap <leader>xq <cmd>TroubleToggle quickfix<cr><C-w>5_<cmd>set cmdheight=2<cr>
+nnoremap <leader>xl <cmd>TroubleToggle loclist<cr><C-w>5_<cmd>set cmdheight=2<cr>
+nnoremap <leader>xt <cmd>TodoTrouble<cr><C-w>5_<cmd>set cmdheight=2<cr>
 nnoremap gR <cmd>TroubleToggle lsp_references<cr>
 
 nnoremap <leader>xa <cmd>TodoQuickFix<cr>
