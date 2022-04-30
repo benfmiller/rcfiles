@@ -654,6 +654,9 @@ elseif (g:use_telescope == 1)
     " nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
     " nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 lua << EOF
+-- https://github.com/nvim-telescope/telescope.nvim/blob/master/lua/telescope/mappings.lua
+-- https://github.com/nvim-telescope/telescope.nvim/wiki/Configuration-Recipes
+local actions = require("telescope.actions")
 require('telescope').setup{
   defaults = {
     -- Default configuration for telescope goes here:
@@ -663,7 +666,8 @@ require('telescope').setup{
         -- map actions.which_key to <C-h> (default: <C-/>)
         -- actions.which_key shows the mappings for your picker,
         -- e.g. git_{create, delete, ...}_branch for the git_branches picker
-        ["<C-h>"] = "which_key"
+        ["<C-h>"] = "which_key",
+        ["<C-M-q>"] = actions.send_to_qflist + actions.open_qflist,
       }
     }
   },
