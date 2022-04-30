@@ -632,6 +632,7 @@ elseif (g:use_telescope == 1)
     nnoremap <leader>fp <cmd>Telescope planets<cr>
 
     nnoremap <leader>fts <cmd>Telescope treesitter<cr>
+    nmap <C-M-p> <cmd>Telescope treesitter<cr>
 
     nnoremap <leader>yr <cmd>Telescope lsp_references<cr>
     nnoremap <leader>ya <cmd>Telescope lsp_code_actions<cr>
