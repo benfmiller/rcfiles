@@ -83,6 +83,7 @@ endif
 if (g:use_cmp == 1)
     " Plebvim lsp Plugins
     Plug 'neovim/nvim-lspconfig'
+    Plug 'nvim-lua/lsp-status.nvim'
     Plug 'hrsh7th/cmp-nvim-lsp'
     Plug 'hrsh7th/cmp-buffer'
     Plug 'hrsh7th/cmp-path'
@@ -434,16 +435,13 @@ function! LinterStatus() abort
     let l:counts = ale#statusline#Count(bufnr(''))
     let l:all_errors = l:counts.error + l:counts.style_error
     let l:all_non_errors = l:counts.total - l:all_errors
-    return l:counts.total == 0 ? 'OK' : printf(
+    return l:counts.total == 0 ? '' : printf(
         \   '%d⨉ %d⚠ ',
         \   all_non_errors,
         \   all_errors
         \)
 endfunction
-set statusline+=%=
-set statusline+=\ %6*%{LinterStatus()}%*
-" Ale color
-hi User6 cterm=None term=None ctermfg=255 ctermbg=202 guifg=#eeeeee guibg=#ff5f00
+" moved this addition to end of this file
 
 
 " ALE Lint on text changed
@@ -1130,12 +1128,28 @@ vim.api.nvim_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', op
 vim.api.nvim_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
 vim.api.nvim_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
 
+--let g:ale_sign_error = '🌋'
+--let g:ale_sign_warning = '⛅'
+--'●⊗⊕⌛⌦⌼☕⛔✍⚠₿⌚⏱♛♔⭐⛅🌋'
+local lsp_status = require('lsp-status')
+lsp_status.config{
+  indicator_errors = '🌋',
+  indicator_warnings = '⛅',
+  indicator_info = '🍸',
+  indicator_hint = '🦉',
+  indicator_ok = '👌',
+  status_symbol = '',
+  update_interval = 2
+}
+-- lsp_status.register_progress()
+
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
+  lsp_status.on_attach(client)
   require "lsp_signature".on_attach({
       bind = true, -- This is mandatory, otherwise border config won't get registered.
       handler_opts = {
@@ -1202,6 +1216,22 @@ for _, lsp in pairs(servers) do
 end
 EOF
 
+" Statusline
+function! LspStatus() abort
+  if luaeval('#vim.lsp.buf_get_clients() > 0')
+    return luaeval("require('lsp-status').status()")
+  endif
+  return ''
+endfunction
+
+" status color
+hi User6 cterm=None term=None ctermfg=255 ctermbg=202 guibg=#a26154
+set statusline+=%=
+set statusline+=\ %6*%{LspStatus()}%*
 endif
 " }}
+" }}
+" Ale statusline {{
+" set statusline+=%=
+set statusline+=\ %6*%{LinterStatus()}%*
 " }}
