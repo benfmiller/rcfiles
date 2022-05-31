@@ -3,7 +3,7 @@
 if [ -z $(uname | grep -v Darwin) ]; then
     dir_list=$(gfind $HOME/Work/ -maxdepth 2 -mindepth 1 -type d -printf '%p\n' )
 else
-    dir_list=$(find $HOME/Work/ -maxdepth 2 -mindepth 1 -type d -printf '%p\n' )
+    dir_list=$(find -L $HOME/Work/ -maxdepth 2 -mindepth 1 -type d -printf '%p\n' )
 fi
 
 # This keeps parent folder in there
