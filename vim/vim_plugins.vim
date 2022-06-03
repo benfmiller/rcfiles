@@ -76,6 +76,10 @@ if (g:use_neovim == 1)
     Plug 'nvim-treesitter/playground'
 
     Plug 'numToStr/Comment.nvim'
+
+    Plug 'folke/todo-comments.nvim'
+    Plug 'folke/lsp-colors.nvim'
+    Plug 'folke/trouble.nvim'
 else
     Plug 'tpope/vim-commentary', {'on': 'Commentary'}
 endif
@@ -131,9 +135,6 @@ Plug 'vim-syntastic/syntastic'
 
 Plug 'udalov/kotlin-vim', {'for': 'kotlin'}
 "
-Plug 'folke/todo-comments.nvim'
-Plug 'folke/lsp-colors.nvim'
-Plug 'folke/trouble.nvim'
 
 Plug 'vim-utils/vim-man'
 Plug 'dbeniamine/cheat.sh-vim'
@@ -169,7 +170,9 @@ Plug 'junegunn/gv.vim', {'on': 'GV'}
 " Using vim-fugitive status line now
 " Plug 'itchyny/vim-gitbranch'
 " Multiple Plug commands can be written in a single line using | separators
+if (g:on_windows == 0)
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets' | Plug 'quangnguyen30192/cmp-nvim-ultisnips'
+endif
 
 " On-demand loading
 " au filetype python Plug 'timonv/vim-cargo'
@@ -788,12 +791,14 @@ let g:terraform_registry_module_completion = 0
 " Syntastic {{
 nnoremap <leader>ts :SyntasticToggleMode<CR>
 " see :h syntastic-loclist-callback
+if (g:use_neovim == 1)
 function! SyntasticCheckHook(errors)
     if !empty(a:errors)
         let g:syntastic_loc_list_height = min([len(a:errors), 4])
         call cheat#providers#syntastic#Hook(a:errors)
     endif
 endfunction
+endif
 
 " let g:syntastic_warning_symbol = '⛅'
 " let g:syntastic_error_symbol= '🌋'
@@ -891,7 +896,9 @@ augroup highlight_yank
     autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank({timeout = 40})
 augroup END
 
+if (g:on_windows == 0)
 autocmd BufWritePost *.snippets :CmpUltisnipsReloadSnippets
+endif
 
 nnoremap <leader>xx <cmd>TroubleToggle<cr><C-w>5_<cmd>set cmdheight=2<cr>
 nnoremap <leader>xw <cmd>TroubleToggle workspace_diagnostics<cr><C-w>5_<cmd>set cmdheight=2<cr>
@@ -950,6 +957,7 @@ nnoremap <leader>gic <cmd>Git count-objects -v<cr>
 "}}
 " }}
 " Lua! {{
+if (g:use_neovim == 1)
 " git-worktree {{
 
 if (g:use_telescope == 1)
@@ -1230,6 +1238,7 @@ set statusline+=%=
 set statusline+=\ %6*%{LspStatus()}%*
 endif
 " }}
+endif
 " }}
 " Ale statusline {{
 " set statusline+=%=
