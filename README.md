@@ -1,12 +1,17 @@
 # rcfiles
 
-This is my whole configuration setup. I use oh-my-zsh, tmux, and neovim. If I'm working on
-larger projects, I like to use vscode from windows to connect through wsl or ssh. The vscode_shell
-script lets vscode use a tmux session as the terminal. There is a good amount of compatibility and
-configuration across systems, but is mostly setup for debian linux.
+Ubuntu: oh-my-zsh, tmux, neovim (using telescope and nvim-lsp), and i3
+
+Mac: skhd and yabai
+
+Windows: wsl-ubuntu and git-bash
+
+Depending on the code, I'll use vscode. The vscode_shell script lets vscode use a tmux session as the terminal.
 
 Some of the files are my setup specific or they are rarely used. Some of it is not used at all
 but helps me make sense of things, so not everything is important.
+
+**If you have questions, please create an issue or send me an email! I'd be glad to help.**
 
 ## Deployment
 
@@ -28,7 +33,6 @@ The deploy scripts source from rcfiles, so just have to git pull to update to mo
 
 ## Notes
 
-zsh_zsh.sh is for zsh specific config
 zsh_user.sh is for all user config
 
 sourcers in subdirectories are meant to be in the home directory with the proper name per file
