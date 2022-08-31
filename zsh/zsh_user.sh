@@ -727,6 +727,7 @@ alias gw="git worktree"
 alias gwa="git worktree add"
 alias gwr="git worktree remove"
 alias gwl="git worktree list"
+alias gcb="git clone --bare"
 
 alias gpra="git config --add oh-my-zsh.hide-status 0; git config --add oh-my-zsh.hide-dirty 0"
 alias gprr="git config --add oh-my-zsh.hide-status 1; git config --add oh-my-zsh.hide-dirty 1"

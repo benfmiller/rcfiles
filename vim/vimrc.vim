@@ -1709,7 +1709,7 @@ nnoremap <leader>ccb :Cargo build<CR>
 nnoremap <leader>cct :Cargo test<CR>
 nnoremap <leader>cc :Cargo
 nnoremap <leader>cm :make<CR>
-nnoremap <leader>cg :!go run .<CR>
+nnoremap <leader>cg :Dispatch go run cmd/main.go<CR>
 nnoremap <leader>cgr :!go run %
 nnoremap <leader>cgg :!go
 
