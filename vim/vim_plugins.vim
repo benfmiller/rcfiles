@@ -922,6 +922,7 @@ nnoremap <leader>gcc :Git commit<cr>
 nnoremap <leader>gca :Git commit --amend
 nnoremap <leader>gpp :Git push<CR>
 nnoremap <leader>gpf :Git push -f<CR>
+nnoremap <leader>gpu :!git push --set-upstream origin `git branch --show-current`<CR>
 nnoremap <leader>grttt :Git restore %<CR>
 nnoremap <leader>gl :Git pull<CR>
 nnoremap <leader>grl :Git remote update origin --prune<CR>
@@ -929,6 +930,7 @@ nnoremap <leader>grm :Git merge
 nnoremap <leader>gos :Git log --stat<CR>
 nnoremap <leader>goo :Git log --oneline<CR>
 
+nnoremap <leader>grth <cmd>SignifyHunkUndo<CR>
 nnoremap <leader>gD :SignifyDiff<CR>
 nnoremap <leader>gd :SignifyHunkDiff<CR>
 
