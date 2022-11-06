@@ -1,6 +1,13 @@
 #!/usr/bin/env bash
 
-selected=$(tmux -2 ls | fzf)
+open_sessions=$(tmux -2 ls | cut -f1 -d":")
+
+# pulls out "learning" bounded by whitespace
+open_sessions=$(echo "$open_sessions" | grep -v -E '(^| )learning( |$)')
+open_sessions="learning\n$open_sessions"
+
+# -e parses \n as new line
+selected=$(echo -e "$open_sessions"| fzf)
 
 if [[ -z $selected ]]; then
     exit 0

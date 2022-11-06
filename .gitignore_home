@@ -2,3 +2,6 @@
 .vscode
 ._*
 .DS_store
+a.out
+__pycache__
+workj_*
