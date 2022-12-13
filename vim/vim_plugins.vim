@@ -80,6 +80,8 @@ if (g:use_neovim == 1)
     Plug 'folke/todo-comments.nvim'
     Plug 'folke/lsp-colors.nvim'
     Plug 'folke/trouble.nvim'
+    Plug 'williamboman/mason.nvim'
+    Plug 'williamboman/mason-lspconfig.nvim'
 else
     Plug 'tpope/vim-commentary', {'on': 'Commentary'}
 endif
@@ -94,7 +96,7 @@ if (g:use_cmp == 1)
     Plug 'hrsh7th/cmp-cmdline'
     Plug 'hrsh7th/nvim-cmp'
     Plug 'ray-x/lsp_signature.nvim'
-    Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
+    " Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
     Plug 'onsails/lspkind-nvim'
     " Still in testing phase, requires :Copilot setup, which authenticates to waitlist
     " Plug 'github/copilot.vim'
@@ -180,6 +182,7 @@ endif
 Plug 'rust-lang/rust.vim', {'for': 'rust'}
 Plug 'mbbill/undotree', {'on': 'UndotreeToggle'}
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'tomlion/vim-solidity', {'for': 'solidity'}
 " Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 
 " Using a non-default branch
@@ -877,9 +880,13 @@ nnoremap <leader>to :Obsess!<CR>
 nnoremap <leader>tt :TagbarToggle<CR>
 
 if (g:use_neovim == 1)
-    lua require('Comment').setup()
-    vmap gm <Plug>(comment_toggle_linewise_visual)
-    nmap gm <Plug>(comment_toggle_current_linewise)
+
+lua <<EOF
+require('Comment').setup {
+    -- toggler = { line = 'gm', }
+}
+EOF
+
 else
     vmap gm <cmd>'<,'>Commentary<CR>
     nnoremap gm <cmd>Commentary<CR>
@@ -1196,14 +1203,6 @@ local on_attach = function(client, bufnr)
 end
 
 
---Enable (broadcasting) snippet capability for completion
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-
-require'lspconfig'.html.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-}
 -- require'lspconfig'.kotlin_language_server.setup {
     -- on_attach = on_attach,
     -- capabilities = capabilities,
@@ -1213,20 +1212,64 @@ require'lspconfig'.html.setup {
       -- debounce_text_changes = 150,
     -- }
 -- }
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-local servers = { 'pyright', 'rust_analyzer', 'tsserver', 'gopls', 'java_language_server',
-    'kotlin_language_server', 'bashls', 'terraform_lsp', 'yamlls', 'html', 'vimls', 'sumneko_lua',
-    'cssls', 'jsonls', 'html', 'eslint', 'graphql', 'dockerls', 'texlab', 'clangd'}
-for _, lsp in pairs(servers) do
+local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+local servers = { 'pyright', 'rust_analyzer@nightly', 'tsserver', 'gopls', 'jdtls',
+    'kotlin_language_server', 'bashls', 'yamlls', 'html', 'vimls', 'sumneko_lua',
+    'cssls', 'jsonls', 'html', 'eslint', 'graphql', 'dockerls', 'texlab', 'clangd'} -- , 'solc'}
+local serversNonMason = { 'java_language_server', 'terraform_lsp', 'solidity_ls'}
+for _, lsp in pairs(serversNonMason) do
   require('lspconfig')[lsp].setup {
     on_attach = on_attach,
     capabilities = capabilities,
     flags = {
-      -- This will be the default in neovim 0.7+
+      -- -- This will be the default in neovim 0.7+
       debounce_text_changes = 150,
     }
   }
 end
+-- mason {{
+require("mason").setup {
+    ui = {
+        icons = {
+            package_installed = "✓"
+        }
+    }
+}
+require("mason-lspconfig").setup {
+    ensure_installed = servers,
+}
+
+--Enable (broadcasting) snippet capability for completion
+local capabilitiesHTML = vim.lsp.protocol.make_client_capabilities()
+capabilitiesHTML.textDocument.completion.completionItem.snippetSupport = true
+
+require'lspconfig'.html.setup {
+  on_attach = on_attach,
+  capabilities = capabilitiesHTML,
+}
+require("mason-lspconfig").setup_handlers {
+    -- The first entry (without a key) will be the default handler
+    -- and will be called for each installed server that doesn't have
+    -- a dedicated handler.
+    function (server_name) -- default handler (optional)
+        require("lspconfig")[server_name].setup {
+            on_attach = on_attach,
+            capabilities = capabilities,
+            flags = {
+              -- This will be the default in neovim 0.7+
+              debounce_text_changes = 150,
+            }
+        }
+    end,
+    -- handler for specific servers
+    ["html"] = function ()
+    require("lspconfig").html.setup {
+          on_attach = on_attach,
+          capabilities = capabilitiesHTML,
+        }
+    end
+}
+-- }}
 EOF
 
 " Statusline
@@ -1242,6 +1285,30 @@ hi User6 cterm=None term=None ctermfg=255 ctermbg=202 guibg=#a26154
 set statusline+=%=
 set statusline+=\ %6*%{LspStatus()}%*
 endif
+" }}
+" Treesitter {{
+" https://github.com/nvim-treesitter/nvim-treesitter
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+    highlight = {
+        enable = true,
+    },
+    incremental_selection = {
+        enable = true,
+    },
+    indent = {
+        enable = true,
+    },
+    playground = {
+        enable = true,
+    },
+    query_linter = {
+        enable = true,
+        use_virtual_text = true,
+        lint_events = {"BufWrite", "CursorHold"},
+    },
+}
+EOF
 " }}
 endif
 " }}

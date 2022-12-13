@@ -1744,6 +1744,7 @@ endif
 nnoremap <leader>ot :tabedit %<CR>
 nnoremap <leader>ob :ls<CR>:b
 nnoremap <leader>on :tabnew<CR>
+nnoremap <leader>of :Explore<CR>
 
 nnoremap <leader>om1 1gt:tabnew<CR>
 nnoremap <leader>om2 2gt:tabnew<CR>
