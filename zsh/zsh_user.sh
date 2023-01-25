@@ -198,8 +198,12 @@ alias ktx="kubectx"
 alias kbn="kubens"
 
 alias dcbuild='docker-compose build'
-alias dcup='docker-compose up'
+alias dcup='docker-compose up -d'
+alias dcu='docker-compose up -d'
 alias dcdown='docker-compose down'
+alias dcd='docker-compose down'
+alias dc='docker-compose'
+alias dcb='docker-compose build'
 alias dockps='docker ps --format "{{.ID}}  {{.Names}}"'
 docksh () {
     docker exec -it $1 /bin/bash
@@ -737,6 +741,7 @@ alias gwa="git worktree add"
 alias gwr="git worktree remove"
 alias gwl="git worktree list"
 alias gcb="git clone --bare"
+alias gsu="git submodule update --init --recursive"
 
 alias gpra="git config --add oh-my-zsh.hide-status 0; git config --add oh-my-zsh.hide-dirty 0"
 alias gprr="git config --add oh-my-zsh.hide-status 1; git config --add oh-my-zsh.hide-dirty 1"

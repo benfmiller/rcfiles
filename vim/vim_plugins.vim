@@ -571,6 +571,8 @@ if (g:use_vimspector == 1)
     nmap <leader>drc <Plug>VimspectorRunToCursor
     nmap <C-b> <Plug>VimspectorToggleBreakpoint
     nmap <leader>db <Plug>VimspectorToggleConditionalBreakpoint
+
+    " let g:vimspector_base_dir='$HOME/.vim/vimspector-config'
 endif
 " }}
 " FZF | telescope {{
@@ -610,7 +612,7 @@ elseif (g:use_telescope == 1)
     nnoremap <leader>fh <cmd>Telescope help_tags<cr>
     nnoremap <leader>fhh <cmd>Telescope help_tags<cr>
 
-    nnoremap <leader>fr <cmd>lua require("telescope").extensions.live_grep_raw.live_grep_raw()<cr>
+    nnoremap <leader>fr <cmd>lua require("telescope").extensions.live_grep_args.live_grep_args()<cr>
     nnoremap <leader>fbb <cmd>Telescope buffers<cr>
     nnoremap <leader>fb <cmd>Telescope buffers<cr>
     nnoremap <leader>fo <cmd>Telescope colorscheme<cr>
@@ -923,7 +925,7 @@ let g:git_messenger_no_default_mappings = 1
 
 nnoremap <leader>gg :G<CR><C-w>10_
 nnoremap <leader>gs :Git status<CR>
-nnoremap <leader>gsb :Git status -sb<CR>
+nnoremap <leader>gsb :!git status -sb --porcelain<CR>
 nnoremap <leader>ga :Git add
 nnoremap <leader>gcm :Git commit -m "
 nnoremap <leader>gcc :Git commit<cr>
@@ -1221,6 +1223,7 @@ for _, lsp in pairs(serversNonMason) do
   require('lspconfig')[lsp].setup {
     on_attach = on_attach,
     capabilities = capabilities,
+    settings = { go = { workspaceSymbols = { enabled = true }}},
     flags = {
       -- -- This will be the default in neovim 0.7+
       debounce_text_changes = 150,

@@ -1680,6 +1680,8 @@ nnoremap <leader>qw <C-w>c
 nnoremap <M-,> :tabm -1<CR>
 nnoremap <M-.> :tabm +1<CR>
 
+nnoremap <C-w>= <C-w>=:set cmdheight=2<CR>
+
 nnoremap <leader>1 1gt
 nnoremap <leader>2 2gt
 nnoremap <leader>3 3gt
@@ -1813,10 +1815,10 @@ nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . 'gj'
 " nnoremap k gk
 
 " resize windows proportionally
-nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
-nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
-nnoremap <silent> <Leader>> :exe "resize " . (winwidth(0) * 3/2)<CR>
-nnoremap <silent> <Leader>< :exe "resize " . (winwidth(0) * 2/3)<CR>
+nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 5/4)<CR>
+nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 4/5)<CR>
+nnoremap <silent> <Leader>> :exe "vertical resize " . (winwidth(0) * 5/4)<CR>
+nnoremap <silent> <Leader>< :exe "vertical resize " . (winwidth(0) * 4/5)<CR>
 
 nnoremap <leader>sw :set wrap!<CR>
 
