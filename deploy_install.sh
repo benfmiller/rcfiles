@@ -9,6 +9,8 @@ if [ `whoami` = 'root' ]
     return 1
 fi
 
+ln -s ~/.config/nvim ~/rcfiles/vim/nvim
+
 echo "Moving old config files to ~/.config/old_config"
 mkdir -p ~/.config/old_config
 if test -f ~/.vimrc; then

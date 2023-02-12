@@ -1832,8 +1832,19 @@ nnoremap <leader>sw :set wrap!<CR>
    exec 'vertical resize '. string(&columns * 0.75)
  endfunction
 
+ function CenterWindow()
+   exec 'vertical resize '. string(&columns * 0.75)
+   exec 'resize '. string(&lines * 0.75)
+ endfunction
+
+ function CenterWindowHoriz()
+   exec 'vertical resize '. string(&columns * 0.75)
+ endfunction
+
 " optionally map it to a key:
 nnoremap <leader>cp :call CenterPane()<cr>
+nnoremap <leader>cw :call CenterWindow()<cr>
+nnoremap <leader>cs :call CenterWindowHoriz()<cr>
 " }}
 " Various{{
 set lazyredraw          "only redraws screen when we have to
