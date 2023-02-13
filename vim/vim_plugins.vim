@@ -81,6 +81,8 @@ if (g:use_neovim == 1)
     Plug 'folke/trouble.nvim'
     Plug 'williamboman/mason.nvim'
     Plug 'williamboman/mason-lspconfig.nvim'
+
+    " Plug 'folke/neodev.nvim'
 else
     Plug 'tpope/vim-commentary', {'on': 'Commentary'}
 endif
@@ -111,6 +113,8 @@ if (g:use_cmp == 1)
     " https://sookocheff.com/post/vim/neovim-java-ide/
     Plug 'mfussenegger/nvim-dap'
     Plug 'mfussenegger/nvim-jdtls'
+    Plug 'rcarriga/nvim-dap-ui'
+    Plug 'theHamsta/nvim-dap-virtual-text'
 
     Plug 'nvim-telescope/telescope-dap.nvim'
 endif

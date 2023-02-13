@@ -1,3 +1,9 @@
+-- -- IMPORTANT: make sure to setup neodev BEFORE lspconfig
+-- require("neodev").setup({
+--     library = { plugins = { "nvim-dap-ui" }, types = true },
+--     -- add any options here, or leave empty to use the default settings
+-- })
+
 -- Setup nvim-cmp.
 local cmp = require 'cmp'
 
@@ -169,7 +175,21 @@ require("mason-lspconfig").setup_handlers {
             on_attach = on_attach,
             capabilities = capabilitiesHTML,
         }
-    end
+    end,
+    -- ["lua-ls"] = function()
+    --     require("lspconfig").lua_ls.setup {
+    --         on_attach = on_attach,
+    --         capabilities = capabilities,
+    --         settings = {
+    --
+    --             Lua = {
+    --                 completion = {
+    --                     callSnippet = "Replace"
+    --                 }
+    --             }
+    --         }
+    --     }
+    -- end
 }
 -- }}
 

@@ -5,6 +5,8 @@
 -- Adapter list, vscode
 -- https://microsoft.github.io/debug-adapter-protocol/implementors/adapters/
 --
+-- https://davelage.com/posts/nvim-dap-getting-started/
+-- Some additional stuff
 -- }}
 --
 local home = os.getenv('HOME')
@@ -265,6 +267,10 @@ nnoremap("<leader>vc", jdtls.test_class, bufopts, "Test class (DAP)")
 nnoremap("<leader>vm", jdtls.test_nearest_method, bufopts, "Test method (DAP)")
 
 
+-- https://github.com/mfussenegger/nvim-jdtls#nvim-dap-configuration
+-- must call this setup_dap after jdtls has initialized
+-- configuration for remote attach https://github.com/mfussenegger/nvim-dap/wiki/Java#configuration
+-- Configuration for manual stuff https://github.com/microsoft/vscode-java-debug#options
 nnoremap("<leader>ds", "<cmd>lua require('jdtls').setup_dap({ hotcodereplace = 'auto' })<CR>", bufopts, "Setup java dap")
 
 

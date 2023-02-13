@@ -18,6 +18,11 @@ require("lsp-colors").setup({
     Information = "#0db9d7",
     Hint = "#10B981"
 })
+-- local signs = { Error = " ", Warning = " ", Hint = " ", Information = " " }
+-- for type, icon in pairs(signs) do
+--     local hl = "LspDiagnosticsSign" .. type
+--     vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+-- end
 -- }}
 
 -- git-worktree {{
@@ -107,3 +112,33 @@ require 'nvim-web-devicons'.setup {
 vim.cmd([[
 autocmd BufWritePre * silent! lua vim.lsp.buf.format()
 ]])
+
+
+-- Dap UI {{
+--
+require("nvim-dap-virtual-text").setup()
+require("dapui").setup()
+vim.keymap.set('n', '<M-;>', '<cmd>lua require("dapui").toggle()<CR>',
+    { noremap = true, silent = true, desc = "Toggle Dap UI" })
+
+vim.api.nvim_set_hl(0, "blue", { fg = "#3d59a1" })
+vim.api.nvim_set_hl(0, "green", { fg = "#9ece6a" })
+vim.api.nvim_set_hl(0, "yellow", { fg = "#FFFF00" })
+vim.api.nvim_set_hl(0, "orange", { fg = "#f09000" })
+
+vim.fn.sign_define('DapBreakpoint', { text = '•', texthl = 'blue', linehl = 'DapBreakpoint', numhl = 'DapBreakpoint' })
+vim.fn.sign_define('DapBreakpointCondition', {
+    text = '●',
+    texthl = 'orange',
+    linehl = 'DapBreakpoint',
+    numhl = 'DapBreakpoint'
+})
+vim.fn.sign_define('DapBreakpointRejected', {
+    text = '●',
+    texthl = 'blue',
+    linehl = 'DapBreakpoint',
+    numhl = 'DapBreakpoint'
+})
+vim.fn.sign_define('DapStopped', { text = '•', texthl = 'green', linehl = 'DapBreakpoint', numhl = 'DapBreakpoint' })
+vim.fn.sign_define('DapLogPoint', { text = '•', texthl = 'yellow', linehl = 'DapBreakpoint', numhl = 'DapBreakpoint' })
+-- }}
