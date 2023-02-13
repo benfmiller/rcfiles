@@ -1022,5 +1022,9 @@ endif
 " set statusline+=%=
 set statusline+=\ %6*%{LinterStatus()}%*
 " }}
+sign define DiagnosticSignError text=🌋 texthl=DiagnosticSignError
+sign define DiagnosticSignWarn text=⛅ texthl=DiagnosticSignWarn
+sign define DiagnosticSignInfo text=🍸 texthl=DiagnosticSignInfo
+sign define DiagnosticSignHint text=🦉 texthl=DiagnosticSignHint
 " }}
 " }}
