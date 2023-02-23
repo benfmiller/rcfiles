@@ -108,8 +108,8 @@ vim.api.nvim_set_keymap('n', ']e', '<cmd>lua vim.diagnostic.goto_next({severity 
     opts)
 vim.api.nvim_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
 
-local on_attach = require("lsp.defaults").default_on_attach
-local capabilities = require("lsp.defaults").default_capabilities
+local on_attach = require("lsp.defaults")["on_attach"]
+local capabilities = require("lsp.defaults")["capabilities"]
 
 -- require'lspconfig'.kotlin_language_server.setup {
 -- on_attach = on_attach,
