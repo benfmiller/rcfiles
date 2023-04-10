@@ -149,3 +149,33 @@ require("harpoon").setup({
         width = 110,
     }
 })
+
+if vim.g.use_gpt == 1 then
+    require("chatgpt").setup({
+        keymaps = {
+            submit = "<C-s>",
+            cycle_windows = "<C-p",
+            -- close = { "<C-c>" },
+            -- submit = "<C-Enter>",
+            -- yank_last = "<C-y>",
+            -- yank_last_code = "<C-k>",
+            -- scroll_up = "<C-u>",
+            -- scroll_down = "<C-d>",
+            -- toggle_settings = "<C-o>",
+            -- new_session = "<C-n>",
+            -- cycle_windows = "<Tab>",
+            -- -- in the Sessions pane
+            -- select_session = "<Space>",
+            -- rename_session = "r",
+            -- delete_session = "d",
+            -- <C-i> [Edit Window] use response as input.
+        }
+    })
+end
+
+if vim.g.use_copilot == 1 then
+    vim.g.copilot_no_tab_map = true
+    vim.api.nvim_set_keymap("i", "<C-J>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
+    vim.api.nvim_set_keymap("i", "<C-P>", 'copilot#Previous()', { silent = true, expr = true })
+    vim.api.nvim_set_keymap("i", "<C-O>", 'copilot#Next()', { silent = true, expr = true })
+end

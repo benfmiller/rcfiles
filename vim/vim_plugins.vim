@@ -99,8 +99,6 @@ if (g:use_cmp == 1)
     Plug 'ray-x/lsp_signature.nvim'
     " Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
     Plug 'onsails/lspkind-nvim'
-    " Still in testing phase, requires :Copilot setup, which authenticates to waitlist
-    " Plug 'github/copilot.vim'
     Plug 'nvim-lua/lsp_extensions.nvim'
     "
     " Plug 'nvim-lua/completion-nvim'
@@ -117,6 +115,19 @@ if (g:use_cmp == 1)
     Plug 'theHamsta/nvim-dap-virtual-text'
 
     Plug 'nvim-telescope/telescope-dap.nvim'
+endif
+
+if (g:use_gpt == 1)
+    " https://github.com/jackMort/ChatGPT.nvim
+    " https://platform.openai.com/account/api-keys
+    Plug 'MunifTanjim/nui.nvim'
+    Plug 'jackMort/ChatGPT.nvim' ", {'on': 'ChatGPT'}
+endif
+
+if (g:use_copilot == 1)
+    " https://github.com/github/copilot.vim
+    " Still in testing phase, requires :Copilot setup, which authenticates to waitlist
+    Plug 'github/copilot.vim'
 endif
 
 if (g:use_devicons == 1)
@@ -937,6 +948,12 @@ augroup END
 if (g:on_windows == 0)
 autocmd BufWritePost *.snippets :CmpUltisnipsReloadSnippets
 endif
+
+
+nnoremap <leader>gpt :ChatGPT
+vmap <silent> <leader>T :<C-U>:ChatGPTEditWithInstructions<CR>
+
+inoremap <C-U> <cmd>Copilot<cr><C-w>L
 
 nnoremap <leader>xx <cmd>TroubleToggle<cr><C-w>5_<cmd>set cmdheight=2<cr>
 nnoremap <leader>xw <cmd>TroubleToggle workspace_diagnostics<cr><C-w>5_<cmd>set cmdheight=2<cr>
