@@ -140,10 +140,10 @@ if exists("g:home_machine")
     " set statusline+=%1*%{FugitiveStatusline()}\|%*
     " set statusline+=%1*%b:buf_branch\|%*
 endif
-set statusline+=%2*\ %f\ \|%*
+set statusline+=%2*\ %t\ \|%*
 set statusline+=\ %<
 " set statusline+=%{pathshorten(\"%F\")}
-set statusline+=%-0.30F
+set statusline+=%-0.100F
 set statusline+=%h
 set statusline+=%3*%m
 set statusline+=%r%*

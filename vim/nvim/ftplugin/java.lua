@@ -1,3 +1,4 @@
+--
 -- nvim-dap {{
 -- Getting pytest results into nvim quickfix list
 -- https://dhruvs.space/posts/pytest-quickfix-list/
@@ -7,6 +8,8 @@
 --
 -- https://davelage.com/posts/nvim-dap-getting-started/
 -- Some additional stuff
+--
+-- https://alpha2phi.medium.com/neovim-lsp-and-dap-using-lua-3fb24610ac9f
 -- }}
 --
 local home = os.getenv('HOME')
