@@ -205,6 +205,8 @@ alias dcd='docker-compose down'
 alias dc='docker-compose'
 alias dcb='docker-compose build'
 alias dockps='docker ps --format "{{.ID}}  {{.Names}}"'
+alias dockerstart='open -a Docker'
+alias dockerstop="pkill -SIGHUP -f /Applications/Docker.app 'docker serve'"
 docksh () {
     docker exec -it $1 /bin/bash
 }

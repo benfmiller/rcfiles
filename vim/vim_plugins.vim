@@ -690,6 +690,10 @@ elseif (g:use_telescope == 1)
 
     nnoremap <leader>fd <cmd>TodoTelescope<cr>
 
+    lua require("telescope").load_extension('harpoon')
+
+    nnoremap <leader>yh <cmd>Telescope harpoon marks<cr>
+
     " Using Lua functions
     " nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
     " nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>

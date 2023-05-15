@@ -62,7 +62,7 @@ cmp.setup({
         -- completion menu
         native_menu = false,
 
-        ghost_text = true,
+        -- ghost_text = true, -- in favor of Copilot
     },
     formatting = formatting
 })
