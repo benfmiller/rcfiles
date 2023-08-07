@@ -478,7 +478,7 @@ endfunction
 " ALE Lint on text changed
 let g:ale_lint_on_text_changed = 1
 let g:ale_lint_on_enter = 0
-let g:ale_fix_on_save = 1
+let g:ale_fix_on_save = 0
 
 let g:ale_sign_error = '🌋'
 let g:ale_sign_warning = '⛅'
@@ -515,6 +515,7 @@ let g:ale_fixers = {
 \   'terraform' : ['terraform'],
 \   'go': ['gofumpt','goimports','golines'],
 \}
+" \   '^(?!.*(java|conf))': ['remove_trailing_lines', 'trim_whitespace', 'uncrustify',],
 " 'go': 'gofmt',
 " \   'c': ['clang-format'],
 " \   'java': ['google_java_format']
@@ -526,6 +527,7 @@ if ale#path#FindNearestFile(0, 'Cargo.toml') is# ''
 endif
 let g:ale_java_google_java_format_options = "--aosp"
 let g:ale_enabled = 0
+nnoremap <leader>baf :ALEFix<CR>
 
 " google_java_format is brew installable
 
@@ -1053,5 +1055,25 @@ sign define DiagnosticSignError text=🌋 texthl=DiagnosticSignError
 sign define DiagnosticSignWarn text=⛅ texthl=DiagnosticSignWarn
 sign define DiagnosticSignInfo text=🍸 texthl=DiagnosticSignInfo
 sign define DiagnosticSignHint text=🦉 texthl=DiagnosticSignHint
+" }}
+" more lsp {{
+
+" autocmd BufWritePre * silent! lua vim.lsp.buf.format()
+
+fun! RunLspFormatter()
+    " Don't strip on these filetypes
+    " if &ft =~ 'java\|javascript\|perl'
+    if &ft =~ 'java\|json\|yaml\|conf'
+        return
+    endif
+    " %s/\s\+$//e
+    "
+    silent! lua vim.lsp.buf.format()
+endfun
+autocmd BufWritePost * call RunLspFormatter()
+
+autocmd FileType java nmap <Leader>w :w<CR>:e %<CR>
+
+
 " }}
 " }}

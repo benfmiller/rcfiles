@@ -109,11 +109,6 @@ require 'nvim-web-devicons'.setup {
 }
 -- }}
 
-vim.cmd([[
-autocmd BufWritePre * silent! lua vim.lsp.buf.format()
-]])
-
-
 -- Dap UI {{
 --
 require("nvim-dap-virtual-text").setup()
@@ -146,7 +141,8 @@ vim.fn.sign_define('DapLogPoint', { text = '•', texthl = 'yellow', linehl = 'D
 require("harpoon").setup({
     menu = {
         -- width = vim.api.nvim_win_get_width(0) // 2,
-        width = 110,
+        width = 140,
+        height = 25
     }
 })
 

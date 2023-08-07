@@ -1,4 +1,7 @@
---
+-- with mason, install jdtls, java-test, java-debug-adapter
+-- cp -r jdtls from .local/share/nvim/mason/share/jdtls to .local/share
+-- uninstall jdtls from mason so that we don't get two lsp's attaching
+-- mason jdtls also installs lombok
 -- nvim-dap {{
 -- Getting pytest results into nvim quickfix list
 -- https://dhruvs.space/posts/pytest-quickfix-list/
@@ -24,6 +27,7 @@ local root_dir = require('jdtls.setup').find_root(root_markers)
 -- with multiple different projects, each project must use a dedicated data directory.
 -- This variable is used to configure eclipse to use the directory name of the
 -- current project found using the root_marker as the folder for project specific data.
+-- no need to install anything here
 local workspace_folder = home .. "/.local/share/eclipse/" .. vim.fn.fnamemodify(root_dir, ":p:h:t")
 
 local bufopts = { noremap = true, silent = true, buffer = bufnr }
@@ -34,11 +38,43 @@ function nnoremap(rhs, lhs, bufopts, desc)
 end
 
 local bundles = {
-    vim.fn.glob(home .. '/.local/share/nvim/mason/packages/java-debug-adapter/extension/server/com.microsoft.java.debug.plugin-*.jar'),
+    vim.fn.glob(home ..
+        '/.local/share/nvim/mason/packages/java-debug-adapter/extension/server/com.microsoft.java.debug.plugin-*.jar'),
 }
 vim.list_extend(bundles,
     vim.split(vim.fn.glob(home .. '/.local/share/nvim/mason/packages/java-test/extension/server/*.jar'), "\n"))
 
+local ws_folders_jdtls = {}
+if root_dir then
+    local file = io.open(root_dir .. "/../../.bemol/ws_root_folders")
+    if file then
+        -- echo "sup"
+        for line in file:lines() do
+            table.insert(ws_folders_jdtls, "file://" .. line)
+        end
+        file:close()
+    end
+end
+
+-- could call normally after opening nvim??? don't really need this at the moment
+-- language independent, just adds multiple checked out directories to lsp
+function bemol()
+    local bemol_dir = vim.fs.find({ '.bemol' }, { upward = true, type = 'directory' })[1]
+    local ws_folders_lsp = {}
+    if bemol_dir then
+        local file = io.open(bemol_dir .. '/ws_root_folders', 'r')
+        if file then
+            for line in file:lines() do
+                table.insert(ws_folders_lsp, line)
+            end
+            file:close()
+        end
+    end
+
+    for _, line in ipairs(ws_folders_lsp) do
+        vim.lsp.buf.add_workspace_folder(line)
+    end
+end
 
 -- Copied from lsp.defaults
 local lsp_status = require('lsp-status')
@@ -56,7 +92,7 @@ lsp_status.config {
 local on_attach = function(client, bufnr)
     lsp_status.on_attach(client)
     require "lsp_signature".on_attach({
-        bind = true, -- This is mandatory, otherwise border config won't get registered.
+        bind = true,           -- This is mandatory, otherwise border config won't get registered.
         handler_opts = {
             border = "rounded" -- double, rounded, single, shadow, none
         },
@@ -87,7 +123,8 @@ local on_attach = function(client, bufnr)
     nnoremap('<space>ca', vim.lsp.buf.code_action, bufopts, "Code actions")
     vim.keymap.set('v', "<space>ca", "<ESC><CMD>lua vim.lsp.buf.range_code_action()<CR>",
         { noremap = true, silent = true, buffer = bufnr, desc = "Code actions" })
-    nnoremap('<space>f', function() vim.lsp.buf.format { async = true } end, bufopts, "Format file")
+    -- nnoremap('<space>vf', function() vim.lsp.buf.format { async = true } end, bufopts, "Format file")
+    -- nnoremap('<space>bf', vim.lsp.buf.format, bufopts, "Format file")
 
     -- Java extensions provided by jdtls
     nnoremap("<C-o>", jdtls.organize_imports, bufopts, "Organize imports")
@@ -108,7 +145,8 @@ local config = {
     },
     on_attach = on_attach, -- We pass our on_attach keybindings to the configuration map
     init_options = {
-        bundles = bundles
+        bundles = bundles,
+        workspaceFolders = ws_folders_jdtls,
     },
     root_dir = root_dir, -- Set the root directory to our found root_marker
     filetypes = { "java" },
@@ -119,15 +157,30 @@ local config = {
     -- for a list of options
     settings = {
         java = {
-            --   format = {
-            --     settings = {
-            --       -- Use Google Java style guidelines for formatting
-            --       -- To use, make sure to download the file from https://github.com/google/styleguide/blob/gh-pages/eclipse-java-google-style.xml
-            --       -- and place it in the ~/.local/share/eclipse directory
-            --       url = "/.local/share/eclipse/eclipse-java-google-style.xml",
-            --       profile = "GoogleStyle",
-            --     },
-            --   },
+            -- look more into this guide https://github.com/VonHeikemen/lsp-zero.nvim/blob/v2.x/doc/md/guides/setup-with-nvim-jdtls.md
+            format = {
+                -- enabled = true,
+                -- settings = {
+                --   -- Use Google Java style guidelines for formatting
+                --   -- To use, make sure to download the file from https://github.com/google/styleguide/blob/gh-pages/eclipse-java-google-style.xml
+                --   -- and place it in the ~/.local/share/eclipse directory
+                --   url = "/.local/share/eclipse/eclipse-java-google-style.xml",
+                --   profile = "GoogleStyle",
+                -- },
+                -- Really good reference
+                -- https://astronvim.com/2.9.0/recipes/advanced_lsp
+                settings = {
+                    -- url = "/Users/millrben/.local/share/jdtls/RDS-eclipse-style.xml",
+                    -- url = "/Users/millrben/.local/share/jdtls/RDS-intellij.xml",
+                    -- url = "/Users/millrben/.local/share/jdtls/Hmmmm.xml",
+                    -- url = "/Users/millrben/.local/share/jdtls/RDS-project.xml",
+                    url = "/Users/millrben/.local/share/jdtls/eclipse-java-google-style.xml",
+                    -- profile = "RDSStyle",
+                    -- Adding profile is only necessary if the xml file has multiple profile blocks and it must match the name= attribute of one of them.
+                    -- https://github.com/mfussenegger/nvim-jdtls/discussions/187
+                    -- https://github.com/mfussenegger/nvim-jdtls/issues/203
+                },
+            },
             signatureHelp = { enabled = true },
             contentProvider = { preferred = 'fernflower' }, -- Use fernflower to decompile library code
             -- Specify any completion options
@@ -173,9 +226,9 @@ local config = {
             configuration = {
                 runtimes = {
                     {
-                        name = "JavaSE-19",
+                        name = "JavaSE-17",
                         path = "/Library/Java/JavaVirtualMachines/openjdk.jdk/Contents/Home",
-                    }
+                    },
                     -- {
                     --   name = "JavaSE-11",
                     --   path = home .. "/.asdf/installs/java/corretto-11.0.16.9.1",
@@ -204,16 +257,20 @@ local config = {
         '--add-modules=ALL-SYSTEM',
         '--add-opens', 'java.base/java.util=ALL-UNNAMED',
         '--add-opens', 'java.base/java.lang=ALL-UNNAMED',
-        -- If you use lombok, download the lombok jar and place it in ~/.local/share/eclipse
-        '-javaagent:' .. home .. '/.local/share/eclipse/lombok.jar',
+        -- -- If you use lombok, download the lombok jar and place it in ~/.local/share/eclipse
+        -- '-javaagent:' .. home .. '/.local/share/eclipse/lombok.jar',
+        '-javaagent:' .. home .. '/.local/share/jdtls/lombok.jar',
 
         -- The jar file is located where jdtls was installed. This will need to be updated
         -- to the location where you installed jdtls
-        '-jar', vim.fn.glob('/opt/homebrew/Cellar/jdtls/1.19.0/libexec/plugins/org.eclipse.equinox.launcher_*.jar'),
+        -- '-jar', vim.fn.glob('/opt/homebrew/Cellar/jdtls/1.19.0/libexec/plugins/org.eclipse.equinox.launcher_*.jar'),
+        '-jar', vim.fn.glob(home .. '/.local/share/jdtls/plugins/org.eclipse.equinox.launcher_*.jar'),
+        '-jar', vim.fn.glob(home .. '/.local/share/jdtls/plugins/slf4j.api_*.jar'),
 
         -- The configuration for jdtls is also placed where jdtls was installed. This will
         -- need to be updated depending on your environment
-        '-configuration', '/opt/homebrew/Cellar/jdtls/1.19.0/libexec/config_mac',
+        -- '-configuration', '/opt/homebrew/Cellar/jdtls/1.19.0/libexec/config_mac',
+        '-configuration', home .. '/.local/share/jdtls/config',
 
         -- Use the workspace_folder defined above to store data for this project
         '-data', workspace_folder,
@@ -228,6 +285,9 @@ local config = {
 
 -- https://sookocheff.com/post/vim/neovim-java-ide/
 -- Manually mason java-debug-adapter, java-test
+
+nnoremap('<space>wf', bemol, bufopts, "Add workspace folder bemol")
+nnoremap('<space>bf', vim.lsp.buf.format, bufopts, "Format file")
 
 -- nvim-dap
 nnoremap("<leader>bb", "<cmd>lua require'dap'.toggle_breakpoint()<cr>", bufopts, "Set breakpoint")
@@ -280,3 +340,8 @@ nnoremap("<leader>ds", "<cmd>lua require('jdtls').setup_dap({ hotcodereplace = '
 require('dap.ext.vscode').load_launchjs()
 
 jdtls.start_or_attach(config)
+
+-- this does the job just fine!
+-- vim.cmd([[
+-- autocmd! BufWritePost * silent! lua bemol()
+-- ]])

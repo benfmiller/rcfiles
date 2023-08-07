@@ -11,7 +11,7 @@ local lspkind = require('lspkind')
 local formatting = {
     format = lspkind.cmp_format({
         mode = 'symbol_text',
-        maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+        maxwidth = 50,         -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
         ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
 
         -- The function below will be called before any actual modifications from lspkind
@@ -36,7 +36,7 @@ cmp.setup({
     mapping = {
         ['<tab>'] = cmp.mapping.select_next_item(),
         ['<S-tab>'] = cmp.mapping.select_prev_item(),
-        ['<C-u>'] = cmp.mapping(cmp.mapping.scroll_docs( -4), { 'i', 'c' }),
+        ['<C-u>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
         ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
         -- ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
         ['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
@@ -91,7 +91,7 @@ cmp.setup.cmdline(':', {
         { name = 'cmdline' }
     }),
     mapping = {
-        ['<C-u>'] = cmp.mapping(cmp.mapping.scroll_docs( -4), { 'i', 'c' }),
+        ['<C-u>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
         ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
     },
 })
@@ -192,5 +192,12 @@ require("mason-lspconfig").setup_handlers {
     -- end
 }
 -- }}
+local bufopts = { noremap = true, silent = true, buffer = bufnr }
+function nnoremap(rhs, lhs, bufopts, desc)
+    bufopts.desc = desc
+    vim.keymap.set("n", rhs, lhs, bufopts)
+end
+
+nnoremap('<space>bf', vim.lsp.buf.format, bufopts, "Format file")
 
 require("symbols-outline").setup()
