@@ -198,6 +198,12 @@ function nnoremap(rhs, lhs, bufopts, desc)
     vim.keymap.set("n", rhs, lhs, bufopts)
 end
 
+function vnoremap(rhs, lhs, bufopts, desc)
+    bufopts.desc = desc
+    vim.keymap.set("v", rhs, lhs, bufopts)
+end
+
 nnoremap('<space>bf', vim.lsp.buf.format, bufopts, "Format file")
+vnoremap('<space>bf', vim.lsp.buf.format, bufopts, "Format file")
 
 require("symbols-outline").setup()

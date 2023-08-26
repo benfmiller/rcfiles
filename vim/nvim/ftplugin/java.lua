@@ -37,6 +37,11 @@ function nnoremap(rhs, lhs, bufopts, desc)
     vim.keymap.set("n", rhs, lhs, bufopts)
 end
 
+function vnoremap(rhs, lhs, bufopts, desc)
+    bufopts.desc = desc
+    vim.keymap.set("v", rhs, lhs, bufopts)
+end
+
 local bundles = {
     vim.fn.glob(home ..
         '/.local/share/nvim/mason/packages/java-debug-adapter/extension/server/com.microsoft.java.debug.plugin-*.jar'),
@@ -288,6 +293,7 @@ local config = {
 
 nnoremap('<space>wf', bemol, bufopts, "Add workspace folder bemol")
 nnoremap('<space>bf', vim.lsp.buf.format, bufopts, "Format file")
+vnoremap('<space>bf', vim.lsp.buf.format, bufopts, "Format file")
 
 -- nvim-dap
 nnoremap("<leader>bb", "<cmd>lua require'dap'.toggle_breakpoint()<cr>", bufopts, "Set breakpoint")
@@ -311,7 +317,7 @@ nnoremap('<M-i>', "<cmd>lua require'dap'.down()<cr>", bufopts, "Stacktrace down"
 nnoremap("<leader>dc", "<cmd>lua require'dap'.continue()<cr>", bufopts, "Continue")
 nnoremap("<leader>dj", "<cmd>lua require'dap'.step_over()<cr>", bufopts, "Step over")
 nnoremap("<leader>dk", "<cmd>lua require'dap'.step_into()<cr>", bufopts, "Step into")
-nnoremap("<leader>do", "<cmd>lua require'dap'.step_out()<cr>", bufopts, "Step out")
+nnoremap("<leader>doo", "<cmd>lua require'dap'.step_out()<cr>", bufopts, "Step out")
 nnoremap('<leader>dd', "<cmd>lua require'dap'.disconnect()<cr>", bufopts, "Disconnect")
 nnoremap('<leader>dt', "<cmd>lua require'dap'.terminate()<cr>", bufopts, "Terminate")
 nnoremap("<leader>dr", "<cmd>lua require'dap'.repl.toggle()<cr>", bufopts, "Open REPL")
@@ -324,8 +330,11 @@ end, bufopts, "Scopes")
 nnoremap('<leader>df', '<cmd>Telescope dap frames<cr>', bufopts, "List frames")
 nnoremap('<leader>dh', '<cmd>Telescope dap commands<cr>', bufopts, "List commands")
 
+nnoremap("<leader>dor", "<cmd>lua require'dap'.repl.open()<cr>", bufopts, "Open dap repl debugging output")
+
 -- This requires java-debug and vscode-java-test bundles, see install steps in this README further below.
 -- https://github.com/mfussenegger/nvim-jdtls
+-- TODO: read this readme, look into the extentions
 nnoremap("<leader>vc", jdtls.test_class, bufopts, "Test class (DAP)")
 nnoremap("<leader>vm", jdtls.test_nearest_method, bufopts, "Test method (DAP)")
 
