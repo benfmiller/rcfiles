@@ -57,6 +57,24 @@ cmd + ctrl + shift - 0 : yabai -m window --space 10
 #alt + shift - 0 : yabai -m window --space 10
 
 
+# # # focus monitor
+# # https://github.com/koekeishiya/yabai/issues/475
+cmd + ctrl + shift - p  : yabai -m display --focus next
+# ctrl + alt - z  : yabai -m display --focus prev
+# ctrl + alt - c  : yabai -m display --focus next
+# ctrl + alt - 1  : yabai -m display --focus 1
+# ctrl + alt - 2  : yabai -m display --focus 2
+# ctrl + alt - 3  : yabai -m display --focus 3
+#
+# # send window to monitor and follow focus
+cmd + ctrl + alt + shift - p : yabai -m window --display next; yabai -m display --focus next
+# ctrl + cmd - z  : yabai -m window --display prev; yabai -m display --focus prev
+# ctrl + cmd - c  : yabai -m window --display next; yabai -m display --focus next
+# ctrl + cmd - 1  : yabai -m window --display 1; yabai -m display --focus 1
+# ctrl + cmd - 2  : yabai -m window --display 2; yabai -m display --focus 2
+# ctrl + cmd - 3  : yabai -m window --display 3; yabai -m display --focus 3
+
+
 # this is handled by mac keyboard shortcuts
 # cmd + ctrl - 1 : yabai -m space --focus 1
 # cmd + ctrl - 2 : yabai -m space --focus 2
