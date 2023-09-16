@@ -23,7 +23,7 @@ set mouse=nv
 
 set cmdheight=2
 
-set colorcolumn=80
+set colorcolumn=132
 
 " Tabs {{
 " TabLine     tab pages line, not active tab page label gui=NONE guibg=#3e4452 guifg=#abb2bf
@@ -69,7 +69,8 @@ function MyTabLine()
                             endif
                         else
                             if nameCounter == 0
-                                let n .= pathshorten(bufname(b))
+                                " let n .= pathshorten(bufname(b))
+                                let n .= fnamemodify(bufname(b), ":t")
                             endif
                         endif
                         " check and ++ tab's &modified count

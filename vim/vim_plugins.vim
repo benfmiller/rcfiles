@@ -970,6 +970,11 @@ nnoremap <leader>xt <cmd>TodoTrouble<cr><C-w>5_<cmd>set cmdheight=2<cr>
 nnoremap gR <cmd>TroubleToggle lsp_references<cr>
 
 nnoremap <leader>xa <cmd>TodoQuickFix<cr>
+
+
+nnoremap <leader>tli :lua vim.diagnostic.config({virtual_text = false})<cr>
+nnoremap <leader>tlo :lua vim.diagnostic.config({virtual_text = true})<cr>
+
 " Git Stuff {{
 " This comes from vim fugitive
 let g:git_messenger_no_default_mappings = 1
