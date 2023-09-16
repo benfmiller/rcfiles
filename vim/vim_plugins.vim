@@ -972,8 +972,8 @@ nnoremap gR <cmd>TroubleToggle lsp_references<cr>
 nnoremap <leader>xa <cmd>TodoQuickFix<cr>
 
 
-nnoremap <leader>tli :lua vim.diagnostic.config({virtual_text = false})<cr>
-nnoremap <leader>tlo :lua vim.diagnostic.config({virtual_text = true})<cr>
+nnoremap <leader>tlo :DiagnosticsToggle<cr>
+nnoremap <leader>tlt :DiagnosticsToggleVirtualText<cr>
 
 " Git Stuff {{
 " This comes from vim fugitive

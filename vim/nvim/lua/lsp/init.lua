@@ -205,5 +205,6 @@ end
 
 nnoremap('<space>bf', vim.lsp.buf.format, bufopts, "Format file")
 vnoremap('<space>bf', vim.lsp.buf.format, bufopts, "Format file")
+vnoremap('bf', vim.lsp.buf.format, bufopts, "Format file")
 
 require("symbols-outline").setup()
