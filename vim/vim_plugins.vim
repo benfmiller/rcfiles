@@ -515,6 +515,8 @@ let g:ale_fixers = {
 \   'terraform' : ['terraform'],
 \   'go': ['gofumpt','goimports','golines'],
 \}
+" \   '*': ['remove_trailing_lines', 'trim_whitespace', 'uncrustify',],
+" \   '*': ['uncrustify',],
 " \   '^(?!.*(java|conf))': ['remove_trailing_lines', 'trim_whitespace', 'uncrustify',],
 " 'go': 'gofmt',
 " \   'c': ['clang-format'],
@@ -1068,7 +1070,7 @@ sign define DiagnosticSignHint text=🦉 texthl=DiagnosticSignHint
 fun! RunLspFormatter()
     " Don't strip on these filetypes
     " if &ft =~ 'java\|javascript\|perl'
-    if &ft =~ 'java\|json\|yaml\|conf'
+    if &ft =~ 'java\|json\|yaml\|conf\|typescript'
         return
     endif
     " %s/\s\+$//e

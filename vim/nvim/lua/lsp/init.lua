@@ -64,7 +64,7 @@ cmp.setup({
 
         -- ghost_text = true, -- in favor of Copilot
     },
-    formatting = formatting
+    -- formatting = formatting
 })
 
 -- Set configuration for specific filetype.
@@ -120,9 +120,9 @@ local capabilities = require("lsp.defaults")["capabilities"]
 -- debounce_text_changes = 150,
 -- }
 -- }
-local servers = { 'pyright', 'rust_analyzer@nightly', 'tsserver', 'gopls', -- 'jdtls', -- 'vscode-java-test',
-    'kotlin_language_server', 'bashls', 'yamlls', 'html', 'vimls', 'sumneko_lua', -- 'java-debug',
-    'cssls', 'jsonls', 'html', 'eslint', 'graphql', 'dockerls', 'texlab', 'clangd' } -- , 'solc'}
+local servers = { 'pyright', 'rust_analyzer@nightly', 'csharp_ls', 'tsserver', 'gopls', -- 'jdtls', -- 'vscode-java-test',
+    'kotlin_language_server', 'bashls', 'yamlls', 'html', 'vimls',                      -- 'sumneko_lua',    -- 'java-debug',
+    'cssls', 'jsonls', 'html', 'eslint', 'graphql', 'dockerls', 'texlab', 'clangd' }    -- , 'solc'}
 local serversNonMason = { 'terraform_lsp', 'solidity_ls' }
 for _, lsp in pairs(serversNonMason) do
     require('lspconfig')[lsp].setup {
