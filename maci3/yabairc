@@ -61,7 +61,27 @@ yabai -m rule --add app='Goland IDEA' title='Project Structure' manage=off
 yabai -m rule --add app='Goland IDEA' title='Preferences' manage=off
 yabai -m rule --add app='Goland IDEA' title='Edit configuration' manage=off
 
+yabai -m rule --add app='IntelliJ IDEA' manage=off
+yabai -m rule --add app='Quip' manage=off
+# yabai -m rule --add app='IntelliJ IDEA' title='^$' manage=off
+# yabai -m rule --add app='IntelliJ IDEA' title='Project Structure' manage=off
+# yabai -m rule --add app='IntelliJ IDEA' title='Preferences' manage=off
+# yabai -m rule --add app='IntelliJ IDEA' title='Edit configuration' manage=off
+# yabai -m rule --add app='IntelliJ IDEA' title='Welcome to IntelliJ IDEA' manage=off
+
+yabai -m rule --add app='Self Service' manage=off
+yabai -m rule --add app='AmazonConnections' manage=off
+yabai -m rule --add app='System Settings' manage=off
+yabai -m rule --add app='Cisco AnyConnect Secure Mobility Client' manage=off
+
 yabai -m rule --add app='Python'  manage=off
+yabai -m rule --add app='Microsoft Remote Desktop'  manage=off
+yabai -m rule --add app='Finder'  manage=off
+
+// manually reenable
+yabai -m rule --add app='Outlook' manage=off
+yabai -m rule --add app='Outlook' title='Rules' manage=off
+
 
 # # spacebar padding on top screen
 # SPACEBAR_HEIGHT=$(spacebar -m config height)
