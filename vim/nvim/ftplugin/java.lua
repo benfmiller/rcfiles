@@ -28,13 +28,21 @@ local root_dir = require('jdtls.setup').find_root(root_markers)
 -- This variable is used to configure eclipse to use the directory name of the
 -- current project found using the root_marker as the folder for project specific data.
 -- no need to install anything here
-local workspace_folder = home .. "/.local/share/eclipse/" .. vim.fn.fnamemodify(root_dir, ":p:h:t")
+local workspace_folder = home .. "/.local/share/eclipse/" ..
+    vim.fn.fnamemodify(root_dir, ":p:h:h:h:t") ..
+    "/" .. vim.fn.fnamemodify(root_dir, ":p:h:h:t") ..
+    "/" .. vim.fn.fnamemodify(root_dir, ":p:h:t")
 
 local bufopts = { noremap = true, silent = true, buffer = bufnr }
 -- Helper function for creating keymaps
 function nnoremap(rhs, lhs, bufopts, desc)
     bufopts.desc = desc
     vim.keymap.set("n", rhs, lhs, bufopts)
+end
+
+function inoremap(rhs, lhs, bufopts, desc)
+    bufopts.desc = desc
+    vim.keymap.set("i", rhs, lhs, bufopts)
 end
 
 function vnoremap(rhs, lhs, bufopts, desc)
@@ -178,8 +186,8 @@ local config = {
                     -- url = "/Users/millrben/.local/share/jdtls/RDS-eclipse-style.xml",
                     -- url = "/Users/millrben/.local/share/jdtls/RDS-intellij.xml",
                     -- url = "/Users/millrben/.local/share/jdtls/Hmmmm.xml",
-                    -- url = "/Users/millrben/.local/share/jdtls/RDS-project.xml",
-                    url = "/Users/millrben/.local/share/jdtls/eclipse-java-google-style.xml",
+                    url = "/Users/millrben/.local/share/jdtls/RDS-project.xml",
+                    -- url = "/Users/millrben/.local/share/jdtls/eclipse-java-google-style.xml",
                     -- profile = "RDSStyle",
                     -- Adding profile is only necessary if the xml file has multiple profile blocks and it must match the name= attribute of one of them.
                     -- https://github.com/mfussenegger/nvim-jdtls/discussions/187
@@ -235,6 +243,10 @@ local config = {
                         path = "/Library/Java/JavaVirtualMachines/openjdk.jdk/Contents/Home",
                     },
                     -- {
+                    --     name = "JavaSE-21",
+                    --     path = home .. "/opt/homebrew/Cellar/openjdk/21.0.1",
+                    -- },
+                    -- {
                     --   name = "JavaSE-11",
                     --   path = home .. "/.asdf/installs/java/corretto-11.0.16.9.1",
                     -- },
@@ -253,24 +265,30 @@ local config = {
     -- for the full list of options
     cmd = {
         "/Library/Java/JavaVirtualMachines/openjdk.jdk/Contents/Home/bin/java",
+        -- "/opt/homebrew/Cellar/openjdk/21.0.1/bin/java",
         '-Declipse.application=org.eclipse.jdt.ls.core.id1',
         '-Dosgi.bundles.defaultStartLevel=4',
         '-Declipse.product=org.eclipse.jdt.ls.core.product',
         '-Dlog.protocol=true',
         '-Dlog.level=ALL',
-        '-Xmx4g',
+        '-Xmx8g', -- 8g = 8 GB heap size
         '--add-modules=ALL-SYSTEM',
         '--add-opens', 'java.base/java.util=ALL-UNNAMED',
         '--add-opens', 'java.base/java.lang=ALL-UNNAMED',
         -- -- If you use lombok, download the lombok jar and place it in ~/.local/share/eclipse
         -- '-javaagent:' .. home .. '/.local/share/eclipse/lombok.jar',
-        '-javaagent:' .. home .. '/.local/share/jdtls/lombok.jar',
+        -- '-javaagent:' .. home .. '/.local/share/jdtls/lombok.jar',
+
+        -- outputs java outputs to file
+        -- '-Xlog::file=' .. home .. '/logs/test.log',
+        -- '-verbose',
 
         -- The jar file is located where jdtls was installed. This will need to be updated
         -- to the location where you installed jdtls
         -- '-jar', vim.fn.glob('/opt/homebrew/Cellar/jdtls/1.19.0/libexec/plugins/org.eclipse.equinox.launcher_*.jar'),
         '-jar', vim.fn.glob(home .. '/.local/share/jdtls/plugins/org.eclipse.equinox.launcher_*.jar'),
         '-jar', vim.fn.glob(home .. '/.local/share/jdtls/plugins/slf4j.api_*.jar'),
+        '-jar', vim.fn.glob(home .. '/.local/share/jdtls/lombok.jar'),
 
         -- The configuration for jdtls is also placed where jdtls was installed. This will
         -- need to be updated depending on your environment
@@ -281,8 +299,8 @@ local config = {
         '-data', workspace_folder,
     },
 }
-
-
+-- log level shown in :JdtShowLogs
+-- vim.lsp.set_log_level(1)
 
 -- print(config['init_options']['bundles'][1])
 -- Finally, start jdtls. This will run the language server using the configuration we specified,
@@ -294,6 +312,7 @@ local config = {
 nnoremap('<space>wf', bemol, bufopts, "Add workspace folder bemol")
 nnoremap('<space>bf', vim.lsp.buf.format, bufopts, "Format file")
 vnoremap('<space>bf', vim.lsp.buf.format, bufopts, "Format file")
+vnoremap('bf', vim.lsp.buf.format, bufopts, "Format file")
 
 -- nvim-dap
 nnoremap("<leader>bb", "<cmd>lua require'dap'.toggle_breakpoint()<cr>", bufopts, "Set breakpoint")
