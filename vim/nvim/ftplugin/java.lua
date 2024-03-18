@@ -69,8 +69,7 @@ if root_dir then
     end
 end
 
--- could call normally after opening nvim??? don't really need this at the moment
--- language independent, just adds multiple checked out directories to lsp
+-- language independent, adds multiple checked out directories to lsp
 function bemol()
     local bemol_dir = vim.fs.find({ '.bemol' }, { upward = true, type = 'directory' })[1]
     local ws_folders_lsp = {}

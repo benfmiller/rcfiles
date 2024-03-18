@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # start Google Drive client
-insync start 
+# insync start
 
 # Wait for the programs to start then remove attention (e.g red blinking)
 sleep 1

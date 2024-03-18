@@ -1724,6 +1724,8 @@ autocmd FileType java nmap <Leader>cv :belowright split<Bar> term java %<CR><C-w
 autocmd FileType rust nmap <Leader>cv :Cargo run<CR>
 autocmd FileType kotlin nmap <Leader>cv :belowright split<Bar> term kotlinc % -include-runtime -d '%:r'.jar && java -jar '%:r'.jar<CR><C-w>15_
 autocmd FileType c nmap <Leader>cv :belowright split<Bar> term gcc % && ./a.out<CR><C-w>15_
+autocmd FileType cs nmap <Leader>cv :belowright split<Bar> term dotnet run<CR><C-w>15_
+autocmd FileType cs nmap <Leader>cg :belowright split<Bar> term dotnet watch<CR><C-w>15_
 
 function! RunPython(args)
     :execute ':terminal cd %:h && python %:t ' a:args

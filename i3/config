@@ -173,9 +173,12 @@ bindsym $alt+Tab workspace back_and_forth
 #    Media keys                            #
 ############################################
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume `pactl list short sinks | grep RUNNING | cut -f1` +5% #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume `pactl list short sinks | grep RUNNING | cut -f1` -5% #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute `pactl list short sinks | grep RUNNING | cut -f1` toggle # mute sound
+# bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume `pactl list short sinks | grep RUNNING | cut -f1` +5% #increase sound volume
+# bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume `pactl list short sinks | grep RUNNING | cut -f1` -5% #decrease sound volume
+# bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute `pactl list short sinks | grep RUNNING | cut -f1` toggle # mute sound
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 
 
 # Amixer
@@ -191,12 +194,14 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute `pactl list short
 
 
 # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight -inc 5 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 5 # decrease screen brightness
+# bindsym XF86MonBrightnessUp exec xbacklight -inc 5 # increase screen brightness
+# bindsym XF86MonBrightnessDown exec xbacklight -dec 5 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec /home/ben/rcfiles/i3/scripts/inc_brightness +
+bindsym XF86MonBrightnessDown exec /home/ben/rcfiles/i3/scripts/inc_brightness
 
 # Media player controls
-bindsym XF86AudioPlay exec playerctl play
-bindsym XF86AudioPause exec playerctl pause
+bindsym XF86AudioPlay exec playerctl play-pause
+# bindsym XF86AudioPause exec playerctl pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 bindsym $mod+Next exec $tidal next
@@ -323,6 +328,8 @@ assign [class="robo3t"] $workspace8
 assign [class="Mysql-workbench-bin"] $workspace8
 assign [class="sqlops"] $workspace8
 
+assign [class="Spotify"] $workspace10
+
 ############################################
 #    i3-gaps                               #
 ############################################
@@ -386,12 +393,26 @@ mode "$mode_gaps_outer" {
 ############################################
 #    Autorun                               #
 ############################################
-exec --no-startup-id i3-msg 'workspace $workspace1;  exec terminator -e "$HOME/rcfiles/scripts/learning && /usr/bin/zsh --login"; exec brave-browser' && i3-msg 'workspace $workspace1'
+# exec /usr/bin/compton --config ~/rcfiles/config/compton.conf -b
+# xrandr | grep connected | grep -v disconnected | awk '{print $1}' # get name of first screen
+exec xrandr --output eDP-1 --scale 0.7x0.7
+exec xinput set-prop "PIXA3854:00 093A:0274 Touchpad" "libinput Tapping Enabled" 1
+exec xinput set-prop "PIXA3854:00 093A:0274 Touchpad" "libinput Accel Speed" 0.4
+# disable screen blanking
+exec xset s off -dpms
+
+# exec --no-startup-id i3-msg 'workspace $workspace1;  exec terminator -e "$HOME/rcfiles/scripts/learning && /usr/bin/zsh --login"; exec brave-browser' && i3-msg 'workspace $workspace1'
+exec --no-startup-id i3-msg 'workspace $workspace1;  exec terminator -e "$HOME/rcfiles/scripts/learning && /usr/bin/zsh --login"' && i3-msg 'workspace $workspace1'
+# exec --no-startup-id spotify
+
+# /usr/bin/gnome-keyring-daemon --daemonize --login
+# /usr/bin/gnome-keyring-daemon --start --foreground --components=secrets
+
 # exec --no-startup-id i3-msg 'workspace $workspace12; exec enpass'
-exec --no-startup-id xss-lock -- ~/rcfiles/i3/scripts/i3lock.sh
+# exec --no-startup-id xss-lock -- ~/rcfiles/i3/scripts/i3lock.sh
 exec --no-startup-id nm-applet
+exec --no-startup-id flameshot
 exec_always feh --bg-scale $(find $HOME/rcfiles/wallpapers/images -type f -name "*" | shuf -n 1)
-exec /usr/bin/compton --config ~/rcfiles/config/compton.conf -b
 # exec /usr/bin/compton -b --vsync
 # exec /usr/bin/compton --config ~/.xinitrc -b
 exec /bin/bash ~/rcfiles/i3/scripts/startup.sh

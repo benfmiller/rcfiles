@@ -3,17 +3,22 @@
 option=`echo -e "suspend\nhibernate\nlock screen\nlogout\nreboot\npoweroff\nKill user $USER" | rofi -width 600 -dmenu -p system:`
 case $option in
     suspend)
-        sudo /usr/bin/systemctl syspend
+        /usr/bin/systemctl suspend
         ;;
     hibernate)
-        # i3lock -f -i "$HOME/.config/i3/icons/lock.png" ; sudo /usr/bin/systemctl hibernate
-        sudo /usr/bin/systemctl hibernate
+        i3lock -f -i "$HOME/.config/i3/icons/lock.png" ; sudo /usr/bin/systemctl hibernate
+        # sudo /usr/bin/systemctl hibernate
+        # i3lock -f -i "$HOME/.config/i3/icons/lock.png"; sudo systemctl hibernate
+        #
+        # in /etc/sudoers:
+        # ben ALL=(root) NOPASSWD: /usr/bin/systemctl hibernate
         ;;
     'lock screen')
         i3lock -f -i "$HOME/.config/i3/icons/lock.png"
         ;;
     logout)
-        i3-nagbar -t warning -m 'Are you sure you  want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'
+        # i3-nagbar -t warning -m 'Are you sure you  want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'
+        i3-msg exit
         ;;
     reboot)
         /usr/bin/systemctl reboot

@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+val=$(cat /sys/class/backlight/intel_backlight/brightness)
+max_val=$(cat /sys/class/backlight/intel_backlight/max_brightness)
+increments=`expr $max_val / 30`
+echo $max_val
+echo $val
+if [ "$1" = "+" ] ; then
+  val="$(( $val/$increments ))"
+  val="$(( $val + 1 ))"
+  val="$(( $val * $increments ))"
+else
+  # val=`expr $val - 5`
+  val="$(( $val/$increments ))"
+  val="$(( $val - 1 ))"
+  val="$(( $val * $increments ))"
+fi
+echo $val | tee /sys/class/backlight/intel_backlight/brightness
