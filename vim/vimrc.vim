@@ -6,6 +6,8 @@ cnoremap jk <C-f>
 let mapleader = " "
 "}}
 " Visuals{{
+nnoremap <leader>tnn :set number!<CR>:set relativenumber!<CR>:set signcolumn=no<CR>
+nnoremap <leader>tno :set number!<CR>:set relativenumber!<CR>:set signcolumn=yes<CR>
 set number
 set relativenumber
 " nnoremap <leader>nn :set number!<CR>:set relativenumber!<CR>
