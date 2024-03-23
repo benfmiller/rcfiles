@@ -70,6 +70,7 @@ if root_dir then
 end
 
 -- language independent, adds multiple checked out directories to lsp
+-- this function here is called from <leader>wf, similar function in after file
 function bemol()
     local bemol_dir = vim.fs.find({ '.bemol' }, { upward = true, type = 'directory' })[1]
     local ws_folders_lsp = {}
@@ -139,7 +140,7 @@ local on_attach = function(client, bufnr)
     -- nnoremap('<space>bf', vim.lsp.buf.format, bufopts, "Format file")
 
     -- Java extensions provided by jdtls
-    nnoremap("<C-o>", jdtls.organize_imports, bufopts, "Organize imports")
+    nnoremap("<space><C-o>", jdtls.organize_imports, bufopts, "Organize imports")
     nnoremap("<space>ev", jdtls.extract_variable, bufopts, "Extract variable")
     nnoremap("<space>ec", jdtls.extract_constant, bufopts, "Extract constant")
     vim.keymap.set('v', "<space>em", [[<ESC><CMD>lua require('jdtls').extract_method(true)<CR>]],

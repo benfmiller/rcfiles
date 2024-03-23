@@ -7,3 +7,8 @@ __pycache__
 workj_*
 .factorypath
 .project
+.classpath
+.settings
+kotlinLspClasspath.sh
+*.iml
+classes/
