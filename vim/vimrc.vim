@@ -1850,6 +1850,10 @@ nnoremap <leader>sw :set wrap!<CR>
 nnoremap <leader>cp :call CenterPane()<cr>
 nnoremap <leader>cw :call CenterWindow()<cr>
 nnoremap <leader>cs :call CenterWindowHoriz()<cr>
+
+" delete empty lines in visual selection
+vnoremap <leader>des <cmd>'<,'>g/^$/d<cr>
+
 " }}
 " Various{{
 set lazyredraw          "only redraws screen when we have to

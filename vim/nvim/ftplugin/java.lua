@@ -369,7 +369,7 @@ require('dap.ext.vscode').load_launchjs()
 
 jdtls.start_or_attach(config)
 
--- this does the job just fine!
+-- this does the job just fine! Moved to using after file
 -- vim.cmd([[
 -- autocmd! BufWritePost * silent! lua bemol()
 -- ]])
