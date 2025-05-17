@@ -12,3 +12,4 @@ workj_*
 kotlinLspClasspath.sh
 *.iml
 classes/
+.gradle

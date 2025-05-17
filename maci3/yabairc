@@ -73,13 +73,16 @@ yabai -m rule --add app='Quip' manage=off
 yabai -m rule --add app='Self Service' manage=off
 yabai -m rule --add app='AmazonConnections' manage=off
 yabai -m rule --add app='System Settings' manage=off
-yabai -m rule --add app='Cisco AnyConnect Secure Mobility Client' manage=off
+yabai -m rule --add app='Cisco Secure Client' manage=off
+yabai -m rule --add app='Snowfort2RDP-era-portable' manage=off
+yabai -m rule --add app='pgAdmin 4' manage=off
+yabai -m rule --add app='Activity Monitor' manage=off
 
 yabai -m rule --add app='Python'  manage=off
 yabai -m rule --add app='Microsoft Remote Desktop'  manage=off
 yabai -m rule --add app='Finder'  manage=off
 
-// manually reenable
+# manually reenable
 yabai -m rule --add app='Outlook' manage=off
 yabai -m rule --add app='Outlook' title='Rules' manage=off
 

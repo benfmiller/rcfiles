@@ -60,7 +60,7 @@ cmd + ctrl + shift - 0 : yabai -m window --space 10
 # # # focus monitor
 # # https://github.com/koekeishiya/yabai/issues/475
 cmd + ctrl - o  : yabai -m display --focus next
-cmd + ctrl + shift - o  : yabai -m display --focus prev
+cmd + ctrl - i  : yabai -m display --focus prev
 # ctrl + alt - z  : yabai -m display --focus prev
 # ctrl + alt - c  : yabai -m display --focus next
 # ctrl + alt - 1  : yabai -m display --focus 1
@@ -69,7 +69,7 @@ cmd + ctrl + shift - o  : yabai -m display --focus prev
 #
 # # send window to monitor and follow focus
 cmd + ctrl + alt - o : yabai -m window --display next; yabai -m display --focus next
-cmd + ctrl + alt + shift - o : yabai -m window --display prev; yabai -m display --focus prev
+cmd + ctrl + alt - i : yabai -m window --display prev; yabai -m display --focus prev
 # ctrl + cmd - z  : yabai -m window --display prev; yabai -m display --focus prev
 # ctrl + cmd - c  : yabai -m window --display next; yabai -m display --focus next
 # ctrl + cmd - 1  : yabai -m window --display 1; yabai -m display --focus 1
