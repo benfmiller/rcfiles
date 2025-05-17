@@ -1024,6 +1024,7 @@ nnoremap <leader>grbf yiw:Git branch recover-branch <C-r>"
 nnoremap <leader>gic <cmd>Git count-objects -v<cr>
 
 " Fugitive
+" Useful git maps for resolving merge conflicts
 nnoremap <leader>gsp :Gvdiffsplit!
 nnoremap <leader>gp1 :diffget //1<CR>
 nnoremap <leader>gp2 :diffget //2<CR>

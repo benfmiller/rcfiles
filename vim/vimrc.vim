@@ -1852,7 +1852,12 @@ nnoremap <leader>cw :call CenterWindow()<cr>
 nnoremap <leader>cs :call CenterWindowHoriz()<cr>
 
 " delete empty lines in visual selection
-vnoremap <leader>des <cmd>'<,'>g/^$/d<cr>
+vnoremap <leader>des :g/^$/d<cr>
+
+
+
+" replace all \r\n with actual new line
+nnoremap <leader>rel :%s/\\r\\n/\r/g<cr>
 
 " }}
 " Various{{

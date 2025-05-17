@@ -317,6 +317,12 @@ apdf () {
     $(/mnt/c/Program\ Files\ \(x86\)/Adobe/Acrobat\ DC/Acrobat/Acrobat.exe $($HOME/rcfiles/scripts/edge.py `pwd -P` $1))
 }
 
+notify_mac () {
+
+    # this can be an inline call
+    osascript -e 'display notification "$2" with title "$1"'
+}
+
 # Pandoc {{
 pandoct () {
     filename=$(basename -- "$1")
