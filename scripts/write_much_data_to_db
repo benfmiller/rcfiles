@@ -1,0 +1,191 @@
+#!/usr/bin/env python3
+
+import pyodbc 
+import pandas as pd
+import multiprocessing
+import time
+import pprint
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument('-e', '--endpoint', type=str, nargs=1, help="RDS instance endpoint or IP to connect to.")
+parser.add_argument('-c', '--connection-count', type=int, nargs=1, default=100, help="Number of connections, 1 table per connection.")
+parser.add_argument('-i', '--iteration-count', type=int, nargs=1, default=1000, help="Number of insert iterations. Affects db size")
+parser.add_argument('-n', '--db-name', type=str, nargs=1, default="largeDb", help="Name of db to create and write to.")
+args=parser.parse_args()
+
+
+NUM_PROCESSES = args.connection_count
+
+DB_NAME=args.db_name
+
+# this will create a table of 137GB with 1,000,000 iterations, theoritically. Need to confirm
+# NUM_ITERATIONS = 1000000
+# QUERY_SELECT_SIZE = 1000
+
+QUERY_SELECT_SIZE = 10000
+NUM_ITERATIONS = args.iteration_count
+
+BATCH_SIZE = 100
+
+print(DB_NAME)
+print(NUM_PROCESSES)
+print(NUM_ITERATIONS)
+
+def main():
+    if args.endpoint is None:
+        print("Must pass in endpoint")
+        return
+
+    start_time = time.time()
+
+    # create the db
+    with get_dbless_connection() as cnxn:
+        query = build_create_db_query()
+        try:
+            execute_sql_cmd(cnxn, query)
+        except Exception as e:
+            print(e)
+
+    with multiprocessing.Pool(processes=NUM_PROCESSES) as pool:
+        start_time = time.time()
+        results = pool.map(write_to_tables, range(1, NUM_PROCESSES+1))
+        end_time = time.time()
+        print("-----------------------------")
+        print(f"Results from the pool:")
+        pprint.pprint(results)
+        print(f"Total execution time: {end_time - start_time} seconds")
+
+def write_to_tables(i):
+    print(f"Process {multiprocessing.current_process().name} started")
+    # df = pd.read_sql_query('SELECT name, state_desc FROM sys.databases', cnxn)
+    # print(df)
+
+    output = []
+    with get_connection(DB_NAME) as cnxn:
+        query = build_setup_tables(i)
+        try:
+            output += execute_sql_cmd(cnxn, query)
+        except Exception as e:
+            print(e)
+
+    with get_connection(DB_NAME) as cnxn:
+        print(f"Writing {NUM_ITERATIONS} for tables {i} to db {DB_NAME}")
+        try:
+            output += execute_batch_insert(cnxn, i)
+        except Exception as e:
+            print(e)
+
+    print(f"Process {multiprocessing.current_process().name} finished")
+    return output
+
+def execute_query(cnxn, query):
+    cursor = cnxn.cursor()
+    cursor.execute(query)
+    row = cursor.fetchone()
+    output = []
+    while row:
+        print(row)
+        output += [row]
+        row = cursor.fetchone()
+    return output
+
+def execute_sql_cmd(cnxn, query):
+    cursor = cnxn.cursor()
+    cursor.execute(query)
+    cnxn.commit()
+    return []
+
+
+# Slow
+# def execute_batch_insert(cnxn, i):
+#     cursor = cnxn.cursor()
+#     fake_data = [('Rds', 'asdfghjklqwertyuioo','inserting fake customer rows for mysql stab testing')] * BATCH_SIZE
+#     for row in range(1, NUM_ITERATIONS + 1, BATCH_SIZE):
+#         if row % (BATCH_SIZE * 1) == 0:
+#             print(f"Wrote {BATCH_SIZE * 1} rows for task {i}")
+#         insert_stmt = f"INSERT INTO [dbo].[customers_{i}]([fname],[lname],[description]) VALUES (?,?,?)"
+#         try:
+#             cursor.executemany(insert_stmt,fake_data)
+#         except Exception as e:
+#             print(e)
+#     cnxn.commit()
+#     return []
+
+def execute_batch_insert(cnxn, i):
+    cursor = cnxn.cursor()
+    try:
+        for row in range(1, NUM_ITERATIONS + 1):
+            cursor.execute(build_big_data_query(i))
+            if row % BATCH_SIZE == 0:
+                print(f"Wrote {row}/{NUM_ITERATIONS} rows for task {i}")
+    except Exception as e:
+        print(e)
+    return []
+
+def generate_input(i):
+    big_string = ""
+    for _ in range(BATCH_SIZE):
+        big_string += f"INSERT INTO [dbo].[customers_{i}]([fname],[lname],[description]) VALUES ('Rds', 'asdfghjklqwertyuioo','inserting fake customer rows for mysql stab testing')\r\n"
+    return big_string
+
+def get_connection(db_name):
+    # https://learn.microsoft.com/en-us/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server?view=sql-server-2017&tabs=redhat18-install%2Calpine17-install%2Cdebian8-install%2Credhat7-13-install%2Crhel7-offline#18
+    return pyodbc.connect("Driver={ODBC Driver 18 for SQL Server};"
+                            f"Server=tcp:{args.endpoint},8200;"
+                            "uid=admin;pwd=password234;"
+                            f"Database={db_name};"
+                            "TrustServerCertificate=yes", autocommit=True)
+
+def get_dbless_connection():
+    # https://learn.microsoft.com/en-us/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server?view=sql-server-2017&tabs=redhat18-install%2Calpine17-install%2Cdebian8-install%2Credhat7-13-install%2Crhel7-offline#18
+    return pyodbc.connect("Driver={ODBC Driver 18 for SQL Server};"
+                            f"Server=tcp:{args.endpoint},8200;"
+                            "uid=admin;pwd=password234;"
+                            "TrustServerCertificate=yes", autocommit=True)
+
+def build_create_db_query():
+    return f"""create database {DB_NAME}"""
+
+def build_setup_tables(i):
+    return f"""
+CREATE TABLE [dbo].[customers_{i}](
+        [customer_id] [int] IDENTITY(1,1) NOT NULL,
+        [fname] [varchar](100) NULL,
+        [lname] [varchar](100) NULL,
+        [description] [varchar](500) NULL,
+PRIMARY KEY CLUSTERED ([customer_id] ASC)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]) ON [PRIMARY];
+CREATE TABLE [dbo].[customer_orders_{i}](
+        [customer_id] [int] NULL,
+        [order_id] [int] IDENTITY(1,1) NOT NULL,
+        [item_name] [varchar](100) NULL,
+        [item_id] [varchar](100) NULL,
+        [description] [varchar](500) NULL,
+        [alt_customer_id] [varchar](20) NULL,
+        [order_date] [date] NULL,
+        [ship_date] [date] NULL,
+        [status] [varchar](1) NULL,
+PRIMARY KEY CLUSTERED ([order_id] ASC)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]) ON [PRIMARY];
+CREATE TABLE [dbo].[customers_address_{i}](
+        [customer_id] [int] NULL,
+        [address_id] [int] IDENTITY(1,1) NOT NULL,
+        [street1] [varchar](100) NULL,
+        [street2] [varchar](100) NULL,
+        [city] [varchar](100) NULL,
+        [state] [varchar](2) NULL,
+        [zip] [varchar](10) NULL,
+PRIMARY KEY CLUSTERED ([address_id] ASC)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]) ON [PRIMARY];
+create index fk_addr_customer_id on customers_address_{i}(customer_id);
+create index fk_order_customer_id on customer_orders_{i}(customer_id);
+"""
+
+def build_big_data_query(i):
+    return f"""
+INSERT INTO [dbo].[customers_{i}]([fname],[lname],[description]) VALUES('Rds', 'asdfghjklqwertyuioo','inserting fake customer rows for mysql stab testing')
+INSERT INTO [dbo].[customer_orders_{i}]([customer_id],[item_name],[item_id],[description],[alt_customer_id],[order_date],[ship_date],[status])
+select top {QUERY_SELECT_SIZE} @@identity,'RDS database' as item_name,'RDS-1234567889' as item_id,'inserting fake customer rows for mysql stab testing' as description,'123456789' as alt_customer_id,getdate() as order_date,null as ship_date,'N' as status from sys.all_objects
+"""
+
+
+if __name__ == "__main__":
+    main()
