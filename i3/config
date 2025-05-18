@@ -65,6 +65,7 @@ set $workspace12 " Enpass"
 
 # scripts
 set $tidal ~/rcfiles/i3/scripts/tidal-cli.sh
+set $handle_sound ~/rcfiles/i3/scripts/handle_sound
 set $vpnmanager ~/rcfiles/i3/scripts/vpn-manager.sh
 
 ############################################
@@ -173,12 +174,15 @@ bindsym $alt+Tab workspace back_and_forth
 #    Media keys                            #
 ############################################
 # Pulse Audio controls
-# bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume `pactl list short sinks | grep RUNNING | cut -f1` +5% #increase sound volume
+bindsym XF86AudioRaiseVolume exec $handle_sound raise
+bindsym XF86AudioLowerVolume exec $handle_sound lower
+bindsym XF86AudioMute exec $handle_sound mute
+# bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume `pactl list short sinks | grep RUNNING -v | cut -f1` +5% #increase sound volume
 # bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume `pactl list short sinks | grep RUNNING | cut -f1` -5% #decrease sound volume
 # bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute `pactl list short sinks | grep RUNNING | cut -f1` toggle # mute sound
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+# bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
+# bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
+# bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 
 
 # Amixer

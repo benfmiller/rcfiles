@@ -1,0 +1,24 @@
+#!/bin/bash
+
+get_sink_id () {
+    if $( pactl list short sinks | grep RUNNING -q ); then
+        echo $(pactl list short sinks | grep RUNNING | cut -f1)
+    else
+        echo $(pactl list short sinks | grep SUSPENDED | cut -f1)
+    fi
+}
+
+case $1 in
+"raise")
+  pactl set-sink-volume $(get_sink_id) +5%
+  ;;
+"lower")
+  pactl set-sink-volume $(get_sink_id) -5%
+  ;;
+"mute")
+  pactl set-sink-mute $(get_sink_id) toggle
+  ;;
+*)
+  echo "handle_sound doesn't know this command"
+  ;;
+esac
