@@ -135,7 +135,7 @@ set laststatus=2  " always display the status line
 "
 " let b:buf_branch=""
 
-set statusline=
+set statusline=|
 if exists("g:home_machine")
     " set statusline+=%1*\ %{gitbranch#name()}\ \|%*
     " set statusline+=%1*%{StatuslineGit()}\|%*
@@ -1891,7 +1891,8 @@ augroup END
 " :call mkdir(&undodir, 'p')
 
 " For pasting from system clipboard
-set pastetoggle=<leader>tp
+" This option was removed
+" set pastetoggle=<leader>tp
 "
 " fill search field with last search with <C-r>/
 

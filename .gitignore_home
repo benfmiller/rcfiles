@@ -13,3 +13,6 @@ kotlinLspClasspath.sh
 *.iml
 classes/
 .gradle
+.kiro
+.idea
+kls_database.db
