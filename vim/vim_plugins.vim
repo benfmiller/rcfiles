@@ -59,6 +59,7 @@ elseif (g:use_telescope == 1)
 
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim', {'on': 'Lines'}
+    Plug 'ibhagwan/fzf-lua'
 endif
 
 if (g:use_md_viewer == 1)
@@ -111,6 +112,7 @@ if (g:use_cmp == 1)
     " https://sookocheff.com/post/vim/neovim-java-ide/
     Plug 'mfussenegger/nvim-dap'
     Plug 'mfussenegger/nvim-jdtls'
+    Plug 'nvim-neotest/nvim-nio'
     Plug 'rcarriga/nvim-dap-ui'
     Plug 'theHamsta/nvim-dap-virtual-text'
 
@@ -128,6 +130,10 @@ if (g:use_copilot == 1)
     " https://github.com/github/copilot.vim
     " Still in testing phase, requires :Copilot setup, which authenticates to waitlist
     Plug 'github/copilot.vim'
+endif
+
+if (g:use_q == 1)
+    Plug 'awslabs/amazonq.nvim'
 endif
 
 if (g:use_devicons == 1)
@@ -963,8 +969,17 @@ vmap <silent> <leader>T :<C-U>:ChatGPTEditWithInstructions<CR>
 
 inoremap <C-U> <cmd>Copilot<cr><C-w>L
 
-nnoremap <leader>xx <cmd>TroubleToggle<cr><C-w>5_<cmd>set cmdheight=2<cr>
-nnoremap <leader>xw <cmd>TroubleToggle workspace_diagnostics<cr><C-w>5_<cmd>set cmdheight=2<cr>
+" nnoremap <leader>xx <cmd>TroubleToggle<cr><C-w>5_<cmd>set cmdheight=2<cr>
+" nnoremap <leader>xw <cmd>TroubleToggle workspace_diagnostics<cr><C-w>5_<cmd>set cmdheight=2<cr>
+" nnoremap <leader>xd <cmd>TroubleToggle document_diagnostics<cr><C-w>5_<cmd>set cmdheight=2<cr>
+" nnoremap <leader>xq <cmd>TroubleToggle quickfix<cr><C-w>5_<cmd>set cmdheight=2<cr>
+" nnoremap <leader>xl <cmd>TroubleToggle loclist<cr><C-w>5_<cmd>set cmdheight=2<cr>
+" nnoremap <leader>xt <cmd>TodoTrouble<cr><C-w>5_<cmd>set cmdheight=2<cr>
+" nnoremap gR <cmd>TroubleToggle lsp_references<cr>
+nnoremap <leader>xx <cmd>Trouble diagnostics toggle filter.buf=0<cr><C-w>5_<cmd>set cmdheight=2<cr>
+nnoremap <leader>xs <cmd>Trouble symbols toggle pinned=true win.relative=win win.position=right<cr>
+nnoremap <leader>xw <cmd>Trouble diagnostics filter.severity=vim.diagnostic.severity.ERROR<cr>
+
 nnoremap <leader>xd <cmd>TroubleToggle document_diagnostics<cr><C-w>5_<cmd>set cmdheight=2<cr>
 nnoremap <leader>xq <cmd>TroubleToggle quickfix<cr><C-w>5_<cmd>set cmdheight=2<cr>
 nnoremap <leader>xl <cmd>TroubleToggle loclist<cr><C-w>5_<cmd>set cmdheight=2<cr>
@@ -988,8 +1003,6 @@ nnoremap <leader>ga :Git add
 nnoremap <leader>gcm :Git commit -m "
 nnoremap <leader>gcc :Git commit<cr>
 nnoremap <leader>gca :Git commit --amend
-nnoremap <leader>gpp :Git push<CR>
-nnoremap <leader>gpf :Git push -f<CR>
 nnoremap <leader>gpu :!git push --set-upstream origin `git branch --show-current`<CR>
 nnoremap <leader>grttt :Git restore %<CR>
 nnoremap <leader>gl :Git pull<CR>
@@ -1071,7 +1084,7 @@ sign define DiagnosticSignHint text=🦉 texthl=DiagnosticSignHint
 fun! RunLspFormatter()
     " Don't strip on these filetypes
     " if &ft =~ 'java\|javascript\|perl'
-    if &ft =~ 'java\|json\|yaml\|conf\|typescript'
+    if &ft =~ 'java\|json\|yaml\|conf\|typescript\|kotlin\|html\|cs'
         return
     endif
     " %s/\s\+$//e
@@ -1081,6 +1094,9 @@ endfun
 autocmd BufWritePost * call RunLspFormatter()
 
 autocmd FileType java nmap <Leader>w :w<CR>:e %<CR>
+
+nnoremap <leader>i :AmazonQ<CR>
+vnoremap <leader>i :AmazonQ<CR>
 
 
 " }}

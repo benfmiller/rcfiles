@@ -48,6 +48,7 @@ cmp.setup({
         ['<C-Space>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
     },
     sources = cmp.config.sources({
+        { name = 'amazonq' },
         { name = 'nvim_lsp' },
         { name = 'path' },
         -- { name = 'vsnip' }, -- For vsnip users.
@@ -96,6 +97,15 @@ cmp.setup.cmdline(':', {
     },
 })
 
+local home = os.getenv('HOME')
+-- vim.lsp.set_log_level('debug')
+
+require('amazonq').setup({
+    -- https://code.amazon.com/packages/AmazonQNVim/trees/mainline
+    ssoStartUrl = "https://amzn.awsapps.com/start",
+    -- lsp_server_cmd = { 'node', home .. '/.local/share/nvim/plugged/' .. 'AmazonQNVim/language-server/build/aws-lsp-codewhisperer-token-binary.js', '--stdio' },
+})
+
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 local opts = { noremap = true, silent = true }
@@ -120,12 +130,12 @@ local capabilities = require("lsp.defaults")["capabilities"]
 -- debounce_text_changes = 150,
 -- }
 -- }
-local servers = { 'pyright', 'rust_analyzer@nightly', 'csharp_ls', 'tsserver', 'gopls', -- 'jdtls', -- 'vscode-java-test',
-    'kotlin_language_server', 'bashls', 'yamlls', 'html', 'vimls',                      -- 'sumneko_lua',    -- 'java-debug',
-    'cssls', 'jsonls', 'html', 'eslint', 'graphql', 'dockerls', 'texlab', 'clangd' }    -- , 'solc'}
+local servers = { 'pyright', 'rust_analyzer@nightly', 'csharp_ls', 'tsserver',       -- 'gopls', -- 'jdtls', -- 'vscode-java-test',
+    'kotlin_language_server', 'bashls', 'yamlls', 'html', 'vimls',                   -- 'sumneko_lua',    -- 'java-debug',
+    'cssls', 'jsonls', 'html', 'eslint', 'graphql', 'dockerls', 'texlab', 'clangd' } -- , 'solc'}
 local serversNonMason = { 'terraform_lsp', 'solidity_ls' }
 for _, lsp in pairs(serversNonMason) do
-    require('lspconfig')[lsp].setup {
+    vim.lsp.config('lspconfig', {
         on_attach = on_attach,
         capabilities = capabilities,
         settings = { go = { workspaceSymbols = { enabled = true } } },
@@ -133,7 +143,7 @@ for _, lsp in pairs(serversNonMason) do
             -- -- This will be the default in neovim 0.7+
             debounce_text_changes = 150,
         }
-    }
+    })
 end
 -- mason {{
 require("mason").setup {
@@ -155,42 +165,42 @@ require 'lspconfig'.html.setup {
     on_attach = on_attach,
     capabilities = capabilitiesHTML,
 }
-require("mason-lspconfig").setup_handlers {
-    -- The first entry (without a key) will be the default handler
-    -- and will be called for each installed server that doesn't have
-    -- a dedicated handler.
-    function(server_name) -- default handler (optional)
-        require("lspconfig")[server_name].setup {
-            on_attach = on_attach,
-            capabilities = capabilities,
-            flags = {
-                -- This will be the default in neovim 0.7+
-                debounce_text_changes = 150,
-            }
-        }
-    end,
-    -- handler for specific servers
-    ["html"] = function()
-        require("lspconfig").html.setup {
-            on_attach = on_attach,
-            capabilities = capabilitiesHTML,
-        }
-    end,
-    -- ["lua-ls"] = function()
-    --     require("lspconfig").lua_ls.setup {
-    --         on_attach = on_attach,
-    --         capabilities = capabilities,
-    --         settings = {
-    --
-    --             Lua = {
-    --                 completion = {
-    --                     callSnippet = "Replace"
-    --                 }
-    --             }
-    --         }
-    --     }
-    -- end
-}
+-- require("mason-lspconfig").setup_handlers {
+--     -- The first entry (without a key) will be the default handler
+--     -- and will be called for each installed server that doesn't have
+--     -- a dedicated handler.
+--     function(server_name) -- default handler (optional)
+--         vim.lsp.config(server_name, {
+--             on_attach = on_attach,
+--             capabilities = capabilities,
+--             flags = {
+--                 -- This will be the default in neovim 0.7+
+--                 debounce_text_changes = 150,
+--             }
+--         })
+--     end,
+--     -- handler for specific servers
+--     ["html"] = function()
+--         vim.lsp.config("html", {
+--             on_attach = on_attach,
+--             capabilities = capabilitiesHTML,
+--         })
+--     end,
+--     -- ["lua-ls"] = function()
+--     --     require("lspconfig").lua_ls.setup {
+--     --         on_attach = on_attach,
+--     --         capabilities = capabilities,
+--     --         settings = {
+--     --
+--     --             Lua = {
+--     --                 completion = {
+--     --                     callSnippet = "Replace"
+--     --                 }
+--     --             }
+--     --         }
+--     --     }
+--     -- end
+-- }
 -- }}
 local bufopts = { noremap = true, silent = true, buffer = bufnr }
 function nnoremap(rhs, lhs, bufopts, desc)
