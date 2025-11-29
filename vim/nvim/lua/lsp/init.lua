@@ -105,6 +105,12 @@ if vim.g.use_q == 1 then
         -- https://code.amazon.com/packages/AmazonQNVim/trees/mainline
         -- ssoStartUrl = "https://view.awsapps.com/start",
         -- lsp_server_cmd = { 'node', home .. '/.local/share/nvim/plugged/' .. 'AmazonQNVim/language-server/build/aws-lsp-codewhisperer-token-binary.js', '--stdio' },
+        on_chat_open = function()
+            vim.cmd [[
+              vertical topleft split
+              set wrap breakindent nolist
+            ]]
+        end,
     })
 end
 

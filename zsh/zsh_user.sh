@@ -212,6 +212,12 @@ docksh () {
 }
 
 alias q='kiro-cli'
+alias qc='kiro-cli'
+
+gstash () {
+    git stash --include-untracked
+    git status -sb
+}
 
 #}}
 #Var Functions{{

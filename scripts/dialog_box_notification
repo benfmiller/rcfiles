@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+
+input=\"$1\"
+osascript -e "set theDialogText to $input & \"\nThe curent date and time is \" & (current date) & \".\"
+display dialog theDialogText
+--> Result: {button returned:\"OK\"}"

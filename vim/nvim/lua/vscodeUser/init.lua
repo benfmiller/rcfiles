@@ -43,7 +43,7 @@ keymap("n", "<leader>w", ":w<CR>", opts)
 keymap("n", "<leader>qb", ":bd!<CR>", opts)
 
 
-vim.o.cmdheight = 4
+vim.o.cmdheight = 1
 
 -- }}
 -- call vscode commands from neovim {{
