@@ -211,6 +211,8 @@ docksh () {
     docker exec -it $1 /bin/bash
 }
 
+alias q='kiro-cli'
+
 #}}
 #Var Functions{{
 print_colors () {
