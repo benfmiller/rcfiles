@@ -100,11 +100,13 @@ cmp.setup.cmdline(':', {
 local home = os.getenv('HOME')
 -- vim.lsp.set_log_level('debug')
 
-require('amazonq').setup({
-    -- https://code.amazon.com/packages/AmazonQNVim/trees/mainline
-    ssoStartUrl = "https://amzn.awsapps.com/start",
-    -- lsp_server_cmd = { 'node', home .. '/.local/share/nvim/plugged/' .. 'AmazonQNVim/language-server/build/aws-lsp-codewhisperer-token-binary.js', '--stdio' },
-})
+if vim.g.use_q == 1 then
+    require('amazonq').setup({
+        -- https://code.amazon.com/packages/AmazonQNVim/trees/mainline
+        -- ssoStartUrl = "https://view.awsapps.com/start",
+        -- lsp_server_cmd = { 'node', home .. '/.local/share/nvim/plugged/' .. 'AmazonQNVim/language-server/build/aws-lsp-codewhisperer-token-binary.js', '--stdio' },
+    })
+end
 
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -130,8 +132,9 @@ local capabilities = require("lsp.defaults")["capabilities"]
 -- debounce_text_changes = 150,
 -- }
 -- }
-local servers = { 'pyright', 'rust_analyzer@nightly', 'csharp_ls', 'tsserver',       -- 'gopls', -- 'jdtls', -- 'vscode-java-test',
-    'kotlin_language_server', 'bashls', 'yamlls', 'html', 'vimls',                   -- 'sumneko_lua',    -- 'java-debug',
+local servers = { 'pyright', 'rust_analyzer@nightly', 'gopls',
+    'csharp_ls',                                                                     -- 'jdtls', -- 'vscode-java-test',
+    'kotlin_language_server', 'bashls', 'yamlls', 'html', 'vimls', 'lua_ls',         -- 'sumneko_lua', -- 'java-debug',
     'cssls', 'jsonls', 'html', 'eslint', 'graphql', 'dockerls', 'texlab', 'clangd' } -- , 'solc'}
 local serversNonMason = { 'terraform_lsp', 'solidity_ls' }
 for _, lsp in pairs(serversNonMason) do
@@ -161,10 +164,10 @@ require("mason-lspconfig").setup {
 local capabilitiesHTML = vim.lsp.protocol.make_client_capabilities()
 capabilitiesHTML.textDocument.completion.completionItem.snippetSupport = true
 
-require 'lspconfig'.html.setup {
+vim.lsp.config('html', {
     on_attach = on_attach,
     capabilities = capabilitiesHTML,
-}
+})
 -- require("mason-lspconfig").setup_handlers {
 --     -- The first entry (without a key) will be the default handler
 --     -- and will be called for each installed server that doesn't have
